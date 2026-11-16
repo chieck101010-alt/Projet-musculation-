@@ -1,0 +1,169 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: "Montserrat", sans-serif;
+      color: #f3f4f6;
+      overflow: hidden;
+    }
+    #out-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 90% at 50% 50%, #2a2d33 0%, #16181c 62%, #0e0f12 100%);
+    }
+    .out-ph {
+      position: absolute;
+      top: 130px;
+      width: 462px;
+      height: 820px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.55);
+      outline: 2px solid rgba(255, 255, 255, 0.12);
+    }
+    .out-ph img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    #out-avant {
+      left: 729px;
+    }
+    #out-apres {
+      left: 820px;
+    }
+    .out-tag {
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      padding: 7px 16px 5px;
+      font-family: "Oswald", sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #fff;
+      background: rgba(16, 17, 20, 0.82);
+    }
+    #out-apres .out-tag {
+      background: var(--accent, #ff4d2e);
+    }
+    #out-flash {
+      position: absolute;
+      inset: 0;
+      background: #ffffff;
+    }
+    #out-lines {
+      position: absolute;
+      inset: 0;
+    }
+    .out-co {
+      position: absolute;
+      left: 1372px;
+      font-family: "Oswald", sans-serif;
+      font-weight: 600;
+      font-size: 50px;
+      text-transform: uppercase;
+      color: #ffffff;
+      white-space: nowrap;
+    }
+    .out-co small {
+      display: block;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      text-transform: none;
+      color: #c4c9d1;
+      margin-top: 2px;
+    }
+    #out-note {
+      position: absolute;
+      left: 300px;
+      top: 972px;
+      font-size: 28px;
+      font-weight: 600;
+      color: #9aa2ae;
+    }
+    #out-title {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 330px;
+      text-align: center;
+    }
+    #out-t1 {
+      font-family: "Oswald", sans-serif;
+      font-weight: 700;
+      font-size: 230px;
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+    #out-t2 {
+      margin-top: 24px;
+      font-family: "Oswald", sans-serif;
+      font-weight: 600;
+      font-size: 84px;
+      text-transform: uppercase;
+      color: var(--accent, #ff4d2e);
+    }
+    #out-t2 span {
+      display: inline-block;
+    }
+  </style>
+  <div id="root" data-composition-id="outro" data-width="1920" data-height="1080">
+    <div id="out-bg"></div>
+    <div id="out-avant" class="out-ph">
+      <img src="assets/photos/avant.jpg" alt="Avant" data-var-src="photo-avant" />
+      <div class="out-tag">Avant · Jour 1</div>
+    </div>
+    <div id="out-apres" class="out-ph">
+      <img src="assets/photos/apres.jpg" alt="Après 3 mois" data-var-src="photo-apres" />
+      <div class="out-tag">Après · 3 mois</div>
+    </div>
+    <svg id="out-lines" viewBox="0 0 1920 1080" aria-hidden="true">
+      <g id="out-l1"><circle cx="1037" cy="492" r="11" fill="#ff4d2e" /><path id="out-p1" d="M1037 492 L1180 410 L1352 410" stroke="#ff4d2e" stroke-width="4" fill="none" /></g>
+      <g id="out-l2"><circle cx="1162" cy="450" r="11" fill="#ff4d2e" /><path id="out-p2" d="M1162 450 L1250 300 L1352 300" stroke="#ff4d2e" stroke-width="4" fill="none" /></g>
+      <g id="out-l3"><circle cx="1188" cy="590" r="11" fill="#ff4d2e" /><path id="out-p3" d="M1188 590 L1260 560 L1352 560" stroke="#ff4d2e" stroke-width="4" fill="none" /></g>
+    </svg>
+    <div id="out-c2" class="out-co" style="top: 262px">Épaules plus pleines<small>deltoïdes plus ronds</small></div>
+    <div id="out-c1" class="out-co" style="top: 372px">Pectoraux plus épais<small>contour du pec mieux dessiné</small></div>
+    <div id="out-c3" class="out-co" style="top: 522px">Bras plus volumineux<small>biceps et triceps plus pleins</small></div>
+    <div id="out-note">Comparaison visuelle de 2 photos · lumière, tenue et pose différentes</div>
+    <div id="out-flash"></div>
+    <div id="out-title">
+      <div id="out-t1">3 mois</div>
+      <div id="out-t2"><span>Le</span> <span>travail</span> <span>continue</span></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // 0.0 (film 85.4): cut in from the chest push; the "avant" stands alone
+      tl.fromTo("#out-flash", { opacity: 0.85 }, { opacity: 0, duration: 0.35, ease: "power2.out" }, 0);
+      tl.fromTo("#out-avant", { scale: 1.12, x: 0 }, { scale: 1, duration: 2.4, ease: "power3.out" }, 0);
+      tl.set("#out-apres", { opacity: 0 }, 0);
+      // 2.5 (film 87.9, music drop): "après" slams in, "avant" slides left
+      tl.to("#out-avant", { x: -429, duration: 0.5, ease: "expo.out" }, 2.5);
+      tl.fromTo("#out-apres", { opacity: 0, x: 220, scale: 1.08 }, { opacity: 1, x: 0, scale: 1, duration: 0.5, ease: "expo.out" }, 2.5);
+      tl.set("#out-flash", { opacity: 0.5 }, 2.5);
+      tl.to("#out-flash", { opacity: 0, duration: 0.3, ease: "power2.out" }, 2.5);
+      // callouts: only the changes visible between the two photos
+      [["1", 4.2], ["2", 5.0], ["3", 5.8]].forEach(([i, t]) => {
+        tl.fromTo(`#out-p${i}`, { strokeDasharray: 400, strokeDashoffset: 400 }, { strokeDashoffset: 0, duration: 0.35, ease: "power2.out" }, t);
+        tl.fromTo(`#out-l${i} circle`, { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.25, ease: "back.out(2.5)" }, t);
+        tl.fromTo(`#out-c${i}`, { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, t + 0.25);
+      });
+      tl.fromTo("#out-note", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 6.6);
+      // slow push on both photos while the comparison is read
+      tl.fromTo(".out-ph img", { scale: 1 }, { scale: 1.07, duration: 9.0, ease: "none" }, 3.0);
+      // 12.1 (film 97.5): comparison clears, the closing line lands
+      tl.to(["#out-avant", "#out-apres", "#out-lines", ".out-co", "#out-note"], { opacity: 0, filter: "blur(10px)", duration: 0.3, ease: "power3.in" }, 12.0);
+      tl.fromTo("#out-t1", { clipPath: "inset(100% 0% 0% 0%)", y: 60 }, { clipPath: "inset(0% 0% 0% 0%)", y: 0, duration: 0.45, ease: "expo.out" }, 12.4);
+      tl.fromTo("#out-t2 span", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power4.out", stagger: 0.1 }, 12.9);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["outro"] = tl;
+    })();
+  </script>
+</template>

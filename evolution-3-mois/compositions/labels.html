@@ -1,0 +1,387 @@
+<template>
+  <style>
+    #root { position:absolute; inset:0; font-family:"Montserrat", sans-serif; color:#f3f4f6; pointer-events:none; }
+    #lb-scrim { position:absolute; left:0; top:0; width:1100px; height:1080px;
+      background: linear-gradient(90deg, rgba(12,13,16,0.82) 0%, rgba(12,13,16,0.62) 45%, rgba(12,13,16,0) 100%); }
+    .lb-head { position:absolute; left:200px; top:132px; font-family:"Oswald", sans-serif; font-weight:500; font-size:34px;
+      letter-spacing:0.06em; text-transform:uppercase; color:#c9ced6; }
+    .lb-head b { color:var(--accent,#ff4d2e); font-weight:700; }
+    .lb-ex { position:absolute; left:200px; top:300px; width:780px; }
+    .lb-idx { font-family:"Oswald", sans-serif; font-weight:700; font-size:46px; color:var(--accent,#ff4d2e); letter-spacing:0.02em; }
+    .lb-idx span { color:#7d8592; font-weight:500; }
+    .lb-name { margin-top:6px; font-family:"Oswald", sans-serif; font-weight:700; font-size:80px; line-height:0.98;
+      text-transform:uppercase; letter-spacing:-0.005em; color:#ffffff; }
+    .lb-sets { margin-top:22px; font-family:"Oswald", sans-serif; font-weight:600; font-size:58px; color:var(--accent,#ff4d2e); }
+    .lb-expl { margin-top:14px; font-size:34px; font-weight:600; line-height:1.25; color:#e3e6eb; max-width:740px; }
+    .lb-mus { margin-top:18px; font-size:30px; font-weight:700; color:#ff9a84; max-width:760px; }
+    .lb-card { position:absolute; left:200px; top:330px; }
+    .lb-card-day { font-family:"Oswald", sans-serif; font-weight:700; font-size:250px; line-height:0.9; text-transform:uppercase;
+      color:#ffffff; letter-spacing:-0.01em; }
+    .lb-card-grp { margin-top:18px; font-family:"Oswald", sans-serif; font-weight:600; font-size:76px; text-transform:uppercase;
+      color:var(--accent,#ff4d2e); }
+    .lb-card-n { margin-top:14px; font-size:34px; font-weight:600; color:#d4d8de; }
+    .lb-rest .lb-card-grp { color:#8fb4ff; }
+    .lb-reveal { position:absolute; left:200px; top:400px; }
+    .lb-kicker { font-family:"Oswald", sans-serif; font-weight:700; font-size:128px; text-transform:uppercase; line-height:1; }
+    .lb-reveal-t { margin-top:22px; font-family:"Oswald", sans-serif; font-weight:500; font-size:56px; text-transform:uppercase; color:#e3e6eb; }
+    .lb-reveal-t span { display:inline-block; }
+    .acc { color:var(--accent,#ff4d2e); }
+  </style>
+  <div id="root" data-composition-id="labels" data-width="1920" data-height="1080">
+    <div id="lb-scrim" class="clip" data-start="0.6" data-duration="77.8"></div>
+<div id="lb-reveal" class="clip lb-reveal" data-start="1.0" data-duration="4.1">
+  <div class="lb-kicker">Le programme</div>
+  <div class="lb-reveal-t"><span>5 jours</span> <span class="acc">·</span> <span>4 séances</span> <span class="acc">·</span> <span>1 repos</span></div>
+</div>
+<div id="lb-d1-card" class="clip lb-card" data-start="5.2" data-duration="1.4">
+  <div class="lb-card-day">Jour 1</div>
+  <div class="lb-card-grp">Pectoraux &amp; triceps</div>
+  <div class="lb-card-n">6 exercices</div>
+</div>
+<div id="lb-d1-head" class="clip lb-head" data-start="6.6" data-duration="16.8"><b>Jour 1</b> · Pectoraux &amp; triceps</div>
+<div id="lb-d1-e1" class="clip lb-ex" data-start="6.72" data-duration="2.68">
+  <div class="lb-idx">01 <span>/ 06</span></div>
+  <div class="lb-name">Développé couché</div>
+  <div class="lb-sets">3 × 10 à 12</div>
+  <div class="lb-expl">Barre à la poitrine, puis pousse.</div>
+  <div class="lb-mus">Pectoraux · Triceps · Deltoïdes avant</div>
+</div>
+<div id="lb-d1-e2" class="clip lb-ex" data-start="9.52" data-duration="2.68">
+  <div class="lb-idx">02 <span>/ 06</span></div>
+  <div class="lb-name">Développé incliné</div>
+  <div class="lb-sets">3 × 10 à 12</div>
+  <div class="lb-expl">Cible le haut des pectoraux.</div>
+  <div class="lb-mus">Haut des pectoraux · Deltoïdes avant · Triceps</div>
+</div>
+<div id="lb-d1-e3" class="clip lb-ex" data-start="12.32" data-duration="2.68">
+  <div class="lb-idx">03 <span>/ 06</span></div>
+  <div class="lb-name">Écarté à la machine (ou aux câbles)</div>
+  <div class="lb-sets">3 × 10 à 12</div>
+  <div class="lb-expl">Bras semi-tendus, referme devant toi.</div>
+  <div class="lb-mus">Pectoraux</div>
+</div>
+<div id="lb-d1-e4" class="clip lb-ex" data-start="15.12" data-duration="2.68">
+  <div class="lb-idx">04 <span>/ 06</span></div>
+  <div class="lb-name">Extension triceps à la corde</div>
+  <div class="lb-sets">3 × 10 à 12</div>
+  <div class="lb-expl">Coudes fixes, écarte la corde.</div>
+  <div class="lb-mus">Triceps</div>
+</div>
+<div id="lb-d1-e5" class="clip lb-ex" data-start="17.92" data-duration="2.68">
+  <div class="lb-idx">05 <span>/ 06</span></div>
+  <div class="lb-name">Extension triceps au-dessus de la tête</div>
+  <div class="lb-sets">3 × 10 à 12</div>
+  <div class="lb-expl">Coudes vers le plafond, tends.</div>
+  <div class="lb-mus">Triceps (longue portion)</div>
+</div>
+<div id="lb-d1-e6" class="clip lb-ex" data-start="20.72" data-duration="2.68">
+  <div class="lb-idx">06 <span>/ 06</span></div>
+  <div class="lb-name">Barre front</div>
+  <div class="lb-sets">3 × 10 à 12</div>
+  <div class="lb-expl">Coudes fixes, barre vers le front.</div>
+  <div class="lb-mus">Triceps</div>
+</div>
+<div id="lb-d2-card" class="clip lb-card" data-start="23.4" data-duration="1.4">
+  <div class="lb-card-day">Jour 2</div>
+  <div class="lb-card-grp">Dos &amp; biceps</div>
+  <div class="lb-card-n">6 exercices</div>
+</div>
+<div id="lb-d2-head" class="clip lb-head" data-start="24.8" data-duration="16.8"><b>Jour 2</b> · Dos &amp; biceps</div>
+<div id="lb-d2-e1" class="clip lb-ex" data-start="24.92" data-duration="2.68">
+  <div class="lb-idx">01 <span>/ 06</span></div>
+  <div class="lb-name">Rowing barre buste penché</div>
+  <div class="lb-sets">3 × 10 à 12</div>
+  <div class="lb-expl">Dos droit, tire au nombril.</div>
+  <div class="lb-mus">Dorsaux · Trapèzes · Rhomboïdes · Biceps</div>
+</div>
+<div id="lb-d2-e2" class="clip lb-ex" data-start="27.72" data-duration="2.68">
+  <div class="lb-idx">02 <span>/ 06</span></div>
+  <div class="lb-name">Rowing poulie basse (prise large)</div>
+  <div class="lb-sets">3 × 10 à 12</div>
+  <div class="lb-expl">Tire au buste, serre les omoplates.</div>
+  <div class="lb-mus">Haut du dos · Dorsaux · Deltoïdes arrière</div>
+</div>
+<div id="lb-d2-e3" class="clip lb-ex" data-start="30.52" data-duration="2.68">
+  <div class="lb-idx">03 <span>/ 06</span></div>
+  <div class="lb-name">Tirage vertical (prise large)</div>
+  <div class="lb-sets">3 × 10 à 12</div>
+  <div class="lb-expl">Tire la barre sous le menton.</div>
+  <div class="lb-mus">Grand dorsal · Biceps</div>
+</div>
+<div id="lb-d2-e4" class="clip lb-ex" data-start="33.32" data-duration="2.68">
+  <div class="lb-idx">04 <span>/ 06</span></div>
+  <div class="lb-name">Curl pupitre</div>
+  <div class="lb-sets">3 × 10 à 12</div>
+  <div class="lb-expl">Bras calés, monte sans élan.</div>
+  <div class="lb-mus">Biceps</div>
+</div>
+<div id="lb-d2-e5" class="clip lb-ex" data-start="36.12" data-duration="2.68">
+  <div class="lb-idx">05 <span>/ 06</span></div>
+  <div class="lb-name">Curl marteau</div>
+  <div class="lb-sets">3 × 10 à 12</div>
+  <div class="lb-expl">Prise neutre, pouces vers le haut.</div>
+  <div class="lb-mus">Brachial · Biceps · Avant-bras</div>
+</div>
+<div id="lb-d2-e6" class="clip lb-ex" data-start="38.92" data-duration="2.68">
+  <div class="lb-idx">06 <span>/ 06</span></div>
+  <div class="lb-name">Curl barre</div>
+  <div class="lb-sets">3 × 10 à 12</div>
+  <div class="lb-expl">Coudes collés, monte la barre.</div>
+  <div class="lb-mus">Biceps</div>
+</div>
+<div id="lb-rest" class="clip lb-card lb-rest" data-start="41.6" data-duration="6.0">
+  <div class="lb-card-day">Jour 3</div>
+  <div class="lb-card-grp">Repos</div>
+  <div class="lb-card-n">Récupération · sommeil · nutrition</div>
+</div>
+<div id="lb-d4-card" class="clip lb-card" data-start="47.6" data-duration="1.4">
+  <div class="lb-card-day">Jour 4</div>
+  <div class="lb-card-grp">Épaules isolées</div>
+  <div class="lb-card-n">4 exercices</div>
+</div>
+<div id="lb-d4-head" class="clip lb-head" data-start="49.0" data-duration="11.2"><b>Jour 4</b> · Épaules isolées</div>
+<div id="lb-d4-e1" class="clip lb-ex" data-start="49.12" data-duration="2.68">
+  <div class="lb-idx">01 <span>/ 04</span></div>
+  <div class="lb-name">Oiseau inversé à la machine</div>
+  <div class="lb-sets">3 × 10 à 12</div>
+  <div class="lb-expl">Poitrine calée, ouvre vers l&#x27;arrière.</div>
+  <div class="lb-mus">Deltoïdes arrière · Trapèzes</div>
+</div>
+<div id="lb-d4-e2" class="clip lb-ex" data-start="51.92" data-duration="2.68">
+  <div class="lb-idx">02 <span>/ 04</span></div>
+  <div class="lb-name">Élévation frontale</div>
+  <div class="lb-sets">3 × 10 à 12</div>
+  <div class="lb-expl">Monte devant, jusqu&#x27;aux épaules.</div>
+  <div class="lb-mus">Deltoïdes avant</div>
+</div>
+<div id="lb-d4-e3" class="clip lb-ex" data-start="54.72" data-duration="2.68">
+  <div class="lb-idx">03 <span>/ 04</span></div>
+  <div class="lb-name">Élévation latérale</div>
+  <div class="lb-sets">3 × 10 à 12</div>
+  <div class="lb-expl">Écarte sur les côtés, coudes souples.</div>
+  <div class="lb-mus">Deltoïdes moyens</div>
+</div>
+<div id="lb-d4-e4" class="clip lb-ex" data-start="57.52" data-duration="2.68">
+  <div class="lb-idx">04 <span>/ 04</span></div>
+  <div class="lb-name">Développé épaules haltères</div>
+  <div class="lb-sets">3 × 10 à 12</div>
+  <div class="lb-expl">Pousse les haltères vers le haut.</div>
+  <div class="lb-mus">Deltoïdes · Triceps</div>
+</div>
+<div id="lb-d5-card" class="clip lb-card" data-start="60.2" data-duration="1.4">
+  <div class="lb-card-day">Jour 5</div>
+  <div class="lb-card-grp">Biceps &amp; triceps</div>
+  <div class="lb-card-n">6 exercices</div>
+</div>
+<div id="lb-d5-head" class="clip lb-head" data-start="61.6" data-duration="16.8"><b>Jour 5</b> · Biceps &amp; triceps</div>
+<div id="lb-d5-e1" class="clip lb-ex" data-start="61.72" data-duration="2.68">
+  <div class="lb-idx">01 <span>/ 06</span></div>
+  <div class="lb-name">Extension triceps à la poulie</div>
+  <div class="lb-sets">3 × 10 à 12</div>
+  <div class="lb-expl">Coudes collés, pousse vers le bas.</div>
+  <div class="lb-mus">Triceps</div>
+</div>
+<div id="lb-d5-e2" class="clip lb-ex" data-start="64.52" data-duration="2.68">
+  <div class="lb-idx">02 <span>/ 06</span></div>
+  <div class="lb-name">Extension triceps au-dessus de la tête</div>
+  <div class="lb-sets">3 × 10 à 12</div>
+  <div class="lb-expl">Coudes vers le plafond, tends.</div>
+  <div class="lb-mus">Triceps (longue portion)</div>
+</div>
+<div id="lb-d5-e3" class="clip lb-ex" data-start="67.32" data-duration="2.68">
+  <div class="lb-idx">03 <span>/ 06</span></div>
+  <div class="lb-name">Barre front</div>
+  <div class="lb-sets">3 × 10 à 12</div>
+  <div class="lb-expl">Coudes fixes, barre vers le front.</div>
+  <div class="lb-mus">Triceps</div>
+</div>
+<div id="lb-d5-e4" class="clip lb-ex" data-start="70.12" data-duration="2.68">
+  <div class="lb-idx">04 <span>/ 06</span></div>
+  <div class="lb-name">Curl barre</div>
+  <div class="lb-sets">3 × 10 à 12</div>
+  <div class="lb-expl">Coudes collés, monte la barre.</div>
+  <div class="lb-mus">Biceps</div>
+</div>
+<div id="lb-d5-e5" class="clip lb-ex" data-start="72.92" data-duration="2.68">
+  <div class="lb-idx">05 <span>/ 06</span></div>
+  <div class="lb-name">Curl marteau</div>
+  <div class="lb-sets">3 × 10 à 12</div>
+  <div class="lb-expl">Prise neutre, pouces vers le haut.</div>
+  <div class="lb-mus">Brachial · Biceps · Avant-bras</div>
+</div>
+<div id="lb-d5-e6" class="clip lb-ex" data-start="75.72" data-duration="2.68">
+  <div class="lb-idx">06 <span>/ 06</span></div>
+  <div class="lb-name">Curl pupitre</div>
+  <div class="lb-sets">3 × 10 à 12</div>
+  <div class="lb-expl">Bras calés, monte sans élan.</div>
+  <div class="lb-mus">Biceps</div>
+</div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#lb-scrim", {opacity:0}, {opacity:1, duration:0.6, ease:"power2.out"}, 0.6);
+tl.fromTo("#lb-reveal .lb-kicker", {opacity:0, filter:"blur(8px)"}, {opacity:1, filter:"blur(0px)", duration:0.2, ease:"power4.out"}, 1.05);
+tl.fromTo("#lb-reveal .lb-reveal-t span", {opacity:0, y:0, filter:"blur(10px)"}, {opacity:1, filter:"blur(0px)", duration:0.16, ease:"power4.out", stagger:0.12}, 2.3);
+tl.to("#lb-reveal > *", {opacity:0, filter:"blur(10px)", duration:0.18, ease:"power3.in"}, 4.85);
+tl.fromTo("#lb-d1-card .lb-card-day", {clipPath:"inset(100% 0% 0% 0%)", y:40}, {clipPath:"inset(0% 0% 0% 0%)", y:0, duration:0.32, ease:"expo.out"}, 5.22);
+tl.fromTo("#lb-d1-card .lb-card-grp", {opacity:0, filter:"blur(10px)"}, {opacity:1, filter:"blur(0px)", duration:0.18, ease:"power4.out"}, 5.4);
+tl.fromTo("#lb-d1-card .lb-card-n", {opacity:0}, {opacity:1, duration:0.15, ease:"power2.out"}, 5.32);
+tl.to("#lb-d1-card > *", {opacity:0, filter:"blur(12px)", x:-40, duration:0.16, ease:"power3.in", stagger:0.03}, 6.38);
+tl.fromTo("#lb-d1-head", {opacity:0}, {opacity:1, duration:0.2, ease:"power2.out"}, 6.6);
+tl.fromTo("#lb-d1-e1 .lb-idx", {opacity:0}, {opacity:1, duration:0.12}, 6.74);
+tl.fromTo("#lb-d1-e1 .lb-name", {clipPath:"inset(0% 100% 0% 0%)"}, {clipPath:"inset(0% 0% 0% 0%)", duration:0.3, ease:"power3.out"}, 6.76);
+tl.fromTo("#lb-d1-e1 .lb-sets", {opacity:0, filter:"blur(8px)"}, {opacity:1, filter:"blur(0px)", duration:0.14, ease:"power4.out"}, 6.86);
+tl.fromTo("#lb-d1-e1 .lb-expl", {opacity:0, filter:"blur(6px)"}, {opacity:1, filter:"blur(0px)", duration:0.16, ease:"power4.out"}, 6.9);
+tl.fromTo("#lb-d1-e1 .lb-mus", {opacity:0}, {opacity:1, duration:0.16, ease:"power2.out"}, 6.98);
+tl.to("#lb-d1-e1 > *", {opacity:0, filter:"blur(8px)", duration:0.12, ease:"power3.in", stagger:0.015}, 9.23);
+tl.fromTo("#lb-d1-e2 .lb-idx", {opacity:0}, {opacity:1, duration:0.12}, 9.54);
+tl.fromTo("#lb-d1-e2 .lb-name", {clipPath:"inset(0% 100% 0% 0%)"}, {clipPath:"inset(0% 0% 0% 0%)", duration:0.3, ease:"power3.out"}, 9.56);
+tl.fromTo("#lb-d1-e2 .lb-sets", {opacity:0, filter:"blur(8px)"}, {opacity:1, filter:"blur(0px)", duration:0.14, ease:"power4.out"}, 9.66);
+tl.fromTo("#lb-d1-e2 .lb-expl", {opacity:0, filter:"blur(6px)"}, {opacity:1, filter:"blur(0px)", duration:0.16, ease:"power4.out"}, 9.7);
+tl.fromTo("#lb-d1-e2 .lb-mus", {opacity:0}, {opacity:1, duration:0.16, ease:"power2.out"}, 9.78);
+tl.to("#lb-d1-e2 > *", {opacity:0, filter:"blur(8px)", duration:0.12, ease:"power3.in", stagger:0.015}, 12.03);
+tl.fromTo("#lb-d1-e3 .lb-idx", {opacity:0}, {opacity:1, duration:0.12}, 12.34);
+tl.fromTo("#lb-d1-e3 .lb-name", {clipPath:"inset(0% 100% 0% 0%)"}, {clipPath:"inset(0% 0% 0% 0%)", duration:0.3, ease:"power3.out"}, 12.36);
+tl.fromTo("#lb-d1-e3 .lb-sets", {opacity:0, filter:"blur(8px)"}, {opacity:1, filter:"blur(0px)", duration:0.14, ease:"power4.out"}, 12.46);
+tl.fromTo("#lb-d1-e3 .lb-expl", {opacity:0, filter:"blur(6px)"}, {opacity:1, filter:"blur(0px)", duration:0.16, ease:"power4.out"}, 12.5);
+tl.fromTo("#lb-d1-e3 .lb-mus", {opacity:0}, {opacity:1, duration:0.16, ease:"power2.out"}, 12.58);
+tl.to("#lb-d1-e3 > *", {opacity:0, filter:"blur(8px)", duration:0.12, ease:"power3.in", stagger:0.015}, 14.83);
+tl.fromTo("#lb-d1-e4 .lb-idx", {opacity:0}, {opacity:1, duration:0.12}, 15.14);
+tl.fromTo("#lb-d1-e4 .lb-name", {clipPath:"inset(0% 100% 0% 0%)"}, {clipPath:"inset(0% 0% 0% 0%)", duration:0.3, ease:"power3.out"}, 15.16);
+tl.fromTo("#lb-d1-e4 .lb-sets", {opacity:0, filter:"blur(8px)"}, {opacity:1, filter:"blur(0px)", duration:0.14, ease:"power4.out"}, 15.26);
+tl.fromTo("#lb-d1-e4 .lb-expl", {opacity:0, filter:"blur(6px)"}, {opacity:1, filter:"blur(0px)", duration:0.16, ease:"power4.out"}, 15.3);
+tl.fromTo("#lb-d1-e4 .lb-mus", {opacity:0}, {opacity:1, duration:0.16, ease:"power2.out"}, 15.38);
+tl.to("#lb-d1-e4 > *", {opacity:0, filter:"blur(8px)", duration:0.12, ease:"power3.in", stagger:0.015}, 17.63);
+tl.fromTo("#lb-d1-e5 .lb-idx", {opacity:0}, {opacity:1, duration:0.12}, 17.94);
+tl.fromTo("#lb-d1-e5 .lb-name", {clipPath:"inset(0% 100% 0% 0%)"}, {clipPath:"inset(0% 0% 0% 0%)", duration:0.3, ease:"power3.out"}, 17.96);
+tl.fromTo("#lb-d1-e5 .lb-sets", {opacity:0, filter:"blur(8px)"}, {opacity:1, filter:"blur(0px)", duration:0.14, ease:"power4.out"}, 18.06);
+tl.fromTo("#lb-d1-e5 .lb-expl", {opacity:0, filter:"blur(6px)"}, {opacity:1, filter:"blur(0px)", duration:0.16, ease:"power4.out"}, 18.1);
+tl.fromTo("#lb-d1-e5 .lb-mus", {opacity:0}, {opacity:1, duration:0.16, ease:"power2.out"}, 18.18);
+tl.to("#lb-d1-e5 > *", {opacity:0, filter:"blur(8px)", duration:0.12, ease:"power3.in", stagger:0.015}, 20.43);
+tl.fromTo("#lb-d1-e6 .lb-idx", {opacity:0}, {opacity:1, duration:0.12}, 20.74);
+tl.fromTo("#lb-d1-e6 .lb-name", {clipPath:"inset(0% 100% 0% 0%)"}, {clipPath:"inset(0% 0% 0% 0%)", duration:0.3, ease:"power3.out"}, 20.76);
+tl.fromTo("#lb-d1-e6 .lb-sets", {opacity:0, filter:"blur(8px)"}, {opacity:1, filter:"blur(0px)", duration:0.14, ease:"power4.out"}, 20.86);
+tl.fromTo("#lb-d1-e6 .lb-expl", {opacity:0, filter:"blur(6px)"}, {opacity:1, filter:"blur(0px)", duration:0.16, ease:"power4.out"}, 20.9);
+tl.fromTo("#lb-d1-e6 .lb-mus", {opacity:0}, {opacity:1, duration:0.16, ease:"power2.out"}, 20.98);
+tl.to("#lb-d1-e6 > *", {opacity:0, filter:"blur(8px)", duration:0.12, ease:"power3.in", stagger:0.015}, 23.23);
+tl.fromTo("#lb-d2-card .lb-card-day", {clipPath:"inset(100% 0% 0% 0%)", y:40}, {clipPath:"inset(0% 0% 0% 0%)", y:0, duration:0.32, ease:"expo.out"}, 23.42);
+tl.fromTo("#lb-d2-card .lb-card-grp", {opacity:0, filter:"blur(10px)"}, {opacity:1, filter:"blur(0px)", duration:0.18, ease:"power4.out"}, 23.6);
+tl.fromTo("#lb-d2-card .lb-card-n", {opacity:0}, {opacity:1, duration:0.15, ease:"power2.out"}, 23.52);
+tl.to("#lb-d2-card > *", {opacity:0, filter:"blur(12px)", x:-40, duration:0.16, ease:"power3.in", stagger:0.03}, 24.58);
+tl.fromTo("#lb-d2-head", {opacity:0}, {opacity:1, duration:0.2, ease:"power2.out"}, 24.8);
+tl.fromTo("#lb-d2-e1 .lb-idx", {opacity:0}, {opacity:1, duration:0.12}, 24.94);
+tl.fromTo("#lb-d2-e1 .lb-name", {clipPath:"inset(0% 100% 0% 0%)"}, {clipPath:"inset(0% 0% 0% 0%)", duration:0.3, ease:"power3.out"}, 24.96);
+tl.fromTo("#lb-d2-e1 .lb-sets", {opacity:0, filter:"blur(8px)"}, {opacity:1, filter:"blur(0px)", duration:0.14, ease:"power4.out"}, 25.06);
+tl.fromTo("#lb-d2-e1 .lb-expl", {opacity:0, filter:"blur(6px)"}, {opacity:1, filter:"blur(0px)", duration:0.16, ease:"power4.out"}, 25.1);
+tl.fromTo("#lb-d2-e1 .lb-mus", {opacity:0}, {opacity:1, duration:0.16, ease:"power2.out"}, 25.18);
+tl.to("#lb-d2-e1 > *", {opacity:0, filter:"blur(8px)", duration:0.12, ease:"power3.in", stagger:0.015}, 27.43);
+tl.fromTo("#lb-d2-e2 .lb-idx", {opacity:0}, {opacity:1, duration:0.12}, 27.74);
+tl.fromTo("#lb-d2-e2 .lb-name", {clipPath:"inset(0% 100% 0% 0%)"}, {clipPath:"inset(0% 0% 0% 0%)", duration:0.3, ease:"power3.out"}, 27.76);
+tl.fromTo("#lb-d2-e2 .lb-sets", {opacity:0, filter:"blur(8px)"}, {opacity:1, filter:"blur(0px)", duration:0.14, ease:"power4.out"}, 27.86);
+tl.fromTo("#lb-d2-e2 .lb-expl", {opacity:0, filter:"blur(6px)"}, {opacity:1, filter:"blur(0px)", duration:0.16, ease:"power4.out"}, 27.9);
+tl.fromTo("#lb-d2-e2 .lb-mus", {opacity:0}, {opacity:1, duration:0.16, ease:"power2.out"}, 27.98);
+tl.to("#lb-d2-e2 > *", {opacity:0, filter:"blur(8px)", duration:0.12, ease:"power3.in", stagger:0.015}, 30.23);
+tl.fromTo("#lb-d2-e3 .lb-idx", {opacity:0}, {opacity:1, duration:0.12}, 30.54);
+tl.fromTo("#lb-d2-e3 .lb-name", {clipPath:"inset(0% 100% 0% 0%)"}, {clipPath:"inset(0% 0% 0% 0%)", duration:0.3, ease:"power3.out"}, 30.56);
+tl.fromTo("#lb-d2-e3 .lb-sets", {opacity:0, filter:"blur(8px)"}, {opacity:1, filter:"blur(0px)", duration:0.14, ease:"power4.out"}, 30.66);
+tl.fromTo("#lb-d2-e3 .lb-expl", {opacity:0, filter:"blur(6px)"}, {opacity:1, filter:"blur(0px)", duration:0.16, ease:"power4.out"}, 30.7);
+tl.fromTo("#lb-d2-e3 .lb-mus", {opacity:0}, {opacity:1, duration:0.16, ease:"power2.out"}, 30.78);
+tl.to("#lb-d2-e3 > *", {opacity:0, filter:"blur(8px)", duration:0.12, ease:"power3.in", stagger:0.015}, 33.03);
+tl.fromTo("#lb-d2-e4 .lb-idx", {opacity:0}, {opacity:1, duration:0.12}, 33.34);
+tl.fromTo("#lb-d2-e4 .lb-name", {clipPath:"inset(0% 100% 0% 0%)"}, {clipPath:"inset(0% 0% 0% 0%)", duration:0.3, ease:"power3.out"}, 33.36);
+tl.fromTo("#lb-d2-e4 .lb-sets", {opacity:0, filter:"blur(8px)"}, {opacity:1, filter:"blur(0px)", duration:0.14, ease:"power4.out"}, 33.46);
+tl.fromTo("#lb-d2-e4 .lb-expl", {opacity:0, filter:"blur(6px)"}, {opacity:1, filter:"blur(0px)", duration:0.16, ease:"power4.out"}, 33.5);
+tl.fromTo("#lb-d2-e4 .lb-mus", {opacity:0}, {opacity:1, duration:0.16, ease:"power2.out"}, 33.58);
+tl.to("#lb-d2-e4 > *", {opacity:0, filter:"blur(8px)", duration:0.12, ease:"power3.in", stagger:0.015}, 35.83);
+tl.fromTo("#lb-d2-e5 .lb-idx", {opacity:0}, {opacity:1, duration:0.12}, 36.14);
+tl.fromTo("#lb-d2-e5 .lb-name", {clipPath:"inset(0% 100% 0% 0%)"}, {clipPath:"inset(0% 0% 0% 0%)", duration:0.3, ease:"power3.out"}, 36.16);
+tl.fromTo("#lb-d2-e5 .lb-sets", {opacity:0, filter:"blur(8px)"}, {opacity:1, filter:"blur(0px)", duration:0.14, ease:"power4.out"}, 36.26);
+tl.fromTo("#lb-d2-e5 .lb-expl", {opacity:0, filter:"blur(6px)"}, {opacity:1, filter:"blur(0px)", duration:0.16, ease:"power4.out"}, 36.3);
+tl.fromTo("#lb-d2-e5 .lb-mus", {opacity:0}, {opacity:1, duration:0.16, ease:"power2.out"}, 36.38);
+tl.to("#lb-d2-e5 > *", {opacity:0, filter:"blur(8px)", duration:0.12, ease:"power3.in", stagger:0.015}, 38.63);
+tl.fromTo("#lb-d2-e6 .lb-idx", {opacity:0}, {opacity:1, duration:0.12}, 38.94);
+tl.fromTo("#lb-d2-e6 .lb-name", {clipPath:"inset(0% 100% 0% 0%)"}, {clipPath:"inset(0% 0% 0% 0%)", duration:0.3, ease:"power3.out"}, 38.96);
+tl.fromTo("#lb-d2-e6 .lb-sets", {opacity:0, filter:"blur(8px)"}, {opacity:1, filter:"blur(0px)", duration:0.14, ease:"power4.out"}, 39.06);
+tl.fromTo("#lb-d2-e6 .lb-expl", {opacity:0, filter:"blur(6px)"}, {opacity:1, filter:"blur(0px)", duration:0.16, ease:"power4.out"}, 39.1);
+tl.fromTo("#lb-d2-e6 .lb-mus", {opacity:0}, {opacity:1, duration:0.16, ease:"power2.out"}, 39.18);
+tl.to("#lb-d2-e6 > *", {opacity:0, filter:"blur(8px)", duration:0.12, ease:"power3.in", stagger:0.015}, 41.43);
+tl.fromTo("#lb-rest .lb-card-day", {clipPath:"inset(100% 0% 0% 0%)", y:40}, {clipPath:"inset(0% 0% 0% 0%)", y:0, duration:0.4, ease:"expo.out"}, 41.7);
+tl.fromTo("#lb-rest .lb-card-grp", {opacity:0, filter:"blur(10px)"}, {opacity:1, filter:"blur(0px)", duration:0.3, ease:"power4.out"}, 42.1);
+tl.fromTo("#lb-rest .lb-card-n", {opacity:0}, {opacity:1, duration:0.3}, 42.8);
+tl.to("#lb-rest > *", {opacity:0, filter:"blur(12px)", duration:0.2, ease:"power3.in", stagger:0.04}, 47.25);
+tl.fromTo("#lb-d4-card .lb-card-day", {clipPath:"inset(100% 0% 0% 0%)", y:40}, {clipPath:"inset(0% 0% 0% 0%)", y:0, duration:0.32, ease:"expo.out"}, 47.62);
+tl.fromTo("#lb-d4-card .lb-card-grp", {opacity:0, filter:"blur(10px)"}, {opacity:1, filter:"blur(0px)", duration:0.18, ease:"power4.out"}, 47.8);
+tl.fromTo("#lb-d4-card .lb-card-n", {opacity:0}, {opacity:1, duration:0.15, ease:"power2.out"}, 47.72);
+tl.to("#lb-d4-card > *", {opacity:0, filter:"blur(12px)", x:-40, duration:0.16, ease:"power3.in", stagger:0.03}, 48.78);
+tl.fromTo("#lb-d4-head", {opacity:0}, {opacity:1, duration:0.2, ease:"power2.out"}, 49.0);
+tl.fromTo("#lb-d4-e1 .lb-idx", {opacity:0}, {opacity:1, duration:0.12}, 49.14);
+tl.fromTo("#lb-d4-e1 .lb-name", {clipPath:"inset(0% 100% 0% 0%)"}, {clipPath:"inset(0% 0% 0% 0%)", duration:0.3, ease:"power3.out"}, 49.16);
+tl.fromTo("#lb-d4-e1 .lb-sets", {opacity:0, filter:"blur(8px)"}, {opacity:1, filter:"blur(0px)", duration:0.14, ease:"power4.out"}, 49.26);
+tl.fromTo("#lb-d4-e1 .lb-expl", {opacity:0, filter:"blur(6px)"}, {opacity:1, filter:"blur(0px)", duration:0.16, ease:"power4.out"}, 49.3);
+tl.fromTo("#lb-d4-e1 .lb-mus", {opacity:0}, {opacity:1, duration:0.16, ease:"power2.out"}, 49.38);
+tl.to("#lb-d4-e1 > *", {opacity:0, filter:"blur(8px)", duration:0.12, ease:"power3.in", stagger:0.015}, 51.63);
+tl.fromTo("#lb-d4-e2 .lb-idx", {opacity:0}, {opacity:1, duration:0.12}, 51.94);
+tl.fromTo("#lb-d4-e2 .lb-name", {clipPath:"inset(0% 100% 0% 0%)"}, {clipPath:"inset(0% 0% 0% 0%)", duration:0.3, ease:"power3.out"}, 51.96);
+tl.fromTo("#lb-d4-e2 .lb-sets", {opacity:0, filter:"blur(8px)"}, {opacity:1, filter:"blur(0px)", duration:0.14, ease:"power4.out"}, 52.06);
+tl.fromTo("#lb-d4-e2 .lb-expl", {opacity:0, filter:"blur(6px)"}, {opacity:1, filter:"blur(0px)", duration:0.16, ease:"power4.out"}, 52.1);
+tl.fromTo("#lb-d4-e2 .lb-mus", {opacity:0}, {opacity:1, duration:0.16, ease:"power2.out"}, 52.18);
+tl.to("#lb-d4-e2 > *", {opacity:0, filter:"blur(8px)", duration:0.12, ease:"power3.in", stagger:0.015}, 54.43);
+tl.fromTo("#lb-d4-e3 .lb-idx", {opacity:0}, {opacity:1, duration:0.12}, 54.74);
+tl.fromTo("#lb-d4-e3 .lb-name", {clipPath:"inset(0% 100% 0% 0%)"}, {clipPath:"inset(0% 0% 0% 0%)", duration:0.3, ease:"power3.out"}, 54.76);
+tl.fromTo("#lb-d4-e3 .lb-sets", {opacity:0, filter:"blur(8px)"}, {opacity:1, filter:"blur(0px)", duration:0.14, ease:"power4.out"}, 54.86);
+tl.fromTo("#lb-d4-e3 .lb-expl", {opacity:0, filter:"blur(6px)"}, {opacity:1, filter:"blur(0px)", duration:0.16, ease:"power4.out"}, 54.9);
+tl.fromTo("#lb-d4-e3 .lb-mus", {opacity:0}, {opacity:1, duration:0.16, ease:"power2.out"}, 54.98);
+tl.to("#lb-d4-e3 > *", {opacity:0, filter:"blur(8px)", duration:0.12, ease:"power3.in", stagger:0.015}, 57.23);
+tl.fromTo("#lb-d4-e4 .lb-idx", {opacity:0}, {opacity:1, duration:0.12}, 57.54);
+tl.fromTo("#lb-d4-e4 .lb-name", {clipPath:"inset(0% 100% 0% 0%)"}, {clipPath:"inset(0% 0% 0% 0%)", duration:0.3, ease:"power3.out"}, 57.56);
+tl.fromTo("#lb-d4-e4 .lb-sets", {opacity:0, filter:"blur(8px)"}, {opacity:1, filter:"blur(0px)", duration:0.14, ease:"power4.out"}, 57.66);
+tl.fromTo("#lb-d4-e4 .lb-expl", {opacity:0, filter:"blur(6px)"}, {opacity:1, filter:"blur(0px)", duration:0.16, ease:"power4.out"}, 57.7);
+tl.fromTo("#lb-d4-e4 .lb-mus", {opacity:0}, {opacity:1, duration:0.16, ease:"power2.out"}, 57.78);
+tl.to("#lb-d4-e4 > *", {opacity:0, filter:"blur(8px)", duration:0.12, ease:"power3.in", stagger:0.015}, 60.03);
+tl.fromTo("#lb-d5-card .lb-card-day", {clipPath:"inset(100% 0% 0% 0%)", y:40}, {clipPath:"inset(0% 0% 0% 0%)", y:0, duration:0.32, ease:"expo.out"}, 60.22);
+tl.fromTo("#lb-d5-card .lb-card-grp", {opacity:0, filter:"blur(10px)"}, {opacity:1, filter:"blur(0px)", duration:0.18, ease:"power4.out"}, 60.4);
+tl.fromTo("#lb-d5-card .lb-card-n", {opacity:0}, {opacity:1, duration:0.15, ease:"power2.out"}, 60.32);
+tl.to("#lb-d5-card > *", {opacity:0, filter:"blur(12px)", x:-40, duration:0.16, ease:"power3.in", stagger:0.03}, 61.38);
+tl.fromTo("#lb-d5-head", {opacity:0}, {opacity:1, duration:0.2, ease:"power2.out"}, 61.6);
+tl.fromTo("#lb-d5-e1 .lb-idx", {opacity:0}, {opacity:1, duration:0.12}, 61.74);
+tl.fromTo("#lb-d5-e1 .lb-name", {clipPath:"inset(0% 100% 0% 0%)"}, {clipPath:"inset(0% 0% 0% 0%)", duration:0.3, ease:"power3.out"}, 61.76);
+tl.fromTo("#lb-d5-e1 .lb-sets", {opacity:0, filter:"blur(8px)"}, {opacity:1, filter:"blur(0px)", duration:0.14, ease:"power4.out"}, 61.86);
+tl.fromTo("#lb-d5-e1 .lb-expl", {opacity:0, filter:"blur(6px)"}, {opacity:1, filter:"blur(0px)", duration:0.16, ease:"power4.out"}, 61.9);
+tl.fromTo("#lb-d5-e1 .lb-mus", {opacity:0}, {opacity:1, duration:0.16, ease:"power2.out"}, 61.98);
+tl.to("#lb-d5-e1 > *", {opacity:0, filter:"blur(8px)", duration:0.12, ease:"power3.in", stagger:0.015}, 64.23);
+tl.fromTo("#lb-d5-e2 .lb-idx", {opacity:0}, {opacity:1, duration:0.12}, 64.54);
+tl.fromTo("#lb-d5-e2 .lb-name", {clipPath:"inset(0% 100% 0% 0%)"}, {clipPath:"inset(0% 0% 0% 0%)", duration:0.3, ease:"power3.out"}, 64.56);
+tl.fromTo("#lb-d5-e2 .lb-sets", {opacity:0, filter:"blur(8px)"}, {opacity:1, filter:"blur(0px)", duration:0.14, ease:"power4.out"}, 64.66);
+tl.fromTo("#lb-d5-e2 .lb-expl", {opacity:0, filter:"blur(6px)"}, {opacity:1, filter:"blur(0px)", duration:0.16, ease:"power4.out"}, 64.7);
+tl.fromTo("#lb-d5-e2 .lb-mus", {opacity:0}, {opacity:1, duration:0.16, ease:"power2.out"}, 64.78);
+tl.to("#lb-d5-e2 > *", {opacity:0, filter:"blur(8px)", duration:0.12, ease:"power3.in", stagger:0.015}, 67.03);
+tl.fromTo("#lb-d5-e3 .lb-idx", {opacity:0}, {opacity:1, duration:0.12}, 67.34);
+tl.fromTo("#lb-d5-e3 .lb-name", {clipPath:"inset(0% 100% 0% 0%)"}, {clipPath:"inset(0% 0% 0% 0%)", duration:0.3, ease:"power3.out"}, 67.36);
+tl.fromTo("#lb-d5-e3 .lb-sets", {opacity:0, filter:"blur(8px)"}, {opacity:1, filter:"blur(0px)", duration:0.14, ease:"power4.out"}, 67.46);
+tl.fromTo("#lb-d5-e3 .lb-expl", {opacity:0, filter:"blur(6px)"}, {opacity:1, filter:"blur(0px)", duration:0.16, ease:"power4.out"}, 67.5);
+tl.fromTo("#lb-d5-e3 .lb-mus", {opacity:0}, {opacity:1, duration:0.16, ease:"power2.out"}, 67.58);
+tl.to("#lb-d5-e3 > *", {opacity:0, filter:"blur(8px)", duration:0.12, ease:"power3.in", stagger:0.015}, 69.83);
+tl.fromTo("#lb-d5-e4 .lb-idx", {opacity:0}, {opacity:1, duration:0.12}, 70.14);
+tl.fromTo("#lb-d5-e4 .lb-name", {clipPath:"inset(0% 100% 0% 0%)"}, {clipPath:"inset(0% 0% 0% 0%)", duration:0.3, ease:"power3.out"}, 70.16);
+tl.fromTo("#lb-d5-e4 .lb-sets", {opacity:0, filter:"blur(8px)"}, {opacity:1, filter:"blur(0px)", duration:0.14, ease:"power4.out"}, 70.26);
+tl.fromTo("#lb-d5-e4 .lb-expl", {opacity:0, filter:"blur(6px)"}, {opacity:1, filter:"blur(0px)", duration:0.16, ease:"power4.out"}, 70.3);
+tl.fromTo("#lb-d5-e4 .lb-mus", {opacity:0}, {opacity:1, duration:0.16, ease:"power2.out"}, 70.38);
+tl.to("#lb-d5-e4 > *", {opacity:0, filter:"blur(8px)", duration:0.12, ease:"power3.in", stagger:0.015}, 72.63);
+tl.fromTo("#lb-d5-e5 .lb-idx", {opacity:0}, {opacity:1, duration:0.12}, 72.94);
+tl.fromTo("#lb-d5-e5 .lb-name", {clipPath:"inset(0% 100% 0% 0%)"}, {clipPath:"inset(0% 0% 0% 0%)", duration:0.3, ease:"power3.out"}, 72.96);
+tl.fromTo("#lb-d5-e5 .lb-sets", {opacity:0, filter:"blur(8px)"}, {opacity:1, filter:"blur(0px)", duration:0.14, ease:"power4.out"}, 73.06);
+tl.fromTo("#lb-d5-e5 .lb-expl", {opacity:0, filter:"blur(6px)"}, {opacity:1, filter:"blur(0px)", duration:0.16, ease:"power4.out"}, 73.1);
+tl.fromTo("#lb-d5-e5 .lb-mus", {opacity:0}, {opacity:1, duration:0.16, ease:"power2.out"}, 73.18);
+tl.to("#lb-d5-e5 > *", {opacity:0, filter:"blur(8px)", duration:0.12, ease:"power3.in", stagger:0.015}, 75.43);
+tl.fromTo("#lb-d5-e6 .lb-idx", {opacity:0}, {opacity:1, duration:0.12}, 75.74);
+tl.fromTo("#lb-d5-e6 .lb-name", {clipPath:"inset(0% 100% 0% 0%)"}, {clipPath:"inset(0% 0% 0% 0%)", duration:0.3, ease:"power3.out"}, 75.76);
+tl.fromTo("#lb-d5-e6 .lb-sets", {opacity:0, filter:"blur(8px)"}, {opacity:1, filter:"blur(0px)", duration:0.14, ease:"power4.out"}, 75.86);
+tl.fromTo("#lb-d5-e6 .lb-expl", {opacity:0, filter:"blur(6px)"}, {opacity:1, filter:"blur(0px)", duration:0.16, ease:"power4.out"}, 75.9);
+tl.fromTo("#lb-d5-e6 .lb-mus", {opacity:0}, {opacity:1, duration:0.16, ease:"power2.out"}, 75.98);
+tl.to("#lb-d5-e6 > *", {opacity:0, filter:"blur(8px)", duration:0.12, ease:"power3.in", stagger:0.015}, 78.23);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["labels"] = tl;
+    })();
+  </script>
+</template>
