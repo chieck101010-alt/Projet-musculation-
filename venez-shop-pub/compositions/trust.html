@@ -1,0 +1,49 @@
+<template>
+  <style>
+    @font-face { font-family: "Marker"; src: url("assets/fonts/permanent-marker.woff2") format("woff2"); font-display: block; }
+    #root { position:absolute; inset:0; overflow:hidden; font-family:"Archivo Black", sans-serif; color:#f4f4f4; background:#050505; }
+    #root .abs { position:absolute; }
+    #root .mk { font-family:"Marker", "Archivo Black", sans-serif; text-transform:uppercase; line-height:1; }
+    #root .lg { font-family:"League Gothic", sans-serif; text-transform:uppercase; line-height:.86; }
+    #root .mono { font-family:"Space Mono", monospace; text-transform:uppercase; letter-spacing:.06em; }
+    #root .cx { left:0; width:1080px; text-align:center; }
+    #root .glow { filter: drop-shadow(0 0 18px rgba(255,255,255,.55)); }
+
+    #t-bg { inset:0; background:radial-gradient(80% 50% at 50% 50%, #1b1b1f 0%, #050505 70%); }
+    #t-swoosh { left:340px; top:250px; }
+    #t-head { top:430px; font-size:100px; }
+    .t-b { left:90px; width:900px; height:200px; display:flex; align-items:center; gap:40px; padding:0 50px; border-radius:30px;
+      border:4px solid #fff; background:rgba(255,255,255,.05); font-size:56px; }
+    #t-b0 { top:600px; } #t-b1 { top:840px; } #t-b2 { top:1080px; }
+    #t-wipe { inset:0; background:#FFFC00; clip-path:polygon(0 100%, 100% 100%, 100% 100%, 0 100%); }
+
+  </style>
+  <div id="root"  data-composition-id="trust" data-width="1080" data-height="1920">
+    <div id="t-bg" class="abs"></div>
+    <svg id="t-swoosh" class="abs glow" viewBox="0 6.5 24 10" width="400" height="167"><path d="M24 7.8L6.442 15.276c-1.456.616-2.679.925-3.668.925-1.12 0-1.933-.392-2.437-1.177-.317-.504-.41-1.143-.28-1.918.13-.775.476-1.6 1.036-2.478.467-.71 1.232-1.643 2.297-2.8a6.122 6.122 0 00-.784 1.848c-.28 1.195-.028 2.072.756 2.632.373.261.886.392 1.54.392.522 0 1.11-.084 1.764-.252L24 7.8z" fill="#fff"/></svg>
+    <div id="t-head" class="abs mk cx glow">Zéro stress</div>
+    <div id="t-b0" class="abs t-b glow"><svg viewBox="0 0 24 24" width="120" height="120" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3 H18 L22 9 L12 21 L2 9 Z"/><path d="M2 9 H22 M9 3 L7.5 9 L12 21 L16.5 9 L15 3"/></svg><span>Produits testés</span></div>
+    <div id="t-b1" class="abs t-b glow"><svg viewBox="0 0 24 24" width="120" height="120" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10.5" rx="2"/><path d="M8 10.5 V7.5 A4 4 0 0 1 16 7.5 V10.5"/></svg><span>Paiement sécurisé</span></div>
+    <div id="t-b2" class="abs t-b glow"><svg viewBox="0 0 24 24" width="120" height="120" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6 H14 V16 H2 Z M14 9 H18.5 L22 12.5 V16 H14"/><circle cx="6.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/></svg><span>Envoi rapide</span></div>
+    <div id="t-wipe" class="abs"></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+
+      gsap.set(".t-b", { opacity: 0 });
+      tl.fromTo("#t-swoosh", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.3, ease: "power3.out" }, 0);
+      tl.fromTo("#t-head", { scale: 1.5, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power4.out" }, 0.1);
+      tl.to("#t-b0", { opacity: 1, duration: 0.02 }, 0.12);
+      tl.fromTo("#t-b0", { scale: 0.6, rotation: -6 }, { scale: 1, rotation: 0, duration: 0.35, ease: "back.out(2.4)", immediateRender: false }, 0.12);
+      tl.to("#t-b1", { opacity: 1, duration: 0.02 }, 1.1);
+      tl.fromTo("#t-b1", { scale: 0.6, rotation: 5 }, { scale: 1, rotation: 0, duration: 0.35, ease: "back.out(2.4)", immediateRender: false }, 1.1);
+      tl.to("#t-b2", { opacity: 1, duration: 0.02 }, 1.6);
+      tl.fromTo("#t-b2", { scale: 0.6, rotation: -4 }, { scale: 1, rotation: 0, duration: 0.35, ease: "back.out(2.4)", immediateRender: false }, 1.6);
+      tl.to("#t-wipe", { clipPath: "polygon(0 0%, 100% -30%, 100% 100%, 0 100%)", duration: 0.26, ease: "power3.in" }, 2.302);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["trust"] = tl;
+    })();
+  </script>
+</template>

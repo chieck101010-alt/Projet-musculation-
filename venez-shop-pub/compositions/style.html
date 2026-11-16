@@ -1,0 +1,61 @@
+<template>
+  <style>
+    @font-face { font-family: "Marker"; src: url("assets/fonts/permanent-marker.woff2") format("woff2"); font-display: block; }
+    #root { position:absolute; inset:0; overflow:hidden; font-family:"Archivo Black", sans-serif; color:#f4f4f4; background:#050505; }
+    #root .abs { position:absolute; }
+    #root .mk { font-family:"Marker", "Archivo Black", sans-serif; text-transform:uppercase; line-height:1; }
+    #root .lg { font-family:"League Gothic", sans-serif; text-transform:uppercase; line-height:.86; }
+    #root .mono { font-family:"Space Mono", monospace; text-transform:uppercase; letter-spacing:.06em; }
+    #root .cx { left:0; width:1080px; text-align:center; }
+    #root .glow { filter: drop-shadow(0 0 18px rgba(255,255,255,.55)); }
+
+    .s-half { left:-420px; width:1920px; height:960px; overflow:hidden; }
+    .s-half div { position:absolute; left:0; width:1920px; height:1920px; background:url("assets/img/porte-hd.png") center/cover; }
+    #s-top { top:0; } #s-top div { top:0; }
+    #s-bot { top:960px; } #s-bot div { top:-960px; }
+    #s-world { inset:0; transform-origin:50% 45%; }
+    #s-shade { inset:0; background:linear-gradient(rgba(0,0,0,.82) 0%, rgba(0,0,0,.25) 34%, rgba(0,0,0,0) 55%, rgba(0,0,0,.5) 100%); }
+    #s-leak1 { left:-300px; top:300px; width:900px; height:900px; border-radius:50%; background:radial-gradient(closest-side, rgba(255,240,190,.45), rgba(255,240,190,0)); mix-blend-mode:screen; }
+    #s-leak2 { left:600px; top:900px; width:800px; height:800px; border-radius:50%; background:radial-gradient(closest-side, rgba(255,252,0,.25), rgba(255,252,0,0)); mix-blend-mode:screen; }
+    #s-l1 { top:240px; font-size:150px; }
+    #s-l2 { top:400px; font-size:130px; }
+    #s-under { left:170px; top:560px; }
+    #s-carre { top:640px; font-size:44px; color:#FFFC00; }
+
+  </style>
+  <div id="root"  data-composition-id="style" data-width="1080" data-height="1920">
+    <div id="s-world" class="abs">
+      <div id="s-top" class="abs s-half"><div></div></div>
+      <div id="s-bot" class="abs s-half"><div></div></div>
+      <div id="s-leak1" class="abs"></div>
+      <div id="s-leak2" class="abs"></div>
+      <div id="s-shade" class="abs"></div>
+    </div>
+    <div id="s-l1" class="abs mk cx glow">Le style</div>
+    <div id="s-l2" class="abs mk cx glow">au quotidien</div>
+    <svg id="s-under" class="abs" viewBox="0 0 740 60" width="740" height="60"><path id="s-under-p" d="M10 40 C 200 10 450 12 730 30" stroke="#fff" stroke-width="14" fill="none" stroke-linecap="round" stroke-dasharray="760" stroke-dashoffset="760"/></svg>
+    <div id="s-carre" class="abs mono cx">C'est carré.</div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+
+      gsap.set("#s-l2, #s-carre", { opacity: 0 });
+      tl.fromTo("#s-top", { x: 1100 }, { x: 0, duration: 0.34, ease: "expo.out" }, 0);
+      tl.fromTo("#s-bot", { x: -1100 }, { x: 0, duration: 0.34, ease: "expo.out" }, 0);
+      tl.fromTo("#s-world", { scale: 1.0 }, { scale: 1.12, duration: 3.0, ease: "none" }, 0);
+      tl.fromTo("#s-leak1", { x: -200, opacity: 0.3 }, { x: 700, opacity: 1, duration: 3.0, ease: "none" }, 0);
+      tl.fromTo("#s-leak2", { x: 200 }, { x: -500, duration: 3.0, ease: "none" }, 0);
+      tl.fromTo("#s-l1", { opacity: 0, x: -140 }, { opacity: 1, x: 0, duration: 0.22, ease: "power4.out" }, 0.3);
+      tl.to("#s-l2", { opacity: 1, duration: 0.02 }, 0.62);
+      tl.fromTo("#s-l2", { x: 140 }, { x: 0, duration: 0.22, ease: "power4.out", immediateRender: false }, 0.62);
+      tl.to("#s-under-p", { strokeDashoffset: 0, duration: 0.4, ease: "power2.out" }, 0.9);
+      tl.to("#s-carre", { opacity: 1, duration: 0.15 }, 2.3);
+      tl.to("#s-top", { x: -1100, duration: 0.2, ease: "power3.in" }, 2.8);
+      tl.to("#s-bot", { x: 1100, duration: 0.2, ease: "power3.in" }, 2.8);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["style"] = tl;
+    })();
+  </script>
+</template>

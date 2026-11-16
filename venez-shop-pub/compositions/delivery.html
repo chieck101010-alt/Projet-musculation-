@@ -1,0 +1,78 @@
+<template>
+  <style>
+    @font-face { font-family: "Marker"; src: url("assets/fonts/permanent-marker.woff2") format("woff2"); font-display: block; }
+    #root { position:absolute; inset:0; overflow:hidden; font-family:"Archivo Black", sans-serif; color:#f4f4f4; background:#050505; }
+    #root .abs { position:absolute; }
+    #root .mk { font-family:"Marker", "Archivo Black", sans-serif; text-transform:uppercase; line-height:1; }
+    #root .lg { font-family:"League Gothic", sans-serif; text-transform:uppercase; line-height:.86; }
+    #root .mono { font-family:"Space Mono", monospace; text-transform:uppercase; letter-spacing:.06em; }
+    #root .cx { left:0; width:1080px; text-align:center; }
+    #root .glow { filter: drop-shadow(0 0 18px rgba(255,255,255,.55)); }
+
+    #v-bg { inset:0; background:radial-gradient(80% 50% at 50% 40%, #1c1c20 0%, #050505 70%); }
+    #v-title { top:228px; font-size:112px; transform:rotate(-4deg); }
+    #v-sub { top:360px; font-size:32px; color:#FFFC00; }
+    #v-map { left:240px; top:440px; width:600px; height:570px; }
+    #v-map polygon { fill:rgba(255,255,255,.04); stroke:rgba(255,255,255,.55); stroke-width:3; stroke-linejoin:round; }
+    #v-map text { font-family:"League Gothic", sans-serif; font-size:52px; fill:#fff; text-anchor:middle; }
+    #v-truck { left:-200px; top:690px; }
+    .v-card { left:70px; width:940px; height:96px; border:3px solid rgba(255,255,255,.85); border-radius:22px; background:rgba(0,0,0,.6);
+      display:flex; align-items:center; gap:24px; padding:0 30px; font-size:34px; }
+    .v-card .v-price { margin-left:auto; font-family:"Marker", sans-serif; font-size:52px; color:#FFFC00; }
+    #v-c1 { top:1030px; } #v-c2 { top:1140px; } #v-c3 { top:1250px; }
+
+  </style>
+  <div id="root"  data-composition-id="delivery" data-width="1080" data-height="1920">
+    <div id="v-bg" class="abs"></div>
+    <div id="v-title" class="abs mk cx glow" data-layout-allow-occlusion>Livraison</div>
+    <div id="v-sub" class="abs mono cx">Rapide &amp; sécurisée · Île-de-France</div>
+    <svg id="v-map" class="abs glow" viewBox="0 0 600 570">
+      <g id="v-d95"><polygon points="60,40 300,10 560,60 540,170 380,190 300,170 200,190 80,170"/><text x="310" y="118">95</text></g>
+      <g id="v-d93"><polygon points="380,190 540,170 560,300 430,320 400,250"/><text x="478" y="270">93</text></g>
+      <g id="v-d92"><polygon points="200,190 300,170 310,240 270,300 300,330 300,380 230,400 180,300"/><text x="240" y="310">92</text></g>
+      <g id="v-d75"><polygon points="310,240 400,250 430,320 380,340 300,330 270,300"/><text x="352" y="310">75</text></g>
+      <g id="v-d94"><polygon points="380,340 430,320 560,300 570,420 420,440"/><text x="492" y="400">94</text></g>
+      <g id="v-d91"><polygon points="230,400 300,380 300,330 380,340 420,440 450,550 200,560 160,470"/><text x="318" y="488">91</text></g>
+    </svg>
+    <div id="v-truck" class="abs"><svg viewBox="0 0 24 24" width="170" height="170" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6 H14 V16 H2 Z M14 9 H18.5 L22 12.5 V16 H14"/><circle cx="6.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/></svg></div>
+    <div id="v-c1" class="abs v-card"><svg viewBox="0 0 24 24" width="56" height="56" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6 H14 V16 H2 Z M14 9 H18.5 L22 12.5 V16 H14"/><circle cx="6.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/></svg><span>Livraison Paris &amp; IDF</span><span class="v-price">+5€</span></div>
+    <div id="v-c2" class="abs v-card"><svg viewBox="0 0 24 24" width="56" height="56" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5 L12 3 L21 7.5 V16.5 L12 21 L3 16.5 Z M3 7.5 L12 12 L21 7.5 M12 12 V21 M7.5 5.2 L16.5 9.7"/></svg><span>Envoi La Poste 24/48h</span><span class="v-price">+5€</span></div>
+    <div id="v-c3" class="abs v-card"><svg viewBox="0 0 24 24" width="56" height="56" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22 C12 22 5 14.5 5 9.5 A7 7 0 0 1 19 9.5 C19 14.5 12 22 12 22 Z"/><circle cx="12" cy="9.5" r="2.6"/></svg><span>Dispo sur place · 93</span><span class="v-price">Saint-Denis</span></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+
+      gsap.set(".v-card", { opacity: 0 });
+      tl.fromTo("#v-title", { scale: 1.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power4.out" }, 0);
+      tl.fromTo("#v-sub", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.2);
+      tl.fromTo("#v-map", { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "expo.out" }, 0.1);
+      tl.fromTo("#v-truck", { x: 0 }, { x: 1500, duration: 0.9, ease: "power2.in" }, 0.15);
+      tl.to("#v-d93 polygon", { fill: "rgba(255,252,0,.35)", stroke: "#fff", duration: 0.12 }, 0.43);
+      tl.fromTo("#v-d93", { scale: 1.08, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.3, ease: "expo.out", immediateRender: false }, 0.43);
+      tl.to("#v-d75 polygon", { fill: "rgba(255,255,255,.14)", stroke: "#fff", duration: 0.12 }, 0.859);
+      tl.fromTo("#v-d75", { scale: 1.08, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.3, ease: "expo.out", immediateRender: false }, 0.859);
+      tl.to("#v-d92 polygon", { fill: "rgba(255,255,255,.14)", stroke: "#fff", duration: 0.12 }, 1.287);
+      tl.fromTo("#v-d92", { scale: 1.08, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.3, ease: "expo.out", immediateRender: false }, 1.287);
+      tl.to("#v-d94 polygon", { fill: "rgba(255,255,255,.14)", stroke: "#fff", duration: 0.12 }, 1.716);
+      tl.fromTo("#v-d94", { scale: 1.08, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.3, ease: "expo.out", immediateRender: false }, 1.716);
+      tl.to("#v-d95 polygon", { fill: "rgba(255,255,255,.14)", stroke: "#fff", duration: 0.12 }, 2.144);
+      tl.fromTo("#v-d95", { scale: 1.08, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.3, ease: "expo.out", immediateRender: false }, 2.144);
+      tl.to("#v-d91 polygon", { fill: "rgba(255,255,255,.14)", stroke: "#fff", duration: 0.12 }, 2.573);
+      tl.fromTo("#v-d91", { scale: 1.08, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.3, ease: "expo.out", immediateRender: false }, 2.573);
+      tl.to("#v-c1", { opacity: 1, duration: 0.02 }, 0.42);
+      tl.fromTo("#v-c1", { x: 600 }, { x: 0, duration: 0.3, ease: "expo.out", immediateRender: false }, 0.42);
+      tl.to("#v-c2", { opacity: 1, duration: 0.02 }, 2.82);
+      tl.fromTo("#v-c2", { x: 600 }, { x: 0, duration: 0.3, ease: "expo.out", immediateRender: false }, 2.82);
+      tl.to("#v-c3", { opacity: 1, duration: 0.02 }, 5.18);
+      tl.fromTo("#v-c3", { x: 600 }, { x: 0, duration: 0.3, ease: "expo.out", immediateRender: false }, 5.18);
+      tl.to("#v-d93 polygon", { fill: "rgba(255,252,0,.95)", duration: 0.1 }, 5.18);
+      tl.to("#v-d93 text", { fill: "#0a0a0a", duration: 0.1 }, 5.18);
+      tl.to("#v-map", { scale: 1.04, duration: 2.535, ease: "none" }, 5.18);
+      tl.to(".v-card, #v-map, #v-title, #v-sub", { x: -1100, duration: 0.2, ease: "power3.in", stagger: 0.02 }, 7.415);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["delivery"] = tl;
+    })();
+  </script>
+</template>

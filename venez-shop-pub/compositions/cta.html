@@ -1,0 +1,87 @@
+<template>
+  <style>
+    @font-face { font-family: "Marker"; src: url("assets/fonts/permanent-marker.woff2") format("woff2"); font-display: block; }
+    #root { position:absolute; inset:0; overflow:hidden; font-family:"Archivo Black", sans-serif; color:#f4f4f4; background:#050505; }
+    #root .abs { position:absolute; }
+    #root .mk { font-family:"Marker", "Archivo Black", sans-serif; text-transform:uppercase; line-height:1; }
+    #root .lg { font-family:"League Gothic", sans-serif; text-transform:uppercase; line-height:.86; }
+    #root .mono { font-family:"Space Mono", monospace; text-transform:uppercase; letter-spacing:.06em; }
+    #root .cx { left:0; width:1080px; text-align:center; }
+    #root .glow { filter: drop-shadow(0 0 18px rgba(255,255,255,.55)); }
+
+    #c-bg { inset:0; background:#FFFC00; }
+    #c-rays { left:-460px; top:-300px; width:2000px; height:2000px; opacity:.18;
+      background:repeating-conic-gradient(from 0deg at 50% 50%, #fff 0deg 5deg, rgba(255,255,255,0) 5deg 16deg); }
+    #c-l1 { top:226px; font-size:200px; color:#0a0a0a; }
+    #c-l2 { top:388px; font-size:200px; color:#0a0a0a; }
+    #c-prod { left:290px; top:1390px; width:500px; height:500px; transform:rotate(14deg); }
+    #c-prod img { width:500px; height:500px; }
+    #c-snap { left:70px; top:590px; width:940px; height:250px; background:#0a0a0a; border-radius:46px; }
+    #c-ghost { left:34px; top:34px; width:182px; height:182px; background:#FFFC00; border-radius:40px; display:flex; align-items:center; justify-content:center; }
+    #c-snap-lab { left:250px; top:44px; font-size:30px; color:#FFFC00; }
+    #c-handle-wrap { left:246px; top:84px; width:680px; height:130px; overflow:hidden; }
+    #c-handle { display:inline-block; font-size:92px; color:#fff; line-height:130px; letter-spacing:-.01em; }
+    #c-add { left:440px; top:860px; font-size:66px; color:#0a0a0a; transform:rotate(-5deg); }
+    #c-arrow { left:330px; top:850px; }
+    #c-only { top:990px; font-size:30px; color:#0a0a0a; }
+    #c-tt { left:150px; top:1060px; width:780px; height:150px; background:#0a0a0a; border-radius:75px; display:flex; align-items:center; gap:28px; padding:0 40px; }
+    #c-tt-txt { font-size:54px; color:#fff; }
+    #c-tt-lab { font-family:"Space Mono", monospace; font-size:28px; color:#FFFC00; letter-spacing:.04em; }
+    #c-merci { top:1236px; font-size:64px; color:#0a0a0a; transform:rotate(-3deg); }
+    #c-foot { top:1330px; font-size:30px; color:#0a0a0a; }
+    #c-ripple { left:60px; top:620px; width:200px; height:200px; border-radius:50%; border:8px solid #FFFC00; opacity:0; }
+
+  </style>
+  <div id="root" data-composition-variables='[{"id":"snap","type":"string","label":"Pseudo Snapchat","default":"naskoo_1ter"},{"id":"tiktok","type":"string","label":"Compte TikTok","default":"@venez_shop75"}]' data-composition-id="cta" data-width="1080" data-height="1920">
+    <div id="c-bg" class="abs"></div>
+    <div id="c-rays" class="abs"></div>
+    <div id="c-l1" class="abs lg cx">Commande</div>
+    <div id="c-l2" class="abs lg cx">sur snap</div>
+    <div id="c-prod" class="abs"><img src="assets/img/produit-cutout.png" alt=""/></div>
+    <div id="c-snap" class="abs">
+      <div id="c-ghost" class="abs"><svg viewBox="0 0 24 24" width="128" height="128"><path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.03.51.075.045.203.09.401.09.3-.016.659-.12 1.033-.301.165-.088.344-.104.464-.104.182 0 .359.029.509.09.45.149.734.479.734.838.015.449-.39.839-1.213 1.168-.089.029-.209.075-.344.119-.45.135-1.139.36-1.333.81-.09.224-.061.524.12.868l.015.015c.06.136 1.526 3.475 4.791 4.014.255.044.435.27.42.509 0 .075-.015.149-.045.225-.24.569-1.273.988-3.146 1.271-.059.091-.12.375-.164.57-.029.179-.074.36-.134.553-.076.271-.27.405-.555.405h-.03c-.135 0-.313-.031-.538-.074-.36-.075-.765-.135-1.273-.135-.3 0-.599.015-.913.074-.6.104-1.123.464-1.723.884-.853.599-1.826 1.288-3.294 1.288-.06 0-.119-.015-.18-.015h-.149c-1.468 0-2.427-.675-3.279-1.288-.599-.42-1.107-.779-1.707-.884-.314-.045-.629-.074-.928-.074-.54 0-.958.089-1.272.149-.211.043-.391.074-.54.074-.374 0-.523-.224-.583-.42-.061-.192-.09-.389-.135-.567-.046-.181-.105-.494-.166-.57-1.918-.222-2.95-.642-3.189-1.226-.031-.063-.052-.15-.055-.225-.015-.243.165-.465.42-.509 3.264-.54 4.73-3.879 4.791-4.02l.016-.029c.18-.345.224-.645.119-.869-.195-.434-.884-.658-1.332-.809-.121-.029-.24-.074-.346-.119-1.107-.435-1.257-.93-1.197-1.273.09-.479.674-.793 1.168-.793.146 0 .27.029.383.074.42.194.789.3 1.104.3.234 0 .384-.06.465-.105l-.046-.569c-.098-1.626-.225-3.651.307-4.837C7.392 1.077 10.739.807 11.727.807l.419-.015h.06z" fill="#fff" stroke="#0a0a0a" stroke-width=".9"/></svg></div>
+      <div id="c-snap-lab" class="abs mono">Snapchat</div>
+      <div id="c-handle-wrap" class="abs"><span id="c-handle" data-var-text="snap">naskoo_1ter</span></div>
+    </div>
+    <div id="c-ripple" class="abs"></div>
+    <svg id="c-arrow" class="abs" viewBox="0 0 100 100" width="100" height="100"><path d="M90 85 C 60 80 30 60 22 18 M8 34 L22 14 L40 30" stroke="#0a0a0a" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div id="c-add" class="abs mk">Ajoute-moi !!</div>
+    <div id="c-only" class="abs mono cx">Commandes uniquement par Snapchat</div>
+    <div id="c-tt" class="abs"><svg viewBox="0 0 24 24" width="84" height="84"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" fill="#fff"/></svg><div><div id="c-tt-lab">Suis-nous sur TikTok</div><div id="c-tt-txt" data-var-text="tiktok">@venez_shop75</div></div></div>
+    <div id="c-merci" class="abs mk cx">Merci pour la force !</div>
+    <div id="c-foot" class="abs mono cx">Good vibes only · 93/75</div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+
+      gsap.set("#c-snap, #c-add, #c-arrow, #c-only, #c-tt, #c-merci, #c-foot", { opacity: 0 });
+      tl.fromTo("#c-rays", { rotation: 0 }, { rotation: 50, duration: 8.7, ease: "none" }, 0);
+      tl.fromTo("#c-l1", { y: -120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.2, ease: "power4.out" }, 0.05);
+      tl.fromTo("#c-l2", { scale: 1.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2, ease: "power4.out" }, 0.45);
+      tl.fromTo("#c-prod", { y: 600, rotation: 60 }, { y: 0, rotation: 14, duration: 0.45, ease: "expo.out" }, 0.3);
+      tl.to("#c-prod", { rotation: -8, y: 20, duration: 7.9, ease: "sine.inOut" }, 0.75);
+      tl.to("#c-snap", { opacity: 1, duration: 0.02 }, 0.85);
+      tl.fromTo("#c-snap", { y: 160, rotation: -5 }, { y: 0, rotation: 0, duration: 0.4, ease: "expo.out", immediateRender: false }, 0.85);
+      tl.fromTo("#c-handle", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 1.6, ease: "steps(11)" }, 1.6);
+      tl.to("#c-add, #c-arrow", { opacity: 1, duration: 0.02 }, 2.9000000000000004);
+      tl.fromTo("#c-add", { scale: 1.8 }, { scale: 1, duration: 0.2, ease: "power4.out", immediateRender: false }, 2.9000000000000004);
+      tl.fromTo("#c-arrow path", { strokeDasharray: 200, strokeDashoffset: 200 }, { strokeDashoffset: 0, duration: 0.3, ease: "power2.out", immediateRender: false }, 2.9000000000000004);
+      tl.fromTo("#c-only", { opacity: 0 }, { opacity: 1, duration: 0.2, immediateRender: false }, 3.1);
+      tl.to("#c-tt", { opacity: 1, duration: 0.02 }, 3.65);
+      tl.fromTo("#c-tt", { x: -900 }, { x: 0, duration: 0.35, ease: "expo.out", immediateRender: false }, 3.65);
+      // the add button gets pressed
+      tl.set("#c-ripple", { scale: 0.3 }, 3.6);
+      tl.to("#c-ripple", { opacity: 1, duration: 0.02 }, 3.7);
+      tl.to("#c-ripple", { opacity: 0, scale: 3.2, duration: 0.6, ease: "power2.out" }, 3.72);
+      tl.to("#c-snap", { scale: 0.94, duration: 0.02, ease: "none" }, 3.7);
+      tl.to("#c-snap", { scale: 1, duration: 0.35, ease: "expo.out" }, 3.72);
+      tl.to("#c-merci", { opacity: 1, duration: 0.02 }, 6.1);
+      tl.fromTo("#c-merci", { scale: 1.6 }, { scale: 1, duration: 0.2, ease: "power4.out", immediateRender: false }, 6.1);
+      tl.to("#c-foot", { opacity: 1, duration: 0.3 }, 4.2);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["cta"] = tl;
+    })();
+  </script>
+</template>

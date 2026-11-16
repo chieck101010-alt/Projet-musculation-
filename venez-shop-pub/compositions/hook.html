@@ -1,0 +1,68 @@
+<template>
+  <style>
+    @font-face { font-family: "Marker"; src: url("assets/fonts/permanent-marker.woff2") format("woff2"); font-display: block; }
+    #root { position:absolute; inset:0; overflow:hidden; font-family:"Archivo Black", sans-serif; color:#f4f4f4; background:#050505; }
+    #root .abs { position:absolute; }
+    #root .mk { font-family:"Marker", "Archivo Black", sans-serif; text-transform:uppercase; line-height:1; }
+    #root .lg { font-family:"League Gothic", sans-serif; text-transform:uppercase; line-height:.86; }
+    #root .mono { font-family:"Space Mono", monospace; text-transform:uppercase; letter-spacing:.06em; }
+    #root .cx { left:0; width:1080px; text-align:center; }
+    #root .glow { filter: drop-shadow(0 0 18px rgba(255,255,255,.55)); }
+
+    #h-photo { left:-420px; top:0; width:1920px; height:1920px; background:url("assets/img/porte-hd.png") center/cover; transform-origin:46% 41%; }
+    #h-shade { inset:0; background:linear-gradient(rgba(0,0,0,.78) 0%, rgba(0,0,0,.15) 38%, rgba(0,0,0,0) 60%, rgba(0,0,0,.6) 100%); }
+    .h-slice { left:0; width:1080px; height:1920px; background:url("assets/img/porte-hd.png") center/cover; opacity:0; mix-blend-mode:screen; }
+    #h-r { clip-path: inset(30% 0 52% 0); filter: sepia(1) saturate(6) hue-rotate(-50deg); }
+    #h-c { clip-path: inset(58% 0 26% 0); filter: sepia(1) saturate(6) hue-rotate(140deg); }
+    #h-wesh { top:240px; left:120px; font-size:150px; transform:rotate(-7deg); color:#fff; }
+    #h-tvu { top:420px; font-size:236px; }
+    #h-flash { inset:0; background:#fff; opacity:0; }
+
+  </style>
+  <div id="root"  data-composition-id="hook" data-width="1080" data-height="1920">
+    <div id="h-photo" class="abs"></div>
+    <div id="h-r" class="abs h-slice"></div>
+    <div id="h-c" class="abs h-slice"></div>
+    <div id="h-shade" class="abs"></div>
+    <div id="h-wesh" class="abs mk glow">Wesh,</div>
+    <div id="h-tvu" class="abs lg cx">T'as vu ça ?</div>
+    <div id="h-flash" class="abs"></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+
+      gsap.set("#h-tvu", { opacity: 0 });
+      // frame 0: tight on the eyes, then the whip-out lands on the beat
+      tl.fromTo("#h-photo", { scale: 2.3 }, { scale: 2.05, duration: 0.4286, ease: "none" }, 0);
+      tl.to("#h-photo", { scale: 1.0, duration: 0.32, ease: "expo.out" }, 0.4286);
+      tl.to("#h-photo", { scale: 1.08, duration: 1.394, ease: "none" }, 0.749);
+      tl.fromTo("#h-wesh", { scale: 1.25 }, { scale: 1, duration: 0.3, ease: "power4.out" }, 0);
+      tl.to("#h-tvu", { opacity: 1, duration: 0.02 }, 0.86);
+      tl.fromTo("#h-tvu", { scale: 1.8 }, { scale: 1, duration: 0.2, ease: "power4.out", immediateRender: false }, 0.86);
+      // RGB glitch slices on the beats
+      tl.to("#h-r, #h-c", { opacity: 0.9, duration: 0.01 }, 0.429);
+      tl.to("#h-r", { x: 34, duration: 0.01 }, 0.429);
+      tl.to("#h-c", { x: -30, duration: 0.01 }, 0.429);
+      tl.to("#h-r, #h-c", { opacity: 0, x: 0, duration: 0.1, ease: "steps(3)" }, 0.509);
+      tl.to("#h-photo", { x: 14, duration: 0.03 }, 0.429);
+      tl.to("#h-photo", { x: 0, duration: 0.12, ease: "rough({ strength: 2, points: 6, randomize: false })" }, 0.459);
+      tl.to("#h-r, #h-c", { opacity: 0.9, duration: 0.01 }, 1.157);
+      tl.to("#h-r", { x: 34, duration: 0.01 }, 1.157);
+      tl.to("#h-c", { x: -30, duration: 0.01 }, 1.157);
+      tl.to("#h-r, #h-c", { opacity: 0, x: 0, duration: 0.1, ease: "steps(3)" }, 1.237);
+      tl.to("#h-photo", { x: 14, duration: 0.03 }, 1.157);
+      tl.to("#h-photo", { x: 0, duration: 0.12, ease: "rough({ strength: 2, points: 6, randomize: false })" }, 1.187);
+      tl.to("#h-r, #h-c", { opacity: 0.9, duration: 0.01 }, 1.714);
+      tl.to("#h-r", { x: 34, duration: 0.01 }, 1.714);
+      tl.to("#h-c", { x: -30, duration: 0.01 }, 1.714);
+      tl.to("#h-r, #h-c", { opacity: 0, x: 0, duration: 0.1, ease: "steps(3)" }, 1.794);
+      tl.to("#h-photo", { x: 14, duration: 0.03 }, 1.714);
+      tl.to("#h-photo", { x: 0, duration: 0.12, ease: "rough({ strength: 2, points: 6, randomize: false })" }, 1.744);
+      tl.to("#h-flash", { opacity: 1, duration: 0.1, ease: "power2.in" }, 2.033);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["hook"] = tl;
+    })();
+  </script>
+</template>

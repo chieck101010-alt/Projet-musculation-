@@ -1,0 +1,78 @@
+<template>
+  <style>
+    @font-face { font-family: "Marker"; src: url("assets/fonts/permanent-marker.woff2") format("woff2"); font-display: block; }
+    #root { position:absolute; inset:0; overflow:hidden; font-family:"Archivo Black", sans-serif; color:#f4f4f4; background:#050505; }
+    #root .abs { position:absolute; }
+    #root .mk { font-family:"Marker", "Archivo Black", sans-serif; text-transform:uppercase; line-height:1; }
+    #root .lg { font-family:"League Gothic", sans-serif; text-transform:uppercase; line-height:.86; }
+    #root .mono { font-family:"Space Mono", monospace; text-transform:uppercase; letter-spacing:.06em; }
+    #root .cx { left:0; width:1080px; text-align:center; }
+    #root .glow { filter: drop-shadow(0 0 18px rgba(255,255,255,.55)); }
+
+    #p-bg { inset:0; background:radial-gradient(90% 55% at 50% 58%, #2b2b2e 0%, #0b0b0c 60%, #030303 100%); }
+    #p-flash { inset:0; background:#fff; opacity:1; }
+    #p-rays { left:-460px; top:-200px; width:2000px; height:2000px; opacity:.16;
+      background:repeating-conic-gradient(from 0deg at 50% 50%, rgba(255,255,255,.9) 0deg 4deg, rgba(255,255,255,0) 4deg 18deg);
+      -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 0%, transparent 60%); mask-image: radial-gradient(circle at 50% 50%, #000 0%, transparent 60%); }
+    #p-swoosh { left:260px; top:200px; }
+    #p-name { top:450px; font-size:96px; transform:rotate(-4deg); }
+    #p-splash { left:40px; top:640px; }
+    #p-splash { left:40px; top:560px; width:1000px; height:800px; background:radial-gradient(closest-side, rgba(255,255,255,.55), rgba(255,255,255,.12) 55%, rgba(255,255,255,0)); }
+    #p-prod { left:140px; top:560px; width:800px; height:800px; }
+    #p-prod img { width:800px; height:800px; filter: drop-shadow(0 0 2px rgba(255,255,255,.9)) drop-shadow(0 0 26px rgba(255,255,255,.35)); }
+    #p-price { left:520px; top:960px; width:470px; height:300px; transform:rotate(-9deg); }
+    #p-price-txt { left:0; top:52px; width:470px; text-align:center; font-size:200px; color:#0a0a0a; }
+    #p-ouais { top:1250px; left:190px; width:700px; font-size:34px; color:#0a0a0a; background:#fff; padding:10px 0; text-align:center; }
+
+  </style>
+  <div id="root"  data-composition-id="price" data-width="1080" data-height="1920">
+    <div id="p-stage" class="abs" style="inset:0">
+    <div id="p-bg" class="abs"></div>
+    <div id="p-rays" class="abs"></div>
+    <div id="p-swoosh-wrap" class="abs" style="left:0;top:0;width:1080px;height:420px"><svg id="p-swoosh" class="abs glow" viewBox="0 6.5 24 10" width="560" height="233"><path d="M24 7.8L6.442 15.276c-1.456.616-2.679.925-3.668.925-1.12 0-1.933-.392-2.437-1.177-.317-.504-.41-1.143-.28-1.918.13-.775.476-1.6 1.036-2.478.467-.71 1.232-1.643 2.297-2.8a6.122 6.122 0 00-.784 1.848c-.28 1.195-.028 2.072.756 2.632.373.261.886.392 1.54.392.522 0 1.11-.084 1.764-.252L24 7.8z" fill="#fff"/></svg></div>
+    <div id="p-name" class="abs mk cx glow">Cagoule Nike</div>
+    <div id="p-splash" class="abs"></div>
+    <div id="p-prod" class="abs"><img src="assets/img/produit-cutout.png" alt=""/></div>
+    <div id="p-price" class="abs"><svg id="p-price-bg" class="abs" viewBox="0 0 470 300" width="470" height="300" >
+  <defs><filter id="p-price-bg-f" x="-10%" y="-30%" width="120%" height="160%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.02 0.09" numOctaves="2" seed="9"/>
+    <feDisplacementMap in="SourceGraphic" scale="39"/></filter></defs>
+  <rect x="24" y="54" width="423" height="192" fill="#fff" filter="url(#p-price-bg-f)"/>
+</svg><div id="p-price-txt" class="abs mk">20€</div></div>
+    <div id="p-ouais" class="abs mono">Ouais, t'as bien entendu.</div>
+    </div>
+    <div id="p-flash" class="abs"></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+
+      gsap.set("#p-name, #p-price, #p-ouais", { opacity: 0 });
+      tl.to("#p-flash", { opacity: 0, duration: 0.25, ease: "power2.out" }, 0);
+      tl.fromTo("#p-rays", { rotation: 0 }, { rotation: 40, duration: 4.286, ease: "none" }, 0);
+      // product drops in and lands on the first beat
+      tl.fromTo("#p-prod", { y: -1300, rotation: -25 }, { y: 0, rotation: 0, duration: 0.38, ease: "power4.in" }, 0);
+      tl.fromTo("#p-splash", { scale: 0.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "expo.out" }, 0.38);
+      tl.to("#p-prod", { y: -14, duration: 0.05 }, 0.38);
+      tl.to("#p-prod", { y: 0, duration: 0.25, ease: "bounce.out" }, 0.43);
+      tl.to("#p-prod", { rotation: 3, scale: 1.04, duration: 3.386, ease: "sine.inOut" }, 0.68);
+      // the swoosh draws in left to right, then the name
+      tl.fromTo("#p-swoosh", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.32, ease: "power3.out" }, 0.2);
+      tl.fromTo("#p-swoosh", { x: -60 }, { x: 0, duration: 0.5, ease: "expo.out" }, 0.2);
+      tl.to("#p-name", { opacity: 1, duration: 0.02 }, 0.5);
+      tl.fromTo("#p-name", { scale: 1.6 }, { scale: 1, duration: 0.2, ease: "power4.out", immediateRender: false }, 0.5);
+      // 20€ stamp on "vingt balles"
+      tl.to("#p-price", { opacity: 1, duration: 0.02 }, 1.48);
+      tl.fromTo("#p-price", { scale: 2.6 }, { scale: 1, duration: 0.16, ease: "power4.in", immediateRender: false }, 1.48);
+      tl.to("#p-stage", { x: 16, y: -10, duration: 0.03 }, 1.64);
+      tl.to("#p-stage", { x: 0, y: 0, duration: 0.3, ease: "rough({ strength: 3, points: 8, randomize: false })" }, 1.67);
+      tl.to("#p-price", { scale: 1.12, duration: 0.02, ease: "none" }, 2.75);
+      tl.to("#p-price", { scale: 1, duration: 0.3, ease: "expo.out" }, 2.77);
+      tl.fromTo("#p-ouais", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.25 }, 2.58);
+      tl.to("#p-prod", { x: -900, rotation: -20, duration: 0.2, ease: "power3.in" }, 4.086);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["price"] = tl;
+    })();
+  </script>
+</template>
