@@ -1,0 +1,102 @@
+<template>
+  <style>
+    #root { position:absolute; inset:0; overflow:hidden; font-family:"Archivo Black", sans-serif; color:#f2f2f2; }
+    #root .abs { position:absolute; }
+    #root .lg { font-family:"League Gothic", sans-serif; text-transform:uppercase; line-height:.86; letter-spacing:.005em; }
+    #root .mono { font-family:"Space Mono", monospace; text-transform:uppercase; letter-spacing:.08em; }
+    #root .center-x { left:0; width:1080px; text-align:center; }
+
+    #u-sky { inset:0; background:linear-gradient(#050608 0%, #11131b 55%, #1d1a20 100%); }
+    #u-city { left:0; bottom:0; width:1080px; height:1100px; }
+    .u-b { position:absolute; bottom:0; }
+    .u-b i { position:absolute; width:16px; height:24px; opacity:.85; }
+    #u-glow { left:540px; top:640px; width:900px; height:1300px; margin-left:-450px; background:radial-gradient(closest-side, rgba(255,252,0,.20), rgba(255,252,0,0)); }
+    #u-lamp { left:536px; top:560px; width:8px; height:60px; background:#2b2b30; }
+    #u-lampbulb { left:500px; top:612px; width:80px; height:18px; border-radius:9px; background:#fff7b0; box-shadow:0 0 60px 20px rgba(255,247,176,.55); }
+    #u-cone { left:240px; top:628px; width:600px; height:1300px; background:linear-gradient(rgba(255,247,176,.22), rgba(255,247,176,0) 80%); clip-path:polygon(42% 0, 58% 0, 100% 100%, 0 100%); }
+    #u-rain { left:0; top:0; width:1080px; height:3840px; }
+    #u-rain i { position:absolute; width:2px; background:linear-gradient(rgba(220,230,255,0), rgba(220,230,255,.9)); transform:rotate(8deg); }
+    #u-fig { left:190px; top:780px; width:700px; height:1140px; }
+    .u-t { font-size:200px; }
+    #u-l1 { top:250px; } #u-l2 { top:420px; color:#FFFC00; font-size:250px; }
+    #u-l3 { top:250px; } #u-l4 { top:420px; color:#FFFC00; font-size:176px; }
+    #u-flash { inset:0; background:#dfe6ff; opacity:0; }
+    #u-world { inset:0; }
+
+  </style>
+  <div id="root" data-composition-id="urban" data-width="1080" data-height="1920">
+    <div id="u-world" class="abs">
+      <div id="u-sky" class="abs"></div>
+      <div id="u-city" class="abs"><div class="u-b" style="left:-20px;width:151px;height:674px;background:#15161e"><i style="left:62px;top:40px;background:#9fc3ff"></i><i style="left:102px;top:40px;background:#9fc3ff"></i><i style="left:22px;top:92px;background:#9fc3ff"></i><i style="left:102px;top:92px;background:#ffe9a8"></i><i style="left:22px;top:144px;background:#ffd66b"></i><i style="left:102px;top:144px;background:#9fc3ff"></i><i style="left:22px;top:196px;background:#ffd66b"></i><i style="left:22px;top:248px;background:#9fc3ff"></i><i style="left:22px;top:300px;background:#ffd66b"></i><i style="left:102px;top:300px;background:#ffd66b"></i><i style="left:22px;top:404px;background:#9fc3ff"></i><i style="left:62px;top:456px;background:#ffd66b"></i><i style="left:62px;top:612px;background:#ffd66b"></i><i style="left:102px;top:612px;background:#ffe9a8"></i></div><div class="u-b" style="left:136px;width:222px;height:871px;background:#0d0e13"><i style="left:142px;top:40px;background:#ffe9a8"></i><i style="left:182px;top:40px;background:#ffe9a8"></i><i style="left:22px;top:92px;background:#ffe9a8"></i><i style="left:142px;top:92px;background:#9fc3ff"></i><i style="left:22px;top:248px;background:#9fc3ff"></i><i style="left:142px;top:404px;background:#ffe9a8"></i><i style="left:142px;top:508px;background:#ffd66b"></i><i style="left:182px;top:508px;background:#9fc3ff"></i><i style="left:182px;top:560px;background:#ffe9a8"></i><i style="left:142px;top:612px;background:#9fc3ff"></i><i style="left:182px;top:768px;background:#9fc3ff"></i><i style="left:22px;top:820px;background:#ffd66b"></i></div><div class="u-b" style="left:354px;width:188px;height:905px;background:#111219"><i style="left:22px;top:40px;background:#ffe9a8"></i><i style="left:22px;top:92px;background:#ffe9a8"></i><i style="left:22px;top:144px;background:#ffd66b"></i><i style="left:102px;top:300px;background:#ffe9a8"></i><i style="left:102px;top:664px;background:#ffd66b"></i><i style="left:22px;top:820px;background:#9fc3ff"></i><i style="left:62px;top:820px;background:#ffe9a8"></i></div><div class="u-b" style="left:537px;width:165px;height:860px;background:#15161e"><i style="left:22px;top:40px;background:#9fc3ff"></i><i style="left:102px;top:92px;background:#ffd66b"></i><i style="left:22px;top:144px;background:#9fc3ff"></i><i style="left:22px;top:196px;background:#9fc3ff"></i><i style="left:102px;top:248px;background:#ffd66b"></i><i style="left:102px;top:300px;background:#9fc3ff"></i><i style="left:102px;top:508px;background:#9fc3ff"></i><i style="left:22px;top:716px;background:#ffe9a8"></i><i style="left:62px;top:768px;background:#ffd66b"></i></div><div class="u-b" style="left:695px;width:181px;height:583px;background:#0d0e13"><i style="left:22px;top:92px;background:#9fc3ff"></i><i style="left:62px;top:92px;background:#ffd66b"></i><i style="left:22px;top:404px;background:#ffd66b"></i><i style="left:142px;top:456px;background:#ffd66b"></i></div><div class="u-b" style="left:880px;width:138px;height:616px;background:#111219"><i style="left:62px;top:92px;background:#ffe9a8"></i><i style="left:22px;top:196px;background:#ffe9a8"></i><i style="left:62px;top:196px;background:#9fc3ff"></i><i style="left:102px;top:300px;background:#ffd66b"></i><i style="left:62px;top:352px;background:#ffe9a8"></i></div><div class="u-b" style="left:1009px;width:212px;height:707px;background:#111219"><i style="left:62px;top:40px;background:#ffd66b"></i><i style="left:22px;top:92px;background:#ffd66b"></i><i style="left:62px;top:92px;background:#ffd66b"></i><i style="left:142px;top:144px;background:#9fc3ff"></i><i style="left:102px;top:352px;background:#ffd66b"></i><i style="left:22px;top:456px;background:#9fc3ff"></i><i style="left:102px;top:612px;background:#ffd66b"></i><i style="left:142px;top:612px;background:#9fc3ff"></i><i style="left:102px;top:664px;background:#ffd66b"></i></div></div>
+      <div id="u-glow" class="abs"></div>
+      <div id="u-cone" class="abs"></div>
+      <div id="u-lamp" class="abs"></div>
+      <div id="u-lampbulb" class="abs"></div>
+      <div id="u-fig" class="abs"><svg viewBox="0 0 700 1140" width="700" height="1140">
+  <defs><linearGradient id="u-hood" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#fffc00" stop-opacity=".35"/><stop offset=".12" stop-color="#0c0c0f"/><stop offset=".88" stop-color="#0c0c0f"/><stop offset="1" stop-color="#9fc3ff" stop-opacity=".35"/>
+  </linearGradient></defs>
+  <path d="M30 1140 C 40 760 120 610 260 560 L440 560 C 580 610 660 760 670 1140 Z" fill="url(#u-hood)"/>
+  <path d="M200 600 C 260 650 440 650 500 600 L470 700 C 410 730 290 730 230 700 Z" fill="#050507"/>
+</svg><div id="u-head" class="abs" style="left:170px;top:90px"><svg class="bala" viewBox="0 0 400 540" width="360" height="486" >
+  <defs>
+    <pattern id="u-knit" width="10" height="12" patternUnits="userSpaceOnUse">
+      <path d="M0 0 L5 6 L10 0 M0 6 L5 12 L10 6" stroke="rgba(0,0,0,.32)" stroke-width="1.5" fill="none"/>
+      <path d="M0 2 L5 8 L10 2" stroke="rgba(255,255,255,.12)" stroke-width="1" fill="none"/>
+    </pattern>
+    <pattern id="u-rib" width="9" height="40" patternUnits="userSpaceOnUse"><rect width="4.5" height="40" fill="rgba(0,0,0,.26)"/></pattern>
+    <radialGradient id="u-light" cx="34%" cy="22%" r="85%">
+      <stop offset="0" stop-color="#fff" stop-opacity=".38"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".6"/>
+    </radialGradient>
+    <radialGradient id="u-hole" cx="50%" cy="38%" r="62%">
+      <stop offset="0" stop-color="#000"/><stop offset=".8" stop-color="#060606"/><stop offset="1" stop-color="#202020"/>
+    </radialGradient>
+    <clipPath id="u-clip"><path d="M34 540 C 52 500 86 474 100 446 C 60 398 46 318 50 222 C 56 92 126 26 200 26 C 274 26 344 92 350 222 C 354 318 340 398 300 446 C 314 474 348 500 366 540 Z"/></clipPath>
+  </defs>
+  <path d="M34 540 C 52 500 86 474 100 446 C 60 398 46 318 50 222 C 56 92 126 26 200 26 C 274 26 344 92 350 222 C 354 318 340 398 300 446 C 314 474 348 500 366 540 Z" fill="#1a1a1d"/>
+  <g clip-path="url(#u-clip)">
+    <rect width="400" height="540" fill="url(#u-knit)"/>
+    <rect y="448" width="400" height="92" fill="url(#u-rib)"/>
+    <path d="M86 446 Q200 474 314 446" stroke="rgba(0,0,0,.45)" stroke-width="4" fill="none"/>
+    <path d="M200 22 L200 148" stroke="rgba(0,0,0,.4)" stroke-width="3" fill="none"/>
+    <path d="M64 230 C 72 330 100 410 150 448" stroke="rgba(0,0,0,.18)" stroke-width="3" fill="none"/>
+    <path d="M340 230 C 330 330 300 410 250 448" stroke="rgba(0,0,0,.18)" stroke-width="3" fill="none"/>
+    <rect width="400" height="540" fill="url(#u-light)"/>
+  </g>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="none" stroke="#1a1a1d" stroke-width="22"/>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="none" stroke="rgba(0,0,0,.35)" stroke-width="22" stroke-dasharray="3 4"/>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="2.5" transform="translate(200 261) scale(1.075) translate(-200 -261)"/>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="url(#u-hole)"/>
+</svg></div></div>
+      <div id="u-rain" class="abs"><i style="left:577px;top:2452px;height:71px;opacity:0.39"></i><i style="left:92px;top:1881px;height:63px;opacity:0.21"></i><i style="left:913px;top:14px;height:73px;opacity:0.28"></i><i style="left:673px;top:2240px;height:81px;opacity:0.24"></i><i style="left:633px;top:892px;height:85px;opacity:0.21"></i><i style="left:686px;top:1563px;height:50px;opacity:0.32"></i><i style="left:1029px;top:2687px;height:65px;opacity:0.24"></i><i style="left:10px;top:372px;height:73px;opacity:0.44"></i><i style="left:294px;top:1636px;height:45px;opacity:0.29"></i><i style="left:613px;top:1246px;height:69px;opacity:0.18"></i><i style="left:317px;top:2693px;height:89px;opacity:0.42"></i><i style="left:1012px;top:612px;height:76px;opacity:0.40"></i><i style="left:296px;top:179px;height:105px;opacity:0.37"></i><i style="left:1035px;top:570px;height:107px;opacity:0.41"></i><i style="left:32px;top:3384px;height:69px;opacity:0.18"></i><i style="left:85px;top:545px;height:86px;opacity:0.49"></i><i style="left:771px;top:3423px;height:97px;opacity:0.35"></i><i style="left:38px;top:2565px;height:108px;opacity:0.39"></i><i style="left:1002px;top:1080px;height:40px;opacity:0.31"></i><i style="left:143px;top:3064px;height:104px;opacity:0.46"></i><i style="left:188px;top:2700px;height:107px;opacity:0.17"></i><i style="left:970px;top:1032px;height:49px;opacity:0.45"></i><i style="left:480px;top:2987px;height:66px;opacity:0.23"></i><i style="left:942px;top:2023px;height:88px;opacity:0.18"></i><i style="left:588px;top:3141px;height:45px;opacity:0.37"></i><i style="left:406px;top:317px;height:58px;opacity:0.27"></i><i style="left:623px;top:2544px;height:57px;opacity:0.15"></i><i style="left:124px;top:1989px;height:74px;opacity:0.49"></i><i style="left:203px;top:2835px;height:67px;opacity:0.39"></i><i style="left:595px;top:2903px;height:106px;opacity:0.25"></i><i style="left:954px;top:1910px;height:55px;opacity:0.50"></i><i style="left:408px;top:1276px;height:50px;opacity:0.48"></i><i style="left:35px;top:1186px;height:98px;opacity:0.18"></i><i style="left:1037px;top:1840px;height:74px;opacity:0.29"></i><i style="left:431px;top:305px;height:51px;opacity:0.20"></i><i style="left:1073px;top:1072px;height:86px;opacity:0.20"></i><i style="left:1041px;top:1145px;height:54px;opacity:0.40"></i><i style="left:473px;top:2039px;height:102px;opacity:0.29"></i><i style="left:325px;top:14px;height:102px;opacity:0.39"></i><i style="left:830px;top:1236px;height:58px;opacity:0.30"></i><i style="left:770px;top:1294px;height:55px;opacity:0.44"></i><i style="left:3px;top:1329px;height:83px;opacity:0.44"></i><i style="left:245px;top:3794px;height:65px;opacity:0.40"></i><i style="left:593px;top:1037px;height:87px;opacity:0.17"></i><i style="left:799px;top:3563px;height:49px;opacity:0.28"></i><i style="left:876px;top:3095px;height:75px;opacity:0.45"></i><i style="left:574px;top:416px;height:46px;opacity:0.44"></i><i style="left:584px;top:2600px;height:59px;opacity:0.24"></i><i style="left:544px;top:1786px;height:105px;opacity:0.26"></i><i style="left:764px;top:3215px;height:94px;opacity:0.46"></i><i style="left:819px;top:3741px;height:110px;opacity:0.34"></i><i style="left:165px;top:202px;height:92px;opacity:0.31"></i><i style="left:283px;top:2639px;height:76px;opacity:0.32"></i><i style="left:260px;top:699px;height:100px;opacity:0.30"></i><i style="left:577px;top:1219px;height:72px;opacity:0.41"></i><i style="left:532px;top:1663px;height:70px;opacity:0.26"></i><i style="left:807px;top:490px;height:61px;opacity:0.38"></i><i style="left:153px;top:851px;height:104px;opacity:0.47"></i><i style="left:1018px;top:2254px;height:68px;opacity:0.31"></i><i style="left:681px;top:3109px;height:97px;opacity:0.30"></i><i style="left:394px;top:999px;height:51px;opacity:0.21"></i><i style="left:186px;top:1307px;height:70px;opacity:0.28"></i><i style="left:413px;top:3634px;height:42px;opacity:0.41"></i><i style="left:845px;top:1568px;height:92px;opacity:0.41"></i><i style="left:430px;top:1543px;height:74px;opacity:0.27"></i><i style="left:127px;top:2040px;height:75px;opacity:0.35"></i><i style="left:737px;top:515px;height:104px;opacity:0.34"></i><i style="left:442px;top:379px;height:74px;opacity:0.46"></i><i style="left:787px;top:1637px;height:97px;opacity:0.30"></i><i style="left:639px;top:3476px;height:42px;opacity:0.19"></i><i style="left:870px;top:2906px;height:100px;opacity:0.49"></i><i style="left:1003px;top:0px;height:49px;opacity:0.29"></i><i style="left:958px;top:1838px;height:71px;opacity:0.42"></i><i style="left:458px;top:632px;height:59px;opacity:0.33"></i><i style="left:223px;top:3380px;height:98px;opacity:0.18"></i><i style="left:80px;top:5px;height:56px;opacity:0.23"></i><i style="left:76px;top:2643px;height:78px;opacity:0.49"></i><i style="left:515px;top:2163px;height:95px;opacity:0.39"></i><i style="left:229px;top:407px;height:49px;opacity:0.26"></i><i style="left:392px;top:1589px;height:73px;opacity:0.23"></i><i style="left:2px;top:42px;height:108px;opacity:0.26"></i><i style="left:943px;top:1141px;height:80px;opacity:0.38"></i><i style="left:496px;top:1946px;height:107px;opacity:0.23"></i><i style="left:505px;top:119px;height:92px;opacity:0.40"></i><i style="left:629px;top:226px;height:42px;opacity:0.22"></i><i style="left:860px;top:332px;height:72px;opacity:0.23"></i><i style="left:869px;top:3789px;height:87px;opacity:0.23"></i><i style="left:69px;top:2850px;height:83px;opacity:0.40"></i><i style="left:742px;top:2795px;height:90px;opacity:0.22"></i><i style="left:598px;top:3027px;height:104px;opacity:0.17"></i><i style="left:1015px;top:820px;height:79px;opacity:0.42"></i><i style="left:397px;top:945px;height:99px;opacity:0.23"></i><i style="left:604px;top:446px;height:103px;opacity:0.36"></i><i style="left:457px;top:1986px;height:93px;opacity:0.47"></i><i style="left:115px;top:2436px;height:58px;opacity:0.47"></i><i style="left:111px;top:872px;height:43px;opacity:0.49"></i><i style="left:290px;top:1701px;height:46px;opacity:0.40"></i><i style="left:377px;top:1611px;height:97px;opacity:0.46"></i><i style="left:643px;top:3001px;height:54px;opacity:0.50"></i><i style="left:339px;top:1348px;height:64px;opacity:0.21"></i><i style="left:1074px;top:3056px;height:99px;opacity:0.16"></i><i style="left:775px;top:3437px;height:87px;opacity:0.49"></i><i style="left:906px;top:693px;height:53px;opacity:0.15"></i><i style="left:573px;top:330px;height:84px;opacity:0.30"></i><i style="left:253px;top:2298px;height:66px;opacity:0.28"></i><i style="left:632px;top:3366px;height:95px;opacity:0.18"></i><i style="left:969px;top:801px;height:87px;opacity:0.34"></i><i style="left:914px;top:790px;height:81px;opacity:0.28"></i><i style="left:971px;top:124px;height:92px;opacity:0.24"></i><i style="left:828px;top:166px;height:88px;opacity:0.16"></i><i style="left:128px;top:3290px;height:47px;opacity:0.24"></i><i style="left:128px;top:3680px;height:83px;opacity:0.28"></i><i style="left:686px;top:2527px;height:45px;opacity:0.24"></i><i style="left:648px;top:3785px;height:75px;opacity:0.25"></i><i style="left:133px;top:99px;height:69px;opacity:0.19"></i><i style="left:953px;top:3179px;height:89px;opacity:0.43"></i><i style="left:880px;top:3337px;height:103px;opacity:0.20"></i><i style="left:1016px;top:749px;height:41px;opacity:0.43"></i><i style="left:621px;top:3370px;height:59px;opacity:0.36"></i><i style="left:671px;top:3527px;height:80px;opacity:0.31"></i><i style="left:161px;top:2096px;height:65px;opacity:0.29"></i><i style="left:327px;top:1012px;height:92px;opacity:0.17"></i><i style="left:69px;top:1973px;height:110px;opacity:0.34"></i><i style="left:329px;top:1747px;height:53px;opacity:0.50"></i><i style="left:542px;top:2558px;height:50px;opacity:0.22"></i><i style="left:862px;top:2041px;height:97px;opacity:0.21"></i><i style="left:272px;top:1707px;height:98px;opacity:0.37"></i><i style="left:481px;top:3063px;height:108px;opacity:0.45"></i><i style="left:248px;top:3193px;height:77px;opacity:0.25"></i><i style="left:548px;top:1527px;height:72px;opacity:0.41"></i><i style="left:407px;top:1799px;height:71px;opacity:0.22"></i><i style="left:482px;top:628px;height:76px;opacity:0.46"></i><i style="left:385px;top:1336px;height:48px;opacity:0.29"></i><i style="left:503px;top:2078px;height:107px;opacity:0.23"></i><i style="left:205px;top:2676px;height:99px;opacity:0.50"></i><i style="left:209px;top:18px;height:100px;opacity:0.46"></i><i style="left:473px;top:3442px;height:97px;opacity:0.47"></i><i style="left:82px;top:3591px;height:77px;opacity:0.23"></i><i style="left:103px;top:776px;height:64px;opacity:0.48"></i><i style="left:762px;top:2099px;height:62px;opacity:0.31"></i></div>
+    </div>
+    <div id="u-l1" class="abs lg center-x u-t">Faite pour</div>
+    <div id="u-l2" class="abs lg center-x u-t">la rue.</div>
+    <div id="u-l3" class="abs lg center-x u-t">Style street.</div>
+    <div id="u-l4" class="abs lg center-x u-t">Zéro compromis.</div>
+    <div id="u-flash" class="abs"></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+
+      gsap.set("#u-l2, #u-l3, #u-l4", { opacity: 0 });
+      tl.fromTo("#u-world", { scale: 1.0 }, { scale: 1.1, duration: 3.333, ease: "none", transformOrigin: "50% 70%" }, 0);
+      tl.fromTo("#u-rain", { y: -1920 }, { y: -200, duration: 3.333, ease: "none" }, 0);
+      tl.fromTo("#u-fig", { y: 260 }, { y: 0, duration: 0.6, ease: "expo.out" }, 0);
+      tl.fromTo("#u-l1", { opacity: 0, x: -120 }, { opacity: 1, x: 0, duration: 0.2, ease: "power4.out" }, 0.05);
+      tl.fromTo("#u-l2", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.16, ease: "power4.out" }, 0.4167);
+      tl.to("#u-l1, #u-l2", { opacity: 0, duration: 0.08 }, 1.5867);
+      tl.to("#u-flash", { opacity: 0.85, duration: 0.02, ease: "none" }, 1.6467);
+      tl.to("#u-flash", { opacity: 0, duration: 0.35, ease: "power2.out" }, 1.6667);
+      tl.fromTo("#u-world", { x: -18 }, { x: 0, duration: 0.35, ease: "rough({ strength: 3, points: 10, randomize: false })" }, 1.6667);
+      tl.fromTo("#u-l3", { opacity: 0, x: 120 }, { opacity: 1, x: 0, duration: 0.2, ease: "power4.out" }, 1.6667);
+      tl.fromTo("#u-l4", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.16, ease: "power4.out" }, 2.0834);
+      tl.to("#u-l3, #u-l4", { opacity: 0, duration: 0.1 }, 3.213);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["urban"] = tl;
+    })();
+  </script>
+</template>

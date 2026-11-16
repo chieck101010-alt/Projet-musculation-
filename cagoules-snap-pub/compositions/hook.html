@@ -1,0 +1,95 @@
+<template>
+  <style>
+    #root { position:absolute; inset:0; overflow:hidden; font-family:"Archivo Black", sans-serif; color:#f2f2f2; }
+    #root .abs { position:absolute; }
+    #root .lg { font-family:"League Gothic", sans-serif; text-transform:uppercase; line-height:.86; letter-spacing:.005em; }
+    #root .mono { font-family:"Space Mono", monospace; text-transform:uppercase; letter-spacing:.08em; }
+    #root .center-x { left:0; width:1080px; text-align:center; }
+
+    #h-bg { inset:0; background:radial-gradient(120% 70% at 50% 62%, #222226 0%, #0a0a0a 62%); }
+    .h-row { left:0; white-space:nowrap; font-size:300px; color:transparent; -webkit-text-stroke:2px #34343a; }
+    #h-row1 { top:560px; } #h-row2 { top:860px; } #h-row3 { top:1160px; }
+    #h-prod { left:300px; top:610px; width:480px; height:648px; }
+    #h-shadow { left:290px; top:1235px; width:500px; height:60px; border-radius:50%; background:radial-gradient(closest-side, rgba(0,0,0,.85), rgba(0,0,0,0)); }
+    .h-line { font-size:178px; }
+    #h-l1 { top:250px; } #h-l2 { top:400px; } #h-l3 { top:550px; color:#FFFC00; }
+    #h-tag { top:330px; left:110px; width:860px; height:190px; background:#FFFC00; color:#0a0a0a; display:flex; align-items:center; justify-content:center; white-space:nowrap; font-size:96px; letter-spacing:-.02em; transform-origin:50% 50%; }
+    #h-sub { top:550px; font-size:34px; color:#d6d6d6; }
+    #h-flash { inset:0; background:#fff; opacity:0; }
+
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <div id="h-bg" class="abs"></div>
+    <div id="h-row1" class="abs lg h-row">CAGOULES ✕ CAGOULES ✕ CAGOULES ✕ CAGOULES ✕ </div>
+    <div id="h-row2" class="abs lg h-row">CAGOULES ✕ CAGOULES ✕ CAGOULES ✕ CAGOULES ✕ </div>
+    <div id="h-row3" class="abs lg h-row">CAGOULES ✕ CAGOULES ✕ CAGOULES ✕ CAGOULES ✕ </div>
+    <div id="h-shadow" class="abs"></div>
+    <div id="h-prod" class="abs"><svg class="bala" viewBox="0 0 400 540" width="480" height="648" >
+  <defs>
+    <pattern id="h1-knit" width="10" height="12" patternUnits="userSpaceOnUse">
+      <path d="M0 0 L5 6 L10 0 M0 6 L5 12 L10 6" stroke="rgba(0,0,0,.32)" stroke-width="1.5" fill="none"/>
+      <path d="M0 2 L5 8 L10 2" stroke="rgba(255,255,255,.12)" stroke-width="1" fill="none"/>
+    </pattern>
+    <pattern id="h1-rib" width="9" height="40" patternUnits="userSpaceOnUse"><rect width="4.5" height="40" fill="rgba(0,0,0,.26)"/></pattern>
+    <radialGradient id="h1-light" cx="34%" cy="22%" r="85%">
+      <stop offset="0" stop-color="#fff" stop-opacity=".38"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".6"/>
+    </radialGradient>
+    <radialGradient id="h1-hole" cx="50%" cy="38%" r="62%">
+      <stop offset="0" stop-color="#000"/><stop offset=".8" stop-color="#060606"/><stop offset="1" stop-color="#202020"/>
+    </radialGradient>
+    <clipPath id="h1-clip"><path d="M34 540 C 52 500 86 474 100 446 C 60 398 46 318 50 222 C 56 92 126 26 200 26 C 274 26 344 92 350 222 C 354 318 340 398 300 446 C 314 474 348 500 366 540 Z"/></clipPath>
+  </defs>
+  <path d="M34 540 C 52 500 86 474 100 446 C 60 398 46 318 50 222 C 56 92 126 26 200 26 C 274 26 344 92 350 222 C 354 318 340 398 300 446 C 314 474 348 500 366 540 Z" fill="#1f1f22"/>
+  <g clip-path="url(#h1-clip)">
+    <rect width="400" height="540" fill="url(#h1-knit)"/>
+    <rect y="448" width="400" height="92" fill="url(#h1-rib)"/>
+    <path d="M86 446 Q200 474 314 446" stroke="rgba(0,0,0,.45)" stroke-width="4" fill="none"/>
+    <path d="M200 22 L200 148" stroke="rgba(0,0,0,.4)" stroke-width="3" fill="none"/>
+    <path d="M64 230 C 72 330 100 410 150 448" stroke="rgba(0,0,0,.18)" stroke-width="3" fill="none"/>
+    <path d="M340 230 C 330 330 300 410 250 448" stroke="rgba(0,0,0,.18)" stroke-width="3" fill="none"/>
+    <rect width="400" height="540" fill="url(#h1-light)"/>
+  </g>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="none" stroke="#1f1f22" stroke-width="22"/>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="none" stroke="rgba(0,0,0,.35)" stroke-width="22" stroke-dasharray="3 4"/>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="2.5" transform="translate(200 261) scale(1.075) translate(-200 -261)"/>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="url(#h1-hole)"/>
+</svg></div>
+    <div id="h-l1" class="abs lg center-x h-line">T'as pas</div>
+    <div id="h-l2" class="abs lg center-x h-line">encore</div>
+    <div id="h-l3" class="abs lg center-x h-line">la tienne ?</div>
+    <div id="h-tag" class="abs">CAGOULES NIKE</div>
+    <div id="h-sub" class="abs mono center-x">Sélection streetwear</div>
+    <div id="h-flash" class="abs"></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+
+      tl.fromTo("#h-row1", { x: 0 }, { x: -700, duration: 3.333, ease: "none" }, 0);
+      tl.fromTo("#h-row2", { x: -700 }, { x: 0, duration: 3.333, ease: "none" }, 0);
+      tl.fromTo("#h-row3", { x: -200 }, { x: -900, duration: 3.333, ease: "none" }, 0);
+      // product is on screen at frame 0, punches on every beat
+      tl.fromTo("#h-prod", { scale: 0.94, rotation: -3 }, { scale: 1, rotation: 0, duration: 0.3, ease: "expo.out" }, 0);
+      [0.4167, 0.8334, 1.2501].forEach((t, i) => {
+        tl.to("#h-prod", { scale: 1.07, rotation: i % 2 ? 2 : -2, duration: 0.03, ease: "none" }, t - 0.03);
+        tl.to("#h-prod", { scale: 1, rotation: 0, duration: 0.3, ease: "power3.out" }, t);
+      });
+      gsap.set("#h-l2, #h-l3, #h-tag, #h-sub", { opacity: 0 });
+      tl.fromTo("#h-l2", { opacity: 0, scale: 1.7 }, { opacity: 1, scale: 1, duration: 0.14, ease: "power4.out" }, 0.4167);
+      tl.fromTo("#h-l3", { opacity: 0, scale: 1.7 }, { opacity: 1, scale: 1, duration: 0.14, ease: "power4.out" }, 0.8334);
+      // bar 2: the question flips into the product name
+      tl.to("#h-l1, #h-l2, #h-l3", { yPercent: -60, opacity: 0, duration: 0.14, ease: "power3.in", stagger: 0.03 }, 1.5067000000000002);
+      tl.fromTo("#h-tag", { opacity: 0, scaleX: 0, skewX: -14 }, { opacity: 1, scaleX: 1, skewX: -6, duration: 0.22, ease: "expo.out" }, 1.6667);
+      tl.fromTo("#h-tag", { x: -14 }, { x: 0, duration: 0.24, ease: "rough({ strength: 2, points: 8, randomize: false })" }, 1.6867);
+      tl.fromTo("#h-sub", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, 1.7467000000000001);
+      tl.to("#h-prod", { scale: 1.12, duration: 0.03, ease: "none" }, 1.6367);
+      tl.to("#h-prod", { scale: 1.02, duration: 0.47, ease: "expo.out" }, 1.6667);
+      tl.to("#h-prod", { scale: 1.1, duration: 1.0667, ease: "power1.in" }, 2.1667);
+      tl.to("#h-flash", { opacity: 1, duration: 0.12, ease: "power2.in" }, 3.2030000000000003);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["hook"] = tl;
+    })();
+  </script>
+</template>

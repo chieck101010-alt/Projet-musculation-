@@ -1,0 +1,227 @@
+<template>
+  <style>
+    #root { position:absolute; inset:0; overflow:hidden; font-family:"Archivo Black", sans-serif; color:#f2f2f2; }
+    #root .abs { position:absolute; }
+    #root .lg { font-family:"League Gothic", sans-serif; text-transform:uppercase; line-height:.86; letter-spacing:.005em; }
+    #root .mono { font-family:"Space Mono", monospace; text-transform:uppercase; letter-spacing:.08em; }
+    #root .center-x { left:0; width:1080px; text-align:center; }
+
+    .m-block { inset:0; }
+    .m-bg { inset:0; }
+    .m-giant { top:760px; left:0; white-space:nowrap; font-size:560px; color:transparent; }
+    .m-count { top:240px; font-size:30px; }
+    .m-name { top:318px; font-size:168px; }
+    .m-prod { left:280px; top:470px; width:520px; height:702px; }
+    .m-shadow { left:260px; top:1150px; width:580px; height:64px; border-radius:50%; background:radial-gradient(closest-side, rgba(0,0,0,.6), rgba(0,0,0,0)); }
+    .m-pill { top:1196px; left:200px; width:680px; height:76px; border:3px solid currentColor; border-radius:38px; display:flex; align-items:center; justify-content:center; gap:22px; font-size:28px; }
+    .m-dot { width:28px; height:28px; border-radius:50%; border:3px solid currentColor; }
+    .m-ticks { top:214px; left:340px; width:400px; height:8px; display:flex; gap:12px; }
+    .m-tick { flex:1; height:8px; border-radius:4px; }
+
+  </style>
+  <div id="root" data-composition-id="models" data-width="1080" data-height="1920">
+    <div id="m-noir" class="abs m-block clip" data-start="0.0" data-duration="1.667" style="color:#f2f2f2">
+      <div class="abs m-bg" style="background:radial-gradient(100% 60% at 50% 60%, #2a2a2e 0%, #0b0b0c 70%)"></div>
+      <div id="m-noir-giant" class="abs lg m-giant" style="-webkit-text-stroke:3px #2a2a2e">noir noir noir</div>
+      <div class="abs m-ticks"><div class="m-tick" style="background:#FFFC00"></div><div class="m-tick" style="background:rgba(255,255,255,.22)"></div><div class="m-tick" style="background:rgba(255,255,255,.22)"></div><div class="m-tick" style="background:rgba(255,255,255,.22)"></div></div>
+      <div id="m-noir-count" class="abs mono center-x m-count">Modèle 01 / 04</div>
+      <div id="m-noir-name" class="abs lg center-x m-name">Noir ébène</div>
+      <div id="m-noir-shadow" class="abs m-shadow"></div>
+      <div id="m-noir-prod" class="abs m-prod"><svg class="bala" viewBox="0 0 400 540" width="520" height="702" >
+  <defs>
+    <pattern id="mnoir-knit" width="10" height="12" patternUnits="userSpaceOnUse">
+      <path d="M0 0 L5 6 L10 0 M0 6 L5 12 L10 6" stroke="rgba(0,0,0,.32)" stroke-width="1.5" fill="none"/>
+      <path d="M0 2 L5 8 L10 2" stroke="rgba(255,255,255,.12)" stroke-width="1" fill="none"/>
+    </pattern>
+    <pattern id="mnoir-rib" width="9" height="40" patternUnits="userSpaceOnUse"><rect width="4.5" height="40" fill="rgba(0,0,0,.26)"/></pattern>
+    <radialGradient id="mnoir-light" cx="34%" cy="22%" r="85%">
+      <stop offset="0" stop-color="#fff" stop-opacity=".38"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".6"/>
+    </radialGradient>
+    <radialGradient id="mnoir-hole" cx="50%" cy="38%" r="62%">
+      <stop offset="0" stop-color="#000"/><stop offset=".8" stop-color="#060606"/><stop offset="1" stop-color="#202020"/>
+    </radialGradient>
+    <clipPath id="mnoir-clip"><path d="M34 540 C 52 500 86 474 100 446 C 60 398 46 318 50 222 C 56 92 126 26 200 26 C 274 26 344 92 350 222 C 354 318 340 398 300 446 C 314 474 348 500 366 540 Z"/></clipPath>
+  </defs>
+  <path d="M34 540 C 52 500 86 474 100 446 C 60 398 46 318 50 222 C 56 92 126 26 200 26 C 274 26 344 92 350 222 C 354 318 340 398 300 446 C 314 474 348 500 366 540 Z" fill="#1f1f22"/>
+  <g clip-path="url(#mnoir-clip)">
+    <rect width="400" height="540" fill="url(#mnoir-knit)"/>
+    <rect y="448" width="400" height="92" fill="url(#mnoir-rib)"/>
+    <path d="M86 446 Q200 474 314 446" stroke="rgba(0,0,0,.45)" stroke-width="4" fill="none"/>
+    <path d="M200 22 L200 148" stroke="rgba(0,0,0,.4)" stroke-width="3" fill="none"/>
+    <path d="M64 230 C 72 330 100 410 150 448" stroke="rgba(0,0,0,.18)" stroke-width="3" fill="none"/>
+    <path d="M340 230 C 330 330 300 410 250 448" stroke="rgba(0,0,0,.18)" stroke-width="3" fill="none"/>
+    <rect width="400" height="540" fill="url(#mnoir-light)"/>
+  </g>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="none" stroke="#1f1f22" stroke-width="22"/>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="none" stroke="rgba(0,0,0,.35)" stroke-width="22" stroke-dasharray="3 4"/>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="2.5" transform="translate(200 261) scale(1.075) translate(-200 -261)"/>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="url(#mnoir-hole)"/>
+</svg></div>
+      <div id="m-noir-pill" class="abs mono m-pill"><span class="m-dot" style="background:#1f1f22"></span>Cagoule Nike · coloris noir</div>
+    </div>
+    <div id="m-gris" class="abs m-block clip" data-start="1.667" data-duration="1.667" style="color:#f2f2f2">
+      <div class="abs m-bg" style="background:radial-gradient(100% 60% at 50% 60%, #3c3c42 0%, #2b2b2f 70%)"></div>
+      <div id="m-gris-giant" class="abs lg m-giant" style="-webkit-text-stroke:3px #3c3c42">gris gris gris</div>
+      <div class="abs m-ticks"><div class="m-tick" style="background:rgba(255,255,255,.22)"></div><div class="m-tick" style="background:#FFFC00"></div><div class="m-tick" style="background:rgba(255,255,255,.22)"></div><div class="m-tick" style="background:rgba(255,255,255,.22)"></div></div>
+      <div id="m-gris-count" class="abs mono center-x m-count">Modèle 02 / 04</div>
+      <div id="m-gris-name" class="abs lg center-x m-name">Gris chiné</div>
+      <div id="m-gris-shadow" class="abs m-shadow"></div>
+      <div id="m-gris-prod" class="abs m-prod"><svg class="bala" viewBox="0 0 400 540" width="520" height="702" >
+  <defs>
+    <pattern id="mgris-knit" width="10" height="12" patternUnits="userSpaceOnUse">
+      <path d="M0 0 L5 6 L10 0 M0 6 L5 12 L10 6" stroke="rgba(0,0,0,.32)" stroke-width="1.5" fill="none"/>
+      <path d="M0 2 L5 8 L10 2" stroke="rgba(255,255,255,.12)" stroke-width="1" fill="none"/>
+    </pattern>
+    <pattern id="mgris-rib" width="9" height="40" patternUnits="userSpaceOnUse"><rect width="4.5" height="40" fill="rgba(0,0,0,.26)"/></pattern>
+    <radialGradient id="mgris-light" cx="34%" cy="22%" r="85%">
+      <stop offset="0" stop-color="#fff" stop-opacity=".38"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".6"/>
+    </radialGradient>
+    <radialGradient id="mgris-hole" cx="50%" cy="38%" r="62%">
+      <stop offset="0" stop-color="#000"/><stop offset=".8" stop-color="#060606"/><stop offset="1" stop-color="#202020"/>
+    </radialGradient>
+    <clipPath id="mgris-clip"><path d="M34 540 C 52 500 86 474 100 446 C 60 398 46 318 50 222 C 56 92 126 26 200 26 C 274 26 344 92 350 222 C 354 318 340 398 300 446 C 314 474 348 500 366 540 Z"/></clipPath>
+  </defs>
+  <path d="M34 540 C 52 500 86 474 100 446 C 60 398 46 318 50 222 C 56 92 126 26 200 26 C 274 26 344 92 350 222 C 354 318 340 398 300 446 C 314 474 348 500 366 540 Z" fill="#8e8e93"/>
+  <g clip-path="url(#mgris-clip)">
+    <rect width="400" height="540" fill="url(#mgris-knit)"/>
+    <rect y="448" width="400" height="92" fill="url(#mgris-rib)"/>
+    <path d="M86 446 Q200 474 314 446" stroke="rgba(0,0,0,.45)" stroke-width="4" fill="none"/>
+    <path d="M200 22 L200 148" stroke="rgba(0,0,0,.4)" stroke-width="3" fill="none"/>
+    <path d="M64 230 C 72 330 100 410 150 448" stroke="rgba(0,0,0,.18)" stroke-width="3" fill="none"/>
+    <path d="M340 230 C 330 330 300 410 250 448" stroke="rgba(0,0,0,.18)" stroke-width="3" fill="none"/>
+    <rect width="400" height="540" fill="url(#mgris-light)"/>
+  </g>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="none" stroke="#8e8e93" stroke-width="22"/>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="none" stroke="rgba(0,0,0,.35)" stroke-width="22" stroke-dasharray="3 4"/>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="2.5" transform="translate(200 261) scale(1.075) translate(-200 -261)"/>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="url(#mgris-hole)"/>
+</svg></div>
+      <div id="m-gris-pill" class="abs mono m-pill"><span class="m-dot" style="background:#8e8e93"></span>Cagoule Nike · coloris gris</div>
+    </div>
+    <div id="m-blanc" class="abs m-block clip" data-start="3.333" data-duration="1.667" style="color:#0a0a0a">
+      <div class="abs m-bg" style="background:radial-gradient(100% 60% at 50% 60%, #bdbdc2 0%, #cfcfd2 70%)"></div>
+      <div id="m-blanc-giant" class="abs lg m-giant" style="-webkit-text-stroke:3px #b0b0b5">blanc blanc blanc</div>
+      <div class="abs m-ticks"><div class="m-tick" style="background:#0a0a0a33"></div><div class="m-tick" style="background:#0a0a0a33"></div><div class="m-tick" style="background:#FFFC00"></div><div class="m-tick" style="background:#0a0a0a33"></div></div>
+      <div id="m-blanc-count" class="abs mono center-x m-count">Modèle 03 / 04</div>
+      <div id="m-blanc-name" class="abs lg center-x m-name">Blanc glacier</div>
+      <div id="m-blanc-shadow" class="abs m-shadow"></div>
+      <div id="m-blanc-prod" class="abs m-prod"><svg class="bala" viewBox="0 0 400 540" width="520" height="702" >
+  <defs>
+    <pattern id="mblanc-knit" width="10" height="12" patternUnits="userSpaceOnUse">
+      <path d="M0 0 L5 6 L10 0 M0 6 L5 12 L10 6" stroke="rgba(0,0,0,.32)" stroke-width="1.5" fill="none"/>
+      <path d="M0 2 L5 8 L10 2" stroke="rgba(255,255,255,.12)" stroke-width="1" fill="none"/>
+    </pattern>
+    <pattern id="mblanc-rib" width="9" height="40" patternUnits="userSpaceOnUse"><rect width="4.5" height="40" fill="rgba(0,0,0,.26)"/></pattern>
+    <radialGradient id="mblanc-light" cx="34%" cy="22%" r="85%">
+      <stop offset="0" stop-color="#fff" stop-opacity=".38"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".6"/>
+    </radialGradient>
+    <radialGradient id="mblanc-hole" cx="50%" cy="38%" r="62%">
+      <stop offset="0" stop-color="#000"/><stop offset=".8" stop-color="#060606"/><stop offset="1" stop-color="#202020"/>
+    </radialGradient>
+    <clipPath id="mblanc-clip"><path d="M34 540 C 52 500 86 474 100 446 C 60 398 46 318 50 222 C 56 92 126 26 200 26 C 274 26 344 92 350 222 C 354 318 340 398 300 446 C 314 474 348 500 366 540 Z"/></clipPath>
+  </defs>
+  <path d="M34 540 C 52 500 86 474 100 446 C 60 398 46 318 50 222 C 56 92 126 26 200 26 C 274 26 344 92 350 222 C 354 318 340 398 300 446 C 314 474 348 500 366 540 Z" fill="#ececec"/>
+  <g clip-path="url(#mblanc-clip)">
+    <rect width="400" height="540" fill="url(#mblanc-knit)"/>
+    <rect y="448" width="400" height="92" fill="url(#mblanc-rib)"/>
+    <path d="M86 446 Q200 474 314 446" stroke="rgba(0,0,0,.45)" stroke-width="4" fill="none"/>
+    <path d="M200 22 L200 148" stroke="rgba(0,0,0,.4)" stroke-width="3" fill="none"/>
+    <path d="M64 230 C 72 330 100 410 150 448" stroke="rgba(0,0,0,.18)" stroke-width="3" fill="none"/>
+    <path d="M340 230 C 330 330 300 410 250 448" stroke="rgba(0,0,0,.18)" stroke-width="3" fill="none"/>
+    <rect width="400" height="540" fill="url(#mblanc-light)"/>
+  </g>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="none" stroke="#ececec" stroke-width="22"/>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="none" stroke="rgba(0,0,0,.35)" stroke-width="22" stroke-dasharray="3 4"/>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="2.5" transform="translate(200 261) scale(1.075) translate(-200 -261)"/>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="url(#mblanc-hole)"/>
+</svg></div>
+      <div id="m-blanc-pill" class="abs mono m-pill"><span class="m-dot" style="background:#ececec"></span>Cagoule Nike · coloris blanc</div>
+    </div>
+    <div id="m-kaki" class="abs m-block clip" data-start="5.0" data-duration="1.667" style="color:#f2f2f2">
+      <div class="abs m-bg" style="background:radial-gradient(100% 60% at 50% 60%, #2e3325 0%, #1d2017 70%)"></div>
+      <div id="m-kaki-giant" class="abs lg m-giant" style="-webkit-text-stroke:3px #2e3325">kaki kaki kaki</div>
+      <div class="abs m-ticks"><div class="m-tick" style="background:rgba(255,255,255,.22)"></div><div class="m-tick" style="background:rgba(255,255,255,.22)"></div><div class="m-tick" style="background:rgba(255,255,255,.22)"></div><div class="m-tick" style="background:#FFFC00"></div></div>
+      <div id="m-kaki-count" class="abs mono center-x m-count">Modèle 04 / 04</div>
+      <div id="m-kaki-name" class="abs lg center-x m-name">Kaki army</div>
+      <div id="m-kaki-shadow" class="abs m-shadow"></div>
+      <div id="m-kaki-prod" class="abs m-prod"><svg class="bala" viewBox="0 0 400 540" width="520" height="702" >
+  <defs>
+    <pattern id="mkaki-knit" width="10" height="12" patternUnits="userSpaceOnUse">
+      <path d="M0 0 L5 6 L10 0 M0 6 L5 12 L10 6" stroke="rgba(0,0,0,.32)" stroke-width="1.5" fill="none"/>
+      <path d="M0 2 L5 8 L10 2" stroke="rgba(255,255,255,.12)" stroke-width="1" fill="none"/>
+    </pattern>
+    <pattern id="mkaki-rib" width="9" height="40" patternUnits="userSpaceOnUse"><rect width="4.5" height="40" fill="rgba(0,0,0,.26)"/></pattern>
+    <radialGradient id="mkaki-light" cx="34%" cy="22%" r="85%">
+      <stop offset="0" stop-color="#fff" stop-opacity=".38"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity=".6"/>
+    </radialGradient>
+    <radialGradient id="mkaki-hole" cx="50%" cy="38%" r="62%">
+      <stop offset="0" stop-color="#000"/><stop offset=".8" stop-color="#060606"/><stop offset="1" stop-color="#202020"/>
+    </radialGradient>
+    <clipPath id="mkaki-clip"><path d="M34 540 C 52 500 86 474 100 446 C 60 398 46 318 50 222 C 56 92 126 26 200 26 C 274 26 344 92 350 222 C 354 318 340 398 300 446 C 314 474 348 500 366 540 Z"/></clipPath>
+  </defs>
+  <path d="M34 540 C 52 500 86 474 100 446 C 60 398 46 318 50 222 C 56 92 126 26 200 26 C 274 26 344 92 350 222 C 354 318 340 398 300 446 C 314 474 348 500 366 540 Z" fill="#5b6146"/>
+  <g clip-path="url(#mkaki-clip)">
+    <rect width="400" height="540" fill="url(#mkaki-knit)"/>
+    <rect y="448" width="400" height="92" fill="url(#mkaki-rib)"/>
+    <path d="M86 446 Q200 474 314 446" stroke="rgba(0,0,0,.45)" stroke-width="4" fill="none"/>
+    <path d="M200 22 L200 148" stroke="rgba(0,0,0,.4)" stroke-width="3" fill="none"/>
+    <path d="M64 230 C 72 330 100 410 150 448" stroke="rgba(0,0,0,.18)" stroke-width="3" fill="none"/>
+    <path d="M340 230 C 330 330 300 410 250 448" stroke="rgba(0,0,0,.18)" stroke-width="3" fill="none"/>
+    <rect width="400" height="540" fill="url(#mkaki-light)"/>
+  </g>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="none" stroke="#5b6146" stroke-width="22"/>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="none" stroke="rgba(0,0,0,.35)" stroke-width="22" stroke-dasharray="3 4"/>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="2.5" transform="translate(200 261) scale(1.075) translate(-200 -261)"/>
+  <path d="M200 150 C 252 150 282 198 282 262 C 282 334 248 372 200 372 C 152 372 118 334 118 262 C 118 198 148 150 200 150 Z" fill="url(#mkaki-hole)"/>
+</svg></div>
+      <div id="m-kaki-pill" class="abs mono m-pill"><span class="m-dot" style="background:#5b6146"></span>Cagoule Nike · coloris kaki</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+
+      tl.fromTo("#m-noir-giant", { x: -80 }, { x: -560, duration: 1.6667, ease: "none" }, 0.0);
+      tl.fromTo("#m-noir-prod", { x: 760, skewX: -18, rotation: 8 }, { x: 0, skewX: 0, rotation: 0, duration: 0.32, ease: "expo.out" }, 0.0);
+      tl.fromTo("#m-noir-prod", { scale: 1 }, { scale: 1.06, duration: 1.147, ease: "none" }, 0.3);
+      tl.fromTo("#m-noir-name", { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.26, ease: "power4.out" }, 0.04);
+      tl.fromTo("#m-noir-count", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 0.0);
+      tl.fromTo("#m-noir-pill", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.24, ease: "power3.out" }, 0.16);
+      tl.fromTo("#m-noir-shadow", { opacity: 0, scaleX: .4 }, { opacity: 1, scaleX: 1, duration: 0.3, ease: "expo.out" }, 0.0);
+      tl.to("#m-noir-prod", { x: -760, skewX: 18, duration: 0.18, ease: "power3.in" }, 1.4767000000000001);
+      tl.to("#m-noir-name, #m-noir-pill", { opacity: 0, duration: 0.12 }, 1.5367000000000002);
+      tl.fromTo("#m-gris-giant", { x: -80 }, { x: -560, duration: 1.6667, ease: "none" }, 1.667);
+      tl.fromTo("#m-gris-prod", { x: 760, skewX: -18, rotation: 8 }, { x: 0, skewX: 0, rotation: 0, duration: 0.32, ease: "expo.out" }, 1.667);
+      tl.fromTo("#m-gris-prod", { scale: 1 }, { scale: 1.06, duration: 1.147, ease: "none" }, 1.967);
+      tl.fromTo("#m-gris-name", { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.26, ease: "power4.out" }, 1.707);
+      tl.fromTo("#m-gris-count", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 1.667);
+      tl.fromTo("#m-gris-pill", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.24, ease: "power3.out" }, 1.827);
+      tl.fromTo("#m-gris-shadow", { opacity: 0, scaleX: .4 }, { opacity: 1, scaleX: 1, duration: 0.3, ease: "expo.out" }, 1.667);
+      tl.to("#m-gris-prod", { x: -760, skewX: 18, duration: 0.18, ease: "power3.in" }, 3.1437000000000004);
+      tl.to("#m-gris-name, #m-gris-pill", { opacity: 0, duration: 0.12 }, 3.2037000000000004);
+      tl.fromTo("#m-blanc-giant", { x: -80 }, { x: -560, duration: 1.6667, ease: "none" }, 3.333);
+      tl.fromTo("#m-blanc-prod", { x: 760, skewX: -18, rotation: 8 }, { x: 0, skewX: 0, rotation: 0, duration: 0.32, ease: "expo.out" }, 3.333);
+      tl.fromTo("#m-blanc-prod", { scale: 1 }, { scale: 1.06, duration: 1.147, ease: "none" }, 3.633);
+      tl.fromTo("#m-blanc-name", { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.26, ease: "power4.out" }, 3.373);
+      tl.fromTo("#m-blanc-count", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 3.333);
+      tl.fromTo("#m-blanc-pill", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.24, ease: "power3.out" }, 3.4930000000000003);
+      tl.fromTo("#m-blanc-shadow", { opacity: 0, scaleX: .4 }, { opacity: 1, scaleX: 1, duration: 0.3, ease: "expo.out" }, 3.333);
+      tl.to("#m-blanc-prod", { x: -760, skewX: 18, duration: 0.18, ease: "power3.in" }, 4.8097);
+      tl.to("#m-blanc-name, #m-blanc-pill", { opacity: 0, duration: 0.12 }, 4.869700000000001);
+      tl.fromTo("#m-kaki-giant", { x: -80 }, { x: -560, duration: 1.6667, ease: "none" }, 5.0);
+      tl.fromTo("#m-kaki-prod", { x: 760, skewX: -18, rotation: 8 }, { x: 0, skewX: 0, rotation: 0, duration: 0.32, ease: "expo.out" }, 5.0);
+      tl.fromTo("#m-kaki-prod", { scale: 1 }, { scale: 1.06, duration: 1.147, ease: "none" }, 5.3);
+      tl.fromTo("#m-kaki-name", { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.26, ease: "power4.out" }, 5.04);
+      tl.fromTo("#m-kaki-count", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 5.0);
+      tl.fromTo("#m-kaki-pill", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.24, ease: "power3.out" }, 5.16);
+      tl.fromTo("#m-kaki-shadow", { opacity: 0, scaleX: .4 }, { opacity: 1, scaleX: 1, duration: 0.3, ease: "expo.out" }, 5.0);
+      tl.to("#m-kaki-prod", { scale: 1.6, y: -80, opacity: 0, duration: 0.2, ease: "power3.in" }, 6.457);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["models"] = tl;
+    })();
+  </script>
+</template>
