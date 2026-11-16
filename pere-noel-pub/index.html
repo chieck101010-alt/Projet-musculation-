@@ -1,0 +1,121 @@
+<!doctype html>
+<html
+  lang="fr"
+  data-composition-variables='[
+    {"id":"color-ink","type":"color","label":"Encre","default":"#1B2A4A"},
+    {"id":"color-accent","type":"color","label":"Rouge marque","default":"#D7263D"},
+    {"id":"color-gold","type":"color","label":"Or","default":"#F2B33D"},
+    {"id":"brand","type":"string","label":"Nom de marque","default":"Père Noël & Cie"},
+    {"id":"sub","type":"string","label":"Ligne de fin","default":"Distribution mondiale · nuit du 24 décembre"}
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --color-ink: #1b2a4a;
+        --color-accent: #d7263d;
+        --color-gold: #f2b33d;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #2a3a6b;
+      }
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #2a3a6b;
+      }
+      #world {
+        z-index: 1;
+      }
+      #titles {
+        z-index: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="48.4"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- the whole 3D world: one continuous isometric take -->
+      <div
+        id="world"
+        data-composition-id="world"
+        data-composition-src="compositions/world.html"
+        data-start="0"
+        data-duration="48.4"
+        data-track-index="0"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+      <!-- titles, iris and end-card type over the world -->
+      <div
+        id="titles"
+        data-composition-id="titles"
+        data-composition-src="compositions/titles.html"
+        data-start="0"
+        data-duration="48.4"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+
+      <!-- voiceover (Gemini TTS via Flora) -->
+      <audio id="vo1" class="clip" src="assets/audio/vo1.wav" data-start="0.5" data-duration="3.63" data-track-index="2" data-volume="1"></audio>
+      <audio id="vo2" class="clip" src="assets/audio/vo2.wav" data-start="4.4" data-duration="5.07" data-track-index="2" data-volume="1"></audio>
+      <audio id="vo3" class="clip" src="assets/audio/vo3.wav" data-start="9.8" data-duration="4.87" data-track-index="2" data-volume="1"></audio>
+      <audio id="vo4" class="clip" src="assets/audio/vo4.wav" data-start="15.2" data-duration="6.87" data-track-index="2" data-volume="1"></audio>
+      <audio id="vo5" class="clip" src="assets/audio/vo5.wav" data-start="23.6" data-duration="6.83" data-track-index="2" data-volume="1"></audio>
+      <audio id="vo6" class="clip" src="assets/audio/vo6.wav" data-start="31.0" data-duration="5.63" data-track-index="2" data-volume="1"></audio>
+      <audio id="vo7" class="clip" src="assets/audio/vo7.wav" data-start="39.3" data-duration="4.75" data-track-index="2" data-volume="1"></audio>
+
+      <!-- music (Lyria via Flora): the build, then a cut on the beat to the track's ending -->
+      <audio id="music-a" class="clip" src="assets/audio/music.mp3" data-start="0" data-duration="38.12" data-track-index="3" data-volume="0.42" data-fade-out="0.08"></audio>
+      <audio id="music-b" class="clip" src="assets/audio/music.mp3" data-start="38.12" data-media-start="47.745" data-duration="10.28" data-track-index="3" data-volume="0.42" data-fade-in="0.04" data-fade-out="1.2"></audio>
+
+      <!-- sound on visible actions -->
+      <audio id="sfx-bow" class="clip" src="assets/audio/sfx/pop.mp3" data-start="1.22" data-duration="0.71" data-track-index="4" data-volume="0.55"></audio>
+      <audio id="sfx-scan" class="clip" src="assets/audio/sfx/ping.mp3" data-start="5.66" data-duration="1.31" data-track-index="4" data-volume="0.45"></audio>
+      <audio id="sfx-arm" class="clip" src="assets/audio/sfx/whoosh-short.mp3" data-start="6.78" data-duration="0.56" data-track-index="5" data-volume="0.5"></audio>
+      <audio id="sfx-jump" class="clip" src="assets/audio/sfx/whoosh.mp3" data-start="10.5" data-duration="0.56" data-track-index="4" data-volume="0.45"></audio>
+      <audio id="sfx-takeoff" class="clip" src="assets/audio/sfx/whoosh-cinematic.mp3" data-start="13.55" data-duration="2.6" data-track-index="4" data-volume="0.55" data-fade-out="0.6"></audio>
+      <audio id="sfx-drop1" class="clip" src="assets/audio/sfx/pop.mp3" data-start="17.0" data-duration="0.71" data-track-index="4" data-volume="0.35"></audio>
+      <audio id="sfx-drop2" class="clip" src="assets/audio/sfx/click-soft.mp3" data-start="18.0" data-duration="0.36" data-track-index="4" data-volume="0.5"></audio>
+      <audio id="sfx-drop3" class="clip" src="assets/audio/sfx/pop.mp3" data-start="19.0" data-duration="0.71" data-track-index="4" data-volume="0.35"></audio>
+      <audio id="sfx-drop4" class="clip" src="assets/audio/sfx/click-soft.mp3" data-start="19.98" data-duration="0.36" data-track-index="4" data-volume="0.5"></audio>
+      <audio id="sfx-drop5" class="clip" src="assets/audio/sfx/pop.mp3" data-start="20.98" data-duration="0.71" data-track-index="4" data-volume="0.35"></audio>
+      <audio id="sfx-drop6" class="clip" src="assets/audio/sfx/click-soft.mp3" data-start="21.95" data-duration="0.36" data-track-index="4" data-volume="0.5"></audio>
+      <audio id="sfx-hearth" class="clip" src="assets/audio/sfx/pop.mp3" data-start="26.33" data-duration="0.71" data-track-index="4" data-volume="0.4"></audio>
+      <audio id="sfx-tree" class="clip" src="assets/audio/sfx/sparkle.mp3" data-start="28.25" data-duration="1.79" data-track-index="4" data-volume="0.5"></audio>
+      <audio id="sfx-pull" class="clip" src="assets/audio/sfx/whoosh-cinematic.mp3" data-start="30.9" data-duration="4" data-track-index="4" data-volume="0.4" data-fade-out="1.2"></audio>
+      <audio id="sfx-riser" class="clip" src="assets/audio/sfx/riser.mp3" data-start="36.0" data-media-start="1.8" data-duration="2.6" data-track-index="5" data-volume="0.35" data-fade-in="0.5"></audio>
+      <audio id="sfx-land" class="clip" src="assets/audio/sfx/impact-bass-1.mp3" data-start="38.54" data-duration="2.11" data-track-index="4" data-volume="0.5"></audio>
+      <audio id="sfx-lid" class="clip" src="assets/audio/sfx/pop.mp3" data-start="39.08" data-duration="0.71" data-track-index="5" data-volume="0.5"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>
