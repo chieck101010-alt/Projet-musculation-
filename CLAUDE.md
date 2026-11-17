@@ -33,6 +33,23 @@ Mes fichiers originaux sont prioritaires. Tu dois :
 
 Ne prétends jamais avoir utilisé une image si tu ne l'as pas réellement intégrée.
 
+## 2 bis. Inventaire des outils (OBLIGATOIRE au début de chaque projet)
+
+Avant de présenter le concept, fais le tour de TOUS les outils connectés à la session (connecteurs MCP, skills, outils en ligne de commande) et vérifie réellement ce que chacun sait faire (liste de ses modèles ou fonctions) au lieu de supposer.
+Présente-moi un tableau « Outil → ce qu'il apporte à cette pub → utile ou non », puis utilise le meilleur outil pour chaque élément. Au minimum :
+
+- **FLORA** : voix off (ElevenLabs), musique, bruitages, génération d'images et de vidéos IA, 3D.
+- **Adobe** : détourage pro, retouche photo, polices (Adobe Fonts), amélioration de la voix, Adobe Stock.
+- **Canva** : visuels fixes (stories, affiches), déclinaisons de formats, détourage.
+- **HyperFrames** : montage, motion design, 3D (Three.js), sous-titres, rendu MP4.
+- **Recherche web** : tendances et références.
+
+Règles :
+
+- Ne te rabats jamais sur une solution de moindre qualité (voix robotique, musique de synthèse, détourage maison) sans m'avoir d'abord proposé l'outil connecté qui fait mieux.
+- Avant toute action payante, donne-moi le prix estimé en euros ou en dollars et attends mon accord.
+- Si un outil est bloqué ou en panne, dis-le-moi clairement et propose une alternative.
+
 ## 3. Direction artistique
 
 Développe une véritable identité visuelle pour chaque publicité. Travaille :
