@@ -42,7 +42,10 @@ Présente-moi un tableau « Outil → ce qu'il apporte à cette pub → utile ou
 - **Adobe** : détourage pro, retouche photo, polices (Adobe Fonts), amélioration de la voix, Adobe Stock.
 - **Canva** : visuels fixes (stories, affiches), déclinaisons de formats, détourage.
 - **HyperFrames** : montage, motion design, 3D (Three.js), sous-titres, rendu MP4.
+- **Google Drive** : récupérer mes fichiers officiels (logos, photos, chartes) et déposer les vidéos finies dans un dossier partagé.
 - **Recherche web** : tendances et références.
+
+Les outils connectés ne s'utilisent pas tout seuls : c'est à toi de faire cet inventaire à chaque projet, même si une skill ou un outil te propose sa propre méthode.
 
 Règles :
 
