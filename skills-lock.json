@@ -45,6 +45,13 @@
       "skillPath": "skills/media-use/SKILL.md",
       "computedHash": "6ba1a1db2d4c7184a2696f3af34d085652bf9c3cc5143657199697aee599a411"
     },
+    "ponytail": {
+      "source": "DietrichGebert/ponytail",
+      "commit": "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846",
+      "sourceType": "github",
+      "skillPath": "skills/ponytail/SKILL.md",
+      "computedHash": "9badd22a32e19cb884e46dfa8d3aae82bb81dfa5484105b8b4f0262df823a509"
+    },
     "remotion-to-hyperframes": {
       "source": "heygen-com/hyperframes",
       "sourceType": "github",
