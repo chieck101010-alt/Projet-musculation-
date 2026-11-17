@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
     <style>
       *,
       *::before,
@@ -96,10 +96,10 @@
       tl.fromTo(
         leak,
         { opacity: 0 },
-        { opacity: 0.9, duration: duration * 0.24, ease: "sine.out" },
+        { opacity: 0.42, duration: duration * 0.24, ease: "sine.out" },
         duration * 0.08,
       );
-      tl.to(leak, { opacity: 0.46, duration: duration * 0.2, ease: "sine.inOut" }, duration * 0.42);
+      tl.to(leak, { opacity: 0.22, duration: duration * 0.2, ease: "sine.inOut" }, duration * 0.42);
       tl.to(leak, { opacity: 0, duration: duration * 0.26, ease: "sine.in" }, duration * 0.68);
       tl.fromTo(
         ".hf-leak-amber",
