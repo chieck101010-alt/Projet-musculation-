@@ -1,6 +1,41 @@
 {
   "version": 2,
   "skills": {
+    "apify-actor-development": {
+      "source": "apify/agent-skills",
+      "commit": "00550823442fd493466492a51c7be09c59d438c6",
+      "sourceType": "github",
+      "skillPath": "skills/apify-actor-development/SKILL.md",
+      "computedHash": "6ac3032b1b020c80c88cf7d378dedda94ca5d396edabb5abd780d5ca43e5802c"
+    },
+    "apify-actorization": {
+      "source": "apify/agent-skills",
+      "commit": "00550823442fd493466492a51c7be09c59d438c6",
+      "sourceType": "github",
+      "skillPath": "skills/apify-actorization/SKILL.md",
+      "computedHash": "4054a7ada19137b66f6337852facbfaa0ce0582d9219ffe2098b7957f549406d"
+    },
+    "apify-fix-git-connection": {
+      "source": "apify/agent-skills",
+      "commit": "00550823442fd493466492a51c7be09c59d438c6",
+      "sourceType": "github",
+      "skillPath": "skills/apify-fix-git-connection/SKILL.md",
+      "computedHash": "aa05cbb15eefb2ae52312036ba3468e04c213b2c1d9128e70783e62133bde712"
+    },
+    "apify-integration-development": {
+      "source": "apify/agent-skills",
+      "commit": "00550823442fd493466492a51c7be09c59d438c6",
+      "sourceType": "github",
+      "skillPath": "skills/apify-integration-development/SKILL.md",
+      "computedHash": "20d8a2efe1630af1e05a487c2c2acfeadbebcdf31c9337df2febdb406fa03a3a"
+    },
+    "apify-ultimate-scraper": {
+      "source": "apify/agent-skills",
+      "commit": "00550823442fd493466492a51c7be09c59d438c6",
+      "sourceType": "github",
+      "skillPath": "skills/apify-ultimate-scraper/SKILL.md",
+      "computedHash": "4d4684383c7930c72a1e92dfee2f763da765a5ed342f560e873902ba31a74022"
+    },
     "figma": {
       "source": "heygen-com/hyperframes",
       "sourceType": "github",
