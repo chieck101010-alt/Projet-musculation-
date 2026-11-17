@@ -1,0 +1,205 @@
+<!doctype html>
+<!--
+  REEF 33 — test 3D du flacon.
+  Proportions mesurées sur le packshot officiel (assets/reef-33-packshot.webp).
+  La plaque dorée gravée est découpée telle quelle du packshot (assets/tex/plaque-reef33.png).
+  Seek-safe : chaque image = render(t), piloté par une horloge GSAP linéaire.
+-->
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #0a0806; }
+      #flacon-root { position: absolute; inset: 0; overflow: hidden; }
+      #flacon-canvas { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; display: block; }
+    </style>
+  </head>
+  <body>
+    <div id="flacon-root" data-composition-id="flacon" data-start="0" data-duration="6" data-width="1080" data-height="1920">
+      <canvas id="flacon-canvas" width="1080" height="1920"></canvas>
+    </div>
+
+    <script>
+      (function () {
+        var root = document.getElementById("flacon-root");
+        var duration = parseFloat(root.dataset.duration) || 6;
+        var clock = { t: 0 };
+        var host = { clock: clock, duration: duration, render: null };
+        window.__flacon = host;
+        window.__hf = window.__hf || {};
+        window.__hf.buildReady = window.__hf.buildReady || {};
+        window.__hf.buildReady["flacon"] = new Promise(function (resolve) { host.ready = resolve; });
+        var tl = gsap.timeline({ paused: true });
+        tl.to(clock, {
+          t: duration, duration: duration, ease: "none",
+          onUpdate: function () { if (host.render) host.render(clock.t); },
+        });
+        window.__timelines = window.__timelines || {};
+        window.__timelines["flacon"] = tl;
+      })();
+    </script>
+
+    <script type="module">
+      import * as THREE from "./assets/lib/three.module.min.js";
+
+      const host = window.__flacon;
+      const W = 1080, H = 1920, DEG = Math.PI / 180;
+      const clamp01 = (x) => (x < 0 ? 0 : x > 1 ? 1 : x);
+      const lerp = (a, b, x) => a + (b - a) * x;
+      const seg = (t, a, b) => clamp01((t - a) / (b - a));
+      const inOut3 = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+
+      // ---------- dimensions (unité = largeur du corps), mesurées sur le packshot ----------
+      const BW = 1.0;          // largeur
+      const BD = 0.62;         // profondeur (estimée : pas de vue de côté)
+      const BH = 2.08;         // hauteur du corps
+      const CH = 0.11;         // chanfrein des arêtes verticales
+      const BAND = 0.055;      // filet doré en haut du corps
+      const NECK_R = 0.235, NECK_H = 0.34;
+      const CAP_R = 0.40, CAP_H = 0.255;
+      const PL_W = 0.30, PL_H = 1.52, PL_Y = -0.047;   // plaque gravée (centre relatif au corps)
+
+      const canvas = document.getElementById("flacon-canvas");
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+      renderer.setPixelRatio(1);
+      renderer.setSize(W, H, false);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.05;
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(26, W / H, 0.05, 60);
+
+      // ---------- environnement studio : bandes lumineuses douces (pour les reflets dorés) ----------
+      function buildEnv() {
+        const env = new THREE.Scene();
+        env.background = new THREE.Color(0x050403);
+        const strip = (w, h, x, y, z, ry, c, k) => {
+          const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ color: new THREE.Color(c).multiplyScalar(k), side: THREE.DoubleSide }));
+          m.position.set(x, y, z); m.rotation.y = ry; env.add(m);
+        };
+        strip(2.2, 9, -4.5, 1, 1.5, Math.PI / 2.4, 0xffe2b0, 3.2);   // clé chaude à gauche
+        strip(1.2, 9, 4.6, 1, -0.5, -Math.PI / 2.2, 0xfff4e4, 2.0);  // contre à droite
+        strip(8, 1.2, 0, 5, 0, 0, 0xffffff, 0.9);                    // plafond
+        strip(1.0, 7, 1.5, 1, -5, 0, 0xc98a3a, 1.4);                 // rebond ambré derrière
+        const pm = new THREE.PMREMGenerator(renderer);
+        const tex = pm.fromScene(env, 0.04).texture;
+        pm.dispose();
+        return tex;
+      }
+
+      // fond : dégradé noir → brun doré, peint en texture canvas
+      function backdropTexture() {
+        const c = document.createElement("canvas"); c.width = 512; c.height = 1024;
+        const g = c.getContext("2d");
+        const lin = g.createLinearGradient(0, 0, 0, 1024);
+        lin.addColorStop(0, "#060504"); lin.addColorStop(0.55, "#1a120a"); lin.addColorStop(0.78, "#3a2510"); lin.addColorStop(1, "#120c06");
+        g.fillStyle = lin; g.fillRect(0, 0, 512, 1024);
+        const rad = g.createRadialGradient(256, 600, 10, 256, 600, 420);
+        rad.addColorStop(0, "rgba(201,164,92,0.35)"); rad.addColorStop(1, "rgba(201,164,92,0)");
+        g.fillStyle = rad; g.fillRect(0, 0, 512, 1024);
+        const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+      }
+
+      // profil du corps : rectangle aux arêtes chanfreinées, extrudé à la verticale
+      function bodyShape(w, d, ch) {
+        const s = new THREE.Shape(), hw = w / 2, hd = d / 2;
+        s.moveTo(-hw + ch, -hd); s.lineTo(hw - ch, -hd); s.lineTo(hw, -hd + ch); s.lineTo(hw, hd - ch);
+        s.lineTo(hw - ch, hd); s.lineTo(-hw + ch, hd); s.lineTo(-hw, hd - ch); s.lineTo(-hw, -hd + ch); s.closePath();
+        return s;
+      }
+      function prism(w, d, ch, h, bevel) {
+        const geo = new THREE.ExtrudeGeometry(bodyShape(w, d, ch), {
+          depth: h, bevelEnabled: bevel > 0, bevelThickness: bevel, bevelSize: bevel, bevelSegments: 3, curveSegments: 1,
+        });
+        geo.rotateX(-Math.PI / 2);   // extrusion le long de +Y
+        geo.translate(0, 0, 0);
+        return geo;
+      }
+
+      let bottle, plateMat, floorMat;
+      async function build() {
+        scene.environment = buildEnv();
+        scene.environmentIntensity = 0.55;
+        scene.background = backdropTexture();
+
+        const gold = new THREE.MeshStandardMaterial({ color: 0xd8b46a, metalness: 1, roughness: 0.32 });
+        const goldSatin = new THREE.MeshStandardMaterial({ color: 0xcfa85e, metalness: 1, roughness: 0.42 });
+        const black = new THREE.MeshPhysicalMaterial({ color: 0x050505, roughness: 0.58, metalness: 0, clearcoat: 0.2, clearcoatRoughness: 0.45, envMapIntensity: 0.35 });
+
+        bottle = new THREE.Group();
+        scene.add(bottle);
+
+        // corps noir mat
+        const body = new THREE.Mesh(prism(BW, BD, CH, BH, 0.012), black);
+        body.castShadow = true; bottle.add(body);
+        // filet doré en haut
+        const band = new THREE.Mesh(prism(BW + 0.03, BD + 0.03, CH + 0.01, BAND, 0.006), gold);
+        band.position.y = BH - 0.004; bottle.add(band);
+        // col
+        const neck = new THREE.Mesh(new THREE.CylinderGeometry(NECK_R, NECK_R, NECK_H, 64), gold);
+        neck.position.y = BH + NECK_H / 2; bottle.add(neck);
+        // bouchon hexagonal
+        const cap = new THREE.Mesh(new THREE.CylinderGeometry(CAP_R, CAP_R, CAP_H, 6), goldSatin);
+        cap.rotation.y = Math.PI / 6;
+        cap.position.y = BH + NECK_H + CAP_H / 2 - 0.01; cap.castShadow = true; bottle.add(cap);
+
+        // plaque gravée : texture = découpe du packshot officiel
+        const tex = await new THREE.TextureLoader().loadAsync("assets/tex/plaque-reef33.png");
+        tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 8;
+        plateMat = new THREE.MeshStandardMaterial({ map: tex, metalness: 0.35, roughness: 0.38, envMapIntensity: 0.6 });
+        const plateMats = [goldSatin, goldSatin, goldSatin, goldSatin, plateMat, goldSatin];
+        const plate = new THREE.Mesh(new THREE.BoxGeometry(PL_W, PL_H, 0.012), plateMats);
+        plate.position.set(0, BH / 2 + PL_Y, BD / 2 + 0.012); bottle.add(plate);
+
+        // sol miroir sombre + ombre de contact
+        floorMat = new THREE.MeshStandardMaterial({ color: 0x120c07, metalness: 0.6, roughness: 0.35 });
+        const floor = new THREE.Mesh(new THREE.CircleGeometry(6, 64), floorMat);
+        floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; scene.add(floor);
+
+        // lumières : clé chaude, contre froid, remplissage
+        const key = new THREE.SpotLight(0xffe6c0, 60, 14, 0.5, 0.6, 1.3);
+        key.position.set(-3.2, 4.2, 3.4); key.target.position.set(0, 1.1, 0);
+        key.castShadow = true; key.shadow.mapSize.set(2048, 2048); key.shadow.radius = 6;
+        scene.add(key, key.target);
+        const rim = new THREE.DirectionalLight(0x9fc0ff, 1.4); rim.position.set(3, 3, -3); scene.add(rim);
+        const fill = new THREE.DirectionalLight(0xffd9a0, 0.35); fill.position.set(2, 1, 4); scene.add(fill);
+        host.key = key;
+
+        await renderer.compileAsync(scene, camera);
+      }
+
+      function render(t) {
+        // rotation : face → 3/4 gauche → 3/4 droite → face (on ne montre jamais le dos : pas de photo)
+        const a1 = inOut3(seg(t, 0.3, 2.2));
+        const a2 = inOut3(seg(t, 2.4, 4.4));
+        const a3 = inOut3(seg(t, 4.6, 5.8));
+        const rot = lerp(lerp(lerp(0, -55, a1), 55, a2), 0, a3) * DEG;
+        bottle.rotation.y = rot;
+        bottle.position.y = 0.04 * Math.sin(t * 1.3);
+
+        // caméra : légère poussée et montée
+        const k = inOut3(seg(t, 0, 6));
+        const dist = lerp(8.4, 7.2, k);
+        const ty = 1.32;
+        const el = lerp(4, 9, k) * DEG;
+        camera.position.set(0, ty + dist * Math.sin(el), dist * Math.cos(el));
+        camera.lookAt(0, ty, 0);
+        camera.updateProjectionMatrix();
+
+        // la clé balaie de gauche à droite : le reflet glisse sur l'or
+        host.key.position.x = lerp(-3.6, 1.8, k);
+        renderer.render(scene, camera);
+      }
+
+      await build();
+      host.render = render;
+      render(host.clock.t);
+      host.ready();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<!-- REEF 33 — Pub 1 « Luxe Street » : textes, ingrédients découpés du packshot officiel, flashs. -->
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: transparent; }
+      #overlay-root { position: absolute; inset: 0; overflow: hidden; }
+      .t { position: absolute; left: 0; width: 1080px; text-align: center; opacity: 0; }
+      .street { font-family: "League Gothic", "Oswald", sans-serif; text-transform: uppercase; color: #fff; letter-spacing: 2px; line-height: 0.92; text-shadow: 0 6px 30px rgba(0,0,0,0.75); }
+      .street span { display: block; }
+      .gold { background: linear-gradient(180deg, #f3dfa2 0%, #c9a45c 55%, #8a6a2c 100%); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: none; filter: drop-shadow(0 6px 24px rgba(0,0,0,0.8)); }
+      .serif { font-family: "Playfair Display", serif; color: #f3dfa2; letter-spacing: 0.5em; }
+      #hook { top: 200px; font-size: 128px; }
+      .label { top: 215px; font-size: 140px; }
+      #tenue { top: 200px; font-size: 112px; }
+      #pascelui { top: 200px; font-size: 112px; }
+      #niche { top: 200px; font-size: 120px; }
+      #prix { top: 640px; font-size: 360px; }
+      #valide { top: 1010px; font-size: 120px; }
+      #fin-nom { top: 1060px; font-size: 64px; }
+      #fin-site { top: 1150px; font-family: "Inter", sans-serif; font-size: 34px; color: rgba(255,255,255,0.85); letter-spacing: 0.12em; }
+      #flash { position: absolute; inset: 0; background: #fff; opacity: 0; }
+      #glitch-r, #glitch-c { position: absolute; left: 0; width: 1080px; top: 640px; text-align: center; font-family: "League Gothic", sans-serif; font-size: 360px; opacity: 0; mix-blend-mode: screen; }
+      #glitch-r { color: #ff2a4d; } #glitch-c { color: #22e4ff; }
+    </style>
+  </head>
+  <body>
+    <div id="overlay-root" data-composition-id="overlay" data-start="0" data-duration="30" data-width="1080" data-height="1920">
+      <!-- S1 accroche : visible dès l'image 0 -->
+      <div id="hook" class="t street"><span>Il sent</span><span class="gold">la thune.</span></div>
+      <!-- S3 noms des ingrédients (les visuels sont derrière le flacon, dans "fond") -->
+      <div id="lb-safran" class="t street label">Safran</div>
+      <div id="lb-romarin" class="t street label">Romarin</div>
+      <div id="lb-oud" class="t street label gold">Oud</div>
+      <div id="tenue" class="t street"><span>Toute la</span><span class="gold">journée.</span></div>
+      <!-- S4 -->
+      <div id="pascelui" class="t street"><span>Pas celui que</span><span class="gold">tout le monde a.</span></div>
+      <div id="niche" class="t street"><span>C'est de la</span><span class="gold">niche.</span></div>
+      <!-- S5 prix -->
+      <div id="glitch-r">65 €</div><div id="glitch-c">65 €</div>
+      <div id="prix" class="t street gold">65 €</div>
+      <div id="valide" class="t street">Validé.</div>
+      <!-- S6 fin -->
+      <div id="fin-nom" class="t serif">REEF 33</div>
+      <div id="fin-site" class="t">reefperfumes.fr</div>
+      <div id="flash"></div>
+    </div>
+    <script>
+      (function () {
+        var tl = gsap.timeline({ paused: true });
+        var Q = function (s) { return "#" + s; };
+        function flash(t, k) { tl.fromTo("#flash", { opacity: k || 0.85 }, { opacity: 0, duration: 0.18, ease: "power2.out", immediateRender: false }, t); }
+        function popIn(id, t, from) { tl.fromTo(Q(id), { opacity: 0, scale: from || 1.35 }, { opacity: 1, scale: 1, duration: 0.22, ease: "back.out(2)", immediateRender: false }, t); }
+        function out(id, t, d) { tl.to(Q(id), { opacity: 0, duration: d || 0.12 }, t); }
+
+        // S1 — l'accroche est déjà là à l'image 0, elle claque à l'impact du flacon
+        tl.set("#hook", { opacity: 1, scale: 1 }, 0);
+        tl.fromTo("#hook", { scale: 1 }, { scale: 1.08, duration: 0.08, ease: "power2.out" }, 0.38);
+        tl.to("#hook", { scale: 1, duration: 0.3, ease: "power2.out" }, 0.46);
+        flash(0.38, 0.7);
+        out("hook", 1.42);
+        flash(1.5, 0.5);
+        flash(6.0, 0.55);
+
+        // S3 — ingrédients
+        popIn("lb-safran", 6.2); out("lb-safran", 7.85);
+        popIn("lb-romarin", 8.0); out("lb-romarin", 9.65);
+        popIn("lb-oud", 9.8); out("lb-oud", 11.35);
+        popIn("tenue", 11.5, 1.2);
+        out("tenue", 13.85, 0.15);
+        flash(14.0, 0.6);
+
+        // S4
+        popIn("pascelui", 15.0, 1.25); out("pascelui", 18.85);
+        popIn("niche", 19.0, 1.5); out("niche", 21.85);
+        flash(22.0, 0.9);
+
+        // S5 — prix qui « bugge »
+        popIn("prix", 22.4, 1.8);
+        var g = [[22.4, 14, -10], [22.5, -18, 6], [22.6, 9, 12], [22.7, -6, -8], [22.8, 0, 0], [23.9, 12, 0], [24.0, 0, 0], [25.3, -16, 8], [25.4, 0, 0]];
+        g.forEach(function (s) {
+          var on = s[1] !== 0 || s[2] !== 0;
+          tl.set("#glitch-r", { opacity: on ? 0.8 : 0, x: s[1], y: s[2] }, s[0]);
+          tl.set("#glitch-c", { opacity: on ? 0.8 : 0, x: -s[1], y: -s[2] }, s[0]);
+        });
+        popIn("valide", 24.6, 2.2);
+        out("prix", 26.85); out("valide", 26.85);
+
+        // S6 — fin sobre
+        tl.fromTo("#fin-nom", { opacity: 0, scale: 1.25 }, { opacity: 1, scale: 1, duration: 1.0, ease: "power3.out" }, 27.3);
+        tl.fromTo("#fin-site", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 27.8);
+        tl.set({}, {}, 30);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["overlay"] = tl;
+      })();
+    </script>
+  </body>
+</html>

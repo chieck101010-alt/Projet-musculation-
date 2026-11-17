@@ -1,0 +1,74 @@
+<!doctype html>
+<!-- REEF 33 — Pub 3 « style TikTok » : bulles de texte, stickers ingrédients (découpés du packshot), vraie citation d'avis client Reef. -->
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: transparent; }
+      #overlay-root { position: absolute; inset: 0; overflow: hidden; font-family: "Poppins", "Inter", sans-serif; }
+      .bulle { position: absolute; left: 90px; width: 900px; text-align: center; opacity: 0; }
+      .bulle p { display: inline; background: #fff; color: #111; font-weight: 700; font-size: 56px; line-height: 1.55; padding: 6px 22px; border-radius: 14px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+      #pov { top: 210px; }
+      #prix { top: 210px; }
+      #prix p b { color: #b8862b; }
+      .sticker { position: absolute; opacity: 0; }
+      .sticker { width: 270px; height: 330px; background: #fff; border-radius: 22px; padding: 14px; box-shadow: 0 16px 36px rgba(0,0,0,0.5); }
+      .sticker .ph { width: 242px; height: 250px; border-radius: 14px; background: radial-gradient(circle at 50% 40%, #fbf6ee, #efe4d2); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+      .sticker img { display: block; max-width: 92%; max-height: 92%; }
+      .tag { position: absolute; background: #ffe14d; color: #111; font-weight: 800; font-size: 44px; padding: 6px 18px; border-radius: 10px; white-space: nowrap; transform: rotate(-4deg); }
+      #st1 { left: 760px; top: 330px; } #st1 .tag { left: 40px; top: 282px; }
+      #st2 { left: 40px; top: 620px; } #st2 .tag { left: 30px; top: 282px; background: #b9f27c; }
+      #st3 { left: 760px; top: 800px; } #st3 .tag { left: 70px; top: 282px; background: #f2c28a; }
+      #luxe { top: 210px; }
+      #avis { position: absolute; left: 110px; top: 300px; width: 860px; opacity: 0; background: rgba(255,255,255,0.96); border-radius: 28px; padding: 40px 44px; box-shadow: 0 24px 60px rgba(0,0,0,0.45); }
+      #avis .q { font-size: 62px; font-weight: 700; color: #111; line-height: 1.2; }
+      #avis .src { margin-top: 20px; font-size: 32px; color: #6b5a3e; font-weight: 500; }
+      #tenue { top: 1060px; }
+      #fin-nom { position: absolute; left: 0; width: 1080px; top: 1040px; text-align: center; opacity: 0; font-family: "Playfair Display", serif; font-size: 64px; letter-spacing: 0.5em; color: #f3dfa2; text-shadow: 0 4px 20px rgba(0,0,0,0.6); }
+      #fin-site { position: absolute; left: 0; width: 1080px; top: 1125px; text-align: center; opacity: 0; }
+      #fin-site p { display: inline; background: #fff; color: #111; font-weight: 700; font-size: 40px; padding: 8px 22px; border-radius: 12px; }
+      #flash { position: absolute; inset: 0; background: #fff; opacity: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="overlay-root" data-composition-id="overlay" data-start="0" data-duration="30" data-width="1080" data-height="1920">
+      <div id="pov" class="bulle"><p>POV : on t'a demandé ton parfum 4 fois aujourd'hui 😭</p></div>
+      <div id="prix" class="bulle"><p>65 € et ça sent la niche à <b>200</b> 🤯</p></div>
+      <div id="st1" class="sticker"><div class="ph"><img src="assets/cut/safran.png" alt="safran" /></div><div class="tag">safran</div></div>
+      <div id="st2" class="sticker"><div class="ph"><img src="assets/cut/romarin.png" alt="romarin" /></div><div class="tag">romarin</div></div>
+      <div id="st3" class="sticker"><div class="ph"><img src="assets/cut/oud.png" alt="oud" /></div><div class="tag">oud</div></div>
+      <div id="luxe" class="bulle"><p>ça sent le luxe… mais pas le vieux 😮‍💨</p></div>
+      <div id="avis"><div class="q">« une tenue vraiment longue »</div><div class="src">— Julie, avis client sur reefperfumes.fr</div></div>
+      <div id="tenue" class="bulle"><p>le soir tu le sens encore 💀</p></div>
+      <div id="fin-nom">REEF 33</div>
+      <div id="fin-site"><p>reefperfumes.fr</p></div>
+      <div id="flash"></div>
+    </div>
+    <script>
+      (function () {
+        var tl = gsap.timeline({ paused: true });
+        function pop(id, t, r) { tl.fromTo("#" + id, { opacity: 0, scale: 0.6, rotation: r || 0 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.28, ease: "back.out(2.6)", immediateRender: false }, t); }
+        function out(id, t) { tl.to("#" + id, { opacity: 0, duration: 0.1 }, t); }
+        function flash(t) { tl.fromTo("#flash", { opacity: 0.35 }, { opacity: 0, duration: 0.12, immediateRender: false }, t); }
+        // l'accroche est déjà à l'écran à l'image 0
+        tl.set("#pov", { opacity: 1 }, 0);
+        out("pov", 1.95); flash(2.0);
+        pop("prix", 2.05); out("prix", 7.95); flash(8.0);
+        pop("st1", 8.15, -12); pop("st2", 9.4, 10); pop("st3", 10.6, -8);
+        pop("luxe", 12.2);
+        tl.to(["#st1", "#st2", "#st3"], { y: -14, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 2 }, 11);
+        ["st1", "st2", "st3", "luxe"].forEach(function (id) { out(id, 15.95); }); flash(16.0);
+        pop("avis", 16.2, -3);
+        pop("tenue", 18.2);
+        out("avis", 23.95); out("tenue", 23.95); flash(24.0);
+        tl.fromTo("#fin-nom", { opacity: 0, scale: 1.2 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power3.out", immediateRender: false }, 24.6);
+        pop("fin-site", 25.2);
+        tl.set({}, {}, 30);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["overlay"] = tl;
+      })();
+    </script>
+  </body>
+</html>

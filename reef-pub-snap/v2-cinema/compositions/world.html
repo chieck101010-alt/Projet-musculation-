@@ -1,0 +1,224 @@
+<!doctype html>
+<!--
+  REEF 33 — Pub 2 « Luxe Cinéma » : désert de nuit, sable en spirale, chapitres, éclaboussure dorée.
+  Canvas transparent hors du désert : les fonds sont dans "fond". Seek-safe : chaque image = render(t).
+-->
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: transparent; }
+      #world-root { position: absolute; inset: 0; overflow: hidden; }
+      #world-canvas { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; display: block; }
+    </style>
+  </head>
+  <body>
+    <div id="world-root" data-composition-id="world" data-start="0" data-duration="30" data-width="1080" data-height="1920">
+      <canvas id="world-canvas" width="1080" height="1920"></canvas>
+    </div>
+
+    <script>
+      (function () {
+        var root = document.getElementById("world-root");
+        var duration = parseFloat(root.dataset.duration) || 30;
+        var clock = { t: 0 };
+        var host = { clock: clock, render: null };
+        window.__world = host;
+        window.__hf = window.__hf || {};
+        window.__hf.buildReady = window.__hf.buildReady || {};
+        window.__hf.buildReady["world"] = new Promise(function (resolve) { host.ready = resolve; });
+        var tl = gsap.timeline({ paused: true });
+        tl.to(clock, { t: duration, duration: duration, ease: "none",
+          onUpdate: function () { if (host.render) host.render(clock.t); } });
+        window.__timelines = window.__timelines || {};
+        window.__timelines["world"] = tl;
+      })();
+    </script>
+
+    <script type="module">
+      import * as THREE from "./assets/lib/three.module.min.js";
+      import { DIM, studioEnv, buildBottle, lerp, seg, clamp01, E, mulberry32 } from "./assets/lib/reef-bottle.js";
+
+      const host = window.__world;
+      const W = 1080, H = 1920, DEG = Math.PI / 180;
+      const canvas = document.getElementById("world-canvas");
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
+      renderer.setPixelRatio(1);
+      renderer.setSize(W, H, false);
+      renderer.setClearColor(0x000000, 0);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.0;
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(26, W / H, 0.05, 200);
+      let bottle, bottleMats, key, rim, fill, dunes, shadowCatcher, sand, sandSeeds, splash, splashSeeds;
+      const N_SAND = 5000, N_SPLASH = 260;
+      const dummy = new THREE.Object3D();
+
+      // relief des dunes : somme de sinus déterministe
+      const duneH = (x, z) =>
+        0.55 * Math.sin(x * 0.18 + z * 0.07) + 0.35 * Math.sin(x * 0.07 - z * 0.21 + 1.7) +
+        0.12 * Math.sin(x * 0.6 + z * 0.4) - 0.0015 * (x * x + z * z) * 0.0 ;
+
+      async function build() {
+        scene.environment = studioEnv(THREE, renderer, 1.3);
+        scene.environmentIntensity = 0.5;
+        const b = await buildBottle(THREE, "assets/tex/plaque-reef33.png");
+        bottle = b.group; bottleMats = b.mats; scene.add(bottle);
+
+        // dunes
+        const g = new THREE.PlaneGeometry(120, 120, 220, 220);
+        g.rotateX(-Math.PI / 2);
+        const p = g.attributes.position;
+        for (let i = 0; i < p.count; i++) {
+          const x = p.getX(i), z = p.getZ(i);
+          const flat = Math.min(1, Math.hypot(x, z) / 3.2); // replat sous le flacon
+          p.setY(i, duneH(x, z) * flat * flat - 0.02);
+        }
+        g.computeVertexNormals();
+        dunes = new THREE.Mesh(g, new THREE.MeshStandardMaterial({ color: 0x9a7444, roughness: 0.95, metalness: 0 }));
+        dunes.receiveShadow = true; scene.add(dunes);
+        scene.fog = new THREE.Fog(0x1a0f06, 14, 60);
+
+        shadowCatcher = new THREE.Mesh(new THREE.PlaneGeometry(12, 12), new THREE.ShadowMaterial({ opacity: 0.5 }));
+        shadowCatcher.rotation.x = -Math.PI / 2; shadowCatcher.receiveShadow = true; scene.add(shadowCatcher);
+
+        // sable en spirale
+        const rnd = mulberry32(33);
+        sandSeeds = new Float32Array(N_SAND * 5);
+        for (let i = 0; i < N_SAND; i++) {
+          sandSeeds[i * 5] = 0.75 + rnd() * 1.1;     // rayon
+          sandSeeds[i * 5 + 1] = rnd() * Math.PI * 2; // phase
+          sandSeeds[i * 5 + 2] = rnd();               // retard
+          sandSeeds[i * 5 + 3] = 0.6 + rnd() * 0.8;   // vitesse
+          sandSeeds[i * 5 + 4] = (rnd() - 0.5) * 0.25; // écart
+        }
+        const sg = new THREE.BufferGeometry();
+        sg.setAttribute("position", new THREE.BufferAttribute(new Float32Array(N_SAND * 3), 3));
+        sand = new THREE.Points(sg, new THREE.PointsMaterial({ color: 0xe0b878, size: 0.034, sizeAttenuation: true, transparent: true, opacity: 0.9, depthWrite: false }));
+        sand.frustumCulled = false; scene.add(sand);
+
+        // gouttes dorées
+        const r2 = mulberry32(65);
+        splashSeeds = new Float32Array(N_SPLASH * 6);
+        for (let i = 0; i < N_SPLASH; i++) {
+          const a = r2() * Math.PI * 2, up = 0.3 + r2() * 0.9, sp = 1.2 + r2() * 2.6;
+          splashSeeds.set([Math.cos(a) * sp, up * sp * 1.4, Math.sin(a) * sp, 0.012 + r2() * 0.035, r2() * 0.12, r2()], i * 6);
+        }
+        splash = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 12, 8),
+          new THREE.MeshPhysicalMaterial({ color: 0xe8c278, metalness: 0.4, roughness: 0.08, transmission: 0.0, clearcoat: 1, emissive: 0x3a2405 }), N_SPLASH);
+        splash.frustumCulled = false; scene.add(splash);
+
+        key = new THREE.SpotLight(0xffd9a0, 0, 30, 0.42, 0.7, 1.2);
+        key.position.set(-4, 5, 4); key.target.position.set(0, 1.2, 0);
+        key.castShadow = true; key.shadow.mapSize.set(2048, 2048); key.shadow.radius = 8;
+        scene.add(key, key.target);
+        rim = new THREE.DirectionalLight(0x9fb8ff, 1.2); rim.position.set(3, 4, -4); scene.add(rim);
+        fill = new THREE.HemisphereLight(0x3a4a7a, 0x2a1808, 0.35); scene.add(fill);
+        await renderer.compileAsync(scene, camera);
+      }
+
+      function shoot(az, el, dist, ty, lift, fov) {
+        const a = az * DEG, e = el * DEG;
+        camera.fov = fov || 26;
+        camera.position.set(dist * Math.sin(a) * Math.cos(e), ty + dist * Math.sin(e), dist * Math.cos(a) * Math.cos(e));
+        camera.lookAt(0, ty, 0);
+        camera.setViewOffset(W, H, 0, lift, W, H);
+        camera.updateProjectionMatrix();
+      }
+
+      const CY = 1.34;
+      function updateSand(t, on) {
+        const pos = sand.geometry.attributes.position;
+        for (let i = 0; i < N_SAND; i++) {
+          const r0 = sandSeeds[i * 5], ph = sandSeeds[i * 5 + 1], dl = sandSeeds[i * 5 + 2], sp = sandSeeds[i * 5 + 3], jt = sandSeeds[i * 5 + 4];
+          const life = clamp01((t - 2.6 - dl * 1.6) / 4.6);             // 0 → 1 pendant la montée
+          const h = E.out2(life) * (0.4 + DIM.TOTAL_H * 1.05) * sp;      // monte le long du flacon
+          const ang = ph + (t - 2.6) * (1.6 + sp * 0.9);
+          const r = r0 * (1 - 0.35 * E.inOut2(life)) + jt;
+          const fade = on * clamp01(life * 6) * (1 - seg(t, 7.2, 8.0));
+          pos.setXYZ(i, Math.cos(ang) * r, fade > 0 ? h + jt : -50, Math.sin(ang) * r);
+        }
+        pos.needsUpdate = true;
+        sand.material.opacity = 0.85 * on;
+      }
+      function updateSplash(t) {
+        const t0 = 21.4, g = 4.2;
+        for (let i = 0; i < N_SPLASH; i++) {
+          const o = i * 6, dt = t - t0 - splashSeeds[o + 4];
+          if (dt < 0 || dt > 2.4) { dummy.position.set(0, -50, 0); dummy.scale.setScalar(0.0001); }
+          else {
+            dummy.position.set(splashSeeds[o] * dt * 0.7, 0.25 + splashSeeds[o + 1] * dt - g * dt * dt * 0.5, splashSeeds[o + 2] * dt * 0.7 + 0.5);
+            if (dummy.position.y < 0.01) dummy.position.y = 0.01;
+            dummy.scale.setScalar(splashSeeds[o + 3] * (1 - seg(dt, 1.6, 2.4)));
+          }
+          dummy.updateMatrix(); splash.setMatrixAt(i, dummy.matrix);
+        }
+        splash.instanceMatrix.needsUpdate = true;
+      }
+
+      function render(t) {
+        let rotY = 0, posY = 0, desert = 0, keyI = 60, sandOn = 0, fadeOut = 1;
+        key.color.set(0xffd9a0);
+        if (t < 8) {
+          // C1 + C2 — désert de nuit : le rayon révèle le flacon, puis le sable monte en spirale
+          desert = 1; sandOn = t > 2.4 ? 1 : 0;
+          keyI = lerp(14, 70, E.inOut2(seg(t, 0, 2.6)));
+          key.position.set(lerp(-7, -3.5, E.inOut2(seg(t, 0, 3))), 5, 4);
+          const k = E.inOut2(seg(t, 0, 8));
+          rotY = lerp(-8, 14, k) * DEG;
+          shoot(lerp(-6, 22, k), lerp(3, 7, k), lerp(14.5, 11.5, k), CY + 0.1, 40);
+        } else if (t < 18) {
+          // C3 — trois chapitres : lumière teintée, flacon en lévitation, lente rotation
+          const ch = t < 11.3 ? 0 : t < 14.6 ? 1 : 2;
+          const tints = [0xd8c2ff, 0xd2efc6, 0xffcf9a];
+          key.color.set(tints[ch]);
+          keyI = 55;
+          const lt = t - [8, 11.3, 14.6][ch];
+          key.position.set(lerp(-4, -2, seg(lt, 0, 3.3)), 5, 4);
+          posY = 0.25 + 0.05 * Math.sin(t * 1.1);
+          rotY = lerp(-18, 18, E.inOut2(seg(t, 8, 18))) * DEG;
+          shoot([0, -6, 6][ch] + lt * 1.2, 4, lerp(12.4, 11.8, seg(lt, 0, 3.3)), CY + 0.25, 60);
+        } else if (t < 25) {
+          // C4 — héros sur rayures dorées, puis éclaboussure au sol
+          keyI = 70;
+          const k = seg(t, 18, 25);
+          const drop = E.in2(seg(t, 20.9, 21.4));
+          posY = lerp(0.6, 0, drop) + (t > 21.4 ? 0.04 * Math.exp(-(t - 21.4) * 8) * Math.abs(Math.sin((t - 21.4) * 20)) : 0);
+          rotY = lerp(-40, 30, E.inOut3(seg(t, 18, 20.8))) * DEG;
+          if (t > 21.4) rotY = lerp(30, 0, E.out3(seg(t, 21.4, 23))) * DEG;
+          key.position.set(lerp(-4, 2, E.inOut2(k)), 5, 4);
+          shoot(0, lerp(6, 14, E.inOut2(k)), lerp(11.6, 10.4, E.inOut2(k)), CY + 0.2, 60);
+        } else {
+          // C5 — le flacon s'éteint dans le noir
+          keyI = 60;
+          fadeOut = 1 - E.inOut2(seg(t, 25.2, 26.3));
+          shoot(0, 6, lerp(10.8, 11.8, seg(t, 25, 30)), CY, 60);
+        }
+
+        dunes.visible = desert > 0;
+        shadowCatcher.visible = desert === 0;
+        key.intensity = keyI * fadeOut;
+        rim.intensity = 1.2 * fadeOut;
+        fill.intensity = 0.35 * fadeOut;
+        scene.environmentIntensity = 0.5 * fadeOut;
+        bottle.visible = fadeOut > 0.01;
+        bottle.rotation.y = rotY;
+        bottle.position.y = posY;
+        updateSand(t, sandOn);
+        updateSplash(t);
+        renderer.render(scene, camera);
+      }
+
+      await build();
+      host.render = render;
+      render(host.clock.t);
+      host.ready();
+    </script>
+  </body>
+</html>
