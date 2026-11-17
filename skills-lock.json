@@ -32,6 +32,13 @@
       "skillPath": "skills/hyperframes-registry/SKILL.md",
       "computedHash": "68c90542d8e4df21600949ef61da72fb7ab0c8c22cde3bfdc250e92fcc1d3696"
     },
+    "liquid-glass": {
+      "source": "deepika-builds/liquid-glass",
+      "commit": "98ed97bd99def529493fd37177228810f6422f6d",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "3f072d77fc9a6f266e8324c8dd736b39a80917d06211de489457286358721919"
+    },
     "media-use": {
       "source": "heygen-com/hyperframes",
       "sourceType": "github",
