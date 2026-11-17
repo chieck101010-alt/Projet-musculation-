@@ -26,8 +26,8 @@
       #avis .q { font-size: 62px; font-weight: 700; color: #111; line-height: 1.2; }
       #avis .src { margin-top: 20px; font-size: 32px; color: #6b5a3e; font-weight: 500; }
       #tenue { top: 1060px; }
-      #fin-nom { position: absolute; left: 0; width: 1080px; top: 1110px; text-align: center; opacity: 0; font-family: "Playfair Display", serif; font-size: 64px; letter-spacing: 0.5em; color: #f3dfa2; text-shadow: 0 4px 20px rgba(0,0,0,0.6); }
-      #fin-site { position: absolute; left: 0; width: 1080px; top: 1200px; text-align: center; opacity: 0; }
+      #fin-nom { position: absolute; left: 0; width: 1080px; top: 1040px; text-align: center; opacity: 0; font-family: "Playfair Display", serif; font-size: 64px; letter-spacing: 0.5em; color: #f3dfa2; text-shadow: 0 4px 20px rgba(0,0,0,0.6); }
+      #fin-site { position: absolute; left: 0; width: 1080px; top: 1125px; text-align: center; opacity: 0; }
       #fin-site p { display: inline; background: #fff; color: #111; font-weight: 700; font-size: 40px; padding: 8px 22px; border-radius: 12px; }
       #flash { position: absolute; inset: 0; background: #fff; opacity: 0; }
     </style>
@@ -61,7 +61,7 @@
         tl.to(["#st1", "#st2", "#st3"], { y: -14, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 2 }, 11);
         ["st1", "st2", "st3", "luxe"].forEach(function (id) { out(id, 15.95); }); flash(16.0);
         pop("avis", 16.2, -3);
-        pop("tenue", 19.6);
+        pop("tenue", 18.2);
         out("avis", 23.95); out("tenue", 23.95); flash(24.0);
         tl.fromTo("#fin-nom", { opacity: 0, scale: 1.2 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power3.out", immediateRender: false }, 24.6);
         pop("fin-site", 25.2);

@@ -1,0 +1,45 @@
+<!doctype html>
+<!-- REEF 33 — sous-titres de la voix off, phrase par phrase, calés sur la durée réelle de chaque phrase. -->
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: transparent; }
+      #captions-root { position: absolute; inset: 0; overflow: hidden; }
+      .cap { position: absolute; left: 110px; width: 860px; top: 1300px; text-align: center; opacity: 0; line-height: 1.5; }
+      .cap span { font-family:'Playfair Display',serif;font-style:italic;font-size:44px;color:#f3e6c4;text-shadow:0 2px 6px #000, 0 0 22px rgba(0,0,0,0.95); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+    </style>
+  </head>
+  <body>
+    <div id="captions-root" data-composition-id="captions" data-start="0" data-duration="30" data-width="1080" data-height="1920">
+      <div id="c1" class="cap"><span>Y&#x27;a des gens qu&#x27;on oublie…</span></div>
+      <div id="c2" class="cap"><span>…et y&#x27;a ceux qu&#x27;on sent encore, quand ils sont partis.</span></div>
+      <div id="c3" class="cap"><span>Le safran, pour l&#x27;entrée.</span></div>
+      <div id="c4" class="cap"><span>Le romarin, pour l&#x27;élégance.</span></div>
+      <div id="c5" class="cap"><span>L&#x27;oud… pour qu&#x27;on se souvienne de toi.</span></div>
+      <div id="c6" class="cap"><span>Pas besoin de parler fort.</span></div>
+      <div id="c7" class="cap"><span>REEF 33.</span></div>
+    </div>
+    <script>
+      (function () {
+        var tl = gsap.timeline({ paused: true });
+        function show(id, a, b) {
+          tl.fromTo("#" + id, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.15, ease: "power2.out", immediateRender: false }, a);
+          tl.to("#" + id, { opacity: 0, duration: 0.12 }, b);
+        }
+        show("c1", 0.5, 1.848);
+        show("c2", 2.4, 5.838);
+        show("c3", 8.5, 10.806);
+        show("c4", 11.8, 14.273);
+        show("c5", 15.1, 16.967);
+        show("c6", 19.2, 20.699);
+        show("c7", 27.5, 28.748);
+        tl.set({}, {}, 30);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["captions"] = tl;
+      })();
+    </script>
+  </body>
+</html>

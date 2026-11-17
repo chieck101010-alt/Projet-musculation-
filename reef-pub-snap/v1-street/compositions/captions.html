@@ -1,0 +1,43 @@
+<!doctype html>
+<!-- REEF 33 — sous-titres de la voix off, phrase par phrase, calés sur la durée réelle de chaque phrase. -->
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: transparent; }
+      #captions-root { position: absolute; inset: 0; overflow: hidden; }
+      .cap { position: absolute; left: 110px; width: 860px; top: 1250px; text-align: center; opacity: 0; line-height: 1.5; }
+      .cap span { font-family:'Montserrat',sans-serif;font-weight:800;font-size:44px;color:#fff;background:rgba(0,0,0,0.62);padding:10px 22px;border-radius:12px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+    </style>
+  </head>
+  <body>
+    <div id="captions-root" data-composition-id="captions" data-start="0" data-duration="30" data-width="1080" data-height="1920">
+      <div id="c1" class="cap"><span>Frère… c&#x27;est quoi c&#x27;parfum ?</span></div>
+      <div id="c2" class="cap"><span>Tout l&#x27;monde m&#x27;a d&#x27;mandé.</span></div>
+      <div id="c3" class="cap"><span>Safran, romarin, oud… et ça tient toute la journée, j&#x27;te jure.</span></div>
+      <div id="c4" class="cap"><span>C&#x27;est pas l&#x27;parfum qu&#x27;t&#x27;as senti dans l&#x27;métro. C&#x27;est d&#x27;la niche.</span></div>
+      <div id="c5" class="cap"><span>Soixante-cinq balles. Pour ça ? Validé.</span></div>
+      <div id="c6" class="cap"><span>REEF 33. Tu vas m&#x27;remercier.</span></div>
+    </div>
+    <script>
+      (function () {
+        var tl = gsap.timeline({ paused: true });
+        function show(id, a, b) {
+          tl.fromTo("#" + id, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.15, ease: "power2.out", immediateRender: false }, a);
+          tl.to("#" + id, { opacity: 0, duration: 0.12 }, b);
+        }
+        show("c1", 0.25, 1.557);
+        show("c2", 2.0, 3.654);
+        show("c3", 6.25, 10.724);
+        show("c4", 14.8, 18.757);
+        show("c5", 22.45, 25.326);
+        show("c6", 27.3, 29.967);
+        tl.set({}, {}, 30);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["captions"] = tl;
+      })();
+    </script>
+  </body>
+</html>
