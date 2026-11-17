@@ -1,0 +1,64 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #ff2e88; }
+    #s1-cam { position: absolute; inset: 0; }
+    .s1-lg { position: absolute; left: 120px; width: 760px; text-align: left; font-family: "League Gothic"; text-transform: uppercase; color: #17111f; line-height: 0.86; }
+    #s1-13 { top: 310px; font-size: 640px; text-shadow: 12px 12px 0 #fff6e6; }
+    #s1-years { top: 845px; font-size: 200px; letter-spacing: 0.02em; text-shadow: 8px 8px 0 #fff6e6; }
+    #s1-ruler { position: absolute; left: 120px; top: 1022px; width: 660px; height: 130px; overflow: hidden; }
+    #s1-strip { position: absolute; left: 0; top: 0; height: 130px; width: 3640px; display: flex; }
+    .s1-cell { position: relative; width: 260px; height: 130px; flex: none; }
+    .s1-cell span { position: absolute; left: 0; top: 12px; width: 260px; text-align: center; font-family: "League Gothic"; font-size: 86px; line-height: 1; color: #17111f; }
+    .s1-cell i { position: absolute; left: 129px; bottom: 0; width: 4px; height: 26px; background: #17111f; }
+    .s1-cell b { position: absolute; left: 64px; bottom: 0; width: 3px; height: 16px; background: #17111f; }
+    .s1-cell em { position: absolute; left: 194px; bottom: 0; width: 3px; height: 16px; background: #17111f; }
+    #s1-baseline { position: absolute; left: 0; bottom: 0; width: 3640px; height: 4px; background: #17111f; }
+    #s1-hl { position: absolute; left: 0; top: 0; width: 260px; height: 130px; background: #ffe3b8; }
+  </style>
+  <div id="root" data-composition-id="s1" data-width="1080" data-height="1920">
+    <div id="s1-cam">
+      <div id="s1-13" class="s1-lg">13</div>
+      <div id="s1-years" class="s1-lg">Years</div>
+      <div id="s1-ruler" data-layout-ignore>
+        <div id="s1-strip">
+          <div class="s1-cell"><div id="s1-hl"></div><span id="s1-y2013">2013</span><b></b><i></i><em></em></div>
+          <div class="s1-cell"><span>2014</span><b></b><i></i><em></em></div>
+          <div class="s1-cell"><span>2015</span><b></b><i></i><em></em></div>
+          <div class="s1-cell"><span>2016</span><b></b><i></i><em></em></div>
+          <div class="s1-cell"><span>2017</span><b></b><i></i><em></em></div>
+          <div class="s1-cell"><span>2018</span><b></b><i></i><em></em></div>
+          <div class="s1-cell"><span>2019</span><b></b><i></i><em></em></div>
+          <div class="s1-cell"><span>2020</span><b></b><i></i><em></em></div>
+          <div class="s1-cell"><span>2021</span><b></b><i></i><em></em></div>
+          <div class="s1-cell"><span>2022</span><b></b><i></i><em></em></div>
+          <div class="s1-cell"><span>2023</span><b></b><i></i><em></em></div>
+          <div class="s1-cell"><span>2024</span><b></b><i></i><em></em></div>
+          <div class="s1-cell"><span>2025</span><b></b><i></i><em></em></div>
+          <div class="s1-cell"><span>2026</span><b></b><i></i><em></em></div>
+          <div id="s1-baseline"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // frame 0 already reads "13 YEARS" (the thumbnail); the ruler carries the motion
+      // the ruler slides in showing 2026 = now (on "fans")
+      const now = 330 - (13 * 260 + 130);
+      const then = 330 - 130;
+      tl.fromTo("#s1-ruler", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "none" }, 2.3);
+      tl.fromTo("#s1-strip", { x: now + 420 }, { x: now, duration: 0.5, ease: "expo.out" }, 2.3);
+      // rewind 2026 -> 2013 while the sentence ends
+      tl.to("#s1-strip", { x: then, duration: 1.4, ease: "power2.inOut" }, 3.0);
+      tl.to("#s1-strip", { filter: "blur(10px)", duration: 0.7, ease: "power2.in" }, 3.0);
+      tl.to("#s1-strip", { filter: "blur(0px)", duration: 0.7, ease: "power2.out" }, 3.7);
+      // 2013 is singled out: a sand block prints behind it
+      tl.fromTo("#s1-hl", { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.22, ease: "power3.out" }, 4.42);
+      // zoom through the 2013 block into the next scene
+      tl.to(["#s1-13", "#s1-years"], { opacity: 0, filter: "blur(10px)", duration: 0.18, ease: "power2.in" }, 4.95);
+      tl.fromTo("#s1-cam", { scale: 1, transformOrigin: "450px 1087px" }, { scale: 18, duration: 0.45, ease: "power3.in" }, 4.95);
+      window.__timelines["s1"] = tl;
+    })();
+  </script>
+</template>

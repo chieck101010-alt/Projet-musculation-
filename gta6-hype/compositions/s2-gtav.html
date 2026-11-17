@@ -1,0 +1,61 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #ffe3b8; }
+    #s2-cam { position: absolute; inset: 0; }
+    .s2-lg { position: absolute; left: 120px; width: 760px; text-align: left; font-family: "League Gothic"; text-transform: uppercase; line-height: 0.86; color: #17111f; }
+    #s2-gta { top: 310px; font-size: 190px; color: #ff7a1a; text-shadow: 10px 10px 0 #17111f; }
+    #s2-gta span { display: inline-block; }
+    #s2-year { top: 485px; font-size: 360px; text-shadow: 12px 12px 0 #ff7a1a; }
+    #s2-count { top: 800px; font-size: 300px; color: #ff2e88; text-shadow: 12px 12px 0 #17111f; }
+    #s2-copies { position: absolute; left: 120px; width: 660px; top: 1080px; text-align: left; font-family: Inter; font-weight: 900; font-size: 56px; letter-spacing: 0.04em; color: #17111f; }
+    #s2-copies span { display: inline-block; }
+    #s2-stack { position: absolute; left: 0; top: 1330px; width: 1080px; height: 590px; }
+    .s2-case { position: absolute; left: 280px; width: 520px; height: 50px; border: 5px solid #17111f; border-radius: 6px; }
+    .s2-case i { position: absolute; left: 22px; top: 8px; width: 120px; height: 24px; background: #17111f; border-radius: 3px; }
+    .s2-o { background: #ff7a1a; } .s2-p { background: #ff2e88; } .s2-c { background: #fff6e6; }
+  </style>
+  <div id="root" data-composition-id="s2" data-width="1080" data-height="1920">
+    <div id="s2-cam">
+      <div id="s2-gta" class="s2-lg"><span>G</span><span>T</span><span>A</span><span>&nbsp;</span><span>V</span></div>
+      <div id="s2-year" class="s2-lg">2013</div>
+      <div id="s2-count" class="s2-lg">200M+</div>
+      <div id="s2-copies"><span>COPIES</span> <span>SOLD</span></div>
+      <div id="s2-stack" data-layout-ignore>
+        <div class="s2-case s2-o" style="top: 530px"><i></i></div>
+        <div class="s2-case s2-c" style="top: 476px"><i></i></div>
+        <div class="s2-case s2-p" style="top: 422px"><i></i></div>
+        <div class="s2-case s2-o" style="top: 368px"><i></i></div>
+        <div class="s2-case s2-c" style="top: 314px"><i></i></div>
+        <div class="s2-case s2-p" style="top: 260px"><i></i></div>
+        <div class="s2-case s2-o" style="top: 206px"><i></i></div>
+        <div class="s2-case s2-c" style="top: 152px"><i></i></div>
+        <div class="s2-case s2-p" style="top: 98px"><i></i></div>
+        <div class="s2-case s2-o" style="top: 44px"><i></i></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // 2013 arrives out of the zoom
+      tl.fromTo("#s2-year", { scale: 3.2, filter: "blur(16px)", transformOrigin: "50% 60%" }, { scale: 1, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, 0);
+      // "GTA V", letter by letter
+      tl.fromTo("#s2-gta span", { opacity: 0.3, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.14, stagger: 0.1, ease: "power2.out" }, 0.45);
+      tl.fromTo("#s2-gta", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 0.45);
+      // copies counter: 0 -> 200, lands on "million"
+      const n = { v: 0 };
+      const el = () => document.querySelector("#s2-count");
+      tl.fromTo("#s2-count", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 3.5);
+      tl.fromTo(n, { v: 0 }, { v: 200, duration: 1.2, ease: "power3.out", onUpdate: () => { el().textContent = Math.round(n.v) + "M+"; } }, 3.6);
+      // the stack of game cases piles up with the count
+      const cases = gsap.utils.toArray("#s2-stack .s2-case");
+      cases.forEach((c, i) => {
+        tl.fromTo(c, { y: -700, rotation: i % 2 ? 3 : -3, opacity: 0 }, { y: 0, rotation: i % 2 ? 1.5 : -1.5, opacity: 1, duration: 0.42, ease: "expo.out" }, 3.6 + i * 0.11);
+      });
+      tl.fromTo("#s2-copies span", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.08, ease: "power2.out" }, 5.1);
+      // vertical whip out
+      tl.to("#s2-cam", { y: -1100, filter: "blur(16px)", duration: 0.35, ease: "power3.in" }, 5.95);
+      window.__timelines["s2"] = tl;
+    })();
+  </script>
+</template>

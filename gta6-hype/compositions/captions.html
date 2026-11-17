@@ -1,0 +1,101 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    .cap { position: absolute; left: 120px; top: 1166px; width: 660px; text-align: left; font-family: Inter; font-weight: 800; font-size: 50px; line-height: 1.1; color: #fff6e6; -webkit-text-stroke: 10px #17111f; paint-order: stroke fill; opacity: 0; visibility: hidden; }
+  </style>
+  <div id="root" data-composition-id="captions" data-width="1080" data-height="1920">
+      <div id="cap-0" class="cap">Thirteen years.</div>
+      <div id="cap-1" class="cap">That's how long</div>
+      <div id="cap-2" class="cap">fans have waited</div>
+      <div id="cap-3" class="cap">for a new</div>
+      <div id="cap-4" class="cap">Grand Theft Auto.</div>
+      <div id="cap-5" class="cap">GTA Five came</div>
+      <div id="cap-6" class="cap">out in 2013</div>
+      <div id="cap-7" class="cap">and sold over two</div>
+      <div id="cap-8" class="cap">hundred million</div>
+      <div id="cap-9" class="cap">copies.</div>
+      <div id="cap-10" class="cap">The first GTA</div>
+      <div id="cap-11" class="cap">Six trailer pulled</div>
+      <div id="cap-12" class="cap">in over ninety</div>
+      <div id="cap-13" class="cap">million views in a</div>
+      <div id="cap-14" class="cap">single day.</div>
+      <div id="cap-15" class="cap">GTA Six takes</div>
+      <div id="cap-16" class="cap">you to Leonida</div>
+      <div id="cap-17" class="cap">a fictional Florida</div>
+      <div id="cap-18" class="cap">with Vice City</div>
+      <div id="cap-19" class="cap">at its heart.</div>
+      <div id="cap-20" class="cap">You follow two</div>
+      <div id="cap-21" class="cap">leads</div>
+      <div id="cap-22" class="cap">Lucia and Jason</div>
+      <div id="cap-23" class="cap">pulled into a</div>
+      <div id="cap-24" class="cap">criminal conspiracy.</div>
+      <div id="cap-25" class="cap">First due in 2025</div>
+      <div id="cap-26" class="cap">it slipped to May</div>
+      <div id="cap-27" class="cap">2026</div>
+      <div id="cap-28" class="cap">then to November</div>
+      <div id="cap-29" class="cap">nineteenth.</div>
+      <div id="cap-30" class="cap">It's coming to</div>
+      <div id="cap-31" class="cap">PlayStation 5 and</div>
+      <div id="cap-32" class="cap">Xbox Series X</div>
+      <div id="cap-33" class="cap">and S.</div>
+      <div id="cap-34" class="cap">No PC date</div>
+      <div id="cap-35" class="cap">yet.</div>
+      <div id="cap-36" class="cap">After thirteen years</div>
+      <div id="cap-37" class="cap">the wait is</div>
+      <div id="cap-38" class="cap">almost over.</div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const T = [
+        [0.3, 1.31],
+        [1.54, 2.37],
+        [2.38, 3.25],
+        [3.26, 3.75],
+        [3.76, 5.01],
+        [5.6, 6.89],
+        [6.9, 8.51],
+        [8.84, 9.85],
+        [9.86, 10.51],
+        [10.52, 11.21],
+        [11.9, 12.73],
+        [12.74, 14.09],
+        [14.1, 14.79],
+        [14.8, 15.99],
+        [16.0, 16.87],
+        [17.3, 18.55],
+        [18.56, 19.53],
+        [19.7, 20.91],
+        [21.08, 21.87],
+        [21.88, 22.83],
+        [23.3, 24.01],
+        [24.02, 24.67],
+        [24.9, 26.13],
+        [26.14, 26.77],
+        [26.78, 27.81],
+        [28.6, 30.61],
+        [30.94, 31.87],
+        [31.88, 33.15],
+        [33.16, 34.55],
+        [34.56, 35.59],
+        [36.0, 36.55],
+        [36.56, 37.83],
+        [37.84, 39.11],
+        [39.12, 39.87],
+        [40.08, 41.01],
+        [41.02, 41.55],
+        [42.1, 43.45],
+        [43.64, 44.17],
+        [44.18, 45.13]
+      ];
+      T.forEach(([s, e], i) => {
+        const g = "#cap-" + i;
+        tl.set(g, { visibility: "visible" }, s);
+        tl.fromTo(g, { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.12, ease: "power2.out", immediateRender: false }, s);
+        tl.to(g, { opacity: 0, duration: 0.1, ease: "power2.in" }, e - 0.1);
+        tl.set(g, { opacity: 0, visibility: "hidden" }, e);
+      });
+      window.__timelines["captions"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,36 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #ffe3b8; }
+    #s7-label { position: absolute; left: 120px; width: 660px; top: 290px; text-align: left; font-family: Inter; font-weight: 900; font-size: 44px; letter-spacing: 0.08em; color: #17111f; opacity: 0.75; }
+    .s7-lg { position: absolute; left: 120px; width: 768px; text-align: left; font-family: "League Gothic"; text-transform: uppercase; line-height: 0.86; color: #17111f; }
+    .s7-lg span { display: inline-block; }
+    #s7-ps { top: 350px; font-size: 128px; text-shadow: 8px 8px 0 #ff7a1a; }
+    #s7-xb { top: 490px; font-size: 128px; text-shadow: 8px 8px 0 #ff7a1a; }
+    #s7-pc { top: 640px; font-size: 330px; }
+    #s7-stamp { position: absolute; left: 120px; width: 660px; top: 830px; text-align: left; }
+    #s7-stamp div { display: inline-block; padding: 8px 34px 0; border: 10px solid #ff2e88; border-radius: 12px; background: #ffe3b8; font-family: "League Gothic"; font-size: 104px; line-height: 1; color: #ff2e88; letter-spacing: 0.04em; }
+    #s7-flood { position: absolute; inset: 0; background: #0a4d68; clip-path: circle(0px at 400px 895px); }
+  </style>
+  <div id="root" data-composition-id="s7" data-width="1080" data-height="1920">
+    <div id="s7-label">LAUNCH PLATFORMS</div>
+    <div id="s7-ps" class="s7-lg"><span>PLAYSTATION</span> <span>5</span></div>
+    <div id="s7-xb" class="s7-lg"><span>XBOX</span> <span>SERIES</span> <span>X|S</span></div>
+    <div id="s7-pc" class="s7-lg" data-layout-allow-overlap>PC</div>
+    <div id="s7-stamp" data-layout-allow-overlap><div id="s7-stamp-in" data-layout-allow-overlap>NO DATE YET</div></div>
+    <div id="s7-flood" data-layout-ignore></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // after the dip cut the label is already printed; platforms arrive on their words
+      tl.fromTo("#s7-ps span", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15, stagger: 0.12, ease: "power2.out" }, 0.85);
+      tl.fromTo("#s7-xb span", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15, stagger: 0.14, ease: "power2.out" }, 2.0);
+      // PC printed faint, then stamped
+      tl.fromTo("#s7-pc", { opacity: 0 }, { opacity: 0.28, duration: 0.25, ease: "power2.out" }, 4.35);
+      tl.fromTo("#s7-stamp-in", { opacity: 0, scale: 1.6, rotation: -14 }, { opacity: 1, scale: 1, rotation: -8, duration: 0.18, ease: "power4.out" }, 4.8);
+      // ocean floods out of the stamp
+      tl.fromTo("#s7-flood", { clipPath: "circle(0px at 400px 895px)" }, { clipPath: "circle(2300px at 400px 895px)", duration: 0.45, ease: "power2.inOut" }, 5.55);
+      window.__timelines["s7"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,55 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #0f8b8d; }
+    #s4-dots { position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(10, 77, 104, 0.35) 30%, transparent 32%); background-size: 18px 18px; }
+    #s4-map { position: absolute; left: 108px; top: 540px; width: 864px; height: 880px; }
+    .s4-lg { position: absolute; font-family: "League Gothic"; text-transform: uppercase; line-height: 0.86; }
+    #s4-name { left: 120px; width: 760px; top: 315px; text-align: left; font-size: 180px; color: #17111f; text-shadow: 8px 8px 0 #fff6e6; }
+    #s4-name span { display: inline-block; }
+    #s4-sub { position: absolute; left: 120px; width: 760px; top: 480px; text-align: left; font-family: Inter; font-weight: 900; font-size: 44px; letter-spacing: 0.06em; color: #17111f; }
+    #s4-sub span { display: inline-block; }
+    #s4-pin { position: absolute; left: 648px; top: 1030px; width: 80px; height: 122px; }
+    #s4-vice { left: 120px; width: 500px; top: 1035px; text-align: right; font-size: 118px; color: #ff2e88; text-shadow: 7px 7px 0 #17111f; }
+    #s4-flood { position: absolute; inset: 0; background: #ff7a1a; clip-path: circle(0px at 688px 1148px); }
+  </style>
+  <div id="root" data-composition-id="s4" data-width="1080" data-height="1920">
+    <div id="s4-dots" data-layout-ignore></div>
+    <svg id="s4-map" viewBox="0 0 1080 1100" data-layout-ignore>
+      <path id="s4-land" d="M 60 60 L 1020 60 L 1020 230 C 960 250 900 245 860 270 C 820 300 800 360 790 430 C 780 520 770 600 740 690 C 715 770 690 840 640 900 C 610 935 570 950 545 925 C 520 890 515 830 500 770 C 480 690 450 610 420 540 C 395 480 370 420 330 360 C 300 320 250 290 200 280 C 150 270 100 280 60 300 Z"
+        fill="#ffe3b8" fill-opacity="0" stroke="#17111f" stroke-width="7" stroke-linejoin="round" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="110" />
+      <g id="s4-keys" fill="#ffe3b8" stroke="#17111f" stroke-width="5">
+        <ellipse cx="505" cy="968" rx="22" ry="11" />
+        <ellipse cx="458" cy="990" rx="20" ry="10" />
+        <ellipse cx="410" cy="1004" rx="18" ry="9" />
+        <ellipse cx="364" cy="1012" rx="16" ry="8" />
+        <ellipse cx="320" cy="1016" rx="14" ry="7" />
+      </g>
+    </svg>
+    <div id="s4-name" class="s4-lg"><span>L</span><span>E</span><span>O</span><span>N</span><span>I</span><span>D</span><span>A</span></div>
+    <div id="s4-sub"><span>A</span> <span>FICTIONAL</span> <span>FLORIDA</span></div>
+    <div id="s4-vice" class="s4-lg">Vice City</div>
+    <svg id="s4-pin" viewBox="0 0 80 122">
+      <path d="M40 118 C 30 92 6 70 6 40 A 34 34 0 1 1 74 40 C 74 70 50 92 40 118 Z" fill="#ff2e88" stroke="#17111f" stroke-width="6" stroke-linejoin="round" />
+      <circle cx="40" cy="40" r="13" fill="#fff6e6" stroke="#17111f" stroke-width="5" />
+    </svg>
+    <div id="s4-flood" data-layout-ignore></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // the coast draws, then the land is printed
+      tl.fromTo("#s4-land", { attr: { "stroke-dashoffset": 110 } }, { attr: { "stroke-dashoffset": 0 }, duration: 1.5, ease: "power2.inOut" }, 0.05);
+      tl.to("#s4-land", { attr: { "fill-opacity": 1 }, duration: 0.4, ease: "power2.out" }, 1.55);
+      tl.fromTo("#s4-keys ellipse", { opacity: 0, scale: 0.4, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.25, stagger: 0.06, ease: "back.out(1.6)" }, 1.35);
+      // LEONIDA letter by letter on the word
+      tl.fromTo("#s4-name span", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.14, stagger: 0.08, ease: "power2.out" }, 1.7);
+      tl.fromTo("#s4-sub span", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.08, ease: "power2.out" }, 2.65);
+      // the pin drops on Vice City
+      tl.fromTo("#s4-pin", { y: -520, opacity: 0 }, { y: 0, opacity: 1, duration: 0.42, ease: "back.out(1.5)" }, 3.95);
+      tl.fromTo("#s4-vice", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 4.25);
+      // orange floods out of the pin
+      tl.fromTo("#s4-flood", { clipPath: "circle(0px at 688px 1148px)" }, { clipPath: "circle(2300px at 688px 1148px)", duration: 0.45, ease: "power2.inOut" }, 5.55);
+      window.__timelines["s4"] = tl;
+    })();
+  </script>
+</template>

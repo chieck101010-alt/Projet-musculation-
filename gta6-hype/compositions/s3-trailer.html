@@ -1,0 +1,68 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #0a4d68; }
+    #s3-cam { position: absolute; inset: 0; }
+    #s3-player { position: absolute; left: 120px; top: 290px; width: 760px; height: 428px; border-radius: 18px; background: #17111f; overflow: hidden; border: 6px solid #fff6e6; }
+    #s3-sun { position: absolute; left: 240px; top: 100px; width: 280px; height: 280px; border-radius: 50%; background: #ff7a1a; overflow: hidden; }
+    #s3-sun i { position: absolute; left: 0; top: 140px; width: 280px; height: 140px; background-image: radial-gradient(circle, #ff2e88 42%, transparent 44%); background-size: 18px 18px; }
+    .s3-wave { position: absolute; left: 0; width: 760px; height: 10px; background: #fff6e6; }
+    #s3-sea { position: absolute; left: 0; top: 290px; width: 760px; height: 140px; background: #0a4d68; }
+    #s3-label { position: absolute; left: 30px; top: 24px; font-family: Inter; font-weight: 800; font-size: 34px; letter-spacing: 0.04em; color: #fff6e6; }
+    #s3-play { position: absolute; left: 325px; top: 140px; width: 110px; height: 130px; }
+    #s3-track { position: absolute; left: 30px; bottom: 24px; width: 688px; height: 10px; border-radius: 5px; background: rgba(255, 246, 230, 0.3); }
+    #s3-fill { position: absolute; left: 0; top: 0; width: 688px; height: 10px; border-radius: 5px; background: #ff2e88; }
+    #s3-flood { position: absolute; inset: 0; background: #0f8b8d; }
+    #s3-count { position: absolute; left: 120px; width: 660px; top: 750px; text-align: left; font-family: "League Gothic"; font-size: 320px; line-height: 0.86; color: #ff2e88; text-shadow: 12px 12px 0 #fff6e6; }
+    #s3-row { position: absolute; left: 120px; width: 660px; top: 1050px; height: 100px; display: flex; justify-content: flex-start; align-items: center; gap: 26px; }
+    #s3-ring { width: 84px; height: 84px; }
+    #s3-views { font-family: Inter; font-weight: 900; font-size: 50px; letter-spacing: 0.04em; color: #fff6e6; }
+  </style>
+  <div id="root" data-composition-id="s3" data-width="1080" data-height="1920">
+    <div id="s3-cam">
+      <div id="s3-player">
+        <div id="s3-sun"><i></i></div>
+        <div id="s3-sea"></div>
+        <div class="s3-wave" style="top: 298px"></div>
+        <div class="s3-wave" style="top: 328px; opacity: 0.6"></div>
+        <div class="s3-wave" style="top: 358px; opacity: 0.35"></div>
+        <div id="s3-label">TRAILER 1 · DEC 2023</div>
+        <svg id="s3-play" viewBox="0 0 110 130"><path d="M8 6 L104 65 L8 124 Z" fill="#fff6e6" stroke="#17111f" stroke-width="8" stroke-linejoin="round" /></svg>
+        <div id="s3-track"><div id="s3-fill"></div></div>
+        <div id="s3-flood"></div>
+      </div>
+      <div id="s3-count">90M+</div>
+      <div id="s3-row">
+        <svg id="s3-ring" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,246,230,0.3)" stroke-width="12" />
+          <circle id="s3-arc" cx="50" cy="50" r="40" fill="none" stroke="#ff2e88" stroke-width="12" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="100" transform="rotate(-90 50 50)" />
+        </svg>
+        <div id="s3-views">VIEWS IN 24 H</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // whip in from below (matches the previous scene's exit)
+      tl.fromTo("#s3-cam", { y: 1100, filter: "blur(16px)" }, { y: 0, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, 0);
+      // press play: the triangle dips and clears, the trailer runs
+      tl.to("#s3-play", { scale: 0.82, duration: 0.1, ease: "power2.in", transformOrigin: "50% 50%" }, 0.55);
+      tl.to("#s3-play", { scale: 1.3, opacity: 0, duration: 0.2, ease: "power2.out" }, 0.65);
+      tl.fromTo("#s3-fill", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 4.1, ease: "none" }, 0.65);
+      tl.fromTo("#s3-sun", { y: 120 }, { y: 0, duration: 4.1, ease: "none" }, 0.65);
+      // views counter, lands on "million"
+      const n = { v: 0 };
+      const el = () => document.querySelector("#s3-count");
+      tl.fromTo("#s3-count", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 2.45);
+      tl.fromTo(n, { v: 0 }, { v: 90, duration: 0.85, ease: "power3.out", onUpdate: () => { el().textContent = Math.round(n.v) + "M+"; } }, 2.5);
+      tl.fromTo("#s3-row", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15, ease: "power2.out" }, 3.5);
+      // the 24 h ring fills on "a single day"
+      tl.fromTo("#s3-arc", { attr: { "stroke-dashoffset": 100 } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.7, ease: "power2.inOut" }, 3.9);
+      // the player screen grows past the frame; its fill becomes the sea of the map
+      tl.fromTo("#s3-flood", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 4.85);
+      tl.to(["#s3-count", "#s3-row"], { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power2.in" }, 4.75);
+      tl.to("#s3-player", { scale: 6.2, y: 456, borderRadius: 0, duration: 0.65, ease: "power2.inOut", transformOrigin: "50% 50%" }, 4.75);
+      window.__timelines["s3"] = tl;
+    })();
+  </script>
+</template>

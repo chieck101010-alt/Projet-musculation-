@@ -1,0 +1,48 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #17111f; }
+    #s6-cam { position: absolute; inset: 0; }
+    #s6-label { position: absolute; left: 120px; width: 660px; top: 290px; text-align: left; font-family: Inter; font-weight: 900; font-size: 44px; letter-spacing: 0.08em; color: #ffe3b8; }
+    .s6-row { position: absolute; left: 120px; width: 660px; text-align: left; }
+    .s6-row > div { position: relative; display: inline-block; font-family: "League Gothic"; text-transform: uppercase; line-height: 0.86; color: #fff6e6; }
+    .s6-row span { display: inline-block; }
+    .s6-strike { position: absolute; left: -12px; right: -12px; top: 44%; height: 26px; background: #ff2e88; }
+    #s6-r1 { top: 350px; } #s6-r1 > div { font-size: 220px; }
+    #s6-r2 { top: 560px; } #s6-r2 > div { font-size: 170px; }
+    #s6-r3 { top: 730px; } #s6-r3 > div { font-size: 250px; color: #ff2e88; text-shadow: 11px 11px 0 #fff6e6; }
+    #s6-r4 { top: 960px; } #s6-r4 > div { font-size: 140px; }
+    #s6-dip { position: absolute; inset: 0; background: #000; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="s6" data-width="1080" data-height="1920">
+    <div id="s6-cam">
+      <div id="s6-label">RELEASE DATE</div>
+      <div id="s6-r1" class="s6-row"><div id="s6-d1">2025<i id="s6-x1" class="s6-strike"></i></div></div>
+      <div id="s6-r2" class="s6-row"><div id="s6-d2"><span>MAY</span> <span>2026</span><i id="s6-x2" class="s6-strike"></i></div></div>
+      <div id="s6-r3" class="s6-row"><div id="s6-d3">NOV 19</div></div>
+      <div id="s6-r4" class="s6-row"><div id="s6-d4">2026</div></div>
+    </div>
+    <div id="s6-dip" data-layout-ignore></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // whip in from the right (matches the previous scene's exit to the left)
+      tl.fromTo("#s6-cam", { x: 1300, filter: "blur(16px)" }, { x: 0, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, 0);
+      tl.fromTo("#s6-d2 span", { opacity: 0, filter: "blur(6px)" }, { opacity: 0, filter: "blur(6px)", duration: 0.01 }, 0);
+      tl.fromTo(["#s6-d3", "#s6-d4"], { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+      // 2025 struck on "slipped"
+      tl.fromTo("#s6-x1", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.25, ease: "power3.out" }, 2.85);
+      tl.to("#s6-d1", { opacity: 0.35, duration: 0.25, ease: "power2.out" }, 3.1);
+      // May 2026 on "May", struck on "then"
+      tl.to("#s6-d2 span", { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.12, ease: "power2.out" }, 3.3);
+      tl.fromTo("#s6-x2", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.25, ease: "power3.out" }, 4.75);
+      tl.to("#s6-d2", { opacity: 0.35, duration: 0.25, ease: "power2.out" }, 5.0);
+      // November 19, 2026 slams in
+      tl.fromTo("#s6-d3", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.2, ease: "power4.out", immediateRender: false }, 5.85);
+      tl.fromTo("#s6-d4", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.2, ease: "power4.out", immediateRender: false }, 5.97);
+      // dip cut
+      tl.to("#s6-dip", { opacity: 0.4, duration: 0.01 }, 7.3);
+      window.__timelines["s6"] = tl;
+    })();
+  </script>
+</template>
