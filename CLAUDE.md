@@ -47,6 +47,8 @@ Présente-moi un tableau « Outil → ce qu'il apporte à cette pub → utile ou
 
 Les outils connectés ne s'utilisent pas tout seuls : c'est à toi de faire cet inventaire à chaque projet, même si une skill ou un outil te propose sa propre méthode.
 
+**Skills** : fais aussi l'inventaire des skills disponibles et dis lesquelles tu utilises. Pour toute pub, charge la skill **`studio-pub`** (méthode complète de l'agence). Avant de créer un effet, une transition ou un titre animé à la main, cherche d'abord dans **`hyperframes-registry`**. Pense aussi à `reverse-any-video` (copier une référence), `apify-ultimate-scraper` (analyser des pubs concurrentes), `style-sampling` et `deep-research`.
+
 Règles :
 
 - Ne te rabats jamais sur une solution de moindre qualité (voix robotique, musique de synthèse, détourage maison) sans m'avoir d'abord proposé l'outil connecté qui fait mieux.
