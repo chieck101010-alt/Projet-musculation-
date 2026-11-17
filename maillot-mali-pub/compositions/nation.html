@@ -1,0 +1,39 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #070b08; font-family: "Montserrat", sans-serif; color: #f4ecd8; }
+    #nation-bg { position: absolute; left: -60px; top: 0; width: 1200px; height: 1920px; object-fit: cover; opacity: .85; }
+    #nation-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,11,8,.55) 0%, rgba(7,11,8,.35) 30%, rgba(7,11,8,.85) 62%, #070b08 100%); }
+    #nation-flag { position: absolute; right: -40px; top: 190px; width: 380px; height: 469px; object-fit: cover;
+      -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent 100%); mask-image: radial-gradient(closest-side, #000 55%, transparent 100%); }
+    .nl { position: absolute; left: 0; right: 0; text-align: center; overflow: hidden; }
+    .nl span { display: inline-block; }
+    #nation-l1 { top: 690px; font-weight: 800; font-size: 58px; letter-spacing: 2px; }
+    #nation-l2 { top: 765px; font-weight: 800; font-size: 58px; letter-spacing: 2px; }
+    #nation-l3 { top: 880px; font-family: "Archivo Black", sans-serif; font-size: 124px; line-height: 1.05; }
+    #nation-l4 { top: 1030px; font-family: "Archivo Black", sans-serif; font-size: 172px; line-height: 1.05; color: #fcd116; }
+    #nation-bar { position: absolute; left: 160px; width: 760px; top: 1250px; height: 16px; display: flex; }
+    #nation-bar i { flex: 1; }
+  </style>
+  <div id="root" data-composition-id="nation" data-width="1080" data-height="1920">
+    <img id="nation-bg" src="assets/img/djenne.png" alt="" />
+    <div id="nation-shade"></div>
+    <img id="nation-flag" src="assets/img/drapeau.png" alt="" />
+    <div class="nl" id="nation-l1"><span>PORTER CE MAILLOT,</span></div>
+    <div class="nl" id="nation-l2"><span>C'EST REPRÉSENTER</span></div>
+    <div class="nl" id="nation-l3"><span>TOUTE UNE</span></div>
+    <div class="nl" id="nation-l4"><span>NATION.</span></div>
+    <div id="nation-bar"><i style="background:#14b53a"></i><i style="background:#fcd116"></i><i style="background:#ce1126"></i></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#nation-bg", { scale: 1.25 }, { scale: 1.05, duration: 3.9, ease: "none" }, 0);
+    tl.fromTo("#nation-flag", { x: 300, rotation: 12 }, { x: 0, rotation: -4, duration: 1.2, ease: "expo.out" }, 0.1);
+    tl.fromTo("#nation-l1 span", { yPercent: 110 }, { yPercent: 0, duration: 0.45, ease: "expo.out" }, 0.1);
+    tl.fromTo("#nation-l2 span", { yPercent: 110 }, { yPercent: 0, duration: 0.45, ease: "expo.out" }, 0.58);
+    tl.fromTo("#nation-l3 span", { yPercent: 110 }, { yPercent: 0, duration: 0.45, ease: "expo.out" }, 1.06);
+    tl.fromTo("#nation-l4 span", { scale: 2.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "power4.out" }, 1.55);
+    tl.fromTo("#nation-bar i", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.35, stagger: 0.1, ease: "power3.out" }, 2.0);
+    tl.to("#nation-l4 span", { scale: 1.06, duration: 1.4, ease: "none" }, 2.0);
+    window.__timelines["nation"] = tl;
+  </script>
+</template>

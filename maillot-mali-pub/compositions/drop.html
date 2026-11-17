@@ -1,0 +1,52 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #050806; font-family: "Montserrat", sans-serif; color: #f4ecd8; perspective: 1800px; }
+    #dr-stade { position: absolute; inset: 0; width: 1080px; height: 1920px; object-fit: cover; opacity: .55; }
+    #dr-shade { position: absolute; inset: 0; background: radial-gradient(70% 45% at 50% 48%, rgba(5,8,6,0) 0%, rgba(5,8,6,.75) 75%, #050806 100%); }
+    #dr-band { position: absolute; left: -200px; top: 560px; width: 1480px; height: 520px; display: flex; flex-direction: column; transform: rotate(-12deg); opacity: .9; }
+    #dr-band i { flex: 1; }
+    #dr-wrap { position: absolute; left: 225px; top: 460px; width: 630px; height: 700px; }
+    #dr-jersey, #dr-shine { position: absolute; inset: 0; width: 100%; height: 100%; }
+    #dr-jersey { filter: drop-shadow(0 50px 70px rgba(0,0,0,.7)); }
+    #dr-shine { background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,.75) 50%, transparent 65%); background-size: 300% 100%; background-position: 120% 0;
+      -webkit-mask-image: url(assets/img/maillot.png); mask-image: url(assets/img/maillot.png); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; mix-blend-mode: screen; }
+    #dr-t1 { position: absolute; left: 0; right: 0; top: 190px; text-align: center; font-weight: 900; font-size: 64px; letter-spacing: 6px; }
+    #dr-t2 { position: absolute; left: 0; right: 0; top: 262px; text-align: center; font-family: "Archivo Black", sans-serif; font-size: 190px; line-height: 1; color: #fcd116; text-shadow: 0 8px 0 #0a3d1a; }
+    #dr-prix { position: absolute; left: 60px; top: 1100px; z-index: 5; padding: 6px 44px 12px; background: #ce1126; transform: rotate(-7deg); font-family: "Archivo Black", sans-serif; font-size: 170px; line-height: 1.05; color: #fff; box-shadow: 0 18px 40px rgba(0,0,0,.5); }
+    #dr-tailles { position: absolute; z-index: 5; left: 560px; top: 1165px; width: 470px; }
+    #dr-tl { font-weight: 900; font-size: 44px; letter-spacing: 4px; margin-bottom: 18px; text-align: center; }
+    #dr-chips { display: flex; gap: 12px; justify-content: center; }
+    .dr-chip { min-width: 78px; padding: 16px 12px; border-radius: 12px; background: #14b53a; color: #fff; font-weight: 900; font-size: 36px; text-align: center; }
+    #dr-flash { position: absolute; inset: 0; background: #fff; }
+  </style>
+  <div id="root" data-composition-id="drop" data-width="1080" data-height="1920">
+    <img id="dr-stade" src="assets/img/stade.png" alt="" />
+    <div id="dr-shade"></div>
+    <div id="dr-band"><i style="background:#14b53a"></i><i style="background:#fcd116"></i><i style="background:#ce1126"></i></div>
+    <div id="dr-wrap"><img id="dr-jersey" src="assets/img/maillot.png" alt="Maillot du Mali WA" /><div id="dr-shine"></div></div>
+    <p id="dr-t1">NOUVEAU MAILLOT</p>
+    <p id="dr-t2">DU MALI</p>
+    <div id="dr-prix" data-var-text="prix">30 €</div>
+    <div id="dr-tailles">
+      <p id="dr-tl">TAILLES</p>
+      <div id="dr-chips"><span class="dr-chip">S</span><span class="dr-chip">M</span><span class="dr-chip">L</span><span class="dr-chip">XL</span><span class="dr-chip">2XL</span></div>
+    </div>
+    <div id="dr-flash"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#dr-flash", { opacity: 1 }, { opacity: 0, duration: 0.35, ease: "power2.out" }, 0);
+    tl.fromTo("#dr-stade", { scale: 1.3 }, { scale: 1.1, duration: 4.25, ease: "none" }, 0);
+    tl.fromTo("#dr-band", { xPercent: -100 }, { xPercent: 0, duration: 0.5, ease: "expo.out" }, 0.02);
+    tl.fromTo("#dr-wrap", { scale: 1.35 }, { scale: 1, duration: 0.6, ease: "expo.out" }, 0);
+    tl.fromTo("#dr-wrap", { rotationY: -14 }, { rotationY: 14, duration: 4.25, ease: "sine.inOut" }, 0);
+    tl.fromTo("#dr-t1", { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.35, ease: "power4.out" }, 0.1);
+    tl.fromTo("#dr-t2", { scale: 2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "power4.out" }, 0.45);
+    tl.fromTo("#dr-prix", { scale: 3, opacity: 0, rotation: -25 }, { scale: 1, opacity: 1, rotation: -7, duration: 0.3, ease: "power4.in" }, 0.68);
+    tl.fromTo("#dr-wrap", { x: 0 }, { x: 10, duration: 0.05, yoyo: true, repeat: 3, ease: "none" }, 0.98);
+    tl.fromTo("#dr-shine", { backgroundPosition: "120% 0" }, { backgroundPosition: "-20% 0", duration: 0.9, ease: "power2.inOut" }, 1.65);
+    tl.fromTo("#dr-tl", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3, ease: "power4.out" }, 1.7);
+    tl.fromTo(".dr-chip", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.25, stagger: 0.243, ease: "back.out(2)" }, 1.95);
+    window.__timelines["drop"] = tl;
+  </script>
+</template>

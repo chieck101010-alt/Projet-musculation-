@@ -1,0 +1,44 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: radial-gradient(110% 70% at 50% 40%, #145a2b 0%, #07200f 55%, #050806 100%); font-family: "Montserrat", sans-serif; color: #f4ecd8; }
+    #ct-l1 { position: absolute; left: 0; right: 0; top: 200px; text-align: center; font-family: "Archivo Black", sans-serif; font-size: 142px; line-height: 1; }
+    #ct-l2 { position: absolute; left: 0; right: 0; top: 345px; text-align: center; font-family: "Archivo Black", sans-serif; font-size: 160px; line-height: 1; color: #fcd116; }
+    #ct-pays { position: absolute; left: 50%; top: 545px; padding: 16px 40px; background: #ce1126; color: #fff; font-weight: 900; font-size: 50px; white-space: nowrap; transform: translateX(-50%) skewX(-8deg); }
+    #ct-list { position: absolute; left: 70px; top: 700px; width: 600px; }
+    .ct-row { display: flex; align-items: center; gap: 22px; height: 100px; margin-bottom: 14px; padding: 0 22px; border-radius: 18px; background: rgba(5,8,6,.7); }
+    .ct-ico { flex: 0 0 62px; height: 62px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 30px; }
+    .ct-row p { font-weight: 800; font-size: 38px; }
+    .ct-row p small { display: block; font-size: 28px; font-weight: 700; opacity: .75; letter-spacing: 2px; }
+    #ct-jersey { position: absolute; left: 680px; top: 760px; width: 340px; height: 378px; filter: drop-shadow(0 30px 40px rgba(0,0,0,.6)); }
+    #ct-slogan { position: absolute; left: 0; right: 0; top: 1180px; text-align: center; font-weight: 900; font-size: 48px; line-height: 1.25; }
+    #ct-slogan b { color: #fcd116; }
+    #ct-flag { position: absolute; left: 0; right: 0; bottom: 0; height: 22px; display: flex; }
+    #ct-flag i { flex: 1; }
+  </style>
+  <div id="root" data-composition-id="cta" data-width="1080" data-height="1920">
+    <p id="ct-l1">COMMANDES</p>
+    <p id="ct-l2">OUVERTES</p>
+    <div id="ct-pays">REPRÉSENTE TON PAYS !</div>
+    <div id="ct-list">
+      <div class="ct-row"><span class="ct-ico" style="background:#fffc00;color:#050806">S</span><p><small>SNAPCHAT</small>pesos.bmg</p></div>
+      <div class="ct-row"><span class="ct-ico" style="background:#111;border:3px solid #25f4ee;color:#fe2c55">T</span><p><small>TIKTOK</small>luxe.orientalshop</p></div>
+      <div class="ct-row"><span class="ct-ico" style="background:linear-gradient(45deg,#feda75,#d62976,#4f5bd5);color:#fff">I</span><p><small>INSTAGRAM</small>luxe.orientalshop</p></div>
+      <div class="ct-row"><span class="ct-ico" style="background:#25d366;color:#fff">W</span><p><small>WHATSAPP</small>07 49 07 34 88</p></div>
+    </div>
+    <img id="ct-jersey" src="assets/img/maillot.png" alt="Maillot du Mali WA" />
+    <p id="ct-slogan">LE MALI DANS LE CŒUR,<br /><b>LES AIGLES DANS LE SANG !</b></p>
+    <div id="ct-flag"><i style="background:#14b53a"></i><i style="background:#fcd116"></i><i style="background:#ce1126"></i></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#ct-l1", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "power4.out" }, 0.12);
+    tl.fromTo("#ct-l2", { scale: 1.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "power4.out" }, 0.6);
+    tl.fromTo("#ct-pays", { xPercent: -50, x: -1100 }, { xPercent: -50, x: 0, duration: 0.4, ease: "expo.out" }, 1.08);
+    tl.fromTo(".ct-row", { x: -700, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, stagger: 0.243, ease: "power4.out" }, 1.55);
+    tl.fromTo("#ct-jersey", { y: 120, opacity: 0, rotation: 8 }, { y: 0, opacity: 1, rotation: 0, duration: 0.6, ease: "expo.out" }, 1.8);
+    tl.fromTo("#ct-jersey", { scale: 1 }, { scale: 1.06, duration: 3.4, ease: "none" }, 2.4);
+    tl.fromTo("#ct-slogan", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.45, ease: "power4.out" }, 3.0);
+    tl.fromTo("#ct-flag i", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.3, stagger: 0.1, ease: "power3.out" }, 3.2);
+    window.__timelines["cta"] = tl;
+  </script>
+</template>

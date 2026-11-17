@@ -1,0 +1,28 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: radial-gradient(120% 80% at 50% 35%, #12331d 0%, #070b08 70%); font-family: "Montserrat", sans-serif; }
+    #hook-aigle { position: absolute; left: 50px; top: 170px; width: 980px; height: 911px; object-fit: cover;
+      -webkit-mask-image: radial-gradient(closest-side, #000 62%, transparent 100%); mask-image: radial-gradient(closest-side, #000 62%, transparent 100%); }
+    #hook-flag { position: absolute; left: 390px; top: 1010px; width: 300px; height: 18px; display: flex; }
+    #hook-flag i { flex: 1; }
+    #hook-title { position: absolute; left: 0; right: 0; top: 1060px; text-align: center; font-family: "Archivo Black", sans-serif; font-size: 146px; line-height: 1; color: var(--creme, #f4ecd8); letter-spacing: -2px; text-shadow: 0 10px 40px rgba(0,0,0,.6); }
+    #hook-title b { color: #fcd116; font-weight: 400; }
+    #hook-sub { position: absolute; left: 0; right: 0; top: 1240px; text-align: center; font-weight: 800; font-size: 46px; letter-spacing: 6px; color: #f4ecd8; }
+    #hook-sub span { color: #14b53a; }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <img id="hook-aigle" src="assets/img/aigle.png" alt="" />
+    <div id="hook-flag"><i style="background:#14b53a"></i><i style="background:#fcd116"></i><i style="background:#ce1126"></i></div>
+    <h1 id="hook-title" data-var-text="hook-title">AW NI CE <b>!</b></h1>
+    <p id="hook-sub">LES <span>AIGLES</span> SONT DE RETOUR</p>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#hook-aigle", { scale: 1.0, y: 0 }, { scale: 1.14, y: -30, duration: 3.3, ease: "none" }, 0);
+    tl.fromTo("#hook-title", { scale: 1.12 }, { scale: 1, duration: 0.35, ease: "expo.out" }, 0);
+    tl.fromTo("#hook-flag i", { scaleX: 0, transformOrigin: "left center" }, { scaleX: 1, duration: 0.3, stagger: 0.12, ease: "power3.out" }, 0.4);
+    tl.fromTo("#hook-sub", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: "power4.out" }, 1.37);
+    tl.fromTo("#hook-title", { y: 0 }, { y: -8, duration: 0.12, yoyo: true, repeat: 1, ease: "power2.out" }, 1.85);
+    window.__timelines["hook"] = tl;
+  </script>
+</template>

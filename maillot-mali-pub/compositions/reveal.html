@@ -1,0 +1,54 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: radial-gradient(90% 60% at 50% 42%, #145a2b 0%, #08200f 55%, #050806 100%); font-family: "Montserrat", sans-serif; color: #f4ecd8; perspective: 1600px; }
+    .rv-beam { position: absolute; left: 490px; top: -300px; width: 100px; height: 2400px; opacity: .22; transform-origin: 50% 50%; }
+    #rv-b1 { background: linear-gradient(90deg, transparent, #14b53a, transparent); }
+    #rv-b2 { background: linear-gradient(90deg, transparent, #fcd116, transparent); }
+    #rv-b3 { background: linear-gradient(90deg, transparent, #ce1126, transparent); }
+    #rv-cam { position: absolute; left: 110px; top: 282px; width: 860px; height: 956px; }
+    #rv-jersey { width: 100%; height: 100%; display: block; filter: drop-shadow(0 40px 60px rgba(0,0,0,.6)); }
+    #rv-kick { position: absolute; left: 0; right: 0; top: 190px; text-align: center; font-weight: 800; font-size: 52px; letter-spacing: 6px; }
+    #rv-kick b { color: #fcd116; }
+    #rv-label { position: absolute; left: 50%; top: 1200px; transform: translateX(-50%); }
+    .rv-chip { position: absolute; left: 0; top: 0; transform: translateX(-50%); white-space: nowrap; padding: 22px 40px; border-radius: 14px; background: rgba(5,8,6,.82); border: 3px solid #fcd116; font-weight: 900; font-size: 46px; letter-spacing: 1px; opacity: 0; }
+    .rv-chip i { font-style: normal; color: #fcd116; }
+    #rv-dim { position: absolute; inset: 0; background: #000; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="reveal" data-width="1080" data-height="1920">
+    <div class="rv-beam" id="rv-b1"></div><div class="rv-beam" id="rv-b2"></div><div class="rv-beam" id="rv-b3"></div>
+    <div id="rv-cam"><img id="rv-jersey" src="assets/img/maillot.png" alt="Maillot du Mali WA" /></div>
+    <p id="rv-kick">LE NOUVEAU <b>MAILLOT</b></p>
+    <div id="rv-label">
+      <div class="rv-chip" id="rv-c1">COL <i>TRICOLORE</i></div>
+      <div class="rv-chip" id="rv-c2">MANCHES <i>VERT · JAUNE · ROUGE</i></div>
+      <div class="rv-chip" id="rv-c3">L'ÉCUSSON <i>DES AIGLES</i></div>
+      <div class="rv-chip" id="rv-c4">SPONSOR <i>WA</i></div>
+    </div>
+    <div id="rv-dim"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#rv-b1", { rotation: -35 }, { rotation: 10, duration: 5.15, ease: "none" }, 0);
+    tl.fromTo("#rv-b2", { rotation: 0 }, { rotation: 30, duration: 5.15, ease: "none" }, 0);
+    tl.fromTo("#rv-b3", { rotation: 35 }, { rotation: 60, duration: 5.15, ease: "none" }, 0);
+    // entrée 3D du maillot
+    tl.fromTo("#rv-jersey", { rotationY: 95, y: 260, scale: 0.7 }, { rotationY: 0, y: 0, scale: 1, duration: 1.0, ease: "expo.out" }, 0.05);
+    tl.fromTo("#rv-kick", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power4.out" }, 0.2);
+    tl.to("#rv-kick", { opacity: 0, duration: 0.2, ease: "power2.in" }, 1.3);
+    // zooms détails : la caméra (#rv-cam) recentre chaque détail sur (540, 760)
+    const shots = [
+      [1.4, 2.1, -40, 870, "#rv-c1"],
+      [2.22, 2.1, -714, 115, "#rv-c2"],
+      [3.03, 2.1, -378, 491, "#rv-c3"],
+      [3.84, 2.1, 208, 506, "#rv-c4"],
+    ];
+    shots.forEach(([t, s, x, y, chip], i) => {
+      tl.to("#rv-cam", { scale: s, x, y, duration: 0.42, ease: "power3.inOut" }, t);
+      tl.fromTo(chip, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.25, ease: "power4.out" }, t + 0.25);
+      tl.to(chip, { opacity: 0, duration: 0.12, ease: "power2.in" }, i < 3 ? shots[i + 1][0] - 0.05 : 4.7);
+    });
+    tl.to("#rv-cam", { scale: 0.85, x: 0, y: 0, duration: 0.45, ease: "power3.inOut" }, 4.7);
+    tl.fromTo("#rv-dim", { opacity: 0 }, { opacity: 0.55, duration: 0.4, ease: "power2.in" }, 4.75);
+    window.__timelines["reveal"] = tl;
+  </script>
+</template>

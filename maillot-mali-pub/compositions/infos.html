@@ -1,0 +1,39 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: radial-gradient(100% 60% at 50% 30%, #12331d 0%, #050806 75%); font-family: "Montserrat", sans-serif; color: #f4ecd8; }
+    #in-head { position: absolute; left: 0; right: 0; top: 220px; text-align: center; font-family: "Archivo Black", sans-serif; font-size: 96px; line-height: 1; }
+    #in-head b { color: #fcd116; font-weight: 400; }
+    .in-card { position: absolute; left: 70px; width: 940px; height: 250px; display: flex; align-items: center; gap: 36px; padding: 0 44px; border-radius: 26px; background: rgba(10,16,12,.9); border: 5px solid; box-shadow: 0 24px 50px rgba(0,0,0,.5); }
+    #in-1 { top: 420px; border-color: #14b53a; }
+    #in-2 { top: 715px; border-color: #fcd116; }
+    #in-3 { top: 1010px; border-color: #ce1126; }
+    .in-ico { flex: 0 0 140px; height: 140px; border-radius: 22px; display: flex; align-items: center; justify-content: center; }
+    .in-ico svg { width: 92px; height: 92px; }
+    .in-txt p:first-child { font-weight: 900; font-size: 44px; color: #fcd116; letter-spacing: 1px; }
+    .in-txt p:last-child { font-weight: 700; font-size: 42px; margin-top: 6px; }
+  </style>
+  <div id="root" data-composition-id="infos" data-width="1080" data-height="1920">
+    <h2 id="in-head">COMMANDE <b>FACILE</b></h2>
+    <div class="in-card" id="in-1">
+      <div class="in-ico" style="background:#14b53a"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><path d="M2 6h11v10H2zM13 9h5l4 4v3h-9z"/><circle cx="6" cy="18" r="2" fill="#14b53a"/><circle cx="17" cy="18" r="2" fill="#14b53a"/></svg></div>
+      <div class="in-txt"><p>LIVRAISON GRATUITE</p><p>pour l'achat de 4 maillots</p></div>
+    </div>
+    <div class="in-card" id="in-2">
+      <div class="in-ico" style="background:#fcd116"><svg viewBox="0 0 24 24" fill="none" stroke="#050806" stroke-width="2.2"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
+      <div class="in-txt"><p>LIVRAISON GRATUITE</p><p>dans les villes voisines</p></div>
+    </div>
+    <div class="in-card" id="in-3">
+      <div class="in-ico" style="background:#ce1126"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></div>
+      <div class="in-txt"><p>REMISE EN MAIN PROPRE</p><p>à Stains (93240)</p></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#in-head", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power4.out" }, 0.05);
+    [["#in-1", 0.19], ["#in-2", 1.64], ["#in-3", 3.09]].forEach(([c, t]) => {
+      tl.fromTo(c, { x: 1100 }, { x: 0, duration: 0.35, ease: "power4.out" }, t);
+      tl.fromTo(c + " .in-ico", { scale: 0.4, rotation: -20 }, { scale: 1, rotation: 0, duration: 0.4, ease: "back.out(2.5)" }, t + 0.3);
+    });
+    window.__timelines["infos"] = tl;
+  </script>
+</template>

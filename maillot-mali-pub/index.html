@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --vert: #14b53a;
+        --jaune: #fcd116;
+        --rouge: #ce1126;
+        --nuit: #070b08;
+        --creme: #f4ecd8;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--nuit); }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
+      .scene { position: absolute; inset: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="30" data-width="1080" data-height="1920">
+      <!-- Scènes (graphics) -->
+      <div id="hook" class="scene" data-composition-id="hook" data-composition-src="compositions/hook.html" data-start="0" data-duration="3.3" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:1"></div>
+      <div id="nation" class="scene" data-composition-id="nation" data-composition-src="compositions/nation.html" data-start="3.3" data-duration="3.9" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:2"></div>
+      <div id="reveal" class="scene" data-composition-id="reveal" data-composition-src="compositions/reveal.html" data-start="7.2" data-duration="5.15" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:3"></div>
+      <div id="drop" class="scene" data-composition-id="drop" data-composition-src="compositions/drop.html" data-start="12.35" data-duration="4.25" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:4"></div>
+      <div id="joueurs" class="scene" data-composition-id="joueurs" data-composition-src="compositions/joueurs.html" data-start="16.6" data-duration="2.8" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:5"></div>
+      <div id="infos" class="scene" data-composition-id="infos" data-composition-src="compositions/infos.html" data-start="19.4" data-duration="4.8" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:6"></div>
+      <div id="cta" class="scene" data-composition-id="cta" data-composition-src="compositions/cta.html" data-start="24.2" data-duration="5.8" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:7"></div>
+      <!-- Transitions tricolores par-dessus tout -->
+      <div id="wipes" class="scene" data-composition-id="wipes" data-composition-src="compositions/wipes.html" data-start="0" data-duration="30" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:20"></div>
+
+      <!-- Musique : on entre à 4 s dans le morceau pour que le drop tombe à 12.35 s -->
+      <audio id="music" class="clip" src="assets/audio/music.mp3" data-start="0" data-duration="30" data-media-start="4" data-track-index="10" data-volume="0.9" data-fade-out="1.2"></audio>
+
+      <!-- Bruitages (une seule piste) -->
+      <audio id="sfx-w1" class="clip" src="assets/audio/sfx/whoosh.mp3" data-start="3.17" data-duration="0.57" data-track-index="11" data-volume="0.7"></audio>
+      <audio id="sfx-w2" class="clip" src="assets/audio/sfx/whoosh-short.mp3" data-start="7.07" data-duration="0.57" data-track-index="11" data-volume="0.7"></audio>
+      <audio id="sfx-riser" class="clip" src="assets/audio/sfx/riser.mp3" data-start="8.9" data-duration="3.45" data-track-index="11" data-volume="0.55" data-fade-in="0.6"></audio>
+      <audio id="sfx-impact" class="clip" src="assets/audio/sfx/impact-bass-1.mp3" data-start="12.35" data-duration="2.1" data-track-index="11" data-volume="1"></audio>
+      <audio id="sfx-pop1" class="clip" src="assets/audio/sfx/pop.mp3" data-start="13.27" data-duration="0.72" data-track-index="12" data-volume="0.8"></audio>
+      <audio id="sfx-shine" class="clip" src="assets/audio/sfx/sparkle.mp3" data-start="14.0" data-duration="1.8" data-track-index="12" data-volume="0.5"></audio>
+      <audio id="sfx-w3" class="clip" src="assets/audio/sfx/whoosh.mp3" data-start="16.47" data-duration="0.57" data-track-index="11" data-volume="0.7"></audio>
+      <audio id="sfx-w4" class="clip" src="assets/audio/sfx/whoosh-short.mp3" data-start="19.27" data-duration="0.57" data-track-index="11" data-volume="0.7"></audio>
+      <audio id="sfx-pop2" class="clip" src="assets/audio/sfx/pop.mp3" data-start="19.85" data-duration="0.72" data-track-index="11" data-volume="0.6"></audio>
+      <audio id="sfx-pop3" class="clip" src="assets/audio/sfx/pop.mp3" data-start="21.3" data-duration="0.72" data-track-index="11" data-volume="0.6"></audio>
+      <audio id="sfx-pop4" class="clip" src="assets/audio/sfx/pop.mp3" data-start="22.75" data-duration="0.72" data-track-index="11" data-volume="0.6"></audio>
+      <audio id="sfx-w5" class="clip" src="assets/audio/sfx/whoosh-cinematic.mp3" data-start="21.85" data-duration="3.6" data-track-index="12" data-volume="0.6"></audio>
+    </div>
+    <script>
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>
