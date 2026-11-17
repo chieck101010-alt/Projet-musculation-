@@ -1,0 +1,47 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    #b-cal { position: absolute; left: 330px; top: 360px; width: 420px; height: 460px; perspective: 1400px; }
+    .b-page { position: absolute; inset: 0; border-radius: 44px; overflow: hidden; background: #fff; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35); font-family: Inter; color: #1c1430; opacity: 0; }
+    .b-head { height: 120px; background: #ff4d5e; color: #fff; text-align: center; font-weight: 900; font-size: 64px; line-height: 120px; letter-spacing: 0.04em; }
+    .b-day { text-align: center; font-weight: 900; font-size: 200px; line-height: 1; margin-top: 34px; letter-spacing: -0.04em; }
+    .b-year { text-align: center; font-weight: 700; font-size: 44px; color: rgba(28, 20, 48, 0.55); margin-top: 12px; }
+    #b-p1 .b-day { font-size: 150px; margin-top: 70px; }
+    .b-stamp { position: absolute; left: 40px; right: 40px; top: 210px; text-align: center; }
+    .b-stamp div { opacity: 0; display: inline-block; padding: 8px 24px; border: 7px solid #ff4d5e; border-radius: 16px; color: #ff4d5e; background: rgba(255, 255, 255, 0.92); font-weight: 900; font-size: 50px; letter-spacing: 0.06em; }
+    #b-ok { position: absolute; right: -26px; top: -26px; width: 96px; height: 96px; border-radius: 50%; background: #3ddc84; border: 6px solid #fff; opacity: 0; }
+    #b-ok svg { position: absolute; left: 18px; top: 20px; }
+  </style>
+  <div id="root" data-composition-id="ui-b" data-width="1080" data-height="1920">
+    <div id="b-cal">
+      <div id="b-p1" class="b-page"><div class="b-head">PRÉVU</div><div class="b-day" data-layout-allow-overlap>2025</div>
+        <div class="b-stamp" data-layout-allow-overlap><div id="b-s1" data-layout-allow-overlap>REPORTÉ</div></div></div>
+      <div id="b-p2" class="b-page"><div class="b-head">MAI</div><div class="b-day" data-layout-allow-overlap>26</div><div class="b-year" data-layout-allow-overlap>2026</div>
+        <div class="b-stamp" data-layout-allow-overlap><div id="b-s2" data-layout-allow-overlap>REPORTÉ</div></div></div>
+      <div id="b-p3" class="b-page"><div class="b-head">NOV.</div><div class="b-day">19</div><div class="b-year">2026</div></div>
+      <div id="b-ok"><svg width="48" height="44" viewBox="0 0 48 44"><path d="M4 24 L18 38 L44 6" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" /></svg></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      // ui-b starts at 15.95 s; B4 and B5 are carried by the map and the labels, the calendar is B6
+      const tl = gsap.timeline({ paused: true });
+      const T = (abs) => abs - 15.95;
+      // page 1: "2025"
+      tl.fromTo("#b-p1", { opacity: 0, scale: 0.9, filter: "blur(8px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, T(25.0));
+      tl.fromTo("#b-s1", { opacity: 0, scale: 1.5, rotation: -14 }, { opacity: 1, scale: 1, rotation: -9, duration: 0.18, ease: "power4.out", immediateRender: false }, T(26.35));
+      // flip to May 26, 2026
+      tl.to("#b-p1", { rotationX: -90, transformOrigin: "50% 0%", duration: 0.2, ease: "power2.in" }, T(26.85));
+      tl.set("#b-p1", { opacity: 0 }, T(27.05));
+      tl.fromTo("#b-p2", { opacity: 1, rotationX: 90, transformOrigin: "50% 100%" }, { rotationX: 0, duration: 0.3, ease: "expo.out", immediateRender: false }, T(27.05));
+      tl.fromTo("#b-s2", { opacity: 0, scale: 1.5, rotation: -14 }, { opacity: 1, scale: 1, rotation: -9, duration: 0.18, ease: "power4.out", immediateRender: false }, T(28.3));
+      // flip to November 19, 2026
+      tl.to("#b-p2", { rotationX: -90, transformOrigin: "50% 0%", duration: 0.2, ease: "power2.in" }, T(29.0));
+      tl.set("#b-p2", { opacity: 0 }, T(29.2));
+      tl.fromTo("#b-p3", { opacity: 1, rotationX: 90, transformOrigin: "50% 100%" }, { rotationX: 0, duration: 0.3, ease: "expo.out", immediateRender: false }, T(29.2));
+      tl.fromTo("#b-ok", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(1.8)" }, T(29.75));
+      tl.to("#b-cal", { opacity: 0, scale: 0.94, filter: "blur(8px)", duration: 0.2, ease: "power2.in" }, T(30.4));
+      window.__timelines["ui-b"] = tl;
+    })();
+  </script>
+</template>

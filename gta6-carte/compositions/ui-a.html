@@ -1,0 +1,86 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    .card { position: absolute; left: 140px; width: 800px; background: rgba(28, 20, 48, 0.92); border: 2px solid rgba(255, 255, 255, 0.16); border-radius: 44px; color: #fff; font-family: Inter; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35); }
+    .lbl { font-weight: 700; font-size: 34px; color: #b9a2ff; letter-spacing: 0.02em; }
+    .ico { width: 40px; height: 40px; vertical-align: -8px; margin-right: 12px; }
+    /* B1 */
+    #a-wait { top: 380px; height: 400px; padding: 40px 48px; }
+    #a-13 { position: absolute; left: 48px; top: 96px; font-weight: 900; font-size: 210px; line-height: 1; letter-spacing: -0.04em; }
+    #a-ans { position: absolute; left: 330px; top: 196px; font-weight: 800; font-size: 84px; }
+    #a-row { position: absolute; left: 48px; top: 318px; font-weight: 700; font-size: 40px; color: rgba(255, 255, 255, 0.85); }
+    #a-row span { display: inline-block; }
+    /* B2 */
+    #a-gta5 { top: 350px; height: 480px; padding: 40px 48px; }
+    #a-gta5 h2 { font-weight: 900; font-size: 64px; margin-top: 4px; }
+    .a-k { position: absolute; left: 48px; font-weight: 700; font-size: 32px; color: rgba(255, 255, 255, 0.6); }
+    .a-v { position: absolute; left: 48px; font-weight: 900; font-size: 120px; line-height: 1; letter-spacing: -0.03em; }
+    #a-k1 { top: 150px; } #a-v1 { top: 190px; }
+    #a-k2 { top: 320px; } #a-v2 { top: 350px; color: #b9a2ff; }
+    #a-k1b { position: absolute; left: 430px; top: 150px; font-weight: 700; font-size: 32px; color: rgba(255, 255, 255, 0.6); }
+    #a-div { position: absolute; left: 48px; right: 48px; top: 300px; height: 2px; background: rgba(255, 255, 255, 0.14); }
+    /* B3 */
+    #a-player { top: 330px; height: 480px; padding: 20px; }
+    #a-screen { position: absolute; left: 20px; top: 20px; width: 756px; height: 300px; border-radius: 28px; background: #120c24; overflow: hidden; }
+    #a-screen i { position: absolute; left: 0; right: 0; bottom: 0; height: 120px; background: repeating-linear-gradient(0deg, rgba(185, 162, 255, 0.18) 0 4px, transparent 4px 18px); }
+    #a-play { position: absolute; left: 308px; top: 80px; width: 140px; height: 140px; border-radius: 50%; background: #fff; }
+    #a-play svg { position: absolute; left: 50px; top: 38px; }
+    #a-track { position: absolute; left: 40px; right: 40px; bottom: 26px; height: 10px; border-radius: 5px; background: rgba(255, 255, 255, 0.25); }
+    #a-fill { position: absolute; left: 0; top: 0; width: 100%; height: 10px; border-radius: 5px; background: #b9a2ff; }
+    #a-views { position: absolute; left: 40px; top: 350px; font-weight: 900; font-size: 96px; line-height: 1; }
+    #a-views small { font-size: 48px; font-weight: 800; color: rgba(255, 255, 255, 0.8); }
+    #a-chip { position: absolute; right: 40px; top: 368px; padding: 12px 26px; border-radius: 999px; background: #b9a2ff; color: #1c1430; font-weight: 800; font-size: 38px; }
+  </style>
+  <div id="root" data-composition-id="ui-a" data-width="1080" data-height="1920">
+    <div id="a-wait" class="card">
+      <div class="lbl"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#b9a2ff" stroke-width="2.2" stroke-linecap="round"><path d="M6 3h12M6 21h12M7 3c0 5 10 5 10 9s-10 4-10 9M17 3c0 5-10 5-10 9" /></svg>Attente</div>
+      <div id="a-13">13</div>
+      <div id="a-ans">ans</div>
+      <div id="a-row"><span>GTA V</span> <span>→</span> <span>GTA VI</span></div>
+    </div>
+    <div id="a-gta5" class="card">
+      <div class="lbl"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#b9a2ff" stroke-width="2.2"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="2.5" /></svg>Le précédent</div>
+      <h2>GTA V</h2>
+      <div id="a-k1" class="a-k">Sortie</div>
+      <div id="a-v1" class="a-v">2013</div>
+      <div id="a-div"></div>
+      <div id="a-k2" class="a-k">Exemplaires vendus</div>
+      <div id="a-v2" class="a-v">200 M+</div>
+    </div>
+    <div id="a-player" class="card">
+      <div id="a-screen"><i></i>
+        <div id="a-play"><svg width="50" height="64" viewBox="0 0 50 64"><path d="M4 4 L46 32 L4 60 Z" fill="#1c1430" /></svg></div>
+        <div id="a-track"><div id="a-fill"></div></div>
+      </div>
+      <div id="a-views"><span id="a-vn">90</span> M <small>vues</small></div>
+      <div id="a-chip">en 24 h</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // B1 — frame 0 already reads "13 ans" (thumbnail); the comparison row arrives on the words
+      tl.fromTo("#a-row span", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.14, stagger: 0.45, ease: "power2.out" }, 2.75);
+      tl.to("#a-wait", { opacity: 0, scale: 0.94, filter: "blur(8px)", duration: 0.2, ease: "power2.in" }, 4.55);
+      // B2 — the GTA V card
+      tl.fromTo("#a-gta5", { opacity: 0, scale: 0.92, filter: "blur(8px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, 4.8);
+      tl.fromTo(["#a-k1", "#a-v1"], { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, stagger: 0.08, ease: "power2.out" }, 6.3);
+      tl.fromTo(["#a-div", "#a-k2", "#a-v2"], { opacity: 0 }, { opacity: 1, duration: 0.16, stagger: 0.08, ease: "power2.out" }, 7.9);
+      const n = { v: 0 };
+      tl.fromTo(n, { v: 0 }, { v: 200, duration: 1.0, ease: "power3.out", onUpdate: () => { document.querySelector("#a-v2").textContent = Math.round(n.v) + " M+"; } }, 8.05);
+      tl.to("#a-gta5", { opacity: 0, scale: 0.94, filter: "blur(8px)", duration: 0.2, ease: "power2.in" }, 10.0);
+      // B3 — the trailer player: tap play, the trailer runs, the views count up
+      tl.fromTo("#a-player", { opacity: 0, scale: 0.92, filter: "blur(8px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, 10.25);
+      tl.to("#a-play", { scale: 0.86, duration: 0.1, ease: "power2.in" }, 10.75);
+      tl.to("#a-play", { scale: 1.25, opacity: 0, duration: 0.22, ease: "power2.out" }, 10.85);
+      tl.fromTo("#a-fill", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 4.8, ease: "none" }, 10.9);
+      const m = { v: 0 };
+      tl.fromTo(m, { v: 0 }, { v: 90, duration: 1.0, ease: "power3.out", onUpdate: () => { document.querySelector("#a-vn").textContent = Math.round(m.v); } }, 12.8);
+      tl.fromTo("#a-chip", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(1.6)" }, 14.5);
+      tl.to("#a-player", { opacity: 0, scale: 0.94, filter: "blur(8px)", duration: 0.2, ease: "power2.in" }, 15.7);
+      // cards that have not arrived yet stay hidden
+      tl.set(["#a-gta5", "#a-player"], { opacity: 0 }, 0);
+      window.__timelines["ui-a"] = tl;
+    })();
+  </script>
+</template>

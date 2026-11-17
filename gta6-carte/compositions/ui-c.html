@@ -1,0 +1,50 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    .card { position: absolute; left: 140px; width: 800px; background: rgba(28, 20, 48, 0.92); border: 2px solid rgba(255, 255, 255, 0.16); border-radius: 44px; color: #fff; font-family: Inter; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35); opacity: 0; }
+    #c-plat { top: 380px; height: 430px; padding: 34px 40px; }
+    .c-row { position: relative; height: 112px; border-bottom: 2px solid rgba(255, 255, 255, 0.1); opacity: 0; }
+    .c-row:last-child { border-bottom: 0; }
+    .c-row svg.c-ico { position: absolute; left: 0; top: 30px; }
+    .c-name { position: absolute; left: 80px; top: 26px; font-weight: 800; font-size: 50px; }
+    .c-tag { position: absolute; right: 0; top: 28px; padding: 8px 22px; border-radius: 999px; font-weight: 800; font-size: 34px; }
+    .c-yes { background: #3ddc84; color: #10291b; }
+    .c-no { background: rgba(255, 255, 255, 0.14); color: rgba(255, 255, 255, 0.8); }
+    #c-poll { top: 400px; height: 440px; padding: 36px 40px; text-align: center; }
+    #c-poll svg.c-bubble { display: block; margin: 0 auto; }
+    #c-q { font-weight: 800; font-size: 54px; margin-top: 14px; }
+    .c-opt { position: relative; margin: 22px auto 0; width: 640px; height: 96px; border-radius: 999px; border: 3px solid rgba(255, 255, 255, 0.35); font-weight: 800; font-size: 40px; line-height: 90px; }
+    #c-fill { position: absolute; inset: 0; border-radius: 999px; background: #b9a2ff; opacity: 0; }
+    #c-o1 span { position: relative; }
+  </style>
+  <div id="root" data-composition-id="ui-c" data-width="1080" data-height="1920">
+    <div id="c-plat" class="card">
+      <div id="c-r1" class="c-row"><svg class="c-ico" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#b9a2ff" stroke-width="2"><rect x="2" y="7" width="20" height="11" rx="5" /><path d="M7 11v3M5.5 12.5h3M15.5 12h.01M18 14h.01" /></svg><div class="c-name">PlayStation 5</div><div class="c-tag c-yes">Le 19 nov.</div></div>
+      <div id="c-r2" class="c-row"><svg class="c-ico" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#b9a2ff" stroke-width="2"><rect x="2" y="7" width="20" height="11" rx="5" /><path d="M7 11v3M5.5 12.5h3M15.5 12h.01M18 14h.01" /></svg><div class="c-name">Xbox Series X|S</div><div class="c-tag c-yes">Le 19 nov.</div></div>
+      <div id="c-r3" class="c-row"><svg class="c-ico" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#b9a2ff" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2" /><path d="M8 20h8M12 16v4" /></svg><div class="c-name">PC</div><div class="c-tag c-no">Pas de date</div></div>
+    </div>
+    <div id="c-poll" class="card">
+      <svg class="c-bubble" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#b9a2ff" stroke-width="2" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z" /></svg>
+      <div id="c-q">Tu y joues dès sa sortie ?</div>
+      <div id="c-o1" class="c-opt"><div id="c-fill"></div><span>Oui, le 19 novembre</span></div>
+      <div id="c-o2" class="c-opt">Plus tard</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      // ui-c starts at 30.6 s
+      const tl = gsap.timeline({ paused: true });
+      const T = (abs) => abs - 30.6;
+      tl.fromTo("#c-plat", { opacity: 0, scale: 0.92, filter: "blur(8px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, T(30.75));
+      tl.fromTo("#c-r1", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power2.out" }, T(30.95));
+      tl.fromTo("#c-r2", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power2.out" }, T(32.05));
+      tl.fromTo("#c-r3", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power2.out" }, T(33.8));
+      tl.to("#c-plat", { opacity: 0, scale: 0.94, filter: "blur(8px)", duration: 0.2, ease: "power2.in" }, T(34.85));
+      // the poll, then a vote lands on "commentaire"
+      tl.fromTo("#c-poll", { opacity: 0, scale: 0.92, filter: "blur(8px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, T(35.2));
+      tl.fromTo("#c-fill", { opacity: 0 }, { opacity: 1, duration: 0.18, ease: "power2.out" }, T(37.25));
+      tl.to("#c-o1", { color: "#1c1430", borderColor: "#b9a2ff", duration: 0.18, ease: "power2.out" }, T(37.25));
+      window.__timelines["ui-c"] = tl;
+    })();
+  </script>
+</template>

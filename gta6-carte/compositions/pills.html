@@ -1,0 +1,54 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    .pill { position: absolute; left: 120px; top: 1150px; width: 660px; text-align: center; opacity: 0; visibility: hidden; }
+    .pin { display: inline-flex; align-items: center; gap: 14px; padding: 14px 30px 14px 22px; border-radius: 999px; background: rgba(28, 20, 48, 0.94); border: 2px solid rgba(255, 255, 255, 0.18); color: #fff; font-family: Inter; font-weight: 700; font-size: 38px; white-space: nowrap; }
+  </style>
+  <div id="root" data-composition-id="pills" data-width="1080" data-height="1920">
+    <div id="p0" class="pill"><div class="pin"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#b9a2ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12M6 21h12M7 3c0 5 10 5 10 9s-10 4-10 9M17 3c0 5-10 5-10 9"/></svg><span>13 ans d'attente</span></div></div>
+    <div id="p1" class="pill"><div class="pin"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#b9a2ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Sorti en 2013</span></div></div>
+    <div id="p2" class="pill"><div class="pin"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#b9a2ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span>200 M+ exemplaires</span></div></div>
+    <div id="p3" class="pill"><div class="pin"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#b9a2ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5z"/></svg><span>1re bande-annonce</span></div></div>
+    <div id="p4" class="pill"><div class="pin"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#b9a2ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span>90 M de vues en 24 h</span></div></div>
+    <div id="p5" class="pill"><div class="pin"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#b9a2ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/></svg><span>Leonida · Floride fictive</span></div></div>
+    <div id="p6" class="pill"><div class="pin"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#b9a2ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><span>Vice City</span></div></div>
+    <div id="p7" class="pill"><div class="pin"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#b9a2ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.8"/><path d="M16 14c3.2 0 5.5 2.2 5.5 5.5"/></svg><span>Lucia & Jason</span></div></div>
+    <div id="p8" class="pill"><div class="pin"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#b9a2ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h.01"/></svg><span>Conspiration criminelle</span></div></div>
+    <div id="p9" class="pill"><div class="pin"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#b9a2ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Reporté deux fois</span></div></div>
+    <div id="p10" class="pill"><div class="pin"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#b9a2ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Sortie le 19 novembre</span></div></div>
+    <div id="p11" class="pill"><div class="pin"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#b9a2ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="11" rx="5"/><path d="M7 11v3M5.5 12.5h3M15.5 12h.01M18 14h.01"/></svg><span>PS5 · Xbox Series</span></div></div>
+    <div id="p12" class="pill"><div class="pin"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#b9a2ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg><span>PC : pas de date</span></div></div>
+    <div id="p13" class="pill"><div class="pin"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#b9a2ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg><span>Dis-le en commentaire</span></div></div>
+    <div id="p14" class="pill"><div class="pin"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#b9a2ff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4l2-2zM10 21h4"/></svg><span>Abonne-toi</span></div></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const T = [
+        [0.3, 4.6],
+        [4.9, 7.9],
+        [8.2, 10.05],
+        [10.4, 13.4],
+        [13.6, 15.8],
+        [16.2, 18.4],
+        [18.6, 20.4],
+        [20.6, 22.9],
+        [23.0, 24.65],
+        [24.85, 28.25],
+        [28.4, 30.55],
+        [30.8, 33.7],
+        [33.75, 35.15],
+        [35.2, 38.4],
+        [38.6, 42.6]
+      ];
+      T.forEach(([s, e], i) => {
+        const g = "#p" + i;
+        tl.set(g, { visibility: "visible" }, s);
+        tl.fromTo(g, { opacity: 0, scale: 0.96, filter: "blur(8px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.18, ease: "power3.out", immediateRender: false }, s);
+        tl.to(g, { opacity: 0, filter: "blur(8px)", duration: 0.13, ease: "power2.in" }, e - 0.13);
+        tl.set(g, { opacity: 0, visibility: "hidden" }, e);
+      });
+      window.__timelines["pills"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #0d1030; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #0d1030; }
+      #map { z-index: 1; } #ui-a, #ui-b, #ui-c { z-index: 2; } #pills { z-index: 3; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="42.6" data-width="1080" data-height="1920">
+      <!-- the map: one continuous camera move, recoloured by theme -->
+      <div id="map" data-composition-id="map" data-composition-src="compositions/map.html" data-start="0" data-duration="42.6" data-track-index="0" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <!-- interface cards over the map -->
+      <div id="ui-a" data-composition-id="ui-a" data-composition-src="compositions/ui-a.html" data-start="0" data-duration="15.95" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="ui-b" data-composition-id="ui-b" data-composition-src="compositions/ui-b.html" data-start="15.95" data-duration="14.65" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="ui-c" data-composition-id="ui-c" data-composition-src="compositions/ui-c.html" data-start="30.6" data-duration="12" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <!-- the label pill at the bottom -->
+      <div id="pills" data-composition-id="pills" data-composition-src="compositions/pills.html" data-start="0" data-duration="42.6" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+
+      <!-- voiceover (Kokoro ff_siwis, local) -->
+      <audio id="vo1" class="clip" src="assets/voice/v1.wav" data-start="0.3" data-duration="4.288" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo2" class="clip" src="assets/voice/v2.wav" data-start="4.9" data-duration="5.141" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo3" class="clip" src="assets/voice/v3.wav" data-start="10.35" data-duration="5.461" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo4" class="clip" src="assets/voice/v4.wav" data-start="16.15" data-duration="4.011" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo5" class="clip" src="assets/voice/v5.wav" data-start="20.5" data-duration="3.968" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo6" class="clip" src="assets/voice/v6.wav" data-start="24.8" data-duration="5.653" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo7" class="clip" src="assets/voice/v7.wav" data-start="30.8" data-duration="4.075" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo8" class="clip" src="assets/voice/v8.wav" data-start="35.2" data-duration="2.773" data-track-index="3" data-volume="1"></audio>
+      <audio id="vo9" class="clip" src="assets/voice/v9.wav" data-start="38.6" data-duration="2.197" data-track-index="3" data-volume="1"></audio>
+
+      <!-- sound on visible actions -->
+      <audio id="sfx-tap" class="clip" src="assets/sfx/click-soft.mp3" data-start="10.72" data-duration="0.366" data-track-index="4" data-volume="0.8"></audio>
+      <audio id="sfx-count" class="clip" src="assets/sfx/pop.mp3" data-start="13.69" data-duration="0.72" data-track-index="4" data-volume="0.35"></audio>
+      <audio id="sfx-pull" class="clip" src="assets/sfx/whoosh.mp3" data-start="15.93" data-duration="0.575" data-track-index="4" data-volume="0.4"></audio>
+      <audio id="sfx-dive" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="17.88" data-duration="0.575" data-track-index="4" data-volume="0.4"></audio>
+      <audio id="sfx-pinv" class="clip" src="assets/sfx/pop.mp3" data-start="18.86" data-duration="0.72" data-track-index="4" data-volume="0.45"></audio>
+      <audio id="sfx-pinl" class="clip" src="assets/sfx/pop.mp3" data-start="21.26" data-duration="0.72" data-track-index="4" data-volume="0.4"></audio>
+      <audio id="sfx-pinj" class="clip" src="assets/sfx/pop.mp3" data-start="21.81" data-duration="0.72" data-track-index="5" data-volume="0.4"></audio>
+      <audio id="sfx-stamp1" class="clip" src="assets/sfx/click-soft.mp3" data-start="26.45" data-duration="0.366" data-track-index="4" data-volume="0.8"></audio>
+      <audio id="sfx-flip1" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="26.85" data-duration="0.575" data-track-index="4" data-volume="0.25"></audio>
+      <audio id="sfx-stamp2" class="clip" src="assets/sfx/click-soft.mp3" data-start="28.4" data-duration="0.366" data-track-index="4" data-volume="0.8"></audio>
+      <audio id="sfx-flip2" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="29.0" data-duration="0.575" data-track-index="4" data-volume="0.25"></audio>
+      <audio id="sfx-ok" class="clip" src="assets/sfx/pop.mp3" data-start="29.88" data-duration="0.72" data-track-index="4" data-volume="0.4"></audio>
+      <audio id="sfx-vote" class="clip" src="assets/sfx/click-soft.mp3" data-start="37.22" data-duration="0.366" data-track-index="4" data-volume="0.9"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

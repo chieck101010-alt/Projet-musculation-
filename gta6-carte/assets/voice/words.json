@@ -1,0 +1,640 @@
+{
+ "v1": [
+  {
+   "text": "13",
+   "start": 0.0,
+   "end": 0.28
+  },
+  {
+   "text": "ans,",
+   "start": 0.28,
+   "end": 0.44
+  },
+  {
+   "text": "c",
+   "start": 0.68,
+   "end": 0.72
+  },
+  {
+   "text": "'est",
+   "start": 0.72,
+   "end": 0.78
+  },
+  {
+   "text": "le",
+   "start": 0.78,
+   "end": 0.88
+  },
+  {
+   "text": "temps",
+   "start": 0.88,
+   "end": 1.08
+  },
+  {
+   "text": "qu",
+   "start": 1.08,
+   "end": 1.22
+  },
+  {
+   "text": "'il",
+   "start": 1.22,
+   "end": 1.3
+  },
+  {
+   "text": "aura",
+   "start": 1.3,
+   "end": 1.46
+  },
+  {
+   "text": "fallu",
+   "start": 1.46,
+   "end": 1.9
+  },
+  {
+   "text": "attendre",
+   "start": 1.9,
+   "end": 2.36
+  },
+  {
+   "text": "entre",
+   "start": 2.36,
+   "end": 2.5
+  },
+  {
+   "text": "GTA",
+   "start": 2.5,
+   "end": 2.8
+  },
+  {
+   "text": "V",
+   "start": 2.8,
+   "end": 3.22
+  },
+  {
+   "text": "et",
+   "start": 3.22,
+   "end": 3.4
+  },
+  {
+   "text": "GTA",
+   "start": 3.4,
+   "end": 3.72
+  },
+  {
+   "text": "VI.",
+   "start": 3.72,
+   "end": 4.0
+  }
+ ],
+ "v2": [
+  {
+   "text": "GTA",
+   "start": 0.0,
+   "end": 0.32
+  },
+  {
+   "text": "V",
+   "start": 0.32,
+   "end": 0.8
+  },
+  {
+   "text": "est",
+   "start": 0.8,
+   "end": 1.0
+  },
+  {
+   "text": "sorti",
+   "start": 1.0,
+   "end": 1.38
+  },
+  {
+   "text": "en",
+   "start": 1.38,
+   "end": 1.5
+  },
+  {
+   "text": "2013",
+   "start": 1.5,
+   "end": 2.1
+  },
+  {
+   "text": "et",
+   "start": 2.1,
+   "end": 2.7
+  },
+  {
+   "text": "s",
+   "start": 2.7,
+   "end": 2.82
+  },
+  {
+   "text": "'est",
+   "start": 2.82,
+   "end": 2.86
+  },
+  {
+   "text": "vendu",
+   "start": 2.86,
+   "end": 3.22
+  },
+  {
+   "text": "à",
+   "start": 3.22,
+   "end": 3.3
+  },
+  {
+   "text": "plus",
+   "start": 3.3,
+   "end": 3.5
+  },
+  {
+   "text": "de",
+   "start": 3.5,
+   "end": 3.66
+  },
+  {
+   "text": "200",
+   "start": 3.66,
+   "end": 3.98
+  },
+  {
+   "text": "millions",
+   "start": 3.98,
+   "end": 4.28
+  },
+  {
+   "text": "d",
+   "start": 4.28,
+   "end": 4.44
+  },
+  {
+   "text": "'exemplaires.",
+   "start": 4.44,
+   "end": 5.0
+  }
+ ],
+ "v3": [
+  {
+   "text": "La",
+   "start": 0.0,
+   "end": 0.14
+  },
+  {
+   "text": "première",
+   "start": 0.14,
+   "end": 0.5
+  },
+  {
+   "text": "bande",
+   "start": 0.5,
+   "end": 0.84
+  },
+  {
+   "text": "-annonce",
+   "start": 0.84,
+   "end": 1.24
+  },
+  {
+   "text": "de",
+   "start": 1.24,
+   "end": 1.32
+  },
+  {
+   "text": "GTA",
+   "start": 1.32,
+   "end": 1.74
+  },
+  {
+   "text": "s",
+   "start": 1.74,
+   "end": 2.2
+  },
+  {
+   "text": "'y",
+   "start": 2.2,
+   "end": 2.3
+  },
+  {
+   "text": "a",
+   "start": 2.3,
+   "end": 2.52
+  },
+  {
+   "text": "dépassé",
+   "start": 2.52,
+   "end": 3.0
+  },
+  {
+   "text": "les",
+   "start": 3.0,
+   "end": 3.1
+  },
+  {
+   "text": "90",
+   "start": 3.1,
+   "end": 3.48
+  },
+  {
+   "text": "millions",
+   "start": 3.48,
+   "end": 3.94
+  },
+  {
+   "text": "de",
+   "start": 3.94,
+   "end": 4.16
+  },
+  {
+   "text": "vues",
+   "start": 4.16,
+   "end": 4.4
+  },
+  {
+   "text": "en",
+   "start": 4.4,
+   "end": 4.56
+  },
+  {
+   "text": "une",
+   "start": 4.56,
+   "end": 4.72
+  },
+  {
+   "text": "seule",
+   "start": 4.72,
+   "end": 4.9
+  },
+  {
+   "text": "journée.",
+   "start": 4.9,
+   "end": 5.26
+  }
+ ],
+ "v4": [
+  {
+   "text": "Direction",
+   "start": 0.0,
+   "end": 0.46
+  },
+  {
+   "text": "Leonida,",
+   "start": 0.46,
+   "end": 0.96
+  },
+  {
+   "text": "une",
+   "start": 1.18,
+   "end": 1.28
+  },
+  {
+   "text": "floride",
+   "start": 1.28,
+   "end": 1.66
+  },
+  {
+   "text": "fictive",
+   "start": 1.66,
+   "end": 2.24
+  },
+  {
+   "text": "avec",
+   "start": 2.24,
+   "end": 2.6
+  },
+  {
+   "text": "Vaïs",
+   "start": 2.6,
+   "end": 3.0
+  },
+  {
+   "text": "City",
+   "start": 3.0,
+   "end": 3.16
+  },
+  {
+   "text": "en",
+   "start": 3.16,
+   "end": 3.32
+  },
+  {
+   "text": "son",
+   "start": 3.32,
+   "end": 3.46
+  },
+  {
+   "text": "cœur.",
+   "start": 3.46,
+   "end": 3.72
+  }
+ ],
+ "v5": [
+  {
+   "text": "Tu",
+   "start": 0.0,
+   "end": 0.12
+  },
+  {
+   "text": "y",
+   "start": 0.12,
+   "end": 0.26
+  },
+  {
+   "text": "incarnes",
+   "start": 0.26,
+   "end": 0.66
+  },
+  {
+   "text": "Lucia",
+   "start": 0.66,
+   "end": 1.02
+  },
+  {
+   "text": "et",
+   "start": 1.02,
+   "end": 1.2
+  },
+  {
+   "text": "Jason",
+   "start": 1.2,
+   "end": 1.5
+  },
+  {
+   "text": "embarqués",
+   "start": 1.5,
+   "end": 2.32
+  },
+  {
+   "text": "dans",
+   "start": 2.32,
+   "end": 2.42
+  },
+  {
+   "text": "une",
+   "start": 2.42,
+   "end": 2.58
+  },
+  {
+   "text": "conspiration",
+   "start": 2.58,
+   "end": 3.18
+  },
+  {
+   "text": "criminelle.",
+   "start": 3.18,
+   "end": 3.82
+  }
+ ],
+ "v6": [
+  {
+   "text": "annoncé",
+   "start": 0.0,
+   "end": 0.38
+  },
+  {
+   "text": "pour",
+   "start": 0.38,
+   "end": 0.62
+  },
+  {
+   "text": "2025,",
+   "start": 0.62,
+   "end": 1.38
+  },
+  {
+   "text": "puis",
+   "start": 1.8,
+   "end": 1.98
+  },
+  {
+   "text": "pour",
+   "start": 1.98,
+   "end": 2.22
+  },
+  {
+   "text": "mai",
+   "start": 2.22,
+   "end": 2.32
+  },
+  {
+   "text": "2026,",
+   "start": 2.32,
+   "end": 3.22
+  },
+  {
+   "text": "il",
+   "start": 3.54,
+   "end": 3.64
+  },
+  {
+   "text": "sort",
+   "start": 3.64,
+   "end": 3.9
+  },
+  {
+   "text": "finalement",
+   "start": 3.9,
+   "end": 4.36
+  },
+  {
+   "text": "le",
+   "start": 4.36,
+   "end": 4.52
+  },
+  {
+   "text": "19",
+   "start": 4.52,
+   "end": 4.86
+  },
+  {
+   "text": "novembre.",
+   "start": 4.86,
+   "end": 5.48
+  }
+ ],
+ "v7": [
+  {
+   "text": "Sur",
+   "start": 0.0,
+   "end": 0.18
+  },
+  {
+   "text": "PlayStation",
+   "start": 0.18,
+   "end": 0.46
+  },
+  {
+   "text": "5",
+   "start": 0.46,
+   "end": 1.12
+  },
+  {
+   "text": "et",
+   "start": 1.12,
+   "end": 1.3
+  },
+  {
+   "text": "Xbox",
+   "start": 1.3,
+   "end": 1.66
+  },
+  {
+   "text": "série,",
+   "start": 1.66,
+   "end": 2.1
+  },
+  {
+   "text": "pas",
+   "start": 2.42,
+   "end": 2.58
+  },
+  {
+   "text": "encore",
+   "start": 2.58,
+   "end": 2.88
+  },
+  {
+   "text": "de",
+   "start": 2.88,
+   "end": 3.04
+  },
+  {
+   "text": "date",
+   "start": 3.04,
+   "end": 3.24
+  },
+  {
+   "text": "pour",
+   "start": 3.24,
+   "end": 3.42
+  },
+  {
+   "text": "le",
+   "start": 3.42,
+   "end": 3.52
+  },
+  {
+   "text": "PC.",
+   "start": 3.52,
+   "end": 3.74
+  }
+ ],
+ "v8": [
+  {
+   "text": "Et",
+   "start": 0.0,
+   "end": 0.14
+  },
+  {
+   "text": "toi,",
+   "start": 0.14,
+   "end": 0.32
+  },
+  {
+   "text": "tu",
+   "start": 0.46,
+   "end": 0.54
+  },
+  {
+   "text": "y",
+   "start": 0.54,
+   "end": 0.62
+  },
+  {
+   "text": "joues",
+   "start": 0.62,
+   "end": 0.78
+  },
+  {
+   "text": "dès",
+   "start": 0.78,
+   "end": 0.84
+  },
+  {
+   "text": "sa",
+   "start": 0.84,
+   "end": 0.98
+  },
+  {
+   "text": "sortie",
+   "start": 0.98,
+   "end": 1.32
+  },
+  {
+   "text": "?",
+   "start": 1.32,
+   "end": 1.66
+  },
+  {
+   "text": "Dis",
+   "start": 1.66,
+   "end": 1.72
+  },
+  {
+   "text": "-le",
+   "start": 1.72,
+   "end": 1.84
+  },
+  {
+   "text": "-moi",
+   "start": 1.84,
+   "end": 1.96
+  },
+  {
+   "text": "en",
+   "start": 1.96,
+   "end": 2.04
+  },
+  {
+   "text": "commentaire.",
+   "start": 2.04,
+   "end": 2.58
+  }
+ ],
+ "v9": [
+  {
+   "text": "Abonne",
+   "start": 0.0,
+   "end": 0.28
+  },
+  {
+   "text": "-toi",
+   "start": 0.28,
+   "end": 0.48
+  },
+  {
+   "text": "pour",
+   "start": 0.48,
+   "end": 0.66
+  },
+  {
+   "text": "ne",
+   "start": 0.66,
+   "end": 0.78
+  },
+  {
+   "text": "rien",
+   "start": 0.78,
+   "end": 0.98
+  },
+  {
+   "text": "rater",
+   "start": 0.98,
+   "end": 1.26
+  },
+  {
+   "text": "de",
+   "start": 1.26,
+   "end": 1.36
+  },
+  {
+   "text": "GTA",
+   "start": 1.36,
+   "end": 1.56
+  },
+  {
+   "text": "VI.",
+   "start": 1.56,
+   "end": 1.88
+  }
+ ]
+}
