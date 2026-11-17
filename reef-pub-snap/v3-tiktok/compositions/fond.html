@@ -1,0 +1,38 @@
+<!doctype html>
+<!-- REEF 33 — Pub 3 : fond « chambre le soir », lumière chaude de lampe, flou. -->
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #1a120c; }
+      #fond-root { position: absolute; inset: 0; overflow: hidden; background: linear-gradient(180deg, #2b1d14 0%, #3a2618 45%, #1c130d 62%, #120c08 100%); }
+      #lampe { position: absolute; left: 640px; top: 120px; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(255,190,110,0.55), rgba(255,190,110,0) 65%); }
+      #bokeh1, #bokeh2, #bokeh3 { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(255,214,150,0.35), rgba(255,214,150,0) 70%); }
+      #bokeh1 { left: 60px; top: 260px; width: 260px; height: 260px; }
+      #bokeh2 { left: 180px; top: 620px; width: 160px; height: 160px; }
+      #bokeh3 { left: 820px; top: 820px; width: 200px; height: 200px; }
+      #table { position: absolute; left: -100px; top: 1180px; width: 1280px; height: 800px; background: linear-gradient(180deg, #4a3221 0%, #2a1c12 60%); }
+      #reflet { position: absolute; left: 0; top: 1180px; width: 1080px; height: 6px; background: linear-gradient(90deg, transparent, rgba(255,210,150,0.35), transparent); }
+    </style>
+  </head>
+  <body>
+    <div id="fond-root" data-composition-id="fond" data-start="0" data-duration="30" data-width="1080" data-height="1920">
+      <div id="lampe"></div><div id="bokeh1"></div><div id="bokeh2"></div><div id="bokeh3"></div>
+      <div id="table"></div><div id="reflet"></div>
+    </div>
+    <script>
+      (function () {
+        var tl = gsap.timeline({ paused: true });
+        // les reflets dérivent comme si la caméra bougeait à la main
+        tl.fromTo("#bokeh1", { x: 0, y: 0 }, { x: 30, y: -20, duration: 15, ease: "sine.inOut" }, 0);
+        tl.to("#bokeh1", { x: -10, y: 10, duration: 15, ease: "sine.inOut" }, 15);
+        tl.fromTo("#bokeh3", { x: 0 }, { x: -40, duration: 30, ease: "sine.inOut" }, 0);
+        tl.fromTo("#lampe", { opacity: 0.9 }, { opacity: 1, duration: 30, ease: "none" }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["fond"] = tl;
+      })();
+    </script>
+  </body>
+</html>

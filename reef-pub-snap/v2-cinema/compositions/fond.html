@@ -1,0 +1,60 @@
+<!doctype html>
+<!-- REEF 33 — Pub 2 : ciel du désert, teintes des chapitres avec les ingrédients officiels, rayures dorées, noir final. -->
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #050403; }
+      #fond-root { position: absolute; inset: 0; overflow: hidden; background: #050403; }
+      .layer { position: absolute; inset: 0; opacity: 0; }
+      #ciel { opacity: 1; background: linear-gradient(180deg, #05060c 0%, #0d0f1c 30%, #2a1a10 52%, #6b3f18 60%, #1a0f06 66%, #120a05 100%); }
+      #etoiles { opacity: 1; background-image: radial-gradient(1.5px 1.5px at 12% 8%, #fff8, transparent), radial-gradient(1px 1px at 33% 14%, #fff9, transparent), radial-gradient(1.2px 1.2px at 58% 6%, #fffa, transparent), radial-gradient(1px 1px at 77% 18%, #fff7, transparent), radial-gradient(1.4px 1.4px at 88% 9%, #fff9, transparent), radial-gradient(1px 1px at 22% 24%, #fff6, transparent), radial-gradient(1px 1px at 66% 27%, #fff6, transparent), radial-gradient(1.3px 1.3px at 45% 20%, #fff8, transparent); }
+      .chap { background: #070506; }
+      .halo { position: absolute; inset: 0; }
+      #c1 .halo { background: radial-gradient(ellipse 70% 42% at 50% 42%, rgba(139,92,246,0.5), rgba(139,92,246,0) 70%); }
+      #c2 .halo { background: radial-gradient(ellipse 70% 42% at 50% 42%, rgba(77,124,74,0.55), rgba(77,124,74,0) 70%); }
+      #c3 .halo { background: radial-gradient(ellipse 70% 42% at 50% 42%, rgba(160,105,55,0.6), rgba(107,74,47,0) 70%); }
+      .chap img { position: absolute; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.7)) blur(0.5px); }
+      #i1 { width: 330px; left: 600px; top: 470px; -webkit-mask-image: linear-gradient(180deg,#000 75%,transparent); mask-image: linear-gradient(180deg,#000 75%,transparent); }
+      #i2 { width: 470px; left: 160px; top: 560px; -webkit-mask-image: linear-gradient(180deg,#000 80%,transparent); mask-image: linear-gradient(180deg,#000 80%,transparent); }
+      #i3 { width: 280px; left: 610px; top: 860px; -webkit-mask-image: linear-gradient(180deg,#000 80%,transparent); mask-image: linear-gradient(180deg,#000 80%,transparent); }
+      #rayures-wrap { overflow: hidden; }
+      #rayures { position: absolute; left: -900px; top: -900px; width: 2900px; height: 3700px;
+        background: repeating-linear-gradient(-58deg, #0a0806 0 80px, #c9a45c 80px 86px, #0a0806 86px 170px, #6b4e22 170px 173px); }
+      #rayures-ombre { position: absolute; inset: 0; background: radial-gradient(ellipse 55% 40% at 50% 42%, rgba(0,0,0,0.2), rgba(0,0,0,0.88) 80%); }
+      #noir { background: radial-gradient(ellipse 60% 30% at 50% 45%, rgba(201,164,92,0.18), rgba(0,0,0,0) 70%), #030303; }
+    </style>
+  </head>
+  <body>
+    <div id="fond-root" data-composition-id="fond" data-start="0" data-duration="30" data-width="1080" data-height="1920">
+      <div id="ciel" class="layer"></div>
+      <div id="etoiles" class="layer"></div>
+      <div id="c1" class="layer chap"><div class="halo"></div><img id="i1" src="assets/cut/safran.png" alt="safran" /></div>
+      <div id="c2" class="layer chap"><div class="halo"></div><img id="i2" src="assets/cut/romarin.png" alt="romarin" /></div>
+      <div id="c3" class="layer chap"><div class="halo"></div><img id="i3" src="assets/cut/oud.png" alt="oud" /></div>
+      <div id="rayures-wrap" class="layer"><div id="rayures"></div><div id="rayures-ombre"></div></div>
+      <div id="noir" class="layer"></div>
+    </div>
+    <script>
+      (function () {
+        var tl = gsap.timeline({ paused: true });
+        tl.fromTo("#etoiles", { y: 0 }, { y: -30, duration: 8, ease: "none" }, 0);
+        // chapitres : fondus enchaînés lents, l'ingrédient dérive derrière le flacon
+        [["c1", 8, "i1"], ["c2", 11.3, "i2"], ["c3", 14.6, "i3"]].forEach(function (c) {
+          tl.to("#" + c[0], { opacity: 1, duration: 0.7, ease: "sine.inOut" }, c[1] - 0.35);
+          tl.fromTo("#" + c[2], { scale: 1.12, y: 40, rotation: -4 }, { scale: 1, y: -20, rotation: 3, duration: 3.6, ease: "sine.out", immediateRender: false }, c[1] - 0.35);
+        });
+        tl.set(["#ciel", "#etoiles"], { opacity: 0 }, 8.4);
+        tl.set("#c1", { opacity: 0 }, 11.7); tl.set("#c2", { opacity: 0 }, 15);
+        tl.to("#rayures-wrap", { opacity: 1, duration: 0.6 }, 17.7); tl.set("#c3", { opacity: 0 }, 18.3);
+        tl.fromTo("#rayures", { x: 0, y: 0 }, { x: -300, y: 190, duration: 7.5, ease: "none", immediateRender: false }, 17.7);
+        tl.to("#noir", { opacity: 1, duration: 1.2, ease: "sine.inOut" }, 24.8);
+        tl.set({}, {}, 30);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["fond"] = tl;
+      })();
+    </script>
+  </body>
+</html>

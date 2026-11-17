@@ -1,0 +1,57 @@
+<!doctype html>
+<!-- REEF 33 — Pub 2 « Luxe Cinéma » : titres des chapitres, gravure finale, poussière d'or. -->
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: transparent; }
+      #overlay-root { position: absolute; inset: 0; overflow: hidden; }
+      .t { position: absolute; left: 0; width: 1080px; text-align: center; opacity: 0; font-family: "Playfair Display", serif; color: #f3dfa2; }
+      .num { font-size: 40px; letter-spacing: 0.6em; color: #c9a45c; display: block; margin-bottom: 14px; }
+      .nom { font-size: 92px; letter-spacing: 0.32em; display: block; }
+      .chapitre { top: 215px; }
+      #lettres { top: 640px; font-size: 150px; letter-spacing: 0.35em; }
+      #lettres span { display: inline-block; opacity: 0; }
+      #fin-nom { top: 900px; font-size: 64px; letter-spacing: 0.5em; }
+      #fin-info { top: 1010px; font-family: "Inter", sans-serif; font-size: 34px; color: rgba(255,255,255,0.82); letter-spacing: 0.14em; }
+      #grain { position: absolute; inset: 0; opacity: 0.06; background-image: repeating-radial-gradient(circle at 17% 32%, #fff 0 0.6px, transparent 0.6px 3px); mix-blend-mode: overlay; }
+      #barres-h, #barres-b { position: absolute; left: 0; width: 1080px; height: 120px; background: #000; }
+      #barres-h { top: 0; } #barres-b { bottom: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="overlay-root" data-composition-id="overlay" data-start="0" data-duration="30" data-width="1080" data-height="1920">
+      <div id="ch1" class="t chapitre"><span class="num">I</span><span class="nom">SAFRAN</span></div>
+      <div id="ch2" class="t chapitre"><span class="num">II</span><span class="nom">ROMARIN</span></div>
+      <div id="ch3" class="t chapitre"><span class="num">III</span><span class="nom">OUD</span></div>
+      <div id="lettres" class="t"><span>R</span><span>E</span><span>E</span><span>F</span></div>
+      <div id="fin-nom" class="t">REEF 33</div>
+      <div id="fin-info" class="t">65 € · reefperfumes.fr</div>
+      <div id="grain"></div>
+      <div id="barres-h"></div><div id="barres-b"></div>
+    </div>
+    <script>
+      (function () {
+        var tl = gsap.timeline({ paused: true });
+        // bandes cinéma qui s'ouvrent légèrement au début
+        tl.fromTo("#barres-h", { y: 0 }, { y: -40, duration: 3, ease: "sine.inOut" }, 0);
+        tl.fromTo("#barres-b", { y: 0 }, { y: 40, duration: 3, ease: "sine.inOut" }, 0);
+        [["ch1", 8.2, 11.0], ["ch2", 11.5, 14.3], ["ch3", 14.8, 17.6]].forEach(function (c) {
+          tl.fromTo("#" + c[0], { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out", immediateRender: false }, c[1]);
+          tl.to("#" + c[0], { opacity: 0, y: -12, duration: 0.5, ease: "power2.in" }, c[2]);
+        });
+        // fin : R · E · E · F lettre par lettre, puis REEF 33
+        tl.to("#lettres", { opacity: 1, duration: 0.01 }, 26.2);
+        tl.to("#lettres span", { opacity: 1, duration: 0.6, stagger: 0.32, ease: "sine.out" }, 26.2);
+        tl.to("#lettres", { opacity: 0.0, y: -40, duration: 0.6, ease: "power2.in" }, 28.0);
+        tl.fromTo("#fin-nom", { opacity: 0, scale: 1.15 }, { opacity: 1, scale: 1, duration: 1.0, ease: "power3.out", immediateRender: false }, 28.2);
+        tl.fromTo("#fin-info", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out", immediateRender: false }, 28.6);
+        tl.set({}, {}, 30);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["overlay"] = tl;
+      })();
+    </script>
+  </body>
+</html>
