@@ -1,0 +1,814 @@
+{
+ "vo01": {
+  "duration": 5.08,
+  "onset": 0.301,
+  "offset": 5.08,
+  "lufs": -17.0,
+  "text": "Un rendez-vous, un avion à prendre ou simplement besoin de vous déplacer.",
+  "words": [
+   {
+    "text": "Un",
+    "start": 0,
+    "end": 0.161
+   },
+   {
+    "text": "rendez-vous,",
+    "start": 0.161,
+    "end": 1.129
+   },
+   {
+    "text": "un",
+    "start": 1.129,
+    "end": 1.29
+   },
+   {
+    "text": "avion",
+    "start": 1.29,
+    "end": 1.694
+   },
+   {
+    "text": "à",
+    "start": 1.694,
+    "end": 1.774
+   },
+   {
+    "text": "prendre",
+    "start": 1.774,
+    "end": 2.339
+   },
+   {
+    "text": "ou",
+    "start": 2.339,
+    "end": 2.5
+   },
+   {
+    "text": "simplement",
+    "start": 2.5,
+    "end": 3.306
+   },
+   {
+    "text": "besoin",
+    "start": 3.306,
+    "end": 3.79
+   },
+   {
+    "text": "de",
+    "start": 3.79,
+    "end": 3.952
+   },
+   {
+    "text": "vous",
+    "start": 3.952,
+    "end": 4.274
+   },
+   {
+    "text": "déplacer.",
+    "start": 4.274,
+    "end": 5
+   }
+  ]
+ },
+ "vo02": {
+  "duration": 2.48,
+  "onset": 0.276,
+  "offset": 2.48,
+  "lufs": -16.2,
+  "text": "Découvrez MUBLE",
+  "words": [
+   {
+    "text": "Découvrez",
+    "start": 0,
+    "end": 1.286
+   },
+   {
+    "text": "MUBLE",
+    "start": 1.286,
+    "end": 2
+   }
+  ]
+ },
+ "vo03": {
+  "duration": 5.0,
+  "onset": 0.272,
+  "offset": 5.0,
+  "lufs": -16.1,
+  "text": "Mubles. Votre service de VTC Premium à Paris et en Ile-de-France.",
+  "words": [
+   {
+    "text": "Mubles.",
+    "start": 0,
+    "end": 0.611
+   },
+   {
+    "text": "Votre",
+    "start": 0.611,
+    "end": 1.047
+   },
+   {
+    "text": "service",
+    "start": 1.047,
+    "end": 1.658
+   },
+   {
+    "text": "de",
+    "start": 1.658,
+    "end": 1.833
+   },
+   {
+    "text": "VTC",
+    "start": 1.833,
+    "end": 2.095
+   },
+   {
+    "text": "Premium",
+    "start": 2.095,
+    "end": 2.705
+   },
+   {
+    "text": "à",
+    "start": 2.705,
+    "end": 2.793
+   },
+   {
+    "text": "Paris",
+    "start": 2.793,
+    "end": 3.229
+   },
+   {
+    "text": "et",
+    "start": 3.229,
+    "end": 3.404
+   },
+   {
+    "text": "en",
+    "start": 3.404,
+    "end": 3.578
+   },
+   {
+    "text": "Ile-de-France.",
+    "start": 3.578,
+    "end": 4.8
+   }
+  ]
+ },
+ "vo04": {
+  "duration": 3.92,
+  "onset": 0.296,
+  "offset": 3.92,
+  "lufs": -14.5,
+  "text": "réservez votre chauffeur simplement en quelques étapes.",
+  "words": [
+   {
+    "text": "réservez",
+    "start": 0,
+    "end": 0.607
+   },
+   {
+    "text": "votre",
+    "start": 0.607,
+    "end": 0.987
+   },
+   {
+    "text": "chauffeur",
+    "start": 0.987,
+    "end": 1.67
+   },
+   {
+    "text": "simplement",
+    "start": 1.67,
+    "end": 2.429
+   },
+   {
+    "text": "en",
+    "start": 2.429,
+    "end": 2.581
+   },
+   {
+    "text": "quelques",
+    "start": 2.581,
+    "end": 3.189
+   },
+   {
+    "text": "étapes.",
+    "start": 3.189,
+    "end": 3.72
+   }
+  ]
+ },
+ "vo05": {
+  "duration": 4.32,
+  "onset": 0.344,
+  "offset": 4.32,
+  "lufs": -16.9,
+  "text": "Première étape, indiquez votre adresse de départ et votre destination.",
+  "words": [
+   {
+    "text": "Première",
+    "start": 0,
+    "end": 0.538
+   },
+   {
+    "text": "étape,",
+    "start": 0.538,
+    "end": 0.941
+   },
+   {
+    "text": "indiquez",
+    "start": 0.941,
+    "end": 1.479
+   },
+   {
+    "text": "votre",
+    "start": 1.479,
+    "end": 1.815
+   },
+   {
+    "text": "adresse",
+    "start": 1.815,
+    "end": 2.285
+   },
+   {
+    "text": "de",
+    "start": 2.285,
+    "end": 2.42
+   },
+   {
+    "text": "départ",
+    "start": 2.42,
+    "end": 2.823
+   },
+   {
+    "text": "et",
+    "start": 2.823,
+    "end": 2.957
+   },
+   {
+    "text": "votre",
+    "start": 2.957,
+    "end": 3.293
+   },
+   {
+    "text": "destination.",
+    "start": 3.293,
+    "end": 4.1
+   }
+  ]
+ },
+ "vo06": {
+  "duration": 5.32,
+  "onset": 0.244,
+  "offset": 5.32,
+  "lufs": -15.1,
+  "text": "Choisissez ensuite la date, le nombre de passagers et vos besoins en bagage.",
+  "words": [
+   {
+    "text": "Choisissez",
+    "start": 0,
+    "end": 0.781
+   },
+   {
+    "text": "ensuite",
+    "start": 0.781,
+    "end": 1.328
+   },
+   {
+    "text": "la",
+    "start": 1.328,
+    "end": 1.484
+   },
+   {
+    "text": "date,",
+    "start": 1.484,
+    "end": 1.875
+   },
+   {
+    "text": "le",
+    "start": 1.875,
+    "end": 2.031
+   },
+   {
+    "text": "nombre",
+    "start": 2.031,
+    "end": 2.5
+   },
+   {
+    "text": "de",
+    "start": 2.5,
+    "end": 2.656
+   },
+   {
+    "text": "passagers",
+    "start": 2.656,
+    "end": 3.359
+   },
+   {
+    "text": "et",
+    "start": 3.359,
+    "end": 3.516
+   },
+   {
+    "text": "vos",
+    "start": 3.516,
+    "end": 3.75
+   },
+   {
+    "text": "besoins",
+    "start": 3.75,
+    "end": 4.297
+   },
+   {
+    "text": "en",
+    "start": 4.297,
+    "end": 4.453
+   },
+   {
+    "text": "bagage.",
+    "start": 4.453,
+    "end": 5
+   }
+  ]
+ },
+ "vo07": {
+  "duration": 5.52,
+  "onset": 0.289,
+  "offset": 5.52,
+  "lufs": -15.8,
+  "text": "Sélectionnez le véhicule adapté à votre trajet, selon vos envies et votre budget.",
+  "words": [
+   {
+    "text": "Sélectionnez",
+    "start": 0,
+    "end": 0.922
+   },
+   {
+    "text": "le",
+    "start": 0.922,
+    "end": 1.075
+   },
+   {
+    "text": "véhicule",
+    "start": 1.075,
+    "end": 1.69
+   },
+   {
+    "text": "adapté",
+    "start": 1.69,
+    "end": 2.151
+   },
+   {
+    "text": "à",
+    "start": 2.151,
+    "end": 2.228
+   },
+   {
+    "text": "votre",
+    "start": 2.228,
+    "end": 2.612
+   },
+   {
+    "text": "trajet,",
+    "start": 2.612,
+    "end": 3.149
+   },
+   {
+    "text": "selon",
+    "start": 3.149,
+    "end": 3.533
+   },
+   {
+    "text": "vos",
+    "start": 3.533,
+    "end": 3.764
+   },
+   {
+    "text": "envies",
+    "start": 3.764,
+    "end": 4.225
+   },
+   {
+    "text": "et",
+    "start": 4.225,
+    "end": 4.378
+   },
+   {
+    "text": "votre",
+    "start": 4.378,
+    "end": 4.762
+   },
+   {
+    "text": "budget.",
+    "start": 4.762,
+    "end": 5.3
+   }
+  ]
+ },
+ "vo08": {
+  "duration": 4.84,
+  "onset": 0.259,
+  "offset": 4.84,
+  "lufs": -15.2,
+  "text": "Renseignez vos coordonnées pour recevoir les informations concernant votre réservation.",
+  "words": [
+   {
+    "text": "Renseignez",
+    "start": 0,
+    "end": 0.577
+   },
+   {
+    "text": "vos",
+    "start": 0.577,
+    "end": 0.75
+   },
+   {
+    "text": "coordonnées",
+    "start": 0.75,
+    "end": 1.385
+   },
+   {
+    "text": "pour",
+    "start": 1.385,
+    "end": 1.615
+   },
+   {
+    "text": "recevoir",
+    "start": 1.615,
+    "end": 2.077
+   },
+   {
+    "text": "les",
+    "start": 2.077,
+    "end": 2.25
+   },
+   {
+    "text": "informations",
+    "start": 2.25,
+    "end": 2.942
+   },
+   {
+    "text": "concernant",
+    "start": 2.942,
+    "end": 3.519
+   },
+   {
+    "text": "votre",
+    "start": 3.519,
+    "end": 3.808
+   },
+   {
+    "text": "réservation.",
+    "start": 3.808,
+    "end": 4.5
+   }
+  ]
+ },
+ "vo09": {
+  "duration": 8.0,
+  "onset": 0.289,
+  "offset": 8.0,
+  "lufs": -16.3,
+  "text": "MIBLE vous rappelle avec le prix exact, figé avant votre validation, puis vous payez en ligne en toute sécurité.",
+  "words": [
+   {
+    "text": "MIBLE",
+    "start": 0,
+    "end": 0.412
+   },
+   {
+    "text": "vous",
+    "start": 0.412,
+    "end": 0.741
+   },
+   {
+    "text": "rappelle",
+    "start": 0.741,
+    "end": 1.4
+   },
+   {
+    "text": "avec",
+    "start": 1.4,
+    "end": 1.729
+   },
+   {
+    "text": "le",
+    "start": 1.729,
+    "end": 1.894
+   },
+   {
+    "text": "prix",
+    "start": 1.894,
+    "end": 2.223
+   },
+   {
+    "text": "exact,",
+    "start": 2.223,
+    "end": 2.717
+   },
+   {
+    "text": "figé",
+    "start": 2.717,
+    "end": 3.047
+   },
+   {
+    "text": "avant",
+    "start": 3.047,
+    "end": 3.458
+   },
+   {
+    "text": "votre",
+    "start": 3.458,
+    "end": 3.87
+   },
+   {
+    "text": "validation,",
+    "start": 3.87,
+    "end": 4.776
+   },
+   {
+    "text": "puis",
+    "start": 4.776,
+    "end": 5.105
+   },
+   {
+    "text": "vous",
+    "start": 5.105,
+    "end": 5.434
+   },
+   {
+    "text": "payez",
+    "start": 5.434,
+    "end": 5.846
+   },
+   {
+    "text": "en",
+    "start": 5.846,
+    "end": 6.011
+   },
+   {
+    "text": "ligne",
+    "start": 6.011,
+    "end": 6.423
+   },
+   {
+    "text": "en",
+    "start": 6.423,
+    "end": 6.587
+   },
+   {
+    "text": "toute",
+    "start": 6.587,
+    "end": 6.999
+   },
+   {
+    "text": "sécurité.",
+    "start": 6.999,
+    "end": 7.74
+   }
+  ]
+ },
+ "vo10": {
+  "duration": 7.04,
+  "onset": 0.258,
+  "offset": 7.04,
+  "lufs": -16.0,
+  "text": "Avec MUBLE, profitez d'un chauffeur professionnel, d'un prix connu à l'avance et d'un trajet organisé selon vos besoins.",
+  "words": [
+   {
+    "text": "Avec",
+    "start": 0,
+    "end": 0.272
+   },
+   {
+    "text": "MUBLE,",
+    "start": 0.272,
+    "end": 0.68
+   },
+   {
+    "text": "profitez",
+    "start": 0.68,
+    "end": 1.223
+   },
+   {
+    "text": "d'un",
+    "start": 1.223,
+    "end": 1.495
+   },
+   {
+    "text": "chauffeur",
+    "start": 1.495,
+    "end": 2.107
+   },
+   {
+    "text": "professionnel,",
+    "start": 2.107,
+    "end": 3.058
+   },
+   {
+    "text": "d'un",
+    "start": 3.058,
+    "end": 3.33
+   },
+   {
+    "text": "prix",
+    "start": 3.33,
+    "end": 3.602
+   },
+   {
+    "text": "connu",
+    "start": 3.602,
+    "end": 3.942
+   },
+   {
+    "text": "à",
+    "start": 3.942,
+    "end": 4.01
+   },
+   {
+    "text": "l'avance",
+    "start": 4.01,
+    "end": 4.553
+   },
+   {
+    "text": "et",
+    "start": 4.553,
+    "end": 4.689
+   },
+   {
+    "text": "d'un",
+    "start": 4.689,
+    "end": 4.961
+   },
+   {
+    "text": "trajet",
+    "start": 4.961,
+    "end": 5.369
+   },
+   {
+    "text": "organisé",
+    "start": 5.369,
+    "end": 5.913
+   },
+   {
+    "text": "selon",
+    "start": 5.913,
+    "end": 6.252
+   },
+   {
+    "text": "vos",
+    "start": 6.252,
+    "end": 6.456
+   },
+   {
+    "text": "besoins.",
+    "start": 6.456,
+    "end": 7
+   }
+  ]
+ },
+ "vo11": {
+  "duration": 6.52,
+  "onset": 0.28,
+  "offset": 6.52,
+  "lufs": -15.2,
+  "text": "Pour vos déplacements professionnels, vos voyages ou vos sorties, Muble vous accompagne en Île-de-France.",
+  "words": [
+   {
+    "text": "Pour",
+    "start": 0,
+    "end": 0.279
+   },
+   {
+    "text": "vos",
+    "start": 0.279,
+    "end": 0.488
+   },
+   {
+    "text": "déplacements",
+    "start": 0.488,
+    "end": 1.326
+   },
+   {
+    "text": "professionnels,",
+    "start": 1.326,
+    "end": 2.373
+   },
+   {
+    "text": "vos",
+    "start": 2.373,
+    "end": 2.582
+   },
+   {
+    "text": "voyages",
+    "start": 2.582,
+    "end": 3.07
+   },
+   {
+    "text": "ou",
+    "start": 3.07,
+    "end": 3.21
+   },
+   {
+    "text": "vos",
+    "start": 3.21,
+    "end": 3.419
+   },
+   {
+    "text": "sorties,",
+    "start": 3.419,
+    "end": 3.978
+   },
+   {
+    "text": "Muble",
+    "start": 3.978,
+    "end": 4.327
+   },
+   {
+    "text": "vous",
+    "start": 4.327,
+    "end": 4.606
+   },
+   {
+    "text": "accompagne",
+    "start": 4.606,
+    "end": 5.303
+   },
+   {
+    "text": "en",
+    "start": 5.303,
+    "end": 5.443
+   },
+   {
+    "text": "Île-de-France.",
+    "start": 5.443,
+    "end": 6.42
+   }
+  ]
+ },
+ "vo12": {
+  "duration": 4.84,
+  "onset": 0.275,
+  "offset": 4.84,
+  "lufs": -19.3,
+  "text": "Mubelle votre chauffeur privé en toute simplicité.",
+  "words": [
+   {
+    "text": "Mubelle",
+    "start": 0,
+    "end": 0.741
+   },
+   {
+    "text": "votre",
+    "start": 0.741,
+    "end": 1.271
+   },
+   {
+    "text": "chauffeur",
+    "start": 1.271,
+    "end": 2.224
+   },
+   {
+    "text": "privé",
+    "start": 2.224,
+    "end": 2.754
+   },
+   {
+    "text": "en",
+    "start": 2.754,
+    "end": 2.965
+   },
+   {
+    "text": "toute",
+    "start": 2.965,
+    "end": 3.495
+   },
+   {
+    "text": "simplicité.",
+    "start": 3.495,
+    "end": 4.66
+   }
+  ]
+ },
+ "vo13": {
+  "duration": 2.08,
+  "onset": 0.287,
+  "offset": 2.08,
+  "lufs": -15.4,
+  "text": "Réservez dès maintenant.",
+  "words": [
+   {
+    "text": "Réservez",
+    "start": 0,
+    "end": 0.727
+   },
+   {
+    "text": "dès",
+    "start": 0.727,
+    "end": 1
+   },
+   {
+    "text": "maintenant.",
+    "start": 1,
+    "end": 2
+   }
+  ]
+ }
+}
