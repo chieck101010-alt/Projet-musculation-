@@ -18,6 +18,9 @@
 ## Mesuré
 
 - `hyperframes check` : 0 erreur.
+- Fichiers livrés : `renders/quiet-loud-FR.mp4` et `renders/quiet-loud-NL.mp4`, 1080×1920, 30 i/s, 32,3 s, H.264 + AAC 48 kHz, ≈ 15 Mo chacun.
+- Son (ffmpeg ebur128) : FR −14,5 LUFS, pic −1,0 dB ; NL −14,6 LUFS, pic −1,2 dB (cible réseaux −16 à −14 LUFS).
+- Images extraites des MP4 finaux et regardées : textes, sous-titres et mots à l'écran dans la bonne langue.
 - Planches d'images vérifiées à 0 ; 2 ; 4,4 ; 6,4 ; 7,6 ; 9 ; 10,6–10,9 (flash) ; 11,6 ; 12,95 ; 13,4 ; 14 ; 14,6 ; 16,2 ; 16,6 ; 17,8 ; 20,45 ; 21,2 ; 22 ; 23,5 ; 25,4 ; 26,7 ; 27 ; 29,5 ; 29,6 ; 32,05 s.
 
 ## Avertissements gardés volontairement

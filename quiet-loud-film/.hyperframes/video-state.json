@@ -2063,5 +2063,16 @@
         "attribution": "inputs-changed"
       }
     ]
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "2a6646c3-dba2-4402-99d7-55d1625be485",
+      "completedAt": 1795017486185,
+      "output": "/home/user/Projet-musculation-/quiet-loud-film/renders/raw-FR.mp4",
+      "status": "completed",
+      "revision": null
+    },
+    "retainedRevisions": []
+  },
+  "pendingArtifactCleanup": []
 }
