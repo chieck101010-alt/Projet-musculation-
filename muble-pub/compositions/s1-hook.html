@@ -1,0 +1,85 @@
+<template>
+  <style>
+    @font-face { font-family: "Plus Jakarta Sans"; src: url("assets/fonts/PlusJakartaSans-Variable-latin.woff2") format("woff2"); font-weight: 200 800; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #0b0714; font-family: "Plus Jakarta Sans", sans-serif; }
+    .s1-shot { position: absolute; inset: 0; overflow: hidden; }
+    .s1-cam { position: absolute; inset: 0; }
+    .s1-cam video { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+    .s1-scrim { position: absolute; left: 0; top: 0; width: 1080px; height: 1100px; background: linear-gradient(180deg, rgba(14, 3, 34, 0.72) 0%, rgba(14, 3, 34, 0.38) 55%, rgba(14, 3, 34, 0) 100%); }
+    .s1-title { position: absolute; left: 124px; top: 340px; width: 860px; color: #fff; font-size: 108px; font-weight: 800; line-height: 1.02; letter-spacing: -0.035em; text-shadow: 0 6px 30px rgba(10, 0, 30, 0.35); }
+    .s1-title .w { display: inline-block; }
+    .s1-title .acc { color: #c4a6ff; }
+    #s1-flood { position: absolute; inset: 0; background: linear-gradient(160deg, #6a2bc2 0%, #4c14a6 100%); clip-path: inset(100% 0 0 0); }
+    #s1-flood::after { content: ""; position: absolute; right: -240px; top: -260px; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(196, 166, 255, 0.2), rgba(196, 166, 255, 0) 65%); }
+    #s1-logo { position: absolute; left: 109px; top: 820px; width: 862px; height: 186px; perspective: 1400px; }
+    #s1-sym-wrap { position: absolute; left: 0; top: 0; width: 277px; height: 186px; transform-style: preserve-3d; }
+    #s1-sym-wrap img { position: absolute; left: 0; top: 0; width: 277px; height: 186px; }
+    #s1-word { position: absolute; left: 302px; top: 0; width: 560px; height: 186px; }
+    #s1-word .l { position: absolute; top: 0; height: 186px; overflow: hidden; }
+    #s1-word .l img { position: absolute; top: 0; height: 186px; width: 560px; }
+    #s1-sheen { position: absolute; left: 0; top: 0; width: 862px; height: 186px; -webkit-mask: url("assets/logo/muble-logo-white.svg") center / 862px 186px no-repeat; mask: url("assets/logo/muble-logo-white.svg") center / 862px 186px no-repeat; overflow: hidden; }
+    #s1-sheen div { position: absolute; top: -40px; left: -300px; width: 220px; height: 280px; background: linear-gradient(100deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0) 100%); transform: skewX(-18deg); }
+  </style>
+  <div id="root" data-composition-id="s1" data-width="1080" data-height="1920" data-motion-blur="on">
+    <!-- Plans réels : les vidéos portent le minutage, les cadres restent fixes -->
+    <div id="s1-shot1" class="s1-shot" style="z-index:1"><div class="s1-cam" id="s1-cam1"><video id="s1-v1" class="clip" src="assets/footage/rdv-business-seat.mp4" data-start="0" data-duration="1.7" data-media-start="0.2" data-track-index="0" muted playsinline></video></div></div>
+    <div id="s1-shot2" class="s1-shot" style="z-index:2"><div class="s1-cam" id="s1-cam2"><video id="s1-v2" class="clip" src="assets/footage/avion-voyageur.mp4" data-start="1.6" data-duration="1.6" data-media-start="0.4" data-track-index="1" muted playsinline></video></div></div>
+    <div id="s1-shot3" class="s1-shot" style="z-index:3"><div class="s1-cam" id="s1-cam3"><video id="s1-v3" class="clip" src="assets/footage/champs-elysees-nuit.mp4" data-start="3.1" data-duration="2.5" data-media-start="0.6" data-track-index="0" muted playsinline></video></div></div>
+    <div class="s1-scrim" style="z-index:4"></div>
+    <div class="s1-title clip" id="s1-t1" data-start="0" data-duration="1.6" data-track-index="2" style="z-index:5"><span class="w">Un</span> <span class="w acc">rendez-vous&nbsp;?</span></div>
+    <div class="s1-title clip" id="s1-t2" data-start="1.6" data-duration="1.5" data-track-index="2" style="z-index:5"><span class="w">Un</span> <span class="w acc">avion</span> <span class="w">à</span> <span class="w">prendre&nbsp;?</span></div>
+    <div class="s1-title clip" id="s1-t3" data-start="3.1" data-duration="1.95" data-track-index="2" style="z-index:5"><span class="w">Besoin</span> <span class="w">d'un</span> <span class="w">chauffeur</span> <span class="w">à</span> <span class="w acc">Paris&nbsp;?</span></div>
+    <!-- Inondation violette + logo -->
+    <div id="s1-brand" class="clip" data-start="5.0" data-duration="2" data-track-index="3" style="position:absolute;inset:0;z-index:6">
+      <div id="s1-flood"></div>
+      <div id="s1-logo">
+        <div id="s1-sym-wrap">
+          <img id="s1-d5" src="assets/logo/muble-symbol.svg" alt="" style="filter:brightness(0.55)" />
+          <img id="s1-d4" src="assets/logo/muble-symbol.svg" alt="" style="filter:brightness(0.6)" />
+          <img id="s1-d3" src="assets/logo/muble-symbol.svg" alt="" style="filter:brightness(0.65)" />
+          <img id="s1-d2" src="assets/logo/muble-symbol.svg" alt="" style="filter:brightness(0.7)" />
+          <img id="s1-d1" src="assets/logo/muble-symbol.svg" alt="" style="filter:brightness(0.75)" />
+          <img id="s1-sym" src="assets/logo/muble-symbol-white.svg" alt="Muble" />
+        </div>
+        <div id="s1-word">
+          <div class="l" id="s1-l0" style="left:0;width:165px"><img src="assets/logo/muble-wordmark-white.svg" alt="" style="left:0" /></div>
+          <div class="l" id="s1-l1" style="left:165px;width:116px"><img src="assets/logo/muble-wordmark-white.svg" alt="" style="left:-165px" /></div>
+          <div class="l" id="s1-l2" style="left:281px;width:117px"><img src="assets/logo/muble-wordmark-white.svg" alt="" style="left:-281px" /></div>
+          <div class="l" id="s1-l3" style="left:398px;width:44px"><img src="assets/logo/muble-wordmark-white.svg" alt="" style="left:-398px" /></div>
+          <div class="l" id="s1-l4" style="left:442px;width:118px"><img src="assets/logo/muble-wordmark-white.svg" alt="" style="left:-442px" /></div>
+        </div>
+        <div id="s1-sheen"><div id="s1-sheen-bar"></div></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const wordsIn = (sel, at) => {
+        tl.fromTo(sel + " .w", { opacity: 0, filter: "blur(10px)", scale: 1.06 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.16, ease: "power3.out", stagger: 0.07 }, at);
+      };
+      // Plan 1 : titre déjà lisible à l'image 0, la caméra pousse doucement
+      tl.fromTo("#s1-cam1", { scale: 1.12 }, { scale: 1.02, duration: 1.7, ease: "power2.out" }, 0);
+      tl.fromTo("#s1-t1", { scale: 1.04 }, { scale: 1, duration: 0.5, ease: "expo.out", transformOrigin: "0% 50%" }, 0);
+            // Plan 2 : whip d'entrée
+      tl.fromTo("#s1-cam2", { x: 240, scale: 1.08 }, { x: 0, scale: 1.0, duration: 0.3, ease: "expo.out" }, 1.6);
+      tl.fromTo("#s1-cam2", { y: 0 }, { y: -40, duration: 1.4, ease: "none" }, 1.8);
+      wordsIn("#s1-t2", 1.66);
+            // Plan 3
+      tl.fromTo("#s1-cam3", { x: 240, scale: 1.1 }, { x: 0, scale: 1.0, duration: 0.3, ease: "expo.out" }, 3.1);
+      tl.to("#s1-cam3", { scale: 1.07, duration: 2.2, ease: "none" }, 3.4);
+      wordsIn("#s1-t3", 3.16);
+      // Inondation violette depuis le bas
+      tl.fromTo("#s1-flood", { clipPath: "inset(100% 0 0 0)" }, { clipPath: "inset(0% 0 0 0)", duration: 0.45, ease: "power2.inOut" }, 5.0);
+      // Logo : symbole en 3D avec épaisseur
+      const depth = ["#s1-d1", "#s1-d2", "#s1-d3", "#s1-d4", "#s1-d5"];
+      depth.forEach((d, i) => tl.set(d, { z: -(i + 1) * 4 }, 5.0));
+      tl.fromTo("#s1-sym-wrap", { rotationY: -100, rotationX: 18, z: -500, opacity: 0 }, { rotationY: 0, rotationX: 0, z: 0, opacity: 1, duration: 0.9, ease: "back.out(1.2)", transformOrigin: "50% 50%" }, 5.3);
+      ["#s1-l0", "#s1-l1", "#s1-l2", "#s1-l3", "#s1-l4"].forEach((l, i) => {
+        tl.fromTo(l, { opacity: 0, filter: "blur(8px)", scale: 0.86 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.22, ease: "power3.out", transformOrigin: "50% 60%" }, 5.62 + i * 0.06);
+      });
+      tl.fromTo("#s1-sheen-bar", { x: 0 }, { x: 1400, duration: 0.75, ease: "power2.inOut" }, 6.15);
+      window.__timelines["s1"] = tl;
+    })();
+  </script>
+</template>
