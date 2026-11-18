@@ -1,0 +1,398 @@
+{
+ "fr": [
+  {
+   "id": "p01",
+   "text": "Le luxe, c'est le silence.",
+   "src": [
+    0.0,
+    1.93
+   ],
+   "cut": [
+    0.0,
+    2.11
+   ],
+   "lead": 0.0,
+   "dur": 2.11
+  },
+  {
+   "id": "p02",
+   "text": "Une coupe nette.",
+   "src": [
+    2.54,
+    3.34
+   ],
+   "cut": [
+    2.48,
+    3.52
+   ],
+   "lead": 0.06,
+   "dur": 1.04
+  },
+  {
+   "id": "p03",
+   "text": "Une matière qui tombe juste.",
+   "src": [
+    3.86,
+    5.58
+   ],
+   "cut": [
+    3.8,
+    5.76
+   ],
+   "lead": 0.06,
+   "dur": 1.96
+  },
+  {
+   "id": "p04",
+   "text": "Un détail que personne ne voit… sauf toi.",
+   "src": [
+    6.24,
+    8.97
+   ],
+   "split": [
+    7.71,
+    8.45
+   ],
+   "cut": [
+    6.18,
+    9.15
+   ],
+   "lead": 0.06,
+   "dur": 2.97
+  },
+  {
+   "id": "p05",
+   "text": "La rue, c'est le bruit.",
+   "src": [
+    10.34,
+    11.21
+   ],
+   "cut": [
+    10.28,
+    11.39
+   ],
+   "lead": 0.06,
+   "dur": 1.11
+  },
+  {
+   "id": "p06",
+   "text": "Le mouvement.",
+   "src": [
+    11.63,
+    12.2
+   ],
+   "cut": [
+    11.57,
+    12.315
+   ],
+   "lead": 0.06,
+   "dur": 0.745
+  },
+  {
+   "id": "p07",
+   "text": "L'énergie.",
+   "src": [
+    12.43,
+    12.98
+   ],
+   "cut": [
+    12.37,
+    13.16
+   ],
+   "lead": 0.06,
+   "dur": 0.79
+  },
+  {
+   "id": "p08",
+   "text": "Et entre les deux… il y a toi.",
+   "src": [
+    13.67,
+    15.67
+   ],
+   "split": [
+    14.42,
+    15.16
+   ],
+   "anchor": 1.49,
+   "cut": [
+    13.61,
+    15.85
+   ],
+   "lead": 0.06,
+   "dur": 2.24
+  },
+  {
+   "id": "p09",
+   "text": "Ta silhouette. Ton rythme.",
+   "src": [
+    16.52,
+    18.13
+   ],
+   "split": [
+    17.14,
+    17.54
+   ],
+   "cut": [
+    16.46,
+    18.31
+   ],
+   "lead": 0.06,
+   "dur": 1.85
+  },
+  {
+   "id": "p10",
+   "text": "Ta façon d'entrer dans une pièce.",
+   "src": [
+    18.62,
+    20.13
+   ],
+   "cut": [
+    18.56,
+    20.31
+   ],
+   "lead": 0.06,
+   "dur": 1.75
+  },
+  {
+   "id": "p11",
+   "text": "Pas besoin de crier pour être vu.",
+   "src": [
+    20.78,
+    22.15
+   ],
+   "cut": [
+    20.72,
+    22.33
+   ],
+   "lead": 0.06,
+   "dur": 1.61
+  },
+  {
+   "id": "p12",
+   "text": "Quiet. Loud.",
+   "src": [
+    23.03,
+    24.61
+   ],
+   "anchor": 0.99,
+   "cut": [
+    22.97,
+    24.79
+   ],
+   "lead": 0.06,
+   "dur": 1.82
+  },
+  {
+   "id": "p13",
+   "text": "Ton style parle en premier.",
+   "src": [
+    25.23,
+    26.4
+   ],
+   "cut": [
+    25.17,
+    26.58
+   ],
+   "lead": 0.06,
+   "dur": 1.41
+  }
+ ],
+ "nl": [
+  {
+   "id": "p01",
+   "text": "Luxe is stilte.",
+   "src": [
+    0.0,
+    1.21
+   ],
+   "cut": [
+    0.0,
+    1.39
+   ],
+   "lead": 0.0,
+   "dur": 1.39
+  },
+  {
+   "id": "p02",
+   "text": "Een strakke snit.",
+   "src": [
+    1.94,
+    2.79
+   ],
+   "cut": [
+    1.88,
+    2.97
+   ],
+   "lead": 0.06,
+   "dur": 1.09
+  },
+  {
+   "id": "p03",
+   "text": "Stof die precies valt.",
+   "src": [
+    3.8,
+    5.24
+   ],
+   "cut": [
+    3.74,
+    5.42
+   ],
+   "lead": 0.06,
+   "dur": 1.68
+  },
+  {
+   "id": "p04",
+   "text": "Een detail dat niemand ziet… behalve jij.",
+   "src": [
+    6.37,
+    9.37
+   ],
+   "split": [
+    7.93,
+    8.68
+   ],
+   "cut": [
+    6.31,
+    9.55
+   ],
+   "lead": 0.06,
+   "dur": 3.24
+  },
+  {
+   "id": "p05",
+   "text": "De straat is lawaai.",
+   "src": [
+    10.88,
+    11.96
+   ],
+   "cut": [
+    10.82,
+    12.14
+   ],
+   "lead": 0.06,
+   "dur": 1.32
+  },
+  {
+   "id": "p06",
+   "text": "Beweging.",
+   "src": [
+    12.4,
+    13.1
+   ],
+   "cut": [
+    12.34,
+    13.21
+   ],
+   "lead": 0.06,
+   "dur": 0.87
+  },
+  {
+   "id": "p07",
+   "text": "Energie.",
+   "src": [
+    13.32,
+    13.83
+   ],
+   "cut": [
+    13.26,
+    14.01
+   ],
+   "lead": 0.06,
+   "dur": 0.75
+  },
+  {
+   "id": "p08",
+   "text": "En daartussen… sta jij.",
+   "src": [
+    14.9,
+    16.65
+   ],
+   "split": [
+    15.52,
+    16.15
+   ],
+   "anchor": 1.25,
+   "cut": [
+    14.84,
+    16.83
+   ],
+   "lead": 0.06,
+   "dur": 1.99
+  },
+  {
+   "id": "p09",
+   "text": "Jouw silhouet. Jouw ritme.",
+   "src": [
+    17.83,
+    19.98
+   ],
+   "split": [
+    18.67,
+    19.18
+   ],
+   "cut": [
+    17.77,
+    20.16
+   ],
+   "lead": 0.06,
+   "dur": 2.39
+  },
+  {
+   "id": "p10",
+   "text": "Hoe jij een ruimte binnenloopt.",
+   "src": [
+    21.1,
+    22.8
+   ],
+   "cut": [
+    21.04,
+    22.98
+   ],
+   "lead": 0.06,
+   "dur": 1.94
+  },
+  {
+   "id": "p11",
+   "text": "Je hoeft niet te schreeuwen om gezien te worden.",
+   "src": [
+    24.08,
+    25.91
+   ],
+   "cut": [
+    24.02,
+    26.09
+   ],
+   "lead": 0.06,
+   "dur": 2.07
+  },
+  {
+   "id": "p12",
+   "text": "Quiet. Loud.",
+   "src": [
+    26.95,
+    28.41
+   ],
+   "anchor": 0.98,
+   "cut": [
+    26.89,
+    28.59
+   ],
+   "lead": 0.06,
+   "dur": 1.7
+  },
+  {
+   "id": "p13",
+   "text": "Jouw stijl spreekt eerst.",
+   "src": [
+    29.52,
+    31.16
+   ],
+   "cut": [
+    29.46,
+    31.34
+   ],
+   "lead": 0.06,
+   "dur": 1.88
+  }
+ ]
+}

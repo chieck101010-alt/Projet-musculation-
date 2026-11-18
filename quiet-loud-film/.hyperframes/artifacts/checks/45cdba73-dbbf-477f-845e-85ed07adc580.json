@@ -1,0 +1,2299 @@
+{
+  "ok": false,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": false,
+    "errorCount": 1,
+    "warningCount": 3,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "multiple_root_compositions",
+        "severity": "error",
+        "message": "Multiple root-level HTML files with data-composition-id: index.html, nl.html. The runtime may discover both as entry points, causing duplicate audio playback.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "A project should have exactly one root index.html with data-composition-id. Remove or rename extra files."
+      },
+      {
+        "code": "duplicate_audio_track",
+        "severity": "warning",
+        "message": "Audible clips overlap on Studio track 20: assets/audio/fr/p03.wav at 5.39-7.35s and assets/audio/fr/p04.wav at 7.34-10.31s. Both play at once whatever their track (the render mixes every audible clip; data-track-index only picks the Studio lane), and Studio draws them over each other in that lane.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "If both should sound (a whoosh into a hit), give one its own data-track-index; the mix does not change. If one is a leftover duplicate, remove it or move it so the windows do not overlap."
+      },
+      {
+        "code": "duplicate_audio_track",
+        "severity": "warning",
+        "message": "Audible clips overlap on Studio track 22: assets/audio/sfx/impact.wav at 10.26-13.29s and assets/audio/sfx/whoosh.wav at 12.73-13.23s. Both play at once whatever their track (the render mixes every audible clip; data-track-index only picks the Studio lane), and Studio draws them over each other in that lane.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "If both should sound (a whoosh into a hit), give one its own data-track-index; the mix does not change. If one is a leftover duplicate, remove it or move it so the windows do not overlap."
+      },
+      {
+        "code": "duplicate_media_discovery_risk",
+        "severity": "warning",
+        "message": "Detected 2 matching img entries with the same source/start/duration.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/Projet-musculation-/quiet-loud-film/compositions/lineup.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Avoid duplicated media nodes that can be discovered twice during compilation."
+      }
+    ],
+    "filesScanned": 9
+  },
+  "runtime": {
+    "ok": false,
+    "errorCount": 1,
+    "warningCount": 1,
+    "infoCount": 1,
+    "findings": [
+      {
+        "code": "request_failed",
+        "severity": "error",
+        "message": "Failed to load npm/gsap@3.14.2/dist/gsap.min.js: net::ERR_TUNNEL_CONNECTION_FAILED",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "main",
+          "data-start": "0",
+          "data-duration": "32.3",
+          "data-width": "1080",
+          "data-height": "1920",
+          "data-motion-blur": "on"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1920
+        },
+        "time": 0,
+        "url": "https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"
+      },
+      {
+        "code": "clip_media_fit",
+        "severity": "warning",
+        "message": "Audio \"vo-p13\" is 1.23s but its slot (data-duration) is 1.41s — the slot is shortened to the media length when rendered. Set data-duration to ~1.23s if that isn't intended.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "main",
+          "data-start": "0",
+          "data-duration": "32.3",
+          "data-width": "1080",
+          "data-height": "1920",
+          "data-motion-blur": "on"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1920
+        },
+        "time": 0
+      },
+      {
+        "code": "motion_blur_no_movers",
+        "severity": "info",
+        "message": "data-motion-blur=\"on\" is set but nothing in the composition moves fast enough to blur, so it has no effect",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "main",
+          "data-start": "0",
+          "data-duration": "32.3",
+          "data-width": "1080",
+          "data-height": "1920",
+          "data-motion-blur": "on"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1920
+        },
+        "time": 0,
+        "fixHint": "animate an element's transform or position by 2+ px per frame; if the motion is set from a timeline callback (onUpdate, render(t)), add data-motion-blur-events=\"on\"; otherwise drop data-motion-blur"
+      }
+    ]
+  },
+  "layout": {
+    "ok": false,
+    "errorCount": 4,
+    "warningCount": 24,
+    "infoCount": 24,
+    "findings": [
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 23.328,
+        "selector": "#u-l1 > div:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 785.56,
+          "top": 134,
+          "right": 1000,
+          "bottom": 526,
+          "width": 214.44,
+          "height": 392
+        },
+        "containerSelector": "#u-l2 > div:nth-of-type(1)",
+        "text": "01",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 785.56,
+          "y": 134,
+          "width": 214.44,
+          "height": 392
+        },
+        "firstSeen": 21.112,
+        "lastSeen": 25.623,
+        "occurrences": 27,
+        "heldMs": 4511.000000000003,
+        "times": [
+          21.112,
+          21.293,
+          21.473,
+          21.654,
+          21.834,
+          22.015,
+          22.195,
+          22.375,
+          22.556,
+          22.736,
+          22.917,
+          23.097,
+          23.278,
+          23.328,
+          23.458,
+          23.639,
+          23.819,
+          23.999,
+          24.18,
+          24.36,
+          24.541,
+          24.721,
+          24.902,
+          25.082,
+          25.263,
+          25.443,
+          25.623
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 23.328,
+        "selector": "#u-l2 > div:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 743.05,
+          "top": 134,
+          "right": 1000,
+          "bottom": 526,
+          "width": 256.95,
+          "height": 392
+        },
+        "containerSelector": "#u-l3 > div:nth-of-type(1)",
+        "text": "02",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 743.05,
+          "y": 134,
+          "width": 256.95,
+          "height": 392
+        },
+        "firstSeen": 21.654,
+        "lastSeen": 25.623,
+        "occurrences": 24,
+        "heldMs": 3969.0000000000014,
+        "times": [
+          21.654,
+          21.834,
+          22.015,
+          22.195,
+          22.375,
+          22.556,
+          22.736,
+          22.917,
+          23.097,
+          23.278,
+          23.328,
+          23.458,
+          23.639,
+          23.819,
+          23.999,
+          24.18,
+          24.36,
+          24.541,
+          24.721,
+          24.902,
+          25.082,
+          25.263,
+          25.443,
+          25.623
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 23.328,
+        "selector": "#u-l3 > div:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 743.05,
+          "top": 134,
+          "right": 1000,
+          "bottom": 526,
+          "width": 256.95,
+          "height": 392
+        },
+        "containerSelector": "#u-l4 > div:nth-of-type(1)",
+        "text": "03",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 743.05,
+          "y": 134,
+          "width": 256.95,
+          "height": 392
+        },
+        "firstSeen": 22.195,
+        "lastSeen": 25.623,
+        "occurrences": 21,
+        "heldMs": 3428.000000000001,
+        "times": [
+          22.195,
+          22.375,
+          22.556,
+          22.736,
+          22.917,
+          23.097,
+          23.278,
+          23.328,
+          23.458,
+          23.639,
+          23.819,
+          23.999,
+          24.18,
+          24.36,
+          24.541,
+          24.721,
+          24.902,
+          25.082,
+          25.263,
+          25.443,
+          25.623
+        ]
+      },
+      {
+        "code": "content_overlap",
+        "severity": "error",
+        "time": 23.458,
+        "selector": "#u-l4 > div:nth-of-type(1)",
+        "message": "Two text blocks overlap and may render unreadable.",
+        "rect": {
+          "left": 743.05,
+          "top": 134,
+          "right": 1000,
+          "bottom": 526,
+          "width": 256.95,
+          "height": 392
+        },
+        "containerSelector": "#u-s4 > div:nth-of-type(1) > div:nth-of-type(1)",
+        "text": "04",
+        "fixHint": "Give each block its own zone, or put data-layout-allow-overlap on the text or on a container inside the scene. A marker on the scene root does not apply. Decoration nobody needs to read can take data-layout-ignore.",
+        "dataAttributes": {},
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 743.05,
+          "y": 134,
+          "width": 256.95,
+          "height": 392
+        },
+        "firstSeen": 23.458,
+        "lastSeen": 25.263,
+        "occurrences": 11,
+        "heldMs": 1805.0000000000032,
+        "times": [
+          23.458,
+          23.639,
+          23.819,
+          23.999,
+          24.18,
+          24.36,
+          24.541,
+          24.721,
+          24.902,
+          25.082,
+          25.263
+        ]
+      },
+      {
+        "selector": "#q-title",
+        "dataAttributes": {},
+        "sourceFile": "compositions/quiet.html",
+        "bbox": {
+          "x": 231.59,
+          "y": 191,
+          "width": 616.82,
+          "height": 390
+        },
+        "time": 1.794,
+        "rect": {
+          "left": 231.59,
+          "top": 191,
+          "right": 848.41,
+          "bottom": 581,
+          "width": 616.82,
+          "height": 390
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "Quiet.",
+        "message": "<h1> \"Quiet.\" is outside the safe area: TikTok (top edge), Instagram Reels (top edge), YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 1.794,
+        "lastSeen": 1.794,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          1.794
+        ]
+      },
+      {
+        "selector": "#captions",
+        "dataAttributes": {
+          "data-composition-file": "compositions/captions-fr.html",
+          "data-composition-id": "captions",
+          "data-start": "0",
+          "data-track-index": "4",
+          "data-track-kind": "captions",
+          "data-width": "1080",
+          "data-height": "1920",
+          "data-hf-authored-duration": "32.3"
+        },
+        "sourceFile": "compositions/captions-fr.html",
+        "bbox": {
+          "x": 288.2,
+          "y": 1225,
+          "width": 503.6,
+          "height": 54
+        },
+        "time": 1.794,
+        "rect": {
+          "left": 288.2,
+          "top": 1225,
+          "right": 791.8,
+          "bottom": 1279,
+          "width": 503.6,
+          "height": 54
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "Le luxe, c'est le silence.",
+        "message": "<div> \"Le luxe, c'est le silence.\" is outside the safe area: TikTok (right and bottom edges), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 1.794,
+        "lastSeen": 23.328,
+        "occurrences": 6,
+        "heldMs": 0,
+        "times": [
+          1.794,
+          8.972,
+          12.561,
+          16.15,
+          19.739,
+          23.328
+        ]
+      },
+      {
+        "selector": "#d-a-num",
+        "dataAttributes": {},
+        "sourceFile": "compositions/details.html",
+        "bbox": {
+          "x": 96,
+          "y": 930,
+          "width": 54.48,
+          "height": 34
+        },
+        "time": 5.383,
+        "rect": {
+          "left": 96,
+          "top": 930,
+          "right": 150.48,
+          "bottom": 964,
+          "width": 54.48,
+          "height": 34
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "01",
+        "message": "<div> \"01\" is outside the safe area: TikTok (left edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 5.383,
+        "lastSeen": 8.972,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          5.383,
+          8.972
+        ]
+      },
+      {
+        "selector": "#d-a-word",
+        "dataAttributes": {
+          "data-var-text": "w1"
+        },
+        "sourceFile": "compositions/details.html",
+        "bbox": {
+          "x": 96,
+          "y": 974,
+          "width": 390.44,
+          "height": 218
+        },
+        "time": 5.383,
+        "rect": {
+          "left": 96,
+          "top": 974,
+          "right": 486.44,
+          "bottom": 1192,
+          "width": 390.44,
+          "height": 218
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "Coupe.",
+        "message": "<div> \"Coupe.\" is outside the safe area: TikTok (left edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 5.383,
+        "lastSeen": 8.972,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          5.383,
+          8.972
+        ]
+      },
+      {
+        "selector": "#d-b-num",
+        "dataAttributes": {},
+        "sourceFile": "compositions/details.html",
+        "bbox": {
+          "x": 96,
+          "y": 930,
+          "width": 60.05,
+          "height": 34
+        },
+        "time": 8.972,
+        "rect": {
+          "left": 96,
+          "top": 930,
+          "right": 156.05,
+          "bottom": 964,
+          "width": 60.05,
+          "height": 34
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "02",
+        "message": "<div> \"02\" is outside the safe area: TikTok (left edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 8.972,
+        "lastSeen": 8.972,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          8.972
+        ]
+      },
+      {
+        "selector": "#d-b-word",
+        "dataAttributes": {
+          "data-var-text": "w2"
+        },
+        "sourceFile": "compositions/details.html",
+        "bbox": {
+          "x": 96,
+          "y": 974,
+          "width": 475.78,
+          "height": 218
+        },
+        "time": 8.972,
+        "rect": {
+          "left": 96,
+          "top": 974,
+          "right": 571.78,
+          "bottom": 1192,
+          "width": 475.78,
+          "height": 218
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "Matière.",
+        "message": "<div> \"Matière.\" is outside the safe area: TikTok (left edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 8.972,
+        "lastSeen": 8.972,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          8.972
+        ]
+      },
+      {
+        "selector": "#d-c-num",
+        "dataAttributes": {},
+        "sourceFile": "compositions/details.html",
+        "bbox": {
+          "x": 96,
+          "y": 930,
+          "width": 60.48,
+          "height": 34
+        },
+        "time": 8.972,
+        "rect": {
+          "left": 96,
+          "top": 930,
+          "right": 156.48,
+          "bottom": 964,
+          "width": 60.48,
+          "height": 34
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "03",
+        "message": "<div> \"03\" is outside the safe area: TikTok (left edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 8.972,
+        "lastSeen": 8.972,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          8.972
+        ]
+      },
+      {
+        "selector": "#d-c-word",
+        "dataAttributes": {
+          "data-var-text": "w3"
+        },
+        "sourceFile": "compositions/details.html",
+        "bbox": {
+          "x": 96,
+          "y": 974,
+          "width": 381.7,
+          "height": 218
+        },
+        "time": 8.972,
+        "rect": {
+          "left": 96,
+          "top": 974,
+          "right": 477.7,
+          "bottom": 1192,
+          "width": 381.7,
+          "height": 218
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "Détail.",
+        "message": "<div> \"Détail.\" is outside the safe area: TikTok (left edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 8.972,
+        "lastSeen": 8.972,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          8.972
+        ]
+      },
+      {
+        "selector": "#l-a-word",
+        "dataAttributes": {
+          "data-layout-allow-overlap": ""
+        },
+        "sourceFile": "compositions/loud.html",
+        "bbox": {
+          "x": 64.61,
+          "y": 316.97,
+          "width": 950.77,
+          "height": 673.19
+        },
+        "time": 12.561,
+        "rect": {
+          "left": 64.61,
+          "top": 316.97,
+          "right": 1015.38,
+          "bottom": 990.16,
+          "width": 950.77,
+          "height": 673.19
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "LOUD.",
+        "message": "<div> \"LOUD.\" is outside the safe area: TikTok (left and right edges), Instagram Reels (left and right edges), YouTube Shorts (right edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 12.561,
+        "lastSeen": 16.15,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          12.561,
+          16.15
+        ]
+      },
+      {
+        "selector": "#l-b-w1",
+        "dataAttributes": {
+          "data-layout-allow-overlap": ""
+        },
+        "sourceFile": "compositions/loud.html",
+        "bbox": {
+          "x": 88.62,
+          "y": 108.5,
+          "width": 902.74,
+          "height": 639.18
+        },
+        "time": 16.15,
+        "rect": {
+          "left": 88.62,
+          "top": 108.5,
+          "right": 991.36,
+          "bottom": 747.68,
+          "width": 902.74,
+          "height": 639.18
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "LOUD.",
+        "message": "<div> \"LOUD.\" is outside the safe area: TikTok (left and top and right edges), Instagram Reels (top edge), YouTube Shorts (top and right edges).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 16.15,
+        "lastSeen": 16.15,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          16.15
+        ]
+      },
+      {
+        "selector": "#l-b-w2",
+        "dataAttributes": {
+          "data-layout-allow-overlap": ""
+        },
+        "sourceFile": "compositions/loud.html",
+        "bbox": {
+          "x": 88.62,
+          "y": 479.5,
+          "width": 902.74,
+          "height": 639.18
+        },
+        "time": 16.15,
+        "rect": {
+          "left": 88.62,
+          "top": 479.5,
+          "right": 991.36,
+          "bottom": 1118.68,
+          "width": 902.74,
+          "height": 639.18
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "LOUD.",
+        "message": "<div> \"LOUD.\" is outside the safe area: TikTok (left and right edges), YouTube Shorts (right edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 16.15,
+        "lastSeen": 16.15,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          16.15
+        ]
+      },
+      {
+        "selector": "#l-b-w3",
+        "dataAttributes": {
+          "data-layout-allow-overlap": ""
+        },
+        "sourceFile": "compositions/loud.html",
+        "bbox": {
+          "x": 88.62,
+          "y": 850.5,
+          "width": 902.74,
+          "height": 639.18
+        },
+        "time": 16.15,
+        "rect": {
+          "left": 88.62,
+          "top": 850.5,
+          "right": 991.36,
+          "bottom": 1489.68,
+          "width": 902.74,
+          "height": 639.18
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "LOUD.",
+        "message": "<div> \"LOUD.\" is outside the safe area: TikTok (left and right and bottom edges), Instagram Reels (bottom edge), YouTube Shorts (right and bottom edges).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 16.15,
+        "lastSeen": 16.15,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          16.15
+        ]
+      },
+      {
+        "selector": "#b-label",
+        "dataAttributes": {
+          "data-var-text": "label"
+        },
+        "sourceFile": "compositions/between.html",
+        "bbox": {
+          "x": 340.23,
+          "y": 258,
+          "width": 399.54,
+          "height": 34
+        },
+        "time": 16.15,
+        "rect": {
+          "left": 340.23,
+          "top": 258,
+          "right": 739.77,
+          "bottom": 292,
+          "width": 399.54,
+          "height": 34
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "Entre les deux",
+        "message": "<div> \"Entre les deux\" is outside the safe area: Instagram Reels (top edge), YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 16.15,
+        "lastSeen": 19.739,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          16.15,
+          19.739
+        ]
+      },
+      {
+        "selector": "#b-word",
+        "dataAttributes": {
+          "data-var-text": "word"
+        },
+        "sourceFile": "compositions/between.html",
+        "bbox": {
+          "x": 408.19,
+          "y": 276,
+          "width": 263.61,
+          "height": 260
+        },
+        "time": 19.739,
+        "rect": {
+          "left": 408.19,
+          "top": 276,
+          "right": 671.8,
+          "bottom": 536,
+          "width": 263.61,
+          "height": 260
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "Toi.",
+        "message": "<div> \"Toi.\" is outside the safe area: YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 19.739,
+        "lastSeen": 19.739,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          19.739
+        ]
+      },
+      {
+        "selector": "#u-l1 > div:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 785.56,
+          "y": 134,
+          "width": 214.44,
+          "height": 392
+        },
+        "time": 23.328,
+        "rect": {
+          "left": 785.56,
+          "top": 134,
+          "right": 1000,
+          "bottom": 526,
+          "width": 214.44,
+          "height": 392
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "01",
+        "message": "<div> \"01\" is outside the safe area: TikTok (top and right edges), Instagram Reels (top edge), YouTube Shorts (top and right edges).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "selector": "#u-l2 > div:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 743.05,
+          "y": 134,
+          "width": 256.95,
+          "height": 392
+        },
+        "time": 23.328,
+        "rect": {
+          "left": 743.05,
+          "top": 134,
+          "right": 1000,
+          "bottom": 526,
+          "width": 256.95,
+          "height": 392
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "02",
+        "message": "<div> \"02\" is outside the safe area: TikTok (top and right edges), Instagram Reels (top edge), YouTube Shorts (top and right edges).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "selector": "#u-l3 > div:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 743.05,
+          "y": 134,
+          "width": 256.95,
+          "height": 392
+        },
+        "time": 23.328,
+        "rect": {
+          "left": 743.05,
+          "top": 134,
+          "right": 1000,
+          "bottom": 526,
+          "width": 256.95,
+          "height": 392
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "03",
+        "message": "<div> \"03\" is outside the safe area: TikTok (top and right edges), Instagram Reels (top edge), YouTube Shorts (top and right edges).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "selector": "#u-l4 > div:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 743.05,
+          "y": 134,
+          "width": 256.95,
+          "height": 392
+        },
+        "time": 23.328,
+        "rect": {
+          "left": 743.05,
+          "top": 134,
+          "right": 1000,
+          "bottom": 526,
+          "width": 256.95,
+          "height": 392
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "04",
+        "message": "<div> \"04\" is outside the safe area: TikTok (top and right edges), Instagram Reels (top edge), YouTube Shorts (top and right edges).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "selector": "#u-s1 > div:nth-of-type(1) > div:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 111.11,
+          "y": 196,
+          "width": 47.77,
+          "height": 34
+        },
+        "time": 23.328,
+        "rect": {
+          "left": 111.11,
+          "top": 196,
+          "right": 158.88,
+          "bottom": 230,
+          "width": 47.77,
+          "height": 34
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "01",
+        "message": "<div> \"01\" is outside the safe area: TikTok (top edge), Instagram Reels (top edge), YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "selector": "#u-s1 > div:nth-of-type(1) > div:nth-of-type(2)",
+        "dataAttributes": {
+          "data-var-text": "n1"
+        },
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 40.06,
+          "y": 238,
+          "width": 189.86,
+          "height": 35
+        },
+        "time": 23.328,
+        "rect": {
+          "left": 40.06,
+          "top": 238,
+          "right": 229.92,
+          "bottom": 273,
+          "width": 189.86,
+          "height": 35
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "Survêtement",
+        "message": "<div> \"Survêtement\" is outside the safe area: TikTok (left and top edges), Instagram Reels (left and top edges), YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "selector": "#u-s2 > div:nth-of-type(1) > div:nth-of-type(1)",
+        "dataAttributes": {},
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 378.33,
+          "y": 196,
+          "width": 53.33,
+          "height": 34
+        },
+        "time": 23.328,
+        "rect": {
+          "left": 378.33,
+          "top": 196,
+          "right": 431.66,
+          "bottom": 230,
+          "width": 53.33,
+          "height": 34
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "02",
+        "message": "<div> \"02\" is outside the safe area: TikTok (top edge), Instagram Reels (top edge), YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "selector": "#u-s2 > div:nth-of-type(1) > div:nth-of-type(2)",
+        "dataAttributes": {
+          "data-var-text": "n2"
+        },
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 329.56,
+          "y": 238,
+          "width": 150.88,
+          "height": 35
+        },
+        "time": 23.328,
+        "rect": {
+          "left": 329.56,
+          "top": 238,
+          "right": 480.44,
+          "bottom": 273,
+          "width": 150.88,
+          "height": 35
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "Doudoune",
+        "message": "<div> \"Doudoune\" is outside the safe area: TikTok (top edge), Instagram Reels (top edge), YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "selector": "#e-loud",
+        "dataAttributes": {},
+        "sourceFile": "compositions/endcard.html",
+        "bbox": {
+          "x": 256.41,
+          "y": 824,
+          "width": 567.18,
+          "height": 452
+        },
+        "time": 26.917,
+        "rect": {
+          "left": 256.41,
+          "top": 824,
+          "right": 823.59,
+          "bottom": 1276,
+          "width": 567.18,
+          "height": 452
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "LOUD",
+        "message": "<div> \"LOUD\" is outside the safe area: TikTok (right and bottom edges), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 26.917,
+        "lastSeen": 30.506,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          26.917,
+          30.506
+        ]
+      },
+      {
+        "selector": "#e-tag",
+        "dataAttributes": {},
+        "sourceFile": "compositions/endcard.html",
+        "bbox": {
+          "x": 208.19,
+          "y": 1229,
+          "width": 663.62,
+          "height": 83
+        },
+        "time": 30.506,
+        "rect": {
+          "left": 208.19,
+          "top": 1229,
+          "right": 871.81,
+          "bottom": 1312,
+          "width": 663.62,
+          "height": 83
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "Ton style parle en premier.",
+        "message": "<div> \"Ton style parle en premier.\" is outside the safe area: TikTok (right and bottom edges), Instagram Reels (bottom edge), YouTube Shorts (bottom edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 30.506,
+        "lastSeen": 30.506,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          30.506
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.794,
+        "selector": "#q-cam",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -11.02,
+          "top": -18.02,
+          "right": 1091.02,
+          "bottom": 1941.15,
+          "width": 1102.03,
+          "height": 1959.17
+        },
+        "containerSelector": "#quiet > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 11.02,
+          "right": 11.02,
+          "top": 18.02,
+          "bottom": 21.15
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/quiet.html",
+        "bbox": {
+          "x": -11.02,
+          "y": -18.02,
+          "width": 1102.03,
+          "height": 1959.17
+        },
+        "firstSeen": 1.794,
+        "lastSeen": 1.794,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          1.794
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 12.561,
+        "selector": "#l-b",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1080,
+          "top": 0,
+          "right": 2160,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "containerSelector": "#loud > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "right": 1080
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/loud.html",
+        "bbox": {
+          "x": 1080,
+          "y": 0,
+          "width": 1080,
+          "height": 1920
+        },
+        "firstSeen": 12.561,
+        "lastSeen": 12.561,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          12.561
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 12.561,
+        "selector": "#l-a-cam",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -62.86,
+          "top": -93.86,
+          "right": 1142.86,
+          "bottom": 2049.62,
+          "width": 1205.71,
+          "height": 2143.49
+        },
+        "containerSelector": "#l-a",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 62.86,
+          "right": 62.86,
+          "top": 93.86,
+          "bottom": 129.62
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/loud.html",
+        "bbox": {
+          "x": -62.86,
+          "y": -93.86,
+          "width": 1205.71,
+          "height": 2143.49
+        },
+        "firstSeen": 12.561,
+        "lastSeen": 16.15,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          12.561,
+          16.15
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 16.15,
+        "selector": "#l-a-word",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -1025.44,
+          "top": 306.62,
+          "right": -54.57,
+          "bottom": 994.04,
+          "width": 970.87,
+          "height": 687.42
+        },
+        "containerSelector": "#root",
+        "text": "LOUD.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 1025.44
+        },
+        "dataAttributes": {
+          "data-layout-allow-overlap": ""
+        },
+        "sourceFile": "compositions/loud.html",
+        "bbox": {
+          "x": -1025.44,
+          "y": 306.62,
+          "width": 970.87,
+          "height": 687.42
+        },
+        "firstSeen": 16.15,
+        "lastSeen": 16.15,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          16.15
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 16.15,
+        "selector": "#l-b-w1",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 88.62,
+          "top": 108.5,
+          "right": 991.36,
+          "bottom": 747.68,
+          "width": 902.74,
+          "height": 639.18
+        },
+        "containerSelector": "#b-left-img",
+        "text": "LOUD.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-layout-allow-overlap": ""
+        },
+        "sourceFile": "compositions/loud.html",
+        "bbox": {
+          "x": 88.62,
+          "y": 108.5,
+          "width": 902.74,
+          "height": 639.18
+        },
+        "firstSeen": 16.15,
+        "lastSeen": 16.15,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          16.15
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 16.15,
+        "selector": "#l-b-w2",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 88.62,
+          "top": 479.5,
+          "right": 991.36,
+          "bottom": 1118.68,
+          "width": 902.74,
+          "height": 639.18
+        },
+        "containerSelector": "#b-left-img",
+        "text": "LOUD.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-layout-allow-overlap": ""
+        },
+        "sourceFile": "compositions/loud.html",
+        "bbox": {
+          "x": 88.62,
+          "y": 479.5,
+          "width": 902.74,
+          "height": 639.18
+        },
+        "firstSeen": 16.15,
+        "lastSeen": 16.15,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          16.15
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 16.15,
+        "selector": "#l-b-w3",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 88.62,
+          "top": 850.5,
+          "right": 991.36,
+          "bottom": 1489.68,
+          "width": 902.74,
+          "height": 639.18
+        },
+        "containerSelector": "#b-left-img",
+        "text": "LOUD.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-layout-allow-overlap": ""
+        },
+        "sourceFile": "compositions/loud.html",
+        "bbox": {
+          "x": 88.62,
+          "y": 850.5,
+          "width": 902.74,
+          "height": 639.18
+        },
+        "firstSeen": 16.15,
+        "lastSeen": 16.15,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          16.15
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 16.15,
+        "selector": "#l-b-cam",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -32.4,
+          "top": -48.38,
+          "right": 1112.4,
+          "bottom": 1986.82,
+          "width": 1144.8,
+          "height": 2035.2
+        },
+        "containerSelector": "#l-b",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 32.4,
+          "right": 32.4,
+          "top": 48.38,
+          "bottom": 66.82
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/loud.html",
+        "bbox": {
+          "x": -32.4,
+          "y": -48.38,
+          "width": 1144.8,
+          "height": 2035.2
+        },
+        "firstSeen": 16.15,
+        "lastSeen": 16.15,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          16.15
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 16.15,
+        "selector": "#b-left-cam",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -21.6,
+          "top": -39.93,
+          "right": 561.6,
+          "bottom": 2033.67,
+          "width": 583.2,
+          "height": 2073.6
+        },
+        "containerSelector": "#b-left",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 540,
+          "bottom": 1920,
+          "width": 540,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 21.6,
+          "right": 21.6,
+          "top": 39.93,
+          "bottom": 113.67
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/between.html",
+        "bbox": {
+          "x": -21.6,
+          "y": -39.93,
+          "width": 583.2,
+          "height": 2073.6
+        },
+        "firstSeen": 16.15,
+        "lastSeen": 19.739,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          16.15,
+          19.739
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 16.15,
+        "selector": "#b-right-cam",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 518.4,
+          "top": -113.67,
+          "right": 1101.6,
+          "bottom": 1959.93,
+          "width": 583.2,
+          "height": 2073.6
+        },
+        "containerSelector": "#b-right",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 540,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 540,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 21.6,
+          "right": 21.6,
+          "top": 113.67,
+          "bottom": 39.93
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/between.html",
+        "bbox": {
+          "x": 518.4,
+          "y": -113.67,
+          "width": 583.2,
+          "height": 2073.6
+        },
+        "firstSeen": 16.15,
+        "lastSeen": 19.739,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          16.15,
+          19.739
+        ]
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 16.15,
+        "selector": "#l-a-cam",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": -1155.6,
+          "top": -112.9,
+          "right": 75.6,
+          "bottom": 2075.9,
+          "width": 1231.2,
+          "height": 2188.8
+        },
+        "containerSelector": "#l-a",
+        "text": "LOUD.",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/loud.html",
+        "bbox": {
+          "x": -1155.6,
+          "y": -112.9,
+          "width": 1231.2,
+          "height": 2188.8
+        },
+        "firstSeen": 16.15,
+        "lastSeen": 16.15,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          16.15
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 23.328,
+        "selector": "#u-l1 > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 785.56,
+          "top": 134,
+          "right": 1000,
+          "bottom": 526,
+          "width": 214.44,
+          "height": 392
+        },
+        "containerSelector": "#u-s3 > img:nth-of-type(1)",
+        "text": "01",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 785.56,
+          "y": 134,
+          "width": 214.44,
+          "height": 392
+        },
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 23.328,
+        "selector": "#u-l2 > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 743.05,
+          "top": 134,
+          "right": 1000,
+          "bottom": 526,
+          "width": 256.95,
+          "height": 392
+        },
+        "containerSelector": "#u-s3 > img:nth-of-type(1)",
+        "text": "02",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 743.05,
+          "y": 134,
+          "width": 256.95,
+          "height": 392
+        },
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 23.328,
+        "selector": "#u-l3 > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 743.05,
+          "top": 134,
+          "right": 1000,
+          "bottom": 526,
+          "width": 256.95,
+          "height": 392
+        },
+        "containerSelector": "#u-s3 > img:nth-of-type(1)",
+        "text": "03",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 743.05,
+          "y": 134,
+          "width": 256.95,
+          "height": 392
+        },
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 23.328,
+        "selector": "#u-l4 > div:nth-of-type(1)",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 743.05,
+          "top": 134,
+          "right": 1000,
+          "bottom": 526,
+          "width": 256.95,
+          "height": 392
+        },
+        "containerSelector": "#u-s3 > img:nth-of-type(1)",
+        "text": "04",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {},
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 743.05,
+          "y": 134,
+          "width": 256.95,
+          "height": 392
+        },
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 23.328,
+        "selector": "#u-s4",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 810,
+          "top": 11.8,
+          "right": 1080,
+          "bottom": 1931.8,
+          "width": 270,
+          "height": 1920
+        },
+        "containerSelector": "#lineup > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "bottom": 11.8
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 810,
+          "y": 11.8,
+          "width": 270,
+          "height": 1920
+        },
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 23.328,
+        "selector": "#u-s1 > img:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -420,
+          "top": 0,
+          "right": 660,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "containerSelector": "#u-s1",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 270,
+          "bottom": 1920,
+          "width": 270,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 420,
+          "right": 390
+        },
+        "dataAttributes": {
+          "data-hf-render-id": "hf-media-14",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": -420,
+          "y": 0,
+          "width": 1080,
+          "height": 1920
+        },
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 23.328,
+        "selector": "#u-s2 > img:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -135,
+          "top": 0,
+          "right": 945,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "containerSelector": "#u-s2",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 270,
+          "top": 0,
+          "right": 540,
+          "bottom": 1920,
+          "width": 270,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 405,
+          "right": 405
+        },
+        "dataAttributes": {
+          "data-hf-render-id": "hf-media-15",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": -135,
+          "y": 0,
+          "width": 1080,
+          "height": 1920
+        },
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 23.328,
+        "selector": "#u-s3 > img:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 240,
+          "top": -0.4,
+          "right": 1320,
+          "bottom": 1919.6,
+          "width": 1080,
+          "height": 1920
+        },
+        "containerSelector": "#u-s3",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 540,
+          "top": -0.4,
+          "right": 810,
+          "bottom": 1919.6,
+          "width": 270,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 300,
+          "right": 510
+        },
+        "dataAttributes": {
+          "data-hf-render-id": "hf-media-16",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 240,
+          "y": -0.4,
+          "width": 1080,
+          "height": 1920
+        },
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 23.328,
+        "selector": "#u-s4 > img:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 345,
+          "top": 11.8,
+          "right": 1425,
+          "bottom": 1931.8,
+          "width": 1080,
+          "height": 1920
+        },
+        "containerSelector": "#u-s4",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 810,
+          "top": 11.8,
+          "right": 1080,
+          "bottom": 1931.8,
+          "width": 270,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 465,
+          "right": 345
+        },
+        "dataAttributes": {
+          "data-hf-render-id": "hf-media-17",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 345,
+          "y": 11.8,
+          "width": 1080,
+          "height": 1920
+        },
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 23.328,
+        "selector": "#u-s1 > img:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": -420,
+          "top": 0,
+          "right": 660,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "containerSelector": "#u-s1",
+        "text": "",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 270,
+          "bottom": 1920,
+          "width": 270,
+          "height": 1920
+        },
+        "dataAttributes": {
+          "data-hf-render-id": "hf-media-14",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": -420,
+          "y": 0,
+          "width": 1080,
+          "height": 1920
+        },
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 23.328,
+        "selector": "#u-s2 > img:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": -135,
+          "top": 0,
+          "right": 945,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "containerSelector": "#u-s2",
+        "text": "",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 270,
+          "top": 0,
+          "right": 540,
+          "bottom": 1920,
+          "width": 270,
+          "height": 1920
+        },
+        "dataAttributes": {
+          "data-hf-render-id": "hf-media-15",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": -135,
+          "y": 0,
+          "width": 1080,
+          "height": 1920
+        },
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 23.328,
+        "selector": "#u-s3 > img:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 240,
+          "top": -0.4,
+          "right": 1320,
+          "bottom": 1919.6,
+          "width": 1080,
+          "height": 1920
+        },
+        "containerSelector": "#u-s3",
+        "text": "",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 540,
+          "top": -0.4,
+          "right": 810,
+          "bottom": 1919.6,
+          "width": 270,
+          "height": 1920
+        },
+        "dataAttributes": {
+          "data-hf-render-id": "hf-media-16",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 240,
+          "y": -0.4,
+          "width": 1080,
+          "height": 1920
+        },
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 23.328,
+        "selector": "#u-s4 > img:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 345,
+          "top": 11.8,
+          "right": 1425,
+          "bottom": 1931.8,
+          "width": 1080,
+          "height": 1920
+        },
+        "containerSelector": "#u-s4",
+        "text": "",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 810,
+          "top": 11.8,
+          "right": 1080,
+          "bottom": 1931.8,
+          "width": 270,
+          "height": 1920
+        },
+        "dataAttributes": {
+          "data-hf-render-id": "hf-media-17",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 345,
+          "y": 11.8,
+          "width": 1080,
+          "height": 1920
+        },
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      }
+    ],
+    "duration": 32.3,
+    "samples": [
+      1.794,
+      5.383,
+      8.972,
+      12.561,
+      16.15,
+      19.739,
+      23.328,
+      26.917,
+      30.506
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 52,
+    "truncated": false,
+    "faceCheck": {
+      "ran": true,
+      "candidates": 0,
+      "faces": 0
+    }
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.43:1; WCAG AA requires 3:1.",
+        "text": "LOUD.",
+        "fg": "rgb(242,240,235)",
+        "bg": "rgb(208,202,190)",
+        "ratio": 1.43,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(113,112,110)",
+        "large": true,
+        "selector": "#l-a-word",
+        "dataAttributes": {
+          "data-layout-allow-overlap": ""
+        },
+        "sourceFile": "compositions/loud.html",
+        "bbox": {
+          "x": -1155.5999755859375,
+          "y": 422.90399169921875,
+          "width": 1231.199951171875,
+          "height": 456
+        },
+        "time": 16.15,
+        "times": [
+          16.15
+        ]
+      }
+    ],
+    "enabled": true,
+    "samples": [
+      1.794,
+      8.972,
+      16.15,
+      23.328,
+      30.506
+    ],
+    "checked": 26,
+    "passed": 25
+  },
+  "craft": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "step": 0.125,
+    "samples": 259
+  },
+  "audio": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

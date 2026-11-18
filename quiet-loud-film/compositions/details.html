@@ -1,0 +1,143 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Instrument Serif";
+      font-style: italic;
+      font-weight: 400;
+      src: url("assets/fonts/instrument-serif-latin-400-italic.woff2") format("woff2");
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    .d-shot {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    .d-cam {
+      position: absolute;
+      inset: 0;
+    }
+    .d-img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1080px;
+      height: 1920px;
+      object-fit: cover;
+    }
+    .d-label {
+      position: absolute;
+      left: 130px;
+      top: 790px;
+      width: 640px;
+    }
+    .d-num {
+      font-family: Inter, sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 0.42em;
+      opacity: 0;
+    }
+    .d-rule {
+      width: 120px;
+      height: 3px;
+      margin: 22px 0 10px;
+      transform-origin: 0 50%;
+    }
+    .d-word {
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      font-size: 168px;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      opacity: 0;
+    }
+    #d-a .d-num,
+    #d-a .d-word {
+      color: #0d0e11;
+    }
+    #d-a .d-rule {
+      background: #0d0e11;
+    }
+    #d-b .d-num,
+    #d-b .d-word {
+      color: #f2f0eb;
+    }
+    #d-b .d-rule {
+      background: #1462ff;
+    }
+    #d-c .d-num,
+    #d-c .d-word {
+      color: #0d0e11;
+    }
+    #d-c .d-rule {
+      background: #0d0e11;
+    }
+  </style>
+  <div data-hf-id="hf-yxng" id="root" data-composition-id="details" data-width="1080" data-height="1920" data-composition-variables="[{&quot;id&quot;:&quot;w1&quot;,&quot;type&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Mot 1&quot;,&quot;default&quot;:&quot;Coupe.&quot;},{&quot;id&quot;:&quot;w2&quot;,&quot;type&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Mot 2&quot;,&quot;default&quot;:&quot;Matière.&quot;},{&quot;id&quot;:&quot;w3&quot;,&quot;type&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Mot 3&quot;,&quot;default&quot;:&quot;Détail.&quot;}]">
+    <div data-hf-id="hf-bqkn" id="d-a" class="d-shot">
+      <div data-hf-id="hf-ywxo" class="d-cam" id="d-a-cam">
+        <img data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:1,&quot;adjust&quot;:{&quot;exposure&quot;:0,&quot;contrast&quot;:0,&quot;highlights&quot;:0,&quot;shadows&quot;:0,&quot;whites&quot;:0,&quot;blacks&quot;:0,&quot;temperature&quot;:0,&quot;tint&quot;:0,&quot;vibrance&quot;:0,&quot;saturation&quot;:0},&quot;details&quot;:{&quot;vignette&quot;:0.22,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0.16,&quot;grainSize&quot;:0.3,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-puzb" class="d-img" id="d-a-img" src="assets/img/macro-seam.jpg" alt="">
+      </div>
+      <div data-hf-id="hf-klgx" class="d-label">
+        <div data-hf-id="hf-h5lp" class="d-num" id="d-a-num">01</div>
+        <div data-hf-id="hf-pb64" class="d-rule" id="d-a-rule"></div>
+        <div data-hf-id="hf-c583" class="d-word" id="d-a-word" data-var-text="w1">Coupe.</div>
+      </div>
+    </div>
+    <div data-hf-id="hf-0v30" id="d-b" class="d-shot">
+      <div data-hf-id="hf-sjcv" class="d-cam" id="d-b-cam">
+        <img data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:1,&quot;adjust&quot;:{&quot;exposure&quot;:0,&quot;contrast&quot;:0,&quot;highlights&quot;:0,&quot;shadows&quot;:0,&quot;whites&quot;:0,&quot;blacks&quot;:0,&quot;temperature&quot;:0,&quot;tint&quot;:0,&quot;vibrance&quot;:0,&quot;saturation&quot;:0},&quot;details&quot;:{&quot;vignette&quot;:0.22,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0.16,&quot;grainSize&quot;:0.3,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-u54p" class="d-img" id="d-b-img" src="assets/img/macro-zip.jpg" alt="">
+      </div>
+      <div data-hf-id="hf-4crp" class="d-label">
+        <div data-hf-id="hf-gu3v" class="d-num" id="d-b-num">02</div>
+        <div data-hf-id="hf-nlb1" class="d-rule" id="d-b-rule"></div>
+        <div data-hf-id="hf-jgf5" class="d-word" id="d-b-word" data-var-text="w2">Matière.</div>
+      </div>
+    </div>
+    <div data-hf-id="hf-1mqt" id="d-c" class="d-shot">
+      <div data-hf-id="hf-n3om" class="d-cam" id="d-c-cam">
+        <img data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:1,&quot;adjust&quot;:{&quot;exposure&quot;:0,&quot;contrast&quot;:0,&quot;highlights&quot;:0,&quot;shadows&quot;:0,&quot;whites&quot;:0,&quot;blacks&quot;:0,&quot;temperature&quot;:0,&quot;tint&quot;:0,&quot;vibrance&quot;:0,&quot;saturation&quot;:0},&quot;details&quot;:{&quot;vignette&quot;:0.22,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0.16,&quot;grainSize&quot;:0.3,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-u53u" class="d-img" id="d-c-img" src="assets/img/macro-sneaker.jpg" alt="">
+      </div>
+      <div data-hf-id="hf-5jos" class="d-label">
+        <div data-hf-id="hf-hwax" class="d-num" id="d-c-num">03</div>
+        <div data-hf-id="hf-5bx2" class="d-rule" id="d-c-rule"></div>
+        <div data-hf-id="hf-41gc" class="d-word" id="d-c-word" data-var-text="w3">Détail.</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Local times. Film: scene starts 3.6. Shots: A 0–1.7, B 1.7–3.65, C 3.65–7.1.
+    const tl = gsap.timeline({ paused: true });
+    const A = 0,
+      B = 1.7,
+      C = 3.65;
+
+    // A: curtain rises from the bottom over the studio frame
+    tl.fromTo("#d-a", { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.62, ease: "power3.inOut" }, A);
+    tl.fromTo("#d-a-cam", { scale: 1.18, y: 60 }, { scale: 1.06, y: -40, duration: 2.4, ease: "power2.out" }, A);
+    // B: falls from the top, mirrored
+    tl.fromTo("#d-b", { clipPath: "inset(0% 0% 100% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.55, ease: "power3.inOut" }, B);
+    tl.fromTo("#d-b-cam", { scale: 1.2, y: -50 }, { scale: 1.08, y: 30, duration: 2.5, ease: "power2.out" }, B);
+    // C: opens from the centre line outwards
+    tl.fromTo("#d-c", { clipPath: "inset(50% 0% 50% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.55, ease: "expo.out" }, C);
+    tl.fromTo("#d-c-cam", { scale: 1.14, x: 30 }, { scale: 1.02, x: -20, duration: 3.15, ease: "power2.out" }, C);
+
+    // labels: number, rule draws, word blurs in on the spoken word
+    function label(id, t) {
+      tl.fromTo(`#${id}-num`, { opacity: 0 }, { opacity: 0.85, duration: 0.2, ease: "power2.out" }, t);
+      tl.fromTo(`#${id}-rule`, { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "expo.out" }, t + 0.05);
+      tl.fromTo(`#${id}-word`, { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, t + 0.12);
+    }
+    label("d-a", A + 0.12);
+    label("d-b", B + 0.12);
+    label("d-c", C + 0.1);
+
+    // C hands over to the flash: a short push as the light builds
+    tl.to("#d-c-cam", { scale: 1.07, duration: 0.3, ease: "power3.in" }, 6.82);
+    window.__timelines["details"] = tl;
+  </script>
+</template>

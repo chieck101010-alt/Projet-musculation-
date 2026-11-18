@@ -1,0 +1,308 @@
+[
+  {
+    "text": "Luxe",
+    "start": 0.07,
+    "end": 0.48,
+    "id": "w0"
+  },
+  {
+    "text": "is",
+    "start": 0.5,
+    "end": 0.71,
+    "id": "w1"
+  },
+  {
+    "text": "stilte,",
+    "start": 0.81,
+    "end": 1.71,
+    "id": "w2"
+  },
+  {
+    "text": "een",
+    "start": 2,
+    "end": 2.02,
+    "id": "w3"
+  },
+  {
+    "text": "strakke",
+    "start": 2.02,
+    "end": 2.7,
+    "id": "w4"
+  },
+  {
+    "text": "snit,",
+    "start": 2.75,
+    "end": 3.28,
+    "id": "w5"
+  },
+  {
+    "text": "stof",
+    "start": 3.28,
+    "end": 3.73,
+    "id": "w6"
+  },
+  {
+    "text": "die",
+    "start": 3.81,
+    "end": 4.06,
+    "id": "w7"
+  },
+  {
+    "text": "precies",
+    "start": 4.32,
+    "end": 4.87,
+    "id": "w8"
+  },
+  {
+    "text": "valt,",
+    "start": 4.97,
+    "end": 6.19,
+    "id": "w9"
+  },
+  {
+    "text": "een",
+    "start": 6.36,
+    "end": 6.41,
+    "id": "w10"
+  },
+  {
+    "text": "detail",
+    "start": 6.41,
+    "end": 6.84,
+    "id": "w11"
+  },
+  {
+    "text": "dat",
+    "start": 6.84,
+    "end": 7.04,
+    "id": "w12"
+  },
+  {
+    "text": "niemand",
+    "start": 7.04,
+    "end": 7.52,
+    "id": "w13"
+  },
+  {
+    "text": "ziet,",
+    "start": 7.52,
+    "end": 8.64,
+    "id": "w14"
+  },
+  {
+    "text": "behalve",
+    "start": 8.71,
+    "end": 9.17,
+    "id": "w15"
+  },
+  {
+    "text": "jij.",
+    "start": 9.17,
+    "end": 9.62,
+    "id": "w16"
+  },
+  {
+    "text": "De",
+    "start": 9.71,
+    "end": 9.93,
+    "id": "w17"
+  },
+  {
+    "text": "straat",
+    "start": 9.93,
+    "end": 10.79,
+    "id": "w18"
+  },
+  {
+    "text": "is",
+    "start": 10.79,
+    "end": 10.87,
+    "id": "w19"
+  },
+  {
+    "text": "lawaai,",
+    "start": 11.09,
+    "end": 12.24,
+    "id": "w20"
+  },
+  {
+    "text": "beweging,",
+    "start": 12.24,
+    "end": 13.69,
+    "id": "w21"
+  },
+  {
+    "text": "energie,",
+    "start": 13.69,
+    "end": 14.79,
+    "id": "w22"
+  },
+  {
+    "text": "en",
+    "start": 14.99,
+    "end": 15.27,
+    "id": "w23"
+  },
+  {
+    "text": "dertussen",
+    "start": 15.28,
+    "end": 16.57,
+    "id": "w24"
+  },
+  {
+    "text": "sta",
+    "start": 16.57,
+    "end": 17,
+    "id": "w25"
+  },
+  {
+    "text": "jij,",
+    "start": 17,
+    "end": 17.57,
+    "id": "w26"
+  },
+  {
+    "text": "jouw",
+    "start": 17.79,
+    "end": 18.12,
+    "id": "w27"
+  },
+  {
+    "text": "silhouette,",
+    "start": 18.32,
+    "end": 19.02,
+    "id": "w28"
+  },
+  {
+    "text": "jouw",
+    "start": 19.08,
+    "end": 19.43,
+    "id": "w29"
+  },
+  {
+    "text": "ritme,",
+    "start": 19.44,
+    "end": 21,
+    "id": "w30"
+  },
+  {
+    "text": "hoe",
+    "start": 21.07,
+    "end": 21.18,
+    "id": "w31"
+  },
+  {
+    "text": "jij",
+    "start": 21.18,
+    "end": 21.36,
+    "id": "w32"
+  },
+  {
+    "text": "een",
+    "start": 21.36,
+    "end": 21.54,
+    "id": "w33"
+  },
+  {
+    "text": "ruimte",
+    "start": 21.54,
+    "end": 21.9,
+    "id": "w34"
+  },
+  {
+    "text": "binnenloopt.",
+    "start": 21.9,
+    "end": 22.8,
+    "id": "w35"
+  },
+  {
+    "text": "Je",
+    "start": 22.87,
+    "end": 23,
+    "id": "w36"
+  },
+  {
+    "text": "hoeft",
+    "start": 23.06,
+    "end": 23.51,
+    "id": "w37"
+  },
+  {
+    "text": "niet",
+    "start": 23.58,
+    "end": 24,
+    "id": "w38"
+  },
+  {
+    "text": "te",
+    "start": 24,
+    "end": 24.03,
+    "id": "w39"
+  },
+  {
+    "text": "schreeuwen",
+    "start": 24.23,
+    "end": 25.32,
+    "id": "w40"
+  },
+  {
+    "text": "om",
+    "start": 25.36,
+    "end": 25.5,
+    "id": "w41"
+  },
+  {
+    "text": "gezien",
+    "start": 25.55,
+    "end": 26.22,
+    "id": "w42"
+  },
+  {
+    "text": "te",
+    "start": 26.22,
+    "end": 26.44,
+    "id": "w43"
+  },
+  {
+    "text": "worden,",
+    "start": 26.61,
+    "end": 27.33,
+    "id": "w44"
+  },
+  {
+    "text": "quiet,",
+    "start": 27.33,
+    "end": 27.95,
+    "id": "w45"
+  },
+  {
+    "text": "loud,",
+    "start": 28.1,
+    "end": 28.78,
+    "id": "w46"
+  },
+  {
+    "text": "jouw",
+    "start": 29.11,
+    "end": 29.22,
+    "id": "w47"
+  },
+  {
+    "text": "stel",
+    "start": 29.22,
+    "end": 29.66,
+    "id": "w48"
+  },
+  {
+    "text": "spreekt",
+    "start": 29.66,
+    "end": 30.42,
+    "id": "w49"
+  },
+  {
+    "text": "eerst.",
+    "start": 30.42,
+    "end": 31.16,
+    "id": "w50"
+  }
+]

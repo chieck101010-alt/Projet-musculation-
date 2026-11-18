@@ -1,0 +1,1079 @@
+{
+  "ok": true,
+  "strict": false,
+  "browserSkipped": false,
+  "lint": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "duplicate_media_discovery_risk",
+        "severity": "warning",
+        "message": "Detected 2 matching img entries with the same source/start/duration.",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {},
+        "sourceFile": "/home/user/Projet-musculation-/quiet-loud-film/compositions/lineup.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "time": 0,
+        "fixHint": "Avoid duplicated media nodes that can be discovered twice during compilation."
+      }
+    ],
+    "filesScanned": 9
+  },
+  "runtime": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 1,
+    "findings": [
+      {
+        "code": "motion_blur_no_movers",
+        "severity": "info",
+        "message": "data-motion-blur=\"on\" is set but nothing in the composition moves fast enough to blur, so it has no effect",
+        "selector": "[data-composition-id]",
+        "dataAttributes": {
+          "data-composition-id": "main",
+          "data-start": "0",
+          "data-duration": "32.3",
+          "data-width": "1080",
+          "data-height": "1920",
+          "data-motion-blur": "on"
+        },
+        "sourceFile": "index.html",
+        "bbox": {
+          "x": 0,
+          "y": 0,
+          "width": 1080,
+          "height": 1920
+        },
+        "time": 0,
+        "fixHint": "animate an element's transform or position by 2+ px per frame; if the motion is set from a timeline callback (onUpdate, render(t)), add data-motion-blur-events=\"on\"; otherwise drop data-motion-blur"
+      }
+    ]
+  },
+  "layout": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 3,
+    "infoCount": 18,
+    "findings": [
+      {
+        "selector": "#q-title",
+        "dataAttributes": {},
+        "sourceFile": "compositions/quiet.html",
+        "bbox": {
+          "x": 231.59,
+          "y": 285,
+          "width": 616.82,
+          "height": 390
+        },
+        "time": 1.794,
+        "rect": {
+          "left": 231.59,
+          "top": 285,
+          "right": 848.41,
+          "bottom": 675,
+          "width": 616.82,
+          "height": 390
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "Quiet.",
+        "message": "<h1> \"Quiet.\" is outside the safe area: YouTube Shorts (top edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 1.794,
+        "lastSeen": 1.794,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          1.794
+        ]
+      },
+      {
+        "selector": "#l-a-word",
+        "dataAttributes": {
+          "data-layout-allow-overlap": ""
+        },
+        "sourceFile": "compositions/loud.html",
+        "bbox": {
+          "x": 155.14,
+          "y": 427.49,
+          "width": 689.32,
+          "height": 486.75
+        },
+        "time": 12.561,
+        "rect": {
+          "left": 155.14,
+          "top": 427.49,
+          "right": 844.46,
+          "bottom": 914.24,
+          "width": 689.32,
+          "height": 486.75
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "LOUD.",
+        "message": "<div> \"LOUD.\" is outside the safe area: TikTok (right edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 12.561,
+        "lastSeen": 16.15,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          12.561,
+          16.15
+        ]
+      },
+      {
+        "selector": "#l-b-w2",
+        "dataAttributes": {
+          "data-layout-allow-overlap": ""
+        },
+        "sourceFile": "compositions/loud.html",
+        "bbox": {
+          "x": 197.16,
+          "y": 478.44,
+          "width": 609.35,
+          "height": 431.42
+        },
+        "time": 16.15,
+        "rect": {
+          "left": 197.16,
+          "top": 478.44,
+          "right": 806.51,
+          "bottom": 909.86,
+          "width": 609.35,
+          "height": 431.42
+        },
+        "code": "outside_safe_zone",
+        "severity": "warning",
+        "text": "LOUD.",
+        "message": "<div> \"LOUD.\" is outside the safe area: TikTok (right edge).",
+        "fixHint": "Move the text inside the safe area, or mark text meant to sit there with data-layout-allow-safe-zone.",
+        "firstSeen": 16.15,
+        "lastSeen": 16.15,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          16.15
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 1.794,
+        "selector": "#q-cam",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -11.02,
+          "top": -18.02,
+          "right": 1091.02,
+          "bottom": 1941.15,
+          "width": 1102.03,
+          "height": 1959.17
+        },
+        "containerSelector": "#quiet > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 11.02,
+          "right": 11.02,
+          "top": 18.02,
+          "bottom": 21.15
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/quiet.html",
+        "bbox": {
+          "x": -11.02,
+          "y": -18.02,
+          "width": 1102.03,
+          "height": 1959.17
+        },
+        "firstSeen": 1.794,
+        "lastSeen": 1.794,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          1.794
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 12.561,
+        "selector": "#l-b",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 1080,
+          "top": 0,
+          "right": 2160,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "containerSelector": "#loud > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "right": 1080
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/loud.html",
+        "bbox": {
+          "x": 1080,
+          "y": 0,
+          "width": 1080,
+          "height": 1920
+        },
+        "firstSeen": 12.561,
+        "lastSeen": 12.561,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          12.561
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 12.561,
+        "selector": "#l-a-cam",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -62.86,
+          "top": -93.86,
+          "right": 1142.86,
+          "bottom": 2049.62,
+          "width": 1205.71,
+          "height": 2143.49
+        },
+        "containerSelector": "#l-a",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 62.86,
+          "right": 62.86,
+          "top": 93.86,
+          "bottom": 129.62
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/loud.html",
+        "bbox": {
+          "x": -62.86,
+          "y": -93.86,
+          "width": 1205.71,
+          "height": 2143.49
+        },
+        "firstSeen": 12.561,
+        "lastSeen": 16.15,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          12.561,
+          16.15
+        ]
+      },
+      {
+        "code": "canvas_overflow",
+        "severity": "info",
+        "time": 16.15,
+        "selector": "#l-a-word",
+        "message": "Text extends outside the composition canvas.",
+        "rect": {
+          "left": -933,
+          "top": 419.48,
+          "right": -229.1,
+          "bottom": 916.52,
+          "width": 703.9,
+          "height": 497.04
+        },
+        "containerSelector": "#root",
+        "text": "LOUD.",
+        "fixHint": "Move the text inward, reduce its size, or mark intentional off-canvas animation with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 933
+        },
+        "dataAttributes": {
+          "data-layout-allow-overlap": ""
+        },
+        "sourceFile": "compositions/loud.html",
+        "bbox": {
+          "x": -933,
+          "y": 419.48,
+          "width": 703.9,
+          "height": 497.04
+        },
+        "firstSeen": 16.15,
+        "lastSeen": 16.15,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          16.15
+        ]
+      },
+      {
+        "code": "text_occluded",
+        "severity": "info",
+        "time": 16.15,
+        "selector": "#l-b-w2",
+        "message": "Text is hidden beneath an opaque element.",
+        "rect": {
+          "left": 197.16,
+          "top": 478.44,
+          "right": 806.51,
+          "bottom": 909.86,
+          "width": 609.35,
+          "height": 431.42
+        },
+        "containerSelector": "#b-left-img",
+        "text": "LOUD.",
+        "fixHint": "Give the text its own zone, raise its stacking order above the covering element, or mark intentional layering with data-layout-allow-occlusion.",
+        "coveredFraction": 1,
+        "dataAttributes": {
+          "data-layout-allow-overlap": ""
+        },
+        "sourceFile": "compositions/loud.html",
+        "bbox": {
+          "x": 197.16,
+          "y": 478.44,
+          "width": 609.35,
+          "height": 431.42
+        },
+        "firstSeen": 16.15,
+        "lastSeen": 16.15,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          16.15
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 16.15,
+        "selector": "#l-b-cam",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -32.4,
+          "top": -48.38,
+          "right": 1112.4,
+          "bottom": 1986.82,
+          "width": 1144.8,
+          "height": 2035.2
+        },
+        "containerSelector": "#l-b",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 32.4,
+          "right": 32.4,
+          "top": 48.38,
+          "bottom": 66.82
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/loud.html",
+        "bbox": {
+          "x": -32.4,
+          "y": -48.38,
+          "width": 1144.8,
+          "height": 2035.2
+        },
+        "firstSeen": 16.15,
+        "lastSeen": 16.15,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          16.15
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 16.15,
+        "selector": "#b-left-cam",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -21.6,
+          "top": -39.93,
+          "right": 561.6,
+          "bottom": 2033.67,
+          "width": 583.2,
+          "height": 2073.6
+        },
+        "containerSelector": "#b-left",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 540,
+          "bottom": 1920,
+          "width": 540,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 21.6,
+          "right": 21.6,
+          "top": 39.93,
+          "bottom": 113.67
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/between.html",
+        "bbox": {
+          "x": -21.6,
+          "y": -39.93,
+          "width": 583.2,
+          "height": 2073.6
+        },
+        "firstSeen": 16.15,
+        "lastSeen": 19.739,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          16.15,
+          19.739
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 16.15,
+        "selector": "#b-right-cam",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 518.4,
+          "top": -113.67,
+          "right": 1101.6,
+          "bottom": 1959.93,
+          "width": 583.2,
+          "height": 2073.6
+        },
+        "containerSelector": "#b-right",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 540,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 540,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 21.6,
+          "right": 21.6,
+          "top": 113.67,
+          "bottom": 39.93
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/between.html",
+        "bbox": {
+          "x": 518.4,
+          "y": -113.67,
+          "width": 583.2,
+          "height": 2073.6
+        },
+        "firstSeen": 16.15,
+        "lastSeen": 19.739,
+        "occurrences": 2,
+        "heldMs": 0,
+        "times": [
+          16.15,
+          19.739
+        ]
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 16.15,
+        "selector": "#l-a-cam",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": -1155.6,
+          "top": -112.9,
+          "right": 75.6,
+          "bottom": 2075.9,
+          "width": 1231.2,
+          "height": 2188.8
+        },
+        "containerSelector": "#l-a",
+        "text": "LOUD.",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/loud.html",
+        "bbox": {
+          "x": -1155.6,
+          "y": -112.9,
+          "width": 1231.2,
+          "height": 2188.8
+        },
+        "firstSeen": 16.15,
+        "lastSeen": 16.15,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          16.15
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 23.328,
+        "selector": "#u-s4",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 810,
+          "top": 11.8,
+          "right": 1080,
+          "bottom": 1931.8,
+          "width": 270,
+          "height": 1920
+        },
+        "containerSelector": "#lineup > div:nth-of-type(1)",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 1080,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "overflow": {
+          "bottom": 11.8
+        },
+        "dataAttributes": {},
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 810,
+          "y": 11.8,
+          "width": 270,
+          "height": 1920
+        },
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 23.328,
+        "selector": "#u-s1 > img:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -420,
+          "top": 0,
+          "right": 660,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "containerSelector": "#u-s1",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 270,
+          "bottom": 1920,
+          "width": 270,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 420,
+          "right": 390
+        },
+        "dataAttributes": {
+          "data-hf-render-id": "hf-media-14",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": -420,
+          "y": 0,
+          "width": 1080,
+          "height": 1920
+        },
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 23.328,
+        "selector": "#u-s2 > img:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": -135,
+          "top": 0,
+          "right": 945,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "containerSelector": "#u-s2",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 270,
+          "top": 0,
+          "right": 540,
+          "bottom": 1920,
+          "width": 270,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 405,
+          "right": 405
+        },
+        "dataAttributes": {
+          "data-hf-render-id": "hf-media-15",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": -135,
+          "y": 0,
+          "width": 1080,
+          "height": 1920
+        },
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 23.328,
+        "selector": "#u-s3 > img:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 240,
+          "top": -0.4,
+          "right": 1320,
+          "bottom": 1919.6,
+          "width": 1080,
+          "height": 1920
+        },
+        "containerSelector": "#u-s3",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 540,
+          "top": -0.4,
+          "right": 810,
+          "bottom": 1919.6,
+          "width": 270,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 300,
+          "right": 510
+        },
+        "dataAttributes": {
+          "data-hf-render-id": "hf-media-16",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 240,
+          "y": -0.4,
+          "width": 1080,
+          "height": 1920
+        },
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "code": "container_overflow",
+        "severity": "info",
+        "time": 23.328,
+        "selector": "#u-s4 > img:nth-of-type(1)",
+        "message": "Element extends outside a clipping layout container.",
+        "rect": {
+          "left": 345,
+          "top": 11.8,
+          "right": 1425,
+          "bottom": 1931.8,
+          "width": 1080,
+          "height": 1920
+        },
+        "containerSelector": "#u-s4",
+        "fixHint": "Resize/reposition the child or container, or mark intentional overflow with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 810,
+          "top": 11.8,
+          "right": 1080,
+          "bottom": 1931.8,
+          "width": 270,
+          "height": 1920
+        },
+        "overflow": {
+          "left": 465,
+          "right": 345
+        },
+        "dataAttributes": {
+          "data-hf-render-id": "hf-media-17",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 345,
+          "y": 11.8,
+          "width": 1080,
+          "height": 1920
+        },
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 23.328,
+        "selector": "#u-s1 > img:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": -420,
+          "top": 0,
+          "right": 660,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "containerSelector": "#u-s1",
+        "text": "",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 0,
+          "top": 0,
+          "right": 270,
+          "bottom": 1920,
+          "width": 270,
+          "height": 1920
+        },
+        "dataAttributes": {
+          "data-hf-render-id": "hf-media-14",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": -420,
+          "y": 0,
+          "width": 1080,
+          "height": 1920
+        },
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 23.328,
+        "selector": "#u-s2 > img:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": -135,
+          "top": 0,
+          "right": 945,
+          "bottom": 1920,
+          "width": 1080,
+          "height": 1920
+        },
+        "containerSelector": "#u-s2",
+        "text": "",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 270,
+          "top": 0,
+          "right": 540,
+          "bottom": 1920,
+          "width": 270,
+          "height": 1920
+        },
+        "dataAttributes": {
+          "data-hf-render-id": "hf-media-15",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": -135,
+          "y": 0,
+          "width": 1080,
+          "height": 1920
+        },
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 23.328,
+        "selector": "#u-s3 > img:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 240,
+          "top": -0.4,
+          "right": 1320,
+          "bottom": 1919.6,
+          "width": 1080,
+          "height": 1920
+        },
+        "containerSelector": "#u-s3",
+        "text": "",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 540,
+          "top": -0.4,
+          "right": 810,
+          "bottom": 1919.6,
+          "width": 270,
+          "height": 1920
+        },
+        "dataAttributes": {
+          "data-hf-render-id": "hf-media-16",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 240,
+          "y": -0.4,
+          "width": 1080,
+          "height": 1920
+        },
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      },
+      {
+        "code": "escaped_container",
+        "severity": "info",
+        "time": 23.328,
+        "selector": "#u-s4 > img:nth-of-type(1)",
+        "message": "Positioned element renders far outside its offset parent — its coordinates were likely computed in a different frame (canvas/viewport pixels).",
+        "rect": {
+          "left": 345,
+          "top": 11.8,
+          "right": 1425,
+          "bottom": 1931.8,
+          "width": 1080,
+          "height": 1920
+        },
+        "containerSelector": "#u-s4",
+        "text": "",
+        "fixHint": "Compute left/top in the offset parent's frame (subtract its rect), or mark intentional placement with data-layout-allow-overflow.",
+        "containerRect": {
+          "left": 810,
+          "top": 11.8,
+          "right": 1080,
+          "bottom": 1931.8,
+          "width": 270,
+          "height": 1920
+        },
+        "dataAttributes": {
+          "data-hf-render-id": "hf-media-17",
+          "data-hf-authored-opacity": ""
+        },
+        "sourceFile": "compositions/lineup.html",
+        "bbox": {
+          "x": 345,
+          "y": 11.8,
+          "width": 1080,
+          "height": 1920
+        },
+        "firstSeen": 23.328,
+        "lastSeen": 23.328,
+        "occurrences": 1,
+        "heldMs": 0,
+        "times": [
+          23.328
+        ]
+      }
+    ],
+    "duration": 32.3,
+    "samples": [
+      1.794,
+      5.383,
+      8.972,
+      12.561,
+      16.15,
+      19.739,
+      23.328,
+      26.917,
+      30.506
+    ],
+    "transitionSamples": [],
+    "transitionSamplesDropped": 0,
+    "tolerance": 2,
+    "totalIssueCount": 21,
+    "truncated": false,
+    "faceCheck": {
+      "ran": true,
+      "candidates": 0,
+      "faces": 0
+    }
+  },
+  "motion": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": false,
+    "samples": 0
+  },
+  "contrast": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 1,
+    "infoCount": 0,
+    "findings": [
+      {
+        "code": "contrast_aa_failure",
+        "severity": "warning",
+        "message": "Contrast is 1.59:1; WCAG AA requires 3:1.",
+        "text": "LOUD.",
+        "fg": "rgb(242,240,235)",
+        "bg": "rgb(206,190,174)",
+        "ratio": 1.59,
+        "requiredRatio": 3,
+        "suggestedColor": "rgb(106,105,103)",
+        "large": true,
+        "selector": "#l-b-w2",
+        "dataAttributes": {
+          "data-layout-allow-overlap": ""
+        },
+        "sourceFile": "compositions/loud.html",
+        "bbox": {
+          "x": 94.80003356933594,
+          "y": 551.5759887695312,
+          "width": 814.0799560546875,
+          "height": 286.20001220703125
+        },
+        "time": 16.15,
+        "times": [
+          16.15
+        ]
+      }
+    ],
+    "enabled": true,
+    "samples": [
+      1.794,
+      8.972,
+      16.15,
+      23.328,
+      30.506
+    ],
+    "checked": 19,
+    "passed": 18
+  },
+  "craft": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": [],
+    "enabled": true,
+    "step": 0.125,
+    "samples": 259
+  },
+  "audio": {
+    "ok": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "infoCount": 0,
+    "findings": []
+  },
+  "hdr": {
+    "autoPromotion": null,
+    "inspection": "available"
+  },
+  "snapshots": {
+    "enabled": false,
+    "files": [],
+    "times": [],
+    "findingFiles": []
+  }
+}

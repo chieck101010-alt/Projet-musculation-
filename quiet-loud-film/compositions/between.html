@@ -1,0 +1,120 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Instrument Serif";
+      font-style: italic;
+      font-weight: 400;
+      src: url("assets/fonts/instrument-serif-latin-400-italic.woff2") format("woff2");
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #0d0e11;
+    }
+    .b-half {
+      position: absolute;
+      top: 0;
+      width: 540px;
+      height: 1920px;
+      overflow: hidden;
+    }
+    #b-left {
+      left: 0;
+    }
+    #b-right {
+      left: 540px;
+    }
+    .b-cam {
+      position: absolute;
+      inset: 0;
+    }
+    .b-img {
+      position: absolute;
+      top: 0;
+      width: 1080px;
+      height: 1920px;
+      object-fit: cover;
+    }
+    #b-left-img {
+      left: -270px;
+    }
+    #b-right-img {
+      left: -278px;
+    }
+    #b-line {
+      position: absolute;
+      left: 537px;
+      top: 0;
+      width: 6px;
+      height: 1920px;
+      background: #1462ff;
+      transform-origin: 50% 0%;
+    }
+    #b-tag {
+      position: absolute;
+      left: 250px;
+      top: 300px;
+      width: 580px;
+      height: 330px;
+      background: #f2f0eb;
+      box-shadow: 0 18px 50px rgba(13, 14, 17, 0.28);
+      transform-origin: 50% 50%;
+    }
+    #b-label {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 44px;
+      text-align: center;
+      font-family: Inter, sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: #0d0e11;
+    }
+    #b-word {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 92px;
+      text-align: center;
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      font-size: 200px;
+      line-height: 1;
+      color: #1462ff;
+    }
+  </style>
+  <div data-hf-id="hf-n63p" id="root" data-composition-id="between" data-width="1080" data-height="1920" data-composition-variables="[{&quot;id&quot;:&quot;label&quot;,&quot;type&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Petit titre&quot;,&quot;default&quot;:&quot;Entre les deux&quot;},{&quot;id&quot;:&quot;word&quot;,&quot;type&quot;:&quot;string&quot;,&quot;label&quot;:&quot;Mot bleu&quot;,&quot;default&quot;:&quot;Toi.&quot;}]">
+    <div data-hf-id="hf-p182" id="b-left" class="b-half">
+      <div data-hf-id="hf-pnq0" id="b-left-cam" class="b-cam"><img data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:1,&quot;adjust&quot;:{&quot;exposure&quot;:0,&quot;contrast&quot;:0,&quot;highlights&quot;:0,&quot;shadows&quot;:0,&quot;whites&quot;:0,&quot;blacks&quot;:0,&quot;temperature&quot;:0,&quot;tint&quot;:0,&quot;vibrance&quot;:0,&quot;saturation&quot;:0},&quot;details&quot;:{&quot;vignette&quot;:0,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0.14,&quot;grainSize&quot;:0.3,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-5361" id="b-left-img" class="b-img" src="assets/img/hero-studio.jpg" alt=""></div>
+    </div>
+    <div data-hf-id="hf-kdlt" id="b-right" class="b-half">
+      <div data-hf-id="hf-gq9n" id="b-right-cam" class="b-cam"><img data-color-grading="{&quot;preset&quot;:null,&quot;intensity&quot;:1,&quot;adjust&quot;:{&quot;exposure&quot;:0,&quot;contrast&quot;:0,&quot;highlights&quot;:0,&quot;shadows&quot;:0,&quot;whites&quot;:0,&quot;blacks&quot;:0,&quot;temperature&quot;:0,&quot;tint&quot;:0,&quot;vibrance&quot;:0,&quot;saturation&quot;:0},&quot;details&quot;:{&quot;vignette&quot;:0,&quot;vignetteMidpoint&quot;:0.5,&quot;vignetteRoundness&quot;:0,&quot;vignetteFeather&quot;:0.65,&quot;grain&quot;:0.14,&quot;grainSize&quot;:0.3,&quot;grainRoughness&quot;:0.5},&quot;effects&quot;:{&quot;blur&quot;:0,&quot;pixelate&quot;:0,&quot;chromaBleed&quot;:0,&quot;tapeDamage&quot;:0,&quot;tapeTracking&quot;:0,&quot;tapeNoise&quot;:1,&quot;tapeSpeed&quot;:0.5,&quot;filmArtifacts&quot;:0,&quot;halftone&quot;:0,&quot;halftoneSize&quot;:0,&quot;twoInkPrint&quot;:0,&quot;twoInkPrintSize&quot;:0,&quot;ascii&quot;:0,&quot;asciiSize&quot;:0.06578947368421052,&quot;asciiInvert&quot;:0,&quot;asciiStyle&quot;:0,&quot;asciiColor&quot;:1,&quot;asciiRotation&quot;:0,&quot;dither&quot;:0,&quot;ditherSize&quot;:0,&quot;bloom&quot;:0,&quot;bloomRadius&quot;:8,&quot;monoScreen&quot;:0,&quot;monoScreenSize&quot;:0,&quot;monoScreenAngle&quot;:0,&quot;monoScreenSpread&quot;:0,&quot;monoScreenShape&quot;:0,&quot;monoScreenInvert&quot;:0,&quot;scanlines&quot;:0,&quot;scanlineCount&quot;:0,&quot;scanlineSoftness&quot;:0,&quot;chromaticAberration&quot;:0,&quot;chromaticAngle&quot;:0,&quot;crtCurvature&quot;:0,&quot;digitalGlitch&quot;:0,&quot;digitalGlitchColorSplit&quot;:0,&quot;digitalGlitchLineTear&quot;:0,&quot;digitalGlitchPixelate&quot;:0,&quot;digitalGlitchBlockAmount&quot;:0,&quot;digitalGlitchBlockDisplacement&quot;:0,&quot;digitalGlitchBlockOpacity&quot;:0,&quot;digitalGlitchSpeed&quot;:0,&quot;engraving&quot;:0,&quot;engravingSpacing&quot;:0.4117647058823529,&quot;engravingMinThickness&quot;:0.2,&quot;engravingMaxThickness&quot;:0.4571428571428572,&quot;engravingAngle&quot;:0.25,&quot;engravingContrast&quot;:0.4666666666666667,&quot;engravingSharpness&quot;:0.59,&quot;engravingWave&quot;:0.2,&quot;engravingWaveFrequency&quot;:0.2222222222222222,&quot;crosshatch&quot;:0,&quot;crosshatchSpacing&quot;:0.28,&quot;crosshatchThickness&quot;:0.25,&quot;crosshatchAngle&quot;:0.25,&quot;crosshatchContrast&quot;:0.3333333333333333,&quot;crosshatchEdges&quot;:0.5,&quot;crosshatchLineWeight&quot;:0,&quot;crosshatchWave&quot;:0.33,&quot;crosshatchWaveFrequency&quot;:0.2222222222222222,&quot;kuwahara&quot;:0,&quot;kuwaharaRadius&quot;:0.14285714285714285,&quot;kuwaharaSharpness&quot;:0.3125,&quot;kuwaharaSaturation&quot;:0.5},&quot;lut&quot;:null,&quot;colorSpace&quot;:&quot;rec709&quot;}" data-hf-id="hf-g55p" id="b-right-img" class="b-img" src="assets/img/night-street.jpg" alt=""></div>
+    </div>
+    <div data-hf-id="hf-zhnw" id="b-line"></div>
+    <div data-hf-id="hf-ylkq" id="b-tag">
+      <div data-hf-id="hf-z7dl" id="b-label" data-var-text="label">Entre les deux</div>
+      <div data-hf-id="hf-5qpv" id="b-word" data-var-text="word">Toi.</div>
+    </div>
+  </div>
+  <script>
+    // Local times; film start 15.5. "toi"/"jij" is spoken at film 17.3 = local 1.8.
+    const tl = gsap.timeline({ paused: true });
+    // the two worlds close in from opposite ends of the frame
+    tl.fromTo("#b-left", { y: -1920 }, { y: 0, duration: 0.62, ease: "power3.out" }, 0);
+    tl.fromTo("#b-right", { y: 1920 }, { y: 0, duration: 0.62, ease: "power3.out" }, 0);
+    // they keep sliding past each other, slowly, for the rest of the beat
+    tl.fromTo("#b-left-cam", { y: 230, scale: 1.32 }, { y: 170, scale: 1.32, duration: 4.8, ease: "power1.inOut" }, 0);
+    tl.fromTo("#b-right-cam", { y: 290, scale: 1.32 }, { y: 340, scale: 1.32, duration: 4.8, ease: "power1.inOut" }, 0);
+    // the seam is drawn in the accent colour
+    tl.fromTo("#b-line", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "expo.out" }, 0.4);
+    // the tag: label first, the blue word on the spoken word
+    tl.fromTo("#b-tag", { scaleX: 0, opacity: 1 }, { scaleX: 1, opacity: 1, duration: 0.42, ease: "expo.out" }, 0.3);
+    tl.fromTo("#b-label", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 0.5);
+    tl.fromTo("#b-word", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power4.out" }, 1.76);
+    window.__timelines["between"] = tl;
+  </script>
+</template>
