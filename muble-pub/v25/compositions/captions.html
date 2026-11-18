@@ -1,0 +1,40 @@
+<template>
+  <style>
+    @font-face { font-family: "Plus Jakarta Sans"; src: url("assets/fonts/PlusJakartaSans-Variable-latin.woff2") format("woff2"); font-weight: 200 800; }
+    #root { position: absolute; inset: 0; pointer-events: none; font-family: "Plus Jakarta Sans", sans-serif; }
+    .cap-g { position: absolute; left: 0; top: 1170px; width: 1000px; display: flex; justify-content: center; }
+    .cap-pill { max-width: 820px; padding: 14px 28px 16px; border-radius: 26px; background: rgba(30, 6, 70, 0.84); color: #fff; font-size: 47px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; text-align: center; box-shadow: 0 10px 30px rgba(10, 0, 30, 0.35); }
+    .cap-pill .acc { color: #c4a6ff; }
+  </style>
+  <div id="root" data-composition-id="captions" data-width="1080" data-height="1920">
+      <div id="cap-g0" class="cap-g clip" data-start="2.896" data-duration="2.154" data-track-index="0"><div class="cap-pill"><span class="cw">Découvrez</span> <span class="cw acc">Muble.</span></div></div>
+      <div id="cap-g1" class="cap-g clip" data-start="5.666" data-duration="0.671" data-track-index="1"><div class="cap-pill"><span class="cw">Réservez</span> <span class="cw">votre</span></div></div>
+      <div id="cap-g2" class="cap-g clip" data-start="6.357" data-duration="1.422" data-track-index="0"><div class="cap-pill"><span class="cw">chauffeur</span> <span class="cw">simplement,</span></div></div>
+      <div id="cap-g3" class="cap-g clip" data-start="7.799" data-duration="1.721" data-track-index="1"><div class="cap-pill"><span class="cw">en</span> <span class="cw">quelques</span> <span class="cw acc">étapes.</span></div></div>
+      <div id="cap-g4" class="cap-g clip" data-start="16.229" data-duration="1.091" data-track-index="0"><div class="cap-pill"><span class="cw acc">Muble</span> <span class="cw">vous</span> <span class="cw">rappelle</span></div></div>
+      <div id="cap-g5" class="cap-g clip" data-start="17.340" data-duration="1.297" data-track-index="1"><div class="cap-pill"><span class="cw">avec</span> <span class="cw">le</span> <span class="cw">prix</span> <span class="cw acc">exact,</span></div></div>
+      <div id="cap-g6" class="cap-g clip" data-start="18.657" data-duration="2.489" data-track-index="0"><div class="cap-pill"><span class="cw">figé</span> <span class="cw">avant</span> <span class="cw">votre</span> <span class="cw acc">validation.</span></div></div>
+    <div id="cap-driver" class="clip" data-start="0" data-duration="25.0" data-track-index="2" style="position:absolute;width:1px;height:1px;opacity:0"></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.to("#cap-driver", { opacity: 0, duration: 25.0 }, 0);
+      tl.fromTo("#cap-g0 .cap-pill", { opacity: 0, y: 14, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: "power3.out" }, 2.896);
+      tl.to("#cap-g0 .cap-pill", { opacity: 0, duration: 0.1, ease: "power2.in" }, 4.950);
+      tl.fromTo("#cap-g1 .cap-pill", { opacity: 0, y: 14, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: "power3.out" }, 5.666);
+      tl.to("#cap-g1 .cap-pill", { opacity: 0, duration: 0.1, ease: "power2.in" }, 6.237);
+      tl.fromTo("#cap-g2 .cap-pill", { opacity: 0, y: 14, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: "power3.out" }, 6.357);
+      tl.to("#cap-g2 .cap-pill", { opacity: 0, duration: 0.1, ease: "power2.in" }, 7.679);
+      tl.fromTo("#cap-g3 .cap-pill", { opacity: 0, y: 14, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: "power3.out" }, 7.799);
+      tl.to("#cap-g3 .cap-pill", { opacity: 0, duration: 0.1, ease: "power2.in" }, 9.420);
+      tl.fromTo("#cap-g4 .cap-pill", { opacity: 0, y: 14, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: "power3.out" }, 16.229);
+      tl.to("#cap-g4 .cap-pill", { opacity: 0, duration: 0.1, ease: "power2.in" }, 17.220);
+      tl.fromTo("#cap-g5 .cap-pill", { opacity: 0, y: 14, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: "power3.out" }, 17.340);
+      tl.to("#cap-g5 .cap-pill", { opacity: 0, duration: 0.1, ease: "power2.in" }, 18.537);
+      tl.fromTo("#cap-g6 .cap-pill", { opacity: 0, y: 14, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: "power3.out" }, 18.657);
+      tl.to("#cap-g6 .cap-pill", { opacity: 0, duration: 0.1, ease: "power2.in" }, 21.046);
+      window.__timelines["captions"] = tl;
+    })();
+  </script>
+</template>

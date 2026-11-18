@@ -75,8 +75,10 @@ def main():
         onset = info["onset"]
         span_end = info["offset"]
         if len(ws) == len(toks):
+            # les temps de Whisper partent du début du fichier (le premier mot est ramené à 0 : on le recale sur le début de la parole)
             for tok, w in zip(toks, ws):
-                words.append({"text": tok, "start": round(t0 + onset + w["start"], 3), "end": round(t0 + onset + w["end"], 3), "line": k})
+                st = max(w["start"], onset) if w is ws[0] else w["start"]
+                words.append({"text": tok, "start": round(t0 + st, 3), "end": round(t0 + w["end"], 3), "line": k})
         else:
             total_chars = sum(len(x) for x in toks)
             cur = onset

@@ -98,7 +98,9 @@ def main():
             shutil.copy(os.path.join(A, f"audio/sfx/{f}.mp3"), dst)
         length = d if d else dur(dst) - ms
         length = min(length, TOTAL - t)
-        lane = next(j for j, e in enumerate(lanes) if e <= t + 1e-6)
+        lane = next((j for j, e in enumerate(lanes) if e <= t + 1e-6), None)
+        if lane is None:
+            lanes.append(0.0); lane = len(lanes) - 1
         lanes[lane] = t + length
         msa = f' data-media-start="{ms}"' if ms else ""
         sfx_rows.append(f'      <audio id="sfx{i:02d}" class="clip" src="assets/audio/sfx/{f}.mp3" data-start="{t:.2f}" data-duration="{length:.3f}"{msa} data-track-index="{4 + lane}" data-volume="{v}"></audio>')
