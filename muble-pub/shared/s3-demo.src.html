@@ -24,7 +24,7 @@
     .s3-vc { position: absolute; left: 361px; top: 0; transform-origin: 50% 50%; opacity: 0; }
     #s3-touch2 { position: absolute; left: 0; top: 0; width: 92px; height: 92px; margin: -46px 0 0 -46px; border-radius: 50%; background: rgba(255, 255, 255, 0.62); box-shadow: 0 0 0 4px rgba(106, 43, 194, 0.35), 0 10px 26px rgba(30, 0, 70, 0.35); opacity: 0; }
     /* confirmation */
-    #s3-sent { position: absolute; left: 0; width: 1080px; top: 600px; display: flex; justify-content: center; opacity: 0; }
+    #s3-sent { position: absolute; left: 0; width: 1080px; top: 905px; display: flex; justify-content: center; opacity: 0; }
     #s3-sent div { display: flex; align-items: center; gap: 18px; padding: 26px 44px; border-radius: 999px; background: #fff; color: #4c14a6; font-size: 50px; font-weight: 800; box-shadow: 0 24px 60px rgba(20, 0, 50, 0.45); }
     #s3-sent svg { width: 52px; height: 52px; }
     /* frise après l'envoi */
@@ -62,11 +62,11 @@
 
     <!-- frise : ce qui se passe après l'envoi (d'après le formulaire et la FAQ du site) -->
     <div id="s3-route">
-      <svg id="s3-route-line" width="1080" height="1920"><path id="s3-route-path" d="M150 516 L150 1086" stroke="rgba(255,255,255,0.55)" stroke-width="6" stroke-linecap="round" fill="none" stroke-dasharray="570" stroke-dashoffset="570"/></svg>
-      <div class="s3-stop" id="s3-stop1" style="top:480px"><div class="dot"></div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div class="tx"><b>On vous rappelle</b><span>avec le prix exact</span></div></div>
-      <div class="s3-stop" id="s3-stop2" style="top:670px"><div class="dot"></div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><div class="tx"><b>Prix figé</b><span>avant votre validation</span></div></div>
-      <div class="s3-stop" id="s3-stop3" style="top:860px"><div class="dot"></div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><div class="tx"><b>Paiement sécurisé</b><span>Carte · Apple Pay · Google Pay</span></div></div>
-      <div class="s3-stop" id="s3-stop4" style="top:1050px"><div class="dot"></div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg><div class="tx"><b>Infos chauffeur</b><span>avant la prise en charge</span></div></div>
+      <svg id="s3-route-line" width="1080" height="1920"><path id="s3-route-path" d="M150 536 L150 1031" stroke="rgba(255,255,255,0.55)" stroke-width="6" stroke-linecap="round" fill="none" stroke-dasharray="495" stroke-dashoffset="495"/></svg>
+      <div class="s3-stop" id="s3-stop1" style="top:500px"><div class="dot"></div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div class="tx"><b>On vous rappelle</b><span>avec le prix exact</span></div></div>
+      <div class="s3-stop" id="s3-stop2" style="top:665px"><div class="dot"></div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><div class="tx"><b>Prix figé</b><span>avant votre validation</span></div></div>
+      <div class="s3-stop" id="s3-stop3" style="top:830px"><div class="dot"></div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><div class="tx"><b>Paiement sécurisé</b><span>Carte · Apple Pay · Google Pay</span></div></div>
+      <div class="s3-stop" id="s3-stop4" style="top:995px"><div class="dot"></div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg><div class="tx"><b>Infos chauffeur</b><span>avant la prise en charge</span></div></div>
     </div>
 
     <div id="s3-sent" data-layout-allow-occlusion><div><svg viewBox="0 0 24 24" fill="none" stroke="#2fbf7a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Demande envoyée</div></div>
@@ -105,7 +105,7 @@
       };
       const CHRONO_STOP = 108; // 1:48 affiché à l'envoi (promesse du site : « réservé en 2 minutes »)
       const CHAR = 0.06;
-      const ZOOM = 2.45, HERO = 1.4, FOCUS_Y = 980;
+      const ZOOM = 2.45, HERO = 1.4, FOCUS_Y = 790;
       const $ = (s) => document.querySelector(s);
 
       function build() {
@@ -169,10 +169,16 @@
         tl.fromTo("#s3-hud", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, T.chronoIn - 0.1);
         tl.fromTo("#s3-chrono", { scale: 0.6, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.6, ease: "back.out(1.4)" }, T.chronoIn);
         stepIn("#s3-st0", T.chronoIn + 0.15);
+        // bandeau du haut : seulement quand le téléphone est zoomé
+        tl.set("#s3-hud-bg", { opacity: 0 }, 0);
+        tl.to("#s3-hud-bg", { opacity: 1, duration: 0.35, ease: "power2.out" }, T.dive + 0.2);
+        tl.to("#s3-hud-bg", { opacity: 0, duration: 0.3, ease: "power2.in" }, T.s3);
+        tl.to("#s3-hud-bg", { opacity: 1, duration: 0.3, ease: "power2.out" }, T.back + 0.25);
+        tl.to("#s3-hud-bg", { opacity: 0, duration: 0.3, ease: "power2.in" }, T.recede);
 
         // ---------- plongée dans le formulaire ----------
         tl.to("#s3-page", { y: -SCROLL, duration: 0.9, ease: "power2.inOut" }, T.dive);
-        camTo($("#s3-f-dep"), ZOOM, T.dive, 0.9, "power2.inOut", 60);
+        camTo($("#s3-f-dep"), ZOOM, T.dive, 0.9, "power2.inOut", 0);
         tl.to(clock, { s: CHRONO_STOP, duration: T.tapSend - T.s1, ease: "none", onUpdate: fmt }, T.s1);
 
         // ---------- étape 1 : trajet ----------
@@ -188,7 +194,7 @@
         // ---------- étape 2 : date, passagers, bagages ----------
         stepIn("#s3-st2", T.s2, "#s3-st1");
         segFill(1, T.s2, T.s3 - T.s2);
-        camTo($("#s3-f-pax"), ZOOM, T.s2, 0.7, "power2.inOut", -40);
+        camTo($("#s3-f-date"), ZOOM, T.s2, 0.7, "power2.inOut", 0);
         touchAt($("#s3-f-date"), T.tapDate); pick("#s3-f-date", "12 déc. 2026", T.tapDate);
         touchAt($("#s3-f-time"), T.tapTime); pick("#s3-f-time", "06:30", T.tapTime);
         touchAt($("#s3-f-pax"), T.tapPax); pick("#s3-f-pax", "2 passagers", T.tapPax);
@@ -202,12 +208,12 @@
         const card = (id, top, ry, at) => {
           tl.fromTo(id, { y: 1150, scale: 0.5, rotationX: 55, rotationY: 0, opacity: 0, z: -200 }, { y: top, scale: 1.7, rotationX: 8, rotationY: ry, z: 0, opacity: 1, duration: 0.85, ease: "back.out(1.1)" }, at);
         };
-        card("#s3-veco", 530, 9, T.s3 + 0.25);
-        card("#s3-vber", 930, -9, T.s3 + 0.42);
+        card("#s3-veco", 525, 9, T.s3 + 0.25);
+        card("#s3-vber", 925, -9, T.s3 + 0.42);
         tl.to("#s3-veco", { rotationY: 4, duration: 1.3, ease: "sine.inOut" }, T.s3 + 1.1);
         tl.to("#s3-vber", { rotationY: -4, duration: 1.2, ease: "sine.inOut" }, T.s3 + 1.27);
         // tap sur « Réserver » de la carte Berline
-        tl.set("#s3-touch2", { x: 540, y: 1086 }, T.tapBer - 0.2);
+        tl.set("#s3-touch2", { x: 540, y: 1081 }, T.tapBer - 0.2);
         tl.fromTo("#s3-touch2", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.14 }, T.tapBer - 0.2);
         tl.to("#s3-touch2", { scale: 0.78, duration: 0.08, ease: "power4.in" }, T.tapBer - 0.04);
         tl.to("#s3-touch2", { scale: 1, opacity: 0, duration: 0.25, ease: "power2.out" }, T.tapBer + 0.08);
@@ -221,7 +227,7 @@
         // ---------- étape 4 : coordonnées ----------
         stepIn("#s3-st4", T.s4, "#s3-st3");
         segFill(3, T.s4, T.s5 - T.s4);
-        camTo($("#s3-f-tel"), ZOOM, T.back + 0.25, 0.7, "power3.out", 0);
+        camTo($("#s3-f-nom"), ZOOM, T.back + 0.25, 0.7, "power3.out", 0);
         touchAt($("#s3-f-nom"), T.tapNom); typeIn("#s3-f-nom", "Thomas Martin", T.tapNom); blur($("#s3-f-nom"), T.tapTel - 0.1);
         touchAt($("#s3-f-tel"), T.tapTel); typeIn("#s3-f-tel", "06 12 34 56 78", T.tapTel); blur($("#s3-f-tel"), T.tapMail - 0.1);
         touchAt($("#s3-f-mail"), T.tapMail);
@@ -235,7 +241,7 @@
         // ---------- étape 5 : envoi, puis la suite réelle ----------
         stepIn("#s3-st5", T.s5, "#s3-st4");
         segFill(4, T.s5, T.tapSend - T.s5);
-        camTo($("#s3-submit"), ZOOM, T.s5, 0.5, "power2.inOut", 60);
+        camTo($("#s3-submit"), ZOOM, T.s5, 0.5, "power2.inOut", 0);
         touchAt($("#s3-submit"), T.tapSend);
         tl.to("#s3-submit", { scale: 0.95, duration: 0.08, ease: "power4.in" }, T.tapSend - 0.04);
         tl.to("#s3-submit", { scale: 1, duration: 0.2, ease: "back.out(2)" }, T.tapSend + 0.06);
