@@ -1,7 +1,7 @@
 {
   "version": 1,
   "historyId": "b4012f6a-c70e-45e7-8f03-625cbe64b4ec",
-  "currentRevision": "e9ed68cd-e622-44c3-aa91-7a906cdbb056",
+  "currentRevision": "821ef7e2-fe36-425f-8a01-3697d040e6e3",
   "pendingChanges": false,
   "files": {
     "AGENTS.md": {
@@ -525,8 +525,8 @@
       "content": "/root/.cache/hyperframes/history/b4012f6a-c70e-45e7-8f03-625cbe64b4ec/blobs/74/747e1be0cffcea6ffb0ad7cfb60c1a16c9409832e86873de5a9f410513261e66"
     },
     "REVIEW.md": {
-      "hash": "caecc28ccbd39f1edb1dc1cde0d32a78fad8d84d279cdf6c075fa1d9bbda3329",
-      "content": "/root/.cache/hyperframes/history/b4012f6a-c70e-45e7-8f03-625cbe64b4ec/blobs/ca/caecc28ccbd39f1edb1dc1cde0d32a78fad8d84d279cdf6c075fa1d9bbda3329"
+      "hash": "ed32dc4494ea9c14da8dc734bd97e2e26c2c9cbf201c42bfb6edc86548c1f8a2",
+      "content": "/root/.cache/hyperframes/history/b4012f6a-c70e-45e7-8f03-625cbe64b4ec/blobs/ed/ed32dc4494ea9c14da8dc734bd97e2e26c2c9cbf201c42bfb6edc86548c1f8a2"
     },
     "assets/cut-sm/night-street.png": {
       "hash": "3c908fc23f23b81de5d7a45bd427fb4ce671cebd4740ff42ff7453564833912e",
@@ -535,6 +535,10 @@
     "assets/cut-sm/underpass.png": {
       "hash": "c83ab4bcbc31eb795b37b87daa93514aa918aad4d1e6a66fa59285f2a8e468d9",
       "content": "/root/.cache/hyperframes/history/b4012f6a-c70e-45e7-8f03-625cbe64b4ec/blobs/c8/c83ab4bcbc31eb795b37b87daa93514aa918aad4d1e6a66fa59285f2a8e468d9"
+    },
+    "tools/finish.sh": {
+      "hash": "9751e15d50f746678d56825e5619f07588f41c50cda830da78519f397da5bf07",
+      "content": "/root/.cache/hyperframes/history/b4012f6a-c70e-45e7-8f03-625cbe64b4ec/blobs/97/9751e15d50f746678d56825e5619f07588f41c50cda830da78519f397da5bf07"
     }
   },
   "revisions": {
@@ -1075,6 +1079,25 @@
         "tools/build.py": {
           "before": "/root/.cache/hyperframes/history/b4012f6a-c70e-45e7-8f03-625cbe64b4ec/blobs/dc/dcf89fbeddead9b2686fa2d60d47134fb398e605c4941fb238151bda13a0a6ed",
           "after": "/root/.cache/hyperframes/history/b4012f6a-c70e-45e7-8f03-625cbe64b4ec/blobs/89/8954f23b5734e44c4c025e9d96023eacb044eca3fb0a5ff6ef9d416ede765c7b"
+        }
+      }
+    },
+    "821ef7e2-fe36-425f-8a01-3697d040e6e3": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1795016305207,
+      "endedAt": 1795016305209,
+      "files": {
+        "REVIEW.md": {
+          "before": "/root/.cache/hyperframes/history/b4012f6a-c70e-45e7-8f03-625cbe64b4ec/blobs/ca/caecc28ccbd39f1edb1dc1cde0d32a78fad8d84d279cdf6c075fa1d9bbda3329",
+          "after": "/root/.cache/hyperframes/history/b4012f6a-c70e-45e7-8f03-625cbe64b4ec/blobs/ed/ed32dc4494ea9c14da8dc734bd97e2e26c2c9cbf201c42bfb6edc86548c1f8a2"
+        },
+        "tools/finish.sh": {
+          "before": null,
+          "after": "/root/.cache/hyperframes/history/b4012f6a-c70e-45e7-8f03-625cbe64b4ec/blobs/97/9751e15d50f746678d56825e5619f07588f41c50cda830da78519f397da5bf07"
         }
       }
     }
