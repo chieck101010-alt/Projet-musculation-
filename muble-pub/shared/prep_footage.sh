@@ -21,7 +21,7 @@ vert() { # plans déjà verticaux
 clip rdv-business-seat     482289372.mov  0.0  6.0  "1900-ih*9/32"
 vert avion-voyageur        1270012406.mov 0.0  6.0
 clip champs-elysees-nuit   557621523.mov  1.0  7.0  "1720-ih*9/32"
-clip chauffeur-marche      chauffeur-eiffel_264564019.mov 5.5 4.7 "min(iw-ih*9/16,max(0,700-ih*9/32))"
+clip chauffeur-marche      chauffeur-eiffel_264564019.mov 5.0 5.6 "min(iw-ih*9/16,max(0,680-ih*9/32))"
 clip chauffeur-portiere    chauffeur-eiffel_264564019.mov 16.8 3.4 "min(iw-ih*9/16,max(0,(780-25*t)-ih*9/32))"
 clip passager-nuit         596558039.mov  0.0  7.0  "min(iw-ih*9/16,2950-ih*9/32)"
 clip smartphone-voiture    440314317.mov  1.0  7.0  "2250-ih*9/32"

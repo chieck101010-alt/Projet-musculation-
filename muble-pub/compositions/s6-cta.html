@@ -20,7 +20,7 @@
     #s6-logo { position: absolute; left: 190px; top: 520px; width: 700px; height: 151px; }
     #s6-sheen { position: absolute; left: 190px; top: 520px; width: 700px; height: 151px; -webkit-mask: url("assets/logo/muble-logo-white.svg") center / 700px 151px no-repeat; mask: url("assets/logo/muble-logo-white.svg") center / 700px 151px no-repeat; overflow: hidden; }
     #s6-sheen div { position: absolute; top: -40px; left: -300px; width: 200px; height: 240px; background: linear-gradient(100deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 100%); transform: skewX(-18deg); }
-    #s6-sig { position: absolute; left: 0; top: 760px; width: 1080px; text-align: center; font-size: 86px; font-weight: 800; line-height: 1.04; letter-spacing: -0.035em; }
+    #s6-sig { position: absolute; left: 0; top: 770px; width: 1040px; text-align: center; font-size: 70px; font-weight: 800; line-height: 1.04; letter-spacing: -0.035em; }
     #s6-sig .acc { color: #c4a6ff; }
     #s6-sig .w { display: inline-block; }
     #s6-sub { position: absolute; left: 0; top: 1000px; width: 1080px; text-align: center; font-size: 42px; font-weight: 600; color: rgba(255, 255, 255, 0.86); }
@@ -30,7 +30,7 @@
     #s6-touch2 { position: absolute; left: 0; top: 0; width: 92px; height: 92px; margin: -46px 0 0 -46px; border-radius: 50%; background: rgba(255, 255, 255, 0.62); box-shadow: 0 0 0 4px rgba(106, 43, 194, 0.35), 0 10px 26px rgba(30, 0, 70, 0.35); opacity: 0; }
   </style>
   <div id="root" data-composition-id="s6" data-width="1080" data-height="1920" data-layout-allow-overflow>
-    <div id="s6-cam"><video id="s6-v" class="clip" src="assets/footage/paris-nuit-alexandre3.mp4" data-start="0" data-duration="4.4" data-media-start="0" data-track-index="0" muted playsinline></video></div>
+    <div id="s6-cam"><video id="s6-v" class="clip" src="assets/footage/paris-nuit-alexandre3.mp4" data-start="0" data-duration="4.0" data-media-start="0" data-track-index="0" muted playsinline></video></div>
     <div id="s6-rig">
       <div id="s6-holder">
         <div class="mb-ui mb-phone" id="s6-phone" data-layout-ignore>
@@ -63,11 +63,11 @@
       <div id="s6-btn">Réserver mon trajet<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       <div id="s6-url" data-var-text="site_url"></div>
     </div>
-    <div id="s6-driver" class="clip" data-start="0" data-duration="8" data-track-index="1" style="position:absolute;width:1px;height:1px;opacity:0"></div>
+    <div id="s6-driver" class="clip" data-start="0" data-duration="8.8" data-track-index="1" style="position:absolute;width:1px;height:1px;opacity:0"></div>
   </div>
   <script>
     (function () {
-      const T = { phone: 2.3, tap: 3.75, zoom: 3.9, end: 4.25, logo: 4.4, sig: 4.95, sub: 5.9, btn: 6.3, out: 8 };
+      const T = { phone: 1.4, tap: 2.85, zoom: 3.0, end: 3.35, logo: 3.45, sig: 3.95, sub: 5.45, btn: 5.8, out: 8.8 };
       const tl = gsap.timeline({ paused: true });
       tl.to("#s6-driver", { opacity: 0, duration: T.out }, 0);
       const page = document.querySelector("#s6-phone .mb-page");
@@ -75,7 +75,7 @@
       let by = 0, e = btn; while (e && e !== page) { by += e.offsetTop; e = e.offsetParent; }
       const PY = 140 + by + btn.offsetHeight / 2 - 442; // centre du bouton, relatif au centre du téléphone
       const S0 = 1.55, Y0 = 80, SY = 960 + Y0 + S0 * PY;
-      tl.fromTo("#s6-cam", { scale: 1.0 }, { scale: 1.1, duration: 4.4, ease: "none", transformOrigin: "50% 45%" }, 0);
+      tl.fromTo("#s6-cam", { scale: 1.0 }, { scale: 1.1, duration: 4.0, ease: "none", transformOrigin: "50% 45%" }, 0);
       // le téléphone monte sur Paris la nuit, montre le bouton du site
       tl.fromTo("#s6-holder", { y: 1500, scale: S0, rotationX: 30, rotationY: 18 }, { y: Y0, rotationX: 6, rotationY: 6, duration: 0.9, ease: "back.out(1.1)" }, T.phone);
       tl.to("#s6-holder", { rotationY: 0, rotationX: 0, duration: 0.6, ease: "power2.out" }, T.phone + 0.9);

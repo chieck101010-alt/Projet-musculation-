@@ -6,24 +6,24 @@
     #s2-cam video { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
     #s2-scrim { position: absolute; left: 0; top: 0; width: 1080px; height: 1000px; background: linear-gradient(180deg, rgba(14, 3, 34, 0.78) 0%, rgba(14, 3, 34, 0.42) 55%, rgba(14, 3, 34, 0) 100%); }
     #s2-logo { position: absolute; left: 124px; top: 270px; width: 420px; height: 91px; }
-    #s2-title { position: absolute; left: 118px; top: 410px; font-size: 132px; font-weight: 800; line-height: 1; letter-spacing: -0.04em; }
+    #s2-title { position: absolute; left: 120px; top: 410px; font-size: 118px; font-weight: 800; line-height: 1; letter-spacing: -0.04em; }
     #s2-title .acc { color: #c4a6ff; }
     #s2-title .w { display: inline-block; }
     #s2-sub { position: absolute; left: 124px; top: 570px; font-size: 54px; font-weight: 700; letter-spacing: -0.015em; color: rgba(255, 255, 255, 0.92); }
     #s2-sub .w { display: inline-block; }
   </style>
   <div id="root" data-composition-id="s2" data-width="1080" data-height="1920">
-    <div id="s2-cam"><video id="s2-v" class="clip" src="assets/footage/chauffeur-marche.mp4" data-start="0" data-duration="4.5" data-media-start="0.1" data-track-index="0" muted playsinline></video></div>
+    <div id="s2-cam"><video id="s2-v" class="clip" src="assets/footage/chauffeur-marche.mp4" data-start="0" data-duration="5.2" data-media-start="0.1" data-track-index="0" muted playsinline></video></div>
     <div id="s2-scrim"></div>
-    <img id="s2-logo" class="clip" src="assets/logo/muble-logo-white.svg" alt="Muble" data-start="0" data-duration="4.5" data-track-index="1" />
-    <div id="s2-title" class="clip" data-start="0" data-duration="4.5" data-track-index="2"><span class="w">VTC</span> <span class="w acc">premium</span></div>
-    <div id="s2-sub" class="clip" data-start="0" data-duration="4.5" data-track-index="3"><span class="w">Paris</span> <span class="w">&amp;</span> <span class="w">Île-de-France</span></div>
+    <img id="s2-logo" class="clip" src="assets/logo/muble-logo-white.svg" alt="Muble" data-start="0" data-duration="5.2" data-track-index="1" />
+    <div id="s2-title" class="clip" data-start="0" data-duration="5.2" data-track-index="2"><span class="w">VTC</span> <span class="w acc">premium</span></div>
+    <div id="s2-sub" class="clip" data-start="0" data-duration="5.2" data-track-index="3"><span class="w">Paris</span> <span class="w">&amp;</span> <span class="w">Île-de-France</span></div>
   </div>
   <script>
     (function () {
-      const T = { logo: 0.05, title: 1.25, sub: 2.45 };
+      const T = { logo: 0.15, title: 1.98, sub: 2.95 };
       const tl = gsap.timeline({ paused: true });
-      tl.fromTo("#s2-cam", { scale: 1.0 }, { scale: 1.07, duration: 4.5, ease: "none", transformOrigin: "50% 60%" }, 0);
+      tl.fromTo("#s2-cam", { scale: 1.0 }, { scale: 1.07, duration: 5.2, ease: "none", transformOrigin: "50% 60%" }, 0);
       tl.fromTo("#s2-logo", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power3.out" }, T.logo);
       tl.fromTo("#s2-title .w", { opacity: 0, filter: "blur(10px)", scale: 1.06 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.18, ease: "power3.out", stagger: 0.09 }, T.title);
       tl.fromTo("#s2-sub .w", { opacity: 0.0, color: "rgba(255,255,255,0)" }, { opacity: 1, color: "rgba(255,255,255,0.92)", duration: 0.14, ease: "power2.out", stagger: 0.08 }, T.sub);
