@@ -100,7 +100,7 @@
   <script>
     // Local times; film start 25.1. "Quiet" spoken at film 25.31, "Loud" at 26.3, tagline from 27.5.
     const tl = gsap.timeline({ paused: true });
-    tl.fromTo("#e-quiet", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.22, ease: "power4.out" }, 0.2);
+    tl.fromTo("#e-quiet", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", clearProps: "filter", duration: 0.22, ease: "power4.out" }, 0.2);
     tl.fromTo("#e-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "expo.out" }, 2.2);
     tl.fromTo("#e-slash", { scaleY: 0, rotation: 22 }, { scaleY: 1, rotation: 22, duration: 0.32, ease: "expo.out" }, 0.82);
     tl.fromTo("#e-loud", { opacity: 0, scale: 1.45 }, { opacity: 1, scale: 1, duration: 0.3, ease: "expo.out" }, 1.18);

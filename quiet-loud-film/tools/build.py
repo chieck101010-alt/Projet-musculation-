@@ -163,7 +163,7 @@ def captions_html(lang, groups):
         tweens.append(
             f'    tl.set("#{gid}", {{ visibility: "visible" }}, {a});\n'
             f'    tl.fromTo("#{gid} span", {{ opacity: 0, filter: "blur(6px)" }}, '
-            f'{{ opacity: 1, filter: "blur(0px)", duration: 0.12, ease: "power4.out" }}, {a});\n'
+            f'{{ opacity: 1, filter: "blur(0px)", clearProps: "filter", duration: 0.12, ease: "power4.out" }}, {a});\n'
             f'    tl.to("#{gid} span", {{ opacity: 0, duration: 0.1, ease: "power2.in" }}, {r(b - 0.1)});\n'
             f'    tl.set("#{gid}", {{ visibility: "hidden" }}, {b});'
         )
@@ -294,7 +294,6 @@ def root_html(lang, sched):
       data-duration="{DURATION}"
       data-width="1080"
       data-height="1920"
-      data-motion-blur="on"
     >
 {chr(10).join(hosts)}
 {chr(10).join(audio)}

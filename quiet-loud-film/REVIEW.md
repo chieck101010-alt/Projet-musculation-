@@ -9,6 +9,12 @@
 - La voix off est découpée en 13 phrases posées sur une grille commune : les deux langues coupent aux mêmes images. « toi / jij » tombe sur 17,3 s et « Loud » sur 26,3 s dans les deux versions.
 - « LOUD. » passe derrière la passante (détourage Adobe) dans la rue ; dans le souterrain, le mot plein passe devant et les deux contours derrière, pour rester lisible.
 
+## Choix techniques (rendu sans carte graphique)
+
+- La machine de rendu n'a pas de GPU : le grain WebGL de HyperFrames et le flou de mouvement passaient par une capture d'écran image par image (≈ 3 s par image, plus d'une heure par version). Ils ont été retirés du rendu.
+- Vignette : gravée directement dans les photos (`assets/graded/`, ffmpeg `vignette`), photos ramenées à 1340×2400.
+- Grain : ajouté après le rendu sur le MP4 entier (ffmpeg `noise`, grain animé léger), voir `tools/finish.sh`.
+
 ## Mesuré
 
 - `hyperframes check` : 0 erreur.
