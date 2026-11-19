@@ -39,6 +39,7 @@ Avant de présenter le concept, fais le tour de TOUS les outils connectés à la
 Présente-moi un tableau « Outil → ce qu'il apporte à cette pub → utile ou non », puis utilise le meilleur outil pour chaque élément. Au minimum :
 
 - **FLORA** : voix off (ElevenLabs), musique, bruitages, génération d'images et de vidéos IA, 3D.
+- **Scenario** : vidéo IA (Veo 3.1, Seedance, Kling, Runway…), retouche et détourage vidéo, avatars et synchro labiale, bruitages synchronisés sur la vidéo montée, voix off, musique, images, 3D avec squelette et animation.
 - **Adobe** : détourage pro, retouche photo, polices (Adobe Fonts), amélioration de la voix, Adobe Stock.
 - **Canva** : visuels fixes (stories, affiches), déclinaisons de formats, détourage.
 - **HyperFrames** : montage, motion design, 3D (Three.js), sous-titres, rendu MP4.

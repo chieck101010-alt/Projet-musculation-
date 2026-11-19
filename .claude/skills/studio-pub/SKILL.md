@@ -13,7 +13,7 @@ Le déroulé ci-dessous existe parce qu'un projet précédent (REEF 33) a montr�
 
 Les outils connectés et les skills ne s'utilisent pas tout seuls : c'est toi qui dois les passer en revue, à chaque projet, même si une skill (par ex. `hyperframes` ou `media-use`) te propose sa propre filière.
 
-1. Liste les connecteurs disponibles (ToolSearch avec le nom du serveur) et **vérifie réellement leurs capacités** (ex. `flora_list_models` par type `audio`, `video`, `image`, `model3d`) au lieu de supposer.
+1. Liste les connecteurs disponibles (ToolSearch avec le nom du serveur) et **vérifie réellement leurs capacités** (ex. `flora_list_models` par type `audio`, `video`, `image`, `model3d` ; `models_list` de Scenario par modalité `video`, `audio`, `image`, `3d`) au lieu de supposer.
 2. Liste les skills disponibles et repère celles qui servent ce projet.
 3. Présente un tableau court à l'utilisateur : **Outil/Skill → ce qu'il apporte à cette pub → utilisé ou non (et pourquoi)**.
 
@@ -39,7 +39,9 @@ Présente le concept, l'identité visuelle (couleurs, typos, mouvements), et un 
 
 - **Images et motion** : HyperFrames (lire la skill `hyperframes`). Avant de coder un effet, une transition, un titre animé ou un style de sous-titres, **cherche d'abord dans `hyperframes-registry`**.
 - **3D produit** : Three.js dans HyperFrames, proportions mesurées sur la photo officielle, textures découpées de la photo ; ne montre jamais une face qu'on n'a pas en photo.
-- **Voix, musique, bruitages** : FLORA (ElevenLabs) en priorité ; donne le prix en $ avant de générer.
+- **Voix, musique, bruitages** : FLORA (ElevenLabs) ou Scenario, compare le prix ; annonce-le avant de générer.
+- **Bruitages calés sur la vidéo montée** : Scenario (Sonilo Video→SFX), une fois le montage figé.
+- **Vidéo IA, retouche et détourage vidéo, avatars, 3D animée** : FLORA ou Scenario (voir `references/outils.md`).
 - **Détourage, retouche, typos** : Adobe en priorité.
 - **Visuels fixes / déclinaisons** : Canva.
 - Montre un test court (forme du produit, une scène) avant de tout rendre quand il y a un doute.
