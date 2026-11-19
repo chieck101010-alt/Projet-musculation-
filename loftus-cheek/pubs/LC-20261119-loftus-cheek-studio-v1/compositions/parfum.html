@@ -1,0 +1,265 @@
+<!doctype html>
+<!--
+  LOFTUS-CHEEK · PROJET 001 · scène LUXE « parfum » (réutilisable pour NOCTIS, projet 002).
+  Flacon 100 % modélisé (aucune marque réelle) : verre épais physique, liquide ambré visible,
+  bouchon champagne, reflet au sol, fumée légère et poussière dorée (graines fixes : rendu identique à chaque image).
+  Chaque image = render(t), pilotée par une horloge GSAP linéaire.
+-->
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #070504; }
+      #parfum-root { position: absolute; inset: 0; overflow: hidden; background: #070504; }
+      #parfum-canvas { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; display: block; }
+    </style>
+  </head>
+  <body>
+    <div id="parfum-root" data-composition-id="parfum" data-start="0" data-duration="4" data-width="1080" data-height="1920">
+      <canvas id="parfum-canvas" width="1080" height="1920" data-layout-allow-overflow></canvas>
+    </div>
+
+    <script>
+      (function () {
+        var root = document.getElementById("parfum-root");
+        var duration = parseFloat(root.dataset.duration) || 4;
+        var clock = { t: 0 };
+        var host = { clock: clock, duration: duration, render: null };
+        window.__parfum = host;
+        window.__hf = window.__hf || {};
+        window.__hf.buildReady = window.__hf.buildReady || {};
+        window.__hf.buildReady["parfum"] = new Promise(function (resolve) { host.ready = resolve; });
+        var tl = gsap.timeline({ paused: true });
+        tl.to(clock, { t: duration, duration: duration, ease: "none",
+          onUpdate: function () { if (host.render) host.render(clock.t); } }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["parfum"] = tl;
+      })();
+    </script>
+
+    <script type="module">
+      import * as THREE from "./assets/lib/three.module.min.js";
+
+      const host = window.__parfum;
+      const W = 1080, H = 1920, DEG = Math.PI / 180;
+      const clamp01 = (x) => (x < 0 ? 0 : x > 1 ? 1 : x);
+      const lerp = (a, b, x) => a + (b - a) * x;
+      const seg = (t, a, b) => clamp01((t - a) / (b - a));
+      const inOut2 = (x) => (x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2);
+      function mulberry32(a) { return function () { a |= 0; a = (a + 0x6d2b79f5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+
+      const canvas = document.getElementById("parfum-canvas");
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+      renderer.setPixelRatio(1);
+      renderer.setSize(W, H, false);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.0;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(22, W / H, 0.05, 80);
+
+      // ---------- dimensions (unité = largeur du flacon) ----------
+      const BW = 1.0, BD = 0.58, BH = 1.42, R = 0.16;    // corps
+      const BASE = 0.16;                                 // fond de verre épais
+      const LIQ_H = 0.86;                                // hauteur du liquide
+      const NECK_R = 0.13, NECK_H = 0.1;
+      const CAP_R = 0.25, CAP_H = 0.46;
+
+      function roundedRect(w, d, r) {
+        const s = new THREE.Shape(), hw = w / 2, hd = d / 2;
+        s.moveTo(-hw + r, -hd); s.lineTo(hw - r, -hd); s.quadraticCurveTo(hw, -hd, hw, -hd + r);
+        s.lineTo(hw, hd - r); s.quadraticCurveTo(hw, hd, hw - r, hd); s.lineTo(-hw + r, hd);
+        s.quadraticCurveTo(-hw, hd, -hw, hd - r); s.lineTo(-hw, -hd + r); s.quadraticCurveTo(-hw, -hd, -hw + r, -hd);
+        return s;
+      }
+      function slab(w, d, r, h, bevel) {
+        const g = new THREE.ExtrudeGeometry(roundedRect(w, d, r), { depth: h - 2 * bevel, bevelEnabled: true,
+          bevelThickness: bevel, bevelSize: bevel, bevelOffset: -bevel, bevelSegments: 6, curveSegments: 16 });
+        g.rotateX(-Math.PI / 2); g.translate(0, bevel, 0); g.computeVertexNormals();
+        return g;
+      }
+
+      // ---------- studio : environnement réfléchi dans le verre ----------
+      function buildEnv() {
+        const env = new THREE.Scene();
+        env.background = new THREE.Color(0x030202);
+        const strip = (w, h, x, y, z, ry, c, k) => {
+          const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ color: new THREE.Color(c).multiplyScalar(k), side: THREE.DoubleSide }));
+          m.position.set(x, y, z); m.lookAt(0, y, 0); env.add(m);
+        };
+        strip(1.4, 8, -4.2, 1, 2.2, 0, 0xffe9c8, 5.0);   // clé chaude gauche (longue bande verticale)
+        strip(0.7, 8, 4.4, 1, 1.4, 0, 0xffffff, 3.0);    // contre droite
+        strip(3.0, 6, 0.6, 1, -5, 0, 0xd8a85c, 2.2);     // fond doré derrière (rétro-éclaire le liquide)
+        strip(8, 0.6, 0, 5, 0, 0, 0xffffff, 0.8);        // plafond
+        const pm = new THREE.PMREMGenerator(renderer);
+        const tex = pm.fromScene(env, 0.03).texture; pm.dispose(); return tex;
+      }
+
+      function canvasTex(w, h, draw) {
+        const c = document.createElement("canvas"); c.width = w; c.height = h; draw(c.getContext("2d"), w, h);
+        const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+      }
+
+      let bottleGroup, mirrorGroup, smoke = [], dust, dustBase, haloMat;
+      async function build() {
+        scene.environment = buildEnv();
+        scene.environmentIntensity = 1.0;
+        scene.background = new THREE.Color(0x070504);
+
+        // fond : noir profond + fente de lumière dorée verticale juste derrière le flacon (rétro-éclairage)
+        const backTex = canvasTex(1024, 1024, (g, w, h) => {
+          g.fillStyle = "#040302"; g.fillRect(0, 0, w, h);
+          const rg = g.createRadialGradient(w * 0.5, h * 0.55, 10, w * 0.5, h * 0.55, w * 0.36);
+          rg.addColorStop(0, "rgba(110,70,26,0.8)"); rg.addColorStop(0.55, "rgba(40,24,10,0.45)"); rg.addColorStop(1, "rgba(4,3,2,0)");
+          g.fillStyle = rg; g.fillRect(0, 0, w, h);
+          // fente lumineuse aux bords fondus (horizontalement ET verticalement)
+          const sc = document.createElement("canvas"); sc.width = w; sc.height = h; const sg = sc.getContext("2d");
+          const lg = sg.createLinearGradient(w * 0.40, 0, w * 0.60, 0);
+          lg.addColorStop(0, "rgba(255,200,120,0)"); lg.addColorStop(0.5, "rgba(255,214,150,0.95)"); lg.addColorStop(1, "rgba(255,200,120,0)");
+          sg.fillStyle = lg; sg.fillRect(0, 0, w, h);
+          sg.globalCompositeOperation = "destination-in";
+          const fv = sg.createLinearGradient(0, h * 0.18, 0, h * 0.86);
+          fv.addColorStop(0, "rgba(0,0,0,0)"); fv.addColorStop(0.45, "rgba(0,0,0,1)"); fv.addColorStop(0.85, "rgba(0,0,0,0.9)"); fv.addColorStop(1, "rgba(0,0,0,0)");
+          sg.fillStyle = fv; sg.fillRect(0, 0, w, h);
+          g.drawImage(sc, 0, 0);
+          const vg = g.createLinearGradient(0, h * 0.25, 0, h * 0.85);
+          vg.addColorStop(0, "rgba(4,3,2,1)"); vg.addColorStop(0.2, "rgba(4,3,2,0)"); vg.addColorStop(0.8, "rgba(4,3,2,0)"); vg.addColorStop(1, "rgba(4,3,2,1)");
+          g.fillStyle = vg; g.fillRect(0, 0, w, h);
+        });
+        const back = new THREE.Mesh(new THREE.PlaneGeometry(7, 7), new THREE.MeshBasicMaterial({ map: backTex, toneMapped: false }));
+        back.position.set(0, 1.4, -5.5); back.scale.setScalar(1.6); scene.add(back);
+        const deep = new THREE.Mesh(new THREE.PlaneGeometry(60, 40), new THREE.MeshBasicMaterial({ color: 0x040302 }));
+        deep.position.set(0, 5, -5.6); scene.add(deep);
+
+        // matériaux
+        const glass = new THREE.MeshPhysicalMaterial({ color: 0xffffff, metalness: 0, roughness: 0.02, transmission: 1,
+          thickness: 0.6, ior: 1.5, attenuationColor: new THREE.Color(0xfaf6ee), attenuationDistance: 6.0,
+          clearcoat: 1, clearcoatRoughness: 0.02, specularIntensity: 1, envMapIntensity: 1.6, side: THREE.FrontSide });
+        // liquide opaque-lumineux : il doit être « vu » à travers le verre (la transmission ne voit que les objets opaques)
+        const liqTex = canvasTex(64, 256, (g, w, h) => { const lg2 = g.createLinearGradient(0, 0, 0, h);
+          lg2.addColorStop(0, "#8a440e"); lg2.addColorStop(0.55, "#d98f2e"); lg2.addColorStop(1, "#f5c063"); g.fillStyle = lg2; g.fillRect(0, 0, w, h); });
+        const liquid = new THREE.MeshStandardMaterial({ color: 0xffffff, map: liqTex, emissive: 0xffffff, emissiveMap: liqTex,
+          emissiveIntensity: 0.38, roughness: 0.15, metalness: 0, envMapIntensity: 0.6 });
+        const champagne = new THREE.MeshStandardMaterial({ color: 0xd8c3a0, metalness: 1, roughness: 0.32, envMapIntensity: 1.8 });
+        const chrome = new THREE.MeshStandardMaterial({ color: 0xe6e6ea, metalness: 1, roughness: 0.12 });
+
+        function makeBottle() {
+          const g = new THREE.Group();
+          const body = new THREE.Mesh(slab(BW, BD, R, BH, 0.05), glass); g.add(body);
+          const liq = new THREE.Mesh(slab(BW - 0.2, BD - 0.18, R * 0.6, LIQ_H, 0.03), liquid);
+          liq.position.y = BASE; liq.renderOrder = -1; g.add(liq);
+          const neck = new THREE.Mesh(new THREE.CylinderGeometry(NECK_R, NECK_R, NECK_H, 48), chrome);
+          neck.position.y = BH + NECK_H / 2; g.add(neck);
+          const capGeo = slab(CAP_R * 2, CAP_R * 2, CAP_R * 0.35, CAP_H, 0.03);
+          const cap = new THREE.Mesh(capGeo, champagne); cap.position.y = BH + NECK_H - 0.01; g.add(cap);
+          // fin filet doré au pied
+          const ring = new THREE.Mesh(slab(BW + 0.012, BD + 0.012, R + 0.006, 0.02, 0.006), champagne);
+          ring.position.y = 0.05; g.add(ring);
+          return g;
+        }
+        bottleGroup = makeBottle(); scene.add(bottleGroup);
+        // reflet au sol : copie retournée, vue à travers un sol sombre semi-transparent
+        mirrorGroup = makeBottle(); mirrorGroup.scale.y = -1; scene.add(mirrorGroup);
+        const floor = new THREE.Mesh(new THREE.PlaneGeometry(40, 40),
+          new THREE.MeshStandardMaterial({ color: 0x050403, metalness: 0.2, roughness: 0.6, transparent: true, opacity: 0.86 }));
+        floor.rotation.x = -Math.PI / 2; floor.position.y = 0.001; scene.add(floor);
+
+        // caustique dorée au sol (lumière passée à travers le liquide)
+        const causTex = canvasTex(512, 512, (g, w, h) => {
+          const rg = g.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, w / 2);
+          rg.addColorStop(0, "rgba(255,190,90,0.9)"); rg.addColorStop(0.4, "rgba(220,140,50,0.35)"); rg.addColorStop(1, "rgba(200,120,40,0)");
+          g.fillStyle = rg; g.fillRect(0, 0, w, h);
+        });
+        haloMat = new THREE.MeshBasicMaterial({ map: causTex, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false });
+        const caus = new THREE.Mesh(new THREE.PlaneGeometry(2.0, 1.1), haloMat);
+        caus.rotation.x = -Math.PI / 2; caus.position.set(0.25, 0.004, 0.75); scene.add(caus);
+
+        // fumée : plaques de brume douces (texture bruitée à graine fixe)
+        const rnd = mulberry32(7);
+        const smokeTex = canvasTex(256, 256, (g, w, h) => {
+          for (let i = 0; i < 70; i++) {
+            const x = w * (0.25 + 0.5 * rnd()), y = h * (0.25 + 0.5 * rnd()), r = w * (0.08 + 0.18 * rnd());
+            const rg = g.createRadialGradient(x, y, 0, x, y, r);
+            rg.addColorStop(0, "rgba(255,240,220,0.10)"); rg.addColorStop(1, "rgba(255,240,220,0)");
+            g.fillStyle = rg; g.fillRect(0, 0, w, h);
+          }
+          // bords fondus : aucune arête de sprite visible
+          g.globalCompositeOperation = "destination-in";
+          const m = g.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, w / 2);
+          m.addColorStop(0, "rgba(0,0,0,1)"); m.addColorStop(0.6, "rgba(0,0,0,0.5)"); m.addColorStop(1, "rgba(0,0,0,0)");
+          g.fillStyle = m; g.fillRect(0, 0, w, h);
+        });
+        for (let i = 0; i < 9; i++) {
+          const m = new THREE.SpriteMaterial({ map: smokeTex, transparent: true, depthWrite: false, opacity: 0.0, color: 0xf0dcc0 });
+          const s = new THREE.Sprite(m);
+          const p = { x: -1.6 + 3.2 * rnd(), y: 0.15 + 0.5 * rnd(), z: -1.2 + 1.4 * rnd(), sc: 1.6 + 1.6 * rnd(), vx: 0.05 + 0.08 * rnd(), rot: rnd() * 6, vr: (rnd() - 0.5) * 0.25 };
+          s.userData = p; scene.add(s); smoke.push(s);
+        }
+
+        // poussière dorée en suspension
+        const N = 140, pos = new Float32Array(N * 3); dustBase = [];
+        for (let i = 0; i < N; i++) {
+          const b = { x: -2 + 4 * rnd(), y: 0.1 + 3.2 * rnd(), z: -2 + 3 * rnd(), ph: rnd() * 6.28, sp: 0.04 + 0.08 * rnd() };
+          dustBase.push(b);
+        }
+        const dg = new THREE.BufferGeometry(); dg.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+        const dotTex = canvasTex(64, 64, (g, w) => { const rg = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+          rg.addColorStop(0, "rgba(255,225,170,1)"); rg.addColorStop(1, "rgba(255,225,170,0)"); g.fillStyle = rg; g.fillRect(0, 0, 64, 64); });
+        dust = new THREE.Points(dg, new THREE.PointsMaterial({ map: dotTex, size: 0.035, transparent: true, depthWrite: false,
+          blending: THREE.AdditiveBlending, color: 0xffd9a0, opacity: 0.8 }));
+        scene.add(dust);
+
+        // lumières directes (pour le métal du bouchon)
+        const key = new THREE.DirectionalLight(0xffe2b8, 1.6); key.position.set(-3, 4, 3); scene.add(key);
+        const rim = new THREE.DirectionalLight(0xbfd0ff, 0.8); rim.position.set(3, 2.5, -3); scene.add(rim);
+
+        await renderer.compileAsync(scene, camera);
+      }
+
+      function render(t) {
+        const k = inOut2(seg(t, 0, host.duration));
+        // caméra : arc lent de 28° + légère poussée, basse (effet héroïque)
+        const ang = lerp(-9, 7, k) * DEG;
+        const dist = lerp(12.2, 11.0, k);
+        const ty = 1.2;
+        camera.position.set(Math.sin(ang) * dist, lerp(0.9, 1.15, k), Math.cos(ang) * dist);
+        camera.lookAt(0, ty, 0);
+        camera.updateProjectionMatrix();
+
+        bottleGroup.rotation.y = lerp(-8, 6, k) * DEG;
+        mirrorGroup.rotation.y = bottleGroup.rotation.y;
+
+        // fumée : dérive lente, apparition en fondu
+        for (const s of smoke) {
+          const p = s.userData;
+          s.position.set(p.x + p.vx * t, p.y + 0.06 * t, p.z);
+          s.scale.setScalar(p.sc * (1 + 0.06 * t));
+          s.material.rotation = p.rot + p.vr * t;
+          s.material.opacity = 0.22 * clamp01(t / 0.8);
+        }
+        // poussière : flottement sinusoïdal (fonction pure du temps)
+        const arr = dust.geometry.attributes.position.array;
+        for (let i = 0; i < dustBase.length; i++) {
+          const b = dustBase[i];
+          arr[i * 3] = b.x + 0.06 * Math.sin(b.ph + t * 0.7);
+          arr[i * 3 + 1] = b.y + b.sp * t;
+          arr[i * 3 + 2] = b.z + 0.05 * Math.cos(b.ph + t * 0.5);
+        }
+        dust.geometry.attributes.position.needsUpdate = true;
+        haloMat.opacity = 0.75 + 0.15 * Math.sin(t * 1.3);
+
+        renderer.render(scene, camera);
+      }
+
+      await build();
+      host.render = render;
+      render(host.clock.t);
+      host.ready();
+      window.addEventListener("hf-seek", (e) => render(e.detail.time));
+    </script>
+  </body>
+</html>
