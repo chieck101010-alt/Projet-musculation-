@@ -92,3 +92,18 @@ Autres formules :
 5. **Services** : typo haut de gamme large (Unbounded / Syncopate), remplissage chrome, chaque mot calé sur un temps.
 6. **Final** : CONTACT EN DM en blanc pur sur pilule sombre, ≥ 64 px, contraste maximal, tenu 3 s.
 7. **Audio** : voir VOIX-OFF.md. Musique : trap cinématique premium, transitions sur les temps forts.
+
+---
+## v3 — Décision client (19/11/2026)
+- **On garde** : logo LC 3D (identite/logo/anim) et éclats de verre 3D de l'accroche.
+- **On retire** : le flacon de parfum 3D (compositions/parfum.html conservé pour archive, non utilisé).
+- **Produits = vidéos IA réalistes** : 4 visuels photoréalistes sans marque (survêtement, sneaker, parfum, montre) → chacun animé en clip vidéo IA (image → vidéo), puis monté dans HyperFrames (coupes sur les temps, transitions, textes, étalonnage commun).
+- La sneaker sert aussi à l'accroche (version « ratée » fabriquée gratuitement depuis la même image).
+
+### Clips vidéo prévus (5 s générés, ~2 s utilisés chacun)
+| Produit | Mouvement demandé à l'IA | Univers |
+|---|---|---|
+| Survêtement | Tissu qui bouge sous un souffle d'air, travelling rapide, néon froid | STREET |
+| Sneaker | Rotation lente sur socle, lumière qui balaie, particules | STREET |
+| Parfum | Caméra en arc lent, fumée dorée, reflets sur le verre, liquide qui ondule | LUXE |
+| Montre | Gros plan macro, reflet qui glisse sur le métal, trotteuse | LUXE |
