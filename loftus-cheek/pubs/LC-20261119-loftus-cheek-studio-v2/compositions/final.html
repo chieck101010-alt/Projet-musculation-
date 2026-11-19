@@ -1,0 +1,23 @@
+<template>
+  <!-- Scène 6 « FINAL » (22–28 s) : textes posés sur l'animation du logo (vidéo dans la racine). -->
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #fi-tag { position: absolute; left: 80px; right: 80px; top: 300px; text-align: center; font-family: "Montserrat", sans-serif; white-space: nowrap;
+      font-weight: 600; font-size: 38px; line-height: 1.3; letter-spacing: 0.04em; color: #f5f5f5; opacity: 0; }
+    #fi-tag b { font-weight: 700; color: #d8c3a0; }
+    #fi-pill { position: absolute; left: 50%; top: 1420px; width: 540px; height: 96px; margin-left: -270px; border-radius: 52px;
+      background: #111113; border: 2px solid #d9dadf; display: flex; align-items: center; justify-content: center;
+      font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 46px; letter-spacing: 0.12em; color: #ffffff; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="final" data-width="1080" data-height="1920">
+    <div id="fi-tag">DONNEZ UNE NOUVELLE DIMENSION<br />À <b>VOTRE MARQUE.</b></div>
+    <div id="fi-pill">CONTACT EN DM</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#fi-tag", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.9);
+    tl.fromTo("#fi-pill", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 2.4);
+    tl.to("#fi-pill", { scale: 1.06, duration: 0.25, ease: "power1.inOut", repeat: 3, yoyo: true }, 3.0);
+    window.__timelines["final"] = tl;
+  </script>
+</template>

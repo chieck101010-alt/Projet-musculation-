@@ -4,12 +4,71 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1080, height=1920" />
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
-    <style> html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #050505; } #root { position: absolute; inset: 0; } </style>
+    <style>
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #050505; }
+      #root { position: absolute; inset: 0; background: #050505; overflow: hidden; }
+      .full { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+      .shot { position: absolute; inset: 0; overflow: hidden; }
+      .shot img { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+      .sweep { position: absolute; top: -300px; left: 0; width: 300px; height: 2600px; mix-blend-mode: screen;
+        background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(235,242,255,0.5) 50%, rgba(255,255,255,0) 100%); }
+      #flash-or { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 60% 45%, #fff3d6 0%, #f0b45a 45%, rgba(0,0,0,0) 80%); opacity: 0; mix-blend-mode: screen; }
+      #whip1, #whip2 { position: absolute; inset: 0; background: #000; opacity: 0; }
+      #svc-dim { position: absolute; inset: 0; background: rgba(5,5,5,0.62); }
+    </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="6" data-width="1080" data-height="1920">
-      <div id="test3d" data-composition-id="test3d" data-composition-src="compositions/test-3d.html" data-start="0" data-duration="6" data-track-index="0" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+    <!-- LOFTUS-CHEEK · PROJET 001 · V2 « monde réel + monde LC » · 28 s · 9:16 (montage sans audio) -->
+    <div id="root" data-composition-id="main" data-start="0" data-duration="28" data-width="1080" data-height="1920">
+      <!-- S1 accroche : vraie vidéo -->
+      <video id="v-ville" class="full clip" src="assets/footage/ville-pas.mp4" muted data-start="0" data-duration="2.6" data-media-start="0" data-track-index="0"></video>
+      <!-- S2 téléphone : story du vendeur, avant → après -->
+      <div id="telephone" data-composition-id="telephone" data-composition-src="compositions/telephone.html" data-start="2.5" data-duration="4.1" data-track-index="0" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <!-- S3 la pub plein écran -->
+      <div id="s3" class="shot clip" data-start="6.6" data-duration="1.5" data-track-index="0"><img id="s3-img" src="assets/produits/on-noire-studio.jpg" alt="" /><div class="sweep" id="s3-sweep"></div></div>
+      <!-- S4 logo -->
+      <video id="v-logo1" class="full clip" src="assets/video/lc-logo.mp4" muted data-start="8.1" data-duration="2.5" data-media-start="0" data-track-index="0"></video>
+      <!-- S5 street -->
+      <video id="v-sneak" class="full clip" src="assets/footage/sneakers-neon.mp4" muted data-start="10.6" data-duration="1.2" data-media-start="0.6" data-track-index="0"></video>
+      <div id="s5b" class="shot clip" data-start="11.8" data-duration="1.4" data-track-index="0"><img id="s5b-img" src="assets/produits/ensemble-studio.jpg" alt="" /></div>
+      <video id="v-marche" class="full clip" src="assets/footage/homme-marche.mp4" muted data-start="13.2" data-duration="1.5" data-media-start="0.5" data-track-index="0"></video>
+      <!-- S6 luxe -->
+      <video id="v-parfum" class="full clip" src="assets/footage/parfum-spray.mp4" muted data-start="14.7" data-duration="1.8" data-media-start="1.4" data-track-index="0"></video>
+      <div id="s6b" class="shot clip" data-start="16.5" data-duration="1.6" data-track-index="0"><img id="s6b-img" src="assets/produits/nishane-studio.jpg" alt="" /><div class="sweep" id="s6b-sweep"></div></div>
+      <video id="v-trot" class="full clip" src="assets/footage/montre-trotteuse.mp4" muted data-start="18.1" data-duration="1.4" data-media-start="0.6" data-track-index="0"></video>
+      <!-- S7 services sur le mécanisme -->
+      <video id="v-meca" class="full clip" src="assets/footage/montre-meca.mp4" muted data-start="19.5" data-duration="4.0" data-media-start="0" data-track-index="0"></video>
+      <div id="svc-dim" class="clip" data-start="19.5" data-duration="4.0" data-track-index="1"></div>
+      <!-- S8 final -->
+      <video id="v-logo2" class="full clip" src="assets/video/lc-logo.mp4" muted data-start="23.5" data-duration="4.45" data-media-start="0" data-track-index="0"></video>
+      <img id="logo-fin" class="full clip" src="assets/video/lc-logo-fin.png" alt="" data-start="27.95" data-duration="0.05" data-track-index="0" />
+      <!-- transitions -->
+      <div id="whip1" class="clip" data-start="10.45" data-duration="0.3" data-track-index="2"></div>
+      <div id="flash-or" class="clip" data-start="14.45" data-duration="0.7" data-track-index="2"></div>
+      <!-- calques -->
+      <div id="textes" data-composition-id="textes" data-composition-src="compositions/textes.html" data-start="0" data-duration="23.5" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="final" data-composition-id="final" data-composition-src="compositions/final.html" data-start="23.5" data-duration="4.5" data-track-index="3" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
     </div>
-    <script> const tl = gsap.timeline({ paused: true }); window.__timelines = window.__timelines || {}; window.__timelines["main"] = tl; </script>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      // S3 : raccord avec l'écran agrandi, puis poussée lente + reflet
+      tl.fromTo("#s3-img", { scale: 1.22 }, { scale: 1.32, duration: 1.5, ease: "none" }, 6.6);
+      tl.fromTo("#s3-sweep", { x: -350, rotation: 16 }, { x: 1150, rotation: 16, duration: 1.1, ease: "power2.inOut" }, 6.75);
+      // S5b : ensemble, travelling vertical + poussée
+      tl.fromTo("#s5b-img", { scale: 1.18, y: 60 }, { scale: 1.06, y: -20, duration: 1.4, ease: "power1.out" }, 11.8);
+      tl.fromTo("#s5b", { x: 1080 }, { x: 0, duration: 0.18, ease: "power3.out" }, 11.8);
+      // whip vers le logo → street
+      tl.fromTo("#whip1", { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "power2.in" }, 10.45);
+      tl.to("#whip1", { opacity: 0, duration: 0.15, ease: "power2.out" }, 10.6);
+      // passage street → luxe : la lumière vire au doré
+      tl.fromTo("#flash-or", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.in" }, 14.45);
+      tl.to("#flash-or", { opacity: 0, duration: 0.45, ease: "power2.out" }, 14.7);
+      // S6b : Nishane, poussée très lente + reflet
+      tl.fromTo("#s6b-img", { scale: 1.04 }, { scale: 1.12, duration: 1.6, ease: "none" }, 16.5);
+      tl.fromTo("#s6b-sweep", { x: -350, rotation: 16 }, { x: 1150, rotation: 16, duration: 1.3, ease: "power2.inOut" }, 16.7);
+      tl.fromTo("#s6b", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power1.inOut" }, 16.5);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+    </script>
   </body>
 </html>

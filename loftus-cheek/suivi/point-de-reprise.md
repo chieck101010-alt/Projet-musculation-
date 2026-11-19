@@ -1,5 +1,10 @@
 # POINT DE REPRISE — LOFTUS-CHEEK
 
+## 2026-11-19 (8)
+- **Montage V2 sans son rendu** : `pubs/LC-20261119-loftus-cheek-studio-v2/renders/apercus/montage-v2-sans-son.mp4` (28 s). Structure inspirée de Muble : vraie vidéo → téléphone (story vendeur avant/après) → « l'objet devient le monde » → logo → street (vidéo + photos Scenario) → bascule dorée → luxe (vidéo + Nishane + chrono) → services sur mécanisme → final CTA.
+- **Outils actifs** : Scenario (connecteur, gratuit 50 CU/jour, 2 jobs en parallèle) ; Adobe Stock (licences gratuites) ; ElevenLabs direct toujours refusé (en-tête).
+- **Manque** : voix off, musique, bruitages ; animation vidéo des produits (formule Scenario payante) ; On blanche (13 CU, demain).
+
 ## 2026-11-19 (7) — À LIRE EN PREMIER DANS LA NOUVELLE SESSION
 - **Refonte V2 en cours** : plan complet dans `pubs/LC-20261119-loftus-cheek-studio-v2/REFONTE-V2.md` (diagnostic V1, DA « un seul studio, une seule caméra », storyboard, coûts). Direction recommandée : tournage IA (vidéos produits) + réalisation HyperFrames.
 - **Skills installés** : Scenario (`.agents/skills/scenario*`) et ElevenLabs officiels (`.agents/skills/text-to-speech`, `music`, `sound-effects`…).

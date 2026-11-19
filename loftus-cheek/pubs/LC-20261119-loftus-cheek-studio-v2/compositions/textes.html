@@ -1,0 +1,54 @@
+<template>
+  <!-- Calque TEXTES (0–23,5 s) : titres par mots (flou → net), un seul mot accentué par plan. Zone sûre : 250–1330 px. -->
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .tx { position: absolute; left: 70px; right: 70px; text-align: center; font-family: "Montserrat", sans-serif; font-weight: 800;
+      color: #fff; line-height: 1.08; letter-spacing: -0.01em; text-shadow: 0 4px 22px rgba(0,0,0,0.55); opacity: 0; }
+    .tx .w { display: inline-block; }
+    .tx .acc { color: #d9dadf; background: linear-gradient(180deg, #ffffff 0%, #c9cad0 48%, #7a7b82 56%, #eeeef1 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: none; }
+    .big { font-size: 82px; }
+    .mid { font-size: 66px; }
+    .lab { font-size: 92px; letter-spacing: 0.06em; font-weight: 900; }
+    .lux { font-family: "Playfair Display", serif; font-weight: 400; font-size: 92px; letter-spacing: 0.24em; color: #eadbbd; text-shadow: 0 4px 22px rgba(0,0,0,0.6); }
+    .svc { font-size: 94px; font-weight: 900; }
+    #tx-line { position: absolute; left: 160px; right: 160px; top: 1120px; height: 2px; background: linear-gradient(90deg, rgba(216,195,160,0), #d8c3a0, rgba(216,195,160,0)); opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="textes" data-width="1080" data-height="1920">
+    <div class="tx big" id="t1" style="top:760px"><span class="w">VOTRE</span> <span class="w">PRODUIT</span><br /><span class="w">EST</span> <span class="w acc">FORT…</span></div>
+    <div class="tx mid" id="t2" style="top:250px"><span class="w">…MAIS</span> <span class="w">PERSONNE</span><br /><span class="w">NE</span> <span class="w acc">S'ARRÊTE.</span></div>
+    <div class="tx mid" id="t3" style="top:250px"><span class="w">IL</span> <span class="w">LUI</span> <span class="w">MANQUE</span><br /><span class="w">UNE</span> <span class="w acc">DIMENSION.</span></div>
+    <div class="tx lab" id="t4" style="top:1120px"><span class="w">SNEAKERS</span></div>
+    <div class="tx lab" id="t5" style="top:1120px"><span class="w">STREETWEAR</span></div>
+    <div class="tx lux" id="t6" style="top:300px">PARFUMS</div>
+    <div class="tx lux" id="t7" style="top:300px">ACCESSOIRES</div>
+    <div class="tx svc" id="t8" style="top:800px"><span class="acc">PUBLICITÉ</span><br />IA</div>
+    <div class="tx svc" id="t9" style="top:800px">MOTION<br /><span class="acc">DESIGN 3D</span></div>
+    <div class="tx svc" id="t10" style="top:800px"><span class="acc">VOIX</span><br />OFF</div>
+    <div id="tx-line"></div>
+    <div class="tx mid" id="t11" style="top:1160px; font-size:42px; font-weight:600; letter-spacing:0.12em">DES VIDÉOS QUI<br />ARRÊTENT LE SCROLL</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    function words(sel, t, gap) {
+      tl.set(sel, { opacity: 1 }, t);
+      tl.fromTo(sel + " .w", { opacity: 0, filter: "blur(6px)", y: 14 }, { opacity: 1, filter: "blur(0px)", y: 0, duration: 0.16, ease: "power3.out", stagger: gap || 0.08 }, t);
+    }
+    function out(sel, t) { tl.to(sel, { opacity: 0, duration: 0.18, ease: "power3.in" }, t); }
+    function pop(sel, t, d) { tl.fromTo(sel, { opacity: 0, scale: 1.12 }, { opacity: 1, scale: 1, duration: d || 0.18, ease: "power4.out" }, t); }
+    words("#t1", 0.15); out("#t1", 2.3);
+    words("#t2", 2.75); out("#t2", 4.35);
+    words("#t3", 4.6, 0.1); out("#t3", 6.35);
+    pop("#t4", 10.6); out("#t4", 11.55);
+    pop("#t5", 11.8); out("#t5", 13.05);
+    tl.fromTo("#t6", { opacity: 0 }, { opacity: 1, duration: 0.7, ease: "power2.out" }, 16.5); out("#t6", 17.85);
+    tl.fromTo("#t7", { opacity: 0 }, { opacity: 1, duration: 0.7, ease: "power2.out" }, 18.1); out("#t7", 19.3);
+    pop("#t8", 19.55); out("#t8", 20.4);
+    pop("#t9", 20.5); out("#t9", 21.4);
+    pop("#t10", 21.5);
+    tl.to("#t10", { y: -150, scale: 0.8, duration: 0.4, ease: "power3.inOut" }, 22.2);
+    tl.fromTo("#tx-line", { opacity: 1, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.45, ease: "power3.out" }, 22.25);
+    tl.fromTo("#t11", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 22.3);
+    window.__timelines["textes"] = tl;
+  </script>
+</template>

@@ -1,0 +1,69 @@
+<template>
+  <!--
+    Scène « TÉLÉPHONE » (2,5–6,6 s du film) : la story Snap/Insta d'un vendeur.
+    0,0–1,8 photo plate (avant) · 1,8 tap · 1,95 flash + balayage → photo studio (après)
+    3,4–4,1 « l'objet devient le monde » : le téléphone grandit jusqu'à ce que l'écran remplisse le cadre.
+  -->
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #060607; }
+    #tel-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 55%, #1b1c20 0%, #060607 75%); }
+    #tel-phone { position: absolute; left: 50%; top: 50%; width: 900px; height: 1904px; margin-left: -450px; margin-top: -952px;
+      border-radius: 132px; background: linear-gradient(160deg, #3a3842 0%, #121117 60%, #2a2930 100%);
+      box-shadow: 0 60px 120px rgba(0,0,0,0.65), inset 0 0 0 2px rgba(255,255,255,0.28); }
+    #tel-screen { position: absolute; left: 20px; top: 20px; width: 860px; height: 1864px; border-radius: 114px; overflow: hidden; background: #000; }
+    #tel-screen img { position: absolute; inset: 0; width: 860px; height: 1864px; object-fit: cover; }
+    #tel-island { position: absolute; left: 50%; top: 44px; width: 210px; height: 62px; margin-left: -105px; border-radius: 31px; background: #000; z-index: 5; }
+    .tel-ui { position: absolute; left: 0; right: 0; z-index: 4; font-family: "Inter", sans-serif; color: #fff; }
+    #tel-bars { top: 130px; display: flex; gap: 10px; padding: 0 40px; }
+    #tel-bars span { flex: 1; height: 7px; border-radius: 4px; background: rgba(255,255,255,0.45); }
+    #tel-bars span.on { background: #fff; }
+    #tel-who { top: 165px; padding: 0 40px; display: flex; align-items: center; gap: 22px; font-weight: 700; font-size: 40px; }
+    #tel-who i { width: 76px; height: 76px; border-radius: 50%; background: linear-gradient(135deg, #9a9aa3, #4a4a52); display: block; }
+    #tel-who em { font-style: normal; font-weight: 400; opacity: 0.7; font-size: 34px; }
+    #tel-sticker { top: 1230px; display: flex; justify-content: center; }
+    #tel-sticker b { background: #ffffff; color: #111; font-weight: 700; font-size: 54px; padding: 18px 40px; border-radius: 20px; transform: rotate(-4deg); }
+    #tel-reply { top: 1700px; padding: 0 40px; display: flex; gap: 20px; }
+    #tel-reply div { flex: 1; height: 100px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.7); font-size: 36px; display: flex; align-items: center; padding-left: 40px; opacity: 0.85; }
+    #tel-apres { opacity: 0; }
+    #tel-flash { position: absolute; inset: 0; background: #fff; opacity: 0; z-index: 6; }
+    #tel-sweep { position: absolute; top: -300px; left: 0; width: 320px; height: 2500px; z-index: 6;
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(235,242,255,0.6) 50%, rgba(255,255,255,0) 100%); }
+    #tel-tap { position: absolute; left: 600px; top: 1060px; width: 110px; height: 110px; border-radius: 50%; background: rgba(255,255,255,0.55); opacity: 0; z-index: 7; }
+  </style>
+  <div id="root" data-composition-id="telephone" data-width="1080" data-height="1920">
+    <div id="tel-bg"></div>
+    <div id="tel-phone">
+      <div id="tel-screen">
+        <img id="tel-avant" src="assets/produits/on-noire-avant.jpg" alt="" />
+        <img id="tel-apres" src="assets/produits/on-noire-studio.jpg" alt="" />
+        <div class="tel-ui" id="tel-bars"><span class="on"></span><span></span><span></span></div>
+        <div class="tel-ui" id="tel-who"><i></i><span>ta_boutique <em>· 2 h</em></span></div>
+        <div class="tel-ui" id="tel-sticker"><b>DISPO EN DM 📩</b></div>
+        <div class="tel-ui" id="tel-reply"><div>Envoyer un message</div></div>
+        <div id="tel-flash"></div>
+        <div id="tel-sweep"></div>
+      </div>
+      <div id="tel-island"></div>
+      <div id="tel-tap"></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // arrivée du téléphone (ressort), légère inclinaison qui se redresse
+    tl.fromTo("#tel-phone", { y: 900, scale: 0.56, rotation: -6 }, { y: 170, scale: 0.6, rotation: 0, duration: 0.7, ease: "back.out(1.2)" }, 0);
+    // tap du doigt sur la story
+    tl.fromTo("#tel-tap", { opacity: 0, scale: 1.2 }, { opacity: 1, scale: 0.8, duration: 0.15, ease: "power2.out" }, 1.65);
+    tl.to("#tel-tap", { opacity: 0, duration: 0.15 }, 1.85);
+    // transformation : flash + balayage chrome, l'image devient la pub
+    tl.fromTo("#tel-flash", { opacity: 0 }, { opacity: 0.9, duration: 0.06, ease: "none" }, 1.9);
+    tl.set("#tel-apres", { opacity: 1 }, 1.96);
+    tl.set(["#tel-sticker", "#tel-reply", "#tel-who", "#tel-bars"], { opacity: 0 }, 1.96);
+    tl.to("#tel-flash", { opacity: 0, duration: 0.35, ease: "power2.out" }, 1.96);
+    tl.fromTo("#tel-sweep", { x: -400, rotation: 14 }, { x: 1100, rotation: 14, duration: 0.9, ease: "power2.inOut" }, 2.0);
+    tl.fromTo("#tel-apres", { scale: 1.12 }, { scale: 1.0, duration: 1.4, ease: "power2.out" }, 1.96);
+    // l'objet devient le monde
+    tl.to("#tel-phone", { scale: 1.27, y: 0, duration: 0.7, ease: "power2.inOut" }, 3.4);
+    tl.to("#tel-bg", { opacity: 0, duration: 0.4 }, 3.6);
+    window.__timelines["telephone"] = tl;
+  </script>
+</template>
