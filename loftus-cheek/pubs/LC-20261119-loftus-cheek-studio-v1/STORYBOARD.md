@@ -1,4 +1,4 @@
-# STORYBOARD — PROJET 001 · « NOUVELLE DIMENSION »
+# STORYBOARD — PROJET 001 · « NOUVELLE DIMENSION » (v2 validée en direction)
 LC-20261119-loftus-cheek-studio-v1 · 28 s · 9:16 · 1080×1920 · 30 i/s · musique 120 BPM (1 mesure = 2 s)
 
 ## Concept
@@ -82,3 +82,13 @@ Version « ratée » de l'accroche : créée gratuitement en dégradant le visue
 Autres formules :
 - **Éco (tient dans 0,13 $)** : voix Gemini (0,07 $) + 1 essai musique Stable Audio 3 (0,044 $). Produits dessinés en 3D/chrome stylisé, sans photos. Rendu plus « graphique », moins réaliste.
 - **Premium (≈ 1,90 $)** : voix ElevenLabs v3 (3 prises, 0,36 $) + musique ElevenLabs Music (2 essais, 0,72 $) + visuels Nano Banana Pro (4, 0,72 $) + verre brisé sur mesure (0,14 $).
+
+---
+## v2 — Améliorations validées (19/11/2026)
+1. **Accroche** : l'image « ratée » et l'image « pub » sont **le même produit** (la ratée est dérivée de la belle). La casse révèle la version pro derrière : vraie transformation avant/après. Éclats en Three.js avec verre réaliste (réfraction, arêtes brillantes, flou de mouvement), puis passage au chrome.
+2. **Logo LC** : composition autonome `identite/logo/` en Three.js. Métal physique (chrome brossé + biseaux polis), studio de lumière virtuel (3 sources + environnement réfléchissant), pivot lent puis arrêt net sur le temps. Variantes : intro 2 s, final 5 s, fond transparent.
+3. **Streetwear** : visuels photoréalistes générés (survêtement, sneaker), animés en **2,5D** (carte de profondeur → vraie parallaxe), lumière néon animée, flou de mouvement, whip pans sur les temps. Option : 2 plans en image→vidéo pour un vrai mouvement de tissu.
+4. **Luxe** : rythme ralenti (plans de 2 s sans coupe), flacon 3D en verre physique avec liquide ambré visible, caustiques dorées, fumée volumétrique légère. Montre : visuel photoréaliste + reflet spéculaire animé.
+5. **Services** : typo haut de gamme large (Unbounded / Syncopate), remplissage chrome, chaque mot calé sur un temps.
+6. **Final** : CONTACT EN DM en blanc pur sur pilule sombre, ≥ 64 px, contraste maximal, tenu 3 s.
+7. **Audio** : voir VOIX-OFF.md. Musique : trap cinématique premium, transitions sur les temps forts.
