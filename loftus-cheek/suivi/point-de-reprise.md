@@ -1,5 +1,13 @@
 # POINT DE REPRISE — LOFTUS-CHEEK
 
+## 2026-11-19 (7) — À LIRE EN PREMIER DANS LA NOUVELLE SESSION
+- **Refonte V2 en cours** : plan complet dans `pubs/LC-20261119-loftus-cheek-studio-v2/REFONTE-V2.md` (diagnostic V1, DA « un seul studio, une seule caméra », storyboard, coûts). Direction recommandée : tournage IA (vidéos produits) + réalisation HyperFrames.
+- **Skills installés** : Scenario (`.agents/skills/scenario*`) et ElevenLabs officiels (`.agents/skills/text-to-speech`, `music`, `sound-effects`…).
+- **ElevenLabs** : clé enregistrée dans les « Network secrets » de l'environnement (hôte api.elevenlabs.io). Dans l'ancienne session, le proxy l'envoyait encore en `Authorization: Bearer` → refus. Première action : `curl -sS https://api.elevenlabs.io/v1/user/subscription` (sans en-tête) ; si refus, vérifier que le secret utilise l'en-tête `xi-api-key` sans préfixe.
+- **Scenario** : à connecter comme connecteur claude.ai (`https://mcp.scenario.com/mcp`) → vérifier avec ToolSearch « scenario ».
+- **En attente du client** : vidéos de référence + photos (sneaker tendance, parfum, ensemble) EN PIÈCES JOINTES ou Google Drive › LOFTUS-CHEEK ; accord budget.
+- **Ne rien générer de payant sans accord.**
+
 ## 2026-11-19 (6)
 - **Étape atteinte** : montage v1 complet 28 s sans son (accroche Nike + éclats 3D, bascule, logo 3D, 4 plans produits 2D, services, final CTA).
 - **Visuels** : Nike TN (logo Nike, choix client), parfum, montre (Canva). Survêtement manquant (quota Canva épuisé ; le client veut un ensemble porté par une autre personne, réf. bleu marine non reçue en fichier).
