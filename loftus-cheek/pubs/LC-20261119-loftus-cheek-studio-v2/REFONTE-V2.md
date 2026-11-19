@@ -88,3 +88,15 @@ Coûts chiffrés par Scenario (dry run, en Creative Units) :
 
 Forfait Scenario actuel : **gratuit = 50 CU/jour** (d'après le centre d'aide Scenario) → suffit pour ~3 photos/jour, PAS pour la vidéo (130 CU minimum par clip).
 Forfaits payants (d'après les sources publiques, à vérifier sur scenario.com/pricing) : ≈ 15 $/mois pour ~1 500 CU (juste), ≈ 45 $/mois pour ~5 000 CU (confortable).
+
+## 10. Analyse de la référence « Muble 25 s » (pub VTC réalisée par le studio, branche pub-muble-vtc)
+Ce qui marche et qu'on reprend :
+1. **Deux mondes seulement** : le monde réel (vraies vidéos Adobe Stock, licence gratuite, recadrées 9:16 et étalonnées en commun) + le monde de la marque (plateau violet). → LC : vraies vidéos + plateau noir/chrome LC.
+2. **Accroche en vraie vidéo dès 0,0 s**, avec une question en titre (« Un rendez-vous ? »). Jamais de noir ni de logo au départ.
+3. **La voix off est l'horloge** : chaque texte arrive sur le mot dit ; sous-titres par groupes de 5 mots max, un seul mot en couleur d'accent.
+4. **Un objet réel au centre de la démonstration** (le téléphone avec la vraie interface) → LC : un téléphone qui montre la story Snap/Insta d'un vendeur, AVANT (photo plate) puis APRÈS (pub LC). C'est la preuve du savoir-faire pour la cible.
+5. **Transition « l'objet devient le monde »** (le bouton grandit jusqu'à remplir le cadre), whips de 0,2 s sur les temps forts.
+6. **Règles strictes (BANNED)** : pas de vide noir avec éléments flottants, pas de néons/orbes/particules décoratives, pas de texte qui glisse en fondu.
+7. Son : voix Gemini « Achird », musique Stable Audio, bruitages de la bibliothèque.
+
+Recherche Adobe Stock gratuite (vidéos 4K) : montre homme sur fond noir lumière commerciale (487598737), mécanisme de montre (238946280), trotteuse (991749818), parfum vaporisé sur fond noir (472882133), sneakers blanches néon bleu (674248639), homme en streetwear qui marche de nuit en ville, ralenti (313222787), jeune homme confiant qui marche, travelling (425453036). Téléchargement bloqué tant que les hôtes Adobe (t3/t4.ftcdn.net + hôte de téléchargement sous licence) ne sont pas autorisés.
