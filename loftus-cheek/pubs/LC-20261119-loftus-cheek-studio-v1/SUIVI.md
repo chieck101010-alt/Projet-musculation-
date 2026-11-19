@@ -11,4 +11,4 @@
 | 8. Export | ☐ | renders/final/ |
 | 9. Archivage + portfolio | ☐ | |
 
-Dépenses : 0 $
+Dépenses : 0,077 $ (photo sneaker)
