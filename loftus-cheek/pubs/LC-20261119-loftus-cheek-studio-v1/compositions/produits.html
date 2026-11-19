@@ -1,0 +1,84 @@
+<template>
+  <!--
+    Scène 4 « PRODUITS » (9–17 s) : 4 plans de 2 s.
+    STREET (rapide) : Nike plan large → Nike macro, whip pan entre les deux.
+    LUXE (lent) : parfum → montre, fondu lumineux.
+    TODO : remplacer le plan 1 par l'ensemble survêtement porté quand le visuel existera.
+  -->
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #000; }
+    .pr-shot { position: absolute; inset: 0; overflow: hidden; opacity: 0; }
+    .pr-shot img { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+    .pr-label { position: absolute; left: 0; right: 0; top: 1150px; text-align: center; }
+    .pr-label span { display: inline-block; }
+    .street { font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 112px; letter-spacing: 0.06em; color: #fff; }
+    .street .ghost { position: absolute; left: 0; top: 0; opacity: 0.8; mix-blend-mode: screen; }
+    .pr-label.luxe { top: 300px; }
+    .luxe { font-family: "Playfair Display", serif; font-weight: 400; font-size: 96px; letter-spacing: 0.22em; color: #e9d9b8; }
+    #pr-neon { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(40,120,255,0.28) 0%, rgba(40,120,255,0) 35%); mix-blend-mode: screen; }
+    #pr-leak { position: absolute; inset: 0; opacity: 0;
+      background: radial-gradient(ellipse 70% 50% at 70% 40%, rgba(255,190,110,0.95) 0%, rgba(255,140,60,0.4) 40%, rgba(0,0,0,0) 75%); mix-blend-mode: screen; }
+    #pr-spec { position: absolute; top: -300px; left: 0; width: 240px; height: 2600px;
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,250,240,0.6) 50%, rgba(255,255,255,0) 100%); mix-blend-mode: screen; }
+    #pr-vig { position: absolute; inset: 0; background: radial-gradient(ellipse 85% 65% at 50% 48%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.7) 100%); }
+  </style>
+  <div id="root" data-composition-id="produits" data-width="1080" data-height="1920">
+    <!-- 1 · STREETWEAR (0–2) -->
+    <div class="pr-shot" id="pr-s1">
+      <img id="pr-i1" src="assets/produits/nike-tn.png" alt="" />
+      <div id="pr-neon"></div>
+      <div class="pr-label street"><span id="pr-t1">STREETWEAR</span></div>
+    </div>
+    <!-- 2 · SNEAKERS (2–4) : macro -->
+    <div class="pr-shot" id="pr-s2">
+      <img id="pr-i2" src="assets/produits/nike-tn.png" alt="" />
+      <div class="pr-label street"><span id="pr-t2">SNEAKERS</span></div>
+    </div>
+    <!-- 3 · PARFUMS (4–6) -->
+    <div class="pr-shot" id="pr-s3">
+      <img id="pr-i3" src="assets/produits/parfum.png" alt="" />
+      <div class="pr-label luxe"><span id="pr-t3">PARFUMS</span></div>
+    </div>
+    <!-- 4 · ACCESSOIRES (6–8) -->
+    <div class="pr-shot" id="pr-s4">
+      <img id="pr-i4" src="assets/produits/montre.png" alt="" />
+      <div id="pr-spec"></div>
+      <div class="pr-label luxe"><span id="pr-t4">ACCESSOIRES</span></div>
+    </div>
+    <div id="pr-leak"></div>
+    <div id="pr-vig"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // ---- plan 1 : poussée rapide + secousse sur le temps
+    tl.set("#pr-s1", { opacity: 1 }, 0);
+    tl.fromTo("#pr-i1", { scale: 1.25, rotation: -2 }, { scale: 1.42, rotation: 0, duration: 2, ease: "power1.out" }, 0);
+    tl.fromTo("#pr-t1", { opacity: 0, y: 60, skewX: -12 }, { opacity: 1, y: 0, skewX: 0, duration: 0.22, ease: "power4.out" }, 0.05);
+    tl.fromTo("#pr-neon", { opacity: 0.2 }, { opacity: 1, duration: 0.08, repeat: 5, yoyo: true, ease: "none" }, 0.0);
+    tl.to("#pr-i1", { x: -14, duration: 0.05, repeat: 3, yoyo: true, ease: "none" }, 1.0);
+    // whip pan vers le plan 2 (1,85 → 2,05)
+    tl.to("#pr-s1", { x: -1080, skewX: 12, duration: 0.2, ease: "power3.in" }, 1.85);
+    tl.set("#pr-s1", { opacity: 0 }, 2.05);
+    // ---- plan 2 : macro sur la bulle d'air, glissement latéral
+    tl.set("#pr-s2", { opacity: 1 }, 1.9);
+    tl.fromTo("#pr-s2", { x: 1080, skewX: 12 }, { x: 0, skewX: 0, duration: 0.2, ease: "power3.out" }, 1.9);
+    tl.fromTo("#pr-i2", { scale: 2.3, x: -180, y: -160 }, { scale: 2.45, x: -320, y: -170, duration: 2.1, ease: "none" }, 1.9);
+    tl.fromTo("#pr-t2", { opacity: 0, y: 60, skewX: -12 }, { opacity: 1, y: 0, skewX: 0, duration: 0.22, ease: "power4.out" }, 2.05);
+    // ---- bascule luxe : fuite de lumière chaude (3,85 → 4,35)
+    tl.fromTo("#pr-leak", { opacity: 0 }, { opacity: 1, duration: 0.18, ease: "power2.in" }, 3.82);
+    tl.set("#pr-s2", { opacity: 0 }, 4.0);
+    tl.set("#pr-s3", { opacity: 1 }, 4.0);
+    tl.to("#pr-leak", { opacity: 0, duration: 0.5, ease: "power2.out" }, 4.0);
+    // ---- plan 3 : parfum, poussée très lente
+    tl.fromTo("#pr-i3", { scale: 1.02, y: 0 }, { scale: 1.09, y: -20, duration: 2.1, ease: "none" }, 4.0);
+    tl.fromTo("#pr-t3", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power2.out" }, 4.3);
+    // fondu enchaîné vers la montre (5,8 → 6,2)
+    tl.fromTo("#pr-s4", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.inOut" }, 5.8);
+    // ---- plan 4 : montre, montée lente + reflet qui glisse sur le métal
+    tl.fromTo("#pr-i4", { scale: 1.06, y: 200 }, { scale: 1.0, y: 150, duration: 2.2, ease: "none" }, 5.8);
+    tl.fromTo("#pr-spec", { x: -300, rotation: 18 }, { x: 1200, rotation: 18, duration: 1.3, ease: "power2.inOut" }, 6.3);
+    tl.fromTo("#pr-t4", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power2.out" }, 6.2);
+    tl.set("#pr-s3", { opacity: 0 }, 6.25);
+    window.__timelines["produits"] = tl;
+  </script>
+</template>

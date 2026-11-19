@@ -1,0 +1,36 @@
+<template>
+  <!-- Scène 2 « LA BASCULE » (3–6 s) : la Nike révélée continue, travelling avant, balayage chrome, texte. -->
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #000; }
+    #bas-img { position: absolute; inset: 0; width: 1080px; height: 1920px; object-fit: cover; }
+    #bas-dark { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.9) 100%); }
+    #bas-sweep { position: absolute; top: -200px; left: 0; width: 360px; height: 2400px;
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(235,240,255,0.55) 50%, rgba(255,255,255,0) 100%); mix-blend-mode: screen; }
+    #bas-title { position: absolute; left: 90px; right: 90px; top: 1120px; text-align: center; font-family: "Montserrat", sans-serif;
+      font-weight: 700; font-size: 64px; line-height: 1.12; letter-spacing: 0.02em; color: #f2f2f4; }
+    #bas-title .w { display: inline-block; }
+    #bas-title .chrome { background: linear-gradient(180deg, #ffffff 0%, #c9cad0 45%, #6e6f76 55%, #e8e8ec 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent; }
+    #bas-black { position: absolute; inset: 0; background: #000; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="bascule" data-width="1080" data-height="1920">
+    <img id="bas-img" src="assets/produits/nike-tn.png" alt="" />
+    <div id="bas-dark"></div>
+    <div id="bas-sweep"></div>
+    <div id="bas-title">
+      <span class="w" id="bas-w1">IL LUI MANQUE</span><br />
+      <span class="w chrome" id="bas-w2">UNE DIMENSION.</span>
+    </div>
+    <div id="bas-black"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#bas-img", { scale: 1.0 }, { scale: 1.16, duration: 3, ease: "none" }, 0);
+    tl.fromTo("#bas-dark", { opacity: 0.35 }, { opacity: 0.85, duration: 3, ease: "power1.in" }, 0);
+    tl.fromTo("#bas-sweep", { x: -420, rotation: 14 }, { x: 1300, rotation: 14, duration: 1.4, ease: "power2.inOut" }, 0.35);
+    tl.fromTo("#bas-w1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.4);
+    tl.fromTo("#bas-w2", { opacity: 0, y: 40, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "power3.out" }, 1.25);
+    tl.fromTo("#bas-black", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.in" }, 2.68);
+    window.__timelines["bascule"] = tl;
+  </script>
+</template>

@@ -5,7 +5,7 @@
 | 2. Concept | ✅ proposé | STORYBOARD.md |
 | 3. Storyboard validé | ✅ direction validée (v2) — ⏳ budget | STORYBOARD.md, VOIX-OFF.md |
 | 4. Logo LC 3D (version finale 5 s) | ✅ v1 rendue, à valider | ../../identite/logo/anim/renders/ |
-| 5. Production visuelle | 🔄 accroche ✅ test (images provisoires) · parfum 3D abandonné → vidéo IA | compositions/ |
+| 5. Production visuelle | 🔄 montage v1 complet sans son (renders/apercus/montage-v1-sans-son.mp4). Manque : ensemble survêtement, vidéos IA produits | compositions/ |
 | 6. Audio | ☐ | audio/ |
 | 7. Vérification | ☐ | |
 | 8. Export | ☐ | renders/final/ |

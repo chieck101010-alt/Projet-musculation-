@@ -1,5 +1,12 @@
 # POINT DE REPRISE — LOFTUS-CHEEK
 
+## 2026-11-19 (6)
+- **Étape atteinte** : montage v1 complet 28 s sans son (accroche Nike + éclats 3D, bascule, logo 3D, 4 plans produits 2D, services, final CTA).
+- **Visuels** : Nike TN (logo Nike, choix client), parfum, montre (Canva). Survêtement manquant (quota Canva épuisé ; le client veut un ensemble porté par une autre personne, réf. bleu marine non reçue en fichier).
+- **Le client veut un autre parfum** : image non reçue en fichier.
+- **Dépenses** : FLORA 0,077 $ ; Canva : limite IA mensuelle épuisée.
+- **Prochaine action** : recevoir les photos (parfum, ensemble) en pièce jointe ; budget pour voix/musique/vidéos IA (FLORA Starter ≈18 $/mois ou Canva renouvelé).
+
 ## 2026-11-19 (5)
 - **Étape atteinte** : projet HyperFrames de la pub créé. Scènes testées (gratuit) : compositions/parfum.html (flacon 3D, verre + liquide + reflet) et compositions/accroche.html (photo → fissures → éclats 3D → version pub).
 - **Aperçus** : renders/apercus/test-parfum-v1.mp4, test-accroche-v1.mp4. L'accroche utilise des images de TEST (assets/test/) à remplacer par la sneaker.

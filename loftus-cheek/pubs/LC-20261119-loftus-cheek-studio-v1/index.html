@@ -7,12 +7,20 @@
     <style>
       html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #050505; }
       #root { position: absolute; inset: 0; background: #050505; }
+      .vid { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="3" data-width="1080" data-height="1920">
-      <!-- TEST : accroche (éclats de verre) -->
+    <!-- LOFTUS-CHEEK · PROJET 001 « NOUVELLE DIMENSION » · 28 s · 9:16 (montage v1, sans audio) -->
+    <div id="root" data-composition-id="main" data-start="0" data-duration="28" data-width="1080" data-height="1920">
       <div id="accroche" data-composition-id="accroche" data-composition-src="compositions/accroche.html" data-start="0" data-duration="3" data-track-index="0" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="bascule" data-composition-id="bascule" data-composition-src="compositions/bascule.html" data-start="3" data-duration="3" data-track-index="0" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <video id="logo-intro" class="vid clip" src="assets/video/lc-logo.mp4" muted data-start="6" data-duration="3" data-media-start="0" data-track-index="0"></video>
+      <div id="produits" data-composition-id="produits" data-composition-src="compositions/produits.html" data-start="9" data-duration="8" data-track-index="0" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="services" data-composition-id="services" data-composition-src="compositions/services.html" data-start="17" data-duration="5" data-track-index="0" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <video id="logo-final" class="vid clip" src="assets/video/lc-logo.mp4" muted data-start="22" data-duration="4.95" data-media-start="0" data-track-index="0"></video>
+      <img id="logo-fin" class="vid clip" src="assets/video/lc-logo-fin.png" alt="" data-start="26.95" data-duration="1.05" data-track-index="0" />
+      <div id="final" data-composition-id="final" data-composition-src="compositions/final.html" data-start="22" data-duration="6" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
     </div>
     <script>
       const tl = gsap.timeline({ paused: true });

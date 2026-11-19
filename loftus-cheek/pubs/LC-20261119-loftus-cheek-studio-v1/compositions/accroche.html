@@ -15,7 +15,7 @@
       #acc-root { position: absolute; inset: 0; overflow: hidden; background: #000; font-family: "Inter", sans-serif; }
       #acc-canvas { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; display: block; }
       #acc-caption { position: absolute; left: 0; right: 0; top: 560px; display: flex; justify-content: center; }
-      #acc-caption span { display: block; background: rgba(0, 0, 0, 0.62); color: #fff; font-weight: 700; font-size: 50px;
+      #acc-caption span { display: block; background: rgba(0, 0, 0, 0.62); color: #fff; font-weight: 700; font-size: 44px;
         line-height: 1.25; padding: 14px 34px; text-align: center; letter-spacing: 0.01em; }
       #acc-flash { position: absolute; inset: 0; background: #fff8ee; opacity: 0; }
     </style>
@@ -56,7 +56,7 @@
 
       const host = window.__acc;
       const W = 1080, H = 1920, DEG = Math.PI / 180;
-      const IMG_AVANT = "assets/test/avant.jpg", IMG_APRES = "assets/test/apres.jpg";
+      const IMG_AVANT = "assets/test/avant-nike.jpg", IMG_APRES = "assets/produits/nike-tn.png";
       const T_CRACK = 1.45, T_BREAK = 2.0;
       const clamp01 = (x) => (x < 0 ? 0 : x > 1 ? 1 : x);
       const lerp = (a, b, x) => a + (b - a) * x;

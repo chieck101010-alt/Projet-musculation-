@@ -1,0 +1,43 @@
+<template>
+  <!-- Scène 5 « SERVICES » (17–22 s) : mosaïque des produits qui recule + 3 mots plein écran calés sur les temps. -->
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #050505; }
+    #sv-mosaic { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; display: flex; gap: 10px; opacity: 0.32; }
+    #sv-mosaic img { width: 353px; height: 1920px; object-fit: cover; }
+    #sv-veil { position: absolute; inset: 0; background: radial-gradient(ellipse 75% 55% at 50% 50%, rgba(5,5,5,0.55) 0%, rgba(5,5,5,0.92) 100%); }
+    .sv-word { position: absolute; left: 0; right: 0; top: 820px; text-align: center; font-family: "Montserrat", sans-serif;
+      font-weight: 900; font-size: 100px; line-height: 1.02; letter-spacing: 0.01em; opacity: 0;
+      background: linear-gradient(180deg, #ffffff 0%, #d6d7dc 46%, #6b6c73 54%, #f0f0f3 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent; }
+    #sv-line { position: absolute; left: 140px; right: 140px; top: 1180px; height: 2px; background: linear-gradient(90deg, rgba(216,195,160,0), #d8c3a0, rgba(216,195,160,0)); }
+    #sv-tag { position: absolute; left: 60px; right: 60px; top: 1230px; text-align: center; font-family: "Montserrat", sans-serif;
+      font-weight: 600; font-size: 46px; letter-spacing: 0.14em; color: #f5f5f5; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="services" data-width="1080" data-height="1920">
+    <div id="sv-mosaic">
+      <img src="assets/produits/nike-tn.png" alt="" />
+      <img src="assets/produits/parfum.png" alt="" />
+      <img src="assets/produits/montre.png" alt="" />
+    </div>
+    <div id="sv-veil"></div>
+    <div class="sv-word" id="sv-w1">PUBLICITÉ<br />IA</div>
+    <div class="sv-word" id="sv-w2">MOTION<br />DESIGN 3D</div>
+    <div class="sv-word" id="sv-w3">VOIX<br />OFF</div>
+    <div id="sv-line"></div>
+    <div id="sv-tag">DES VIDÉOS QUI<br />ARRÊTENT LE SCROLL</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#sv-mosaic", { scale: 1.25 }, { scale: 1.0, duration: 5, ease: "power1.out" }, 0);
+    // mot 1 : entre par la gauche (0,0) — mot 2 : par la droite (1,0) — mot 3 : par le haut (2,5)
+    tl.fromTo("#sv-w1", { opacity: 0, x: -160, scale: 1.15 }, { opacity: 1, x: 0, scale: 1, duration: 0.18, ease: "power4.out" }, 0.0);
+    tl.to("#sv-w1", { opacity: 0, x: 120, duration: 0.12, ease: "power2.in" }, 0.88);
+    tl.fromTo("#sv-w2", { opacity: 0, x: 160, scale: 1.15 }, { opacity: 1, x: 0, scale: 1, duration: 0.18, ease: "power4.out" }, 1.0);
+    tl.to("#sv-w2", { opacity: 0, x: -120, duration: 0.12, ease: "power2.in" }, 2.38);
+    tl.fromTo("#sv-w3", { opacity: 0, y: -120, scale: 1.15 }, { opacity: 1, y: 0, scale: 1, duration: 0.18, ease: "power4.out" }, 2.5);
+    tl.to("#sv-w3", { y: -170, scale: 0.8, duration: 0.4, ease: "power3.inOut" }, 3.3);
+    tl.fromTo("#sv-line", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out" }, 3.35);
+    tl.fromTo("#sv-tag", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.45);
+    window.__timelines["services"] = tl;
+  </script>
+</template>
