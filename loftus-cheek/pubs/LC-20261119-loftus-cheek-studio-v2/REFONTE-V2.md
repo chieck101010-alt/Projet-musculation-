@@ -100,3 +100,9 @@ Ce qui marche et qu'on reprend :
 7. Son : voix Gemini « Achird », musique Stable Audio, bruitages de la bibliothèque.
 
 Recherche Adobe Stock gratuite (vidéos 4K) : montre homme sur fond noir lumière commerciale (487598737), mécanisme de montre (238946280), trotteuse (991749818), parfum vaporisé sur fond noir (472882133), sneakers blanches néon bleu (674248639), homme en streetwear qui marche de nuit en ville, ralenti (313222787), jeune homme confiant qui marche, travelling (425453036). Téléchargement bloqué tant que les hôtes Adobe (t3/t4.ftcdn.net + hôte de téléchargement sous licence) ne sont pas autorisés.
+
+## 11. Photos Scenario (19/11, formule gratuite, 39 CU)
+- `assets/produits/on-noire-studio.jpg` (asset_98SYBAreKgCWtEkumHmTEQzU) — On Cloudtilt noire, studio noir, contre-jour bleu.
+- `assets/produits/ensemble-studio.jpg` (asset_25HZiDqpaq9ozBYuyrpZjvTk) — ensemble On vert porté par un autre mannequin.
+- `assets/produits/nishane-studio.jpg` (asset_ffjeVXzGSdvzh74QE9zXwVS2) — Nishane Hacivat sur marbre noir, lumière dorée, fumée.
+Formule gratuite Scenario : 2 générations en parallèle maximum.
