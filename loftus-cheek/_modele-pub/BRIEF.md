@@ -1,0 +1,14 @@
+# BRIEF — LC-AAAAMMJJ-client-produit-v1
+- Client / marque :
+- Produit :
+- Création réelle ou démo fictive :
+- Cible :
+- Plateforme(s) :
+- Objectif / message commercial :
+- Durée :
+- Format : 9:16 (1080×1920)
+- Univers : STREET / LUXE / mélange
+- Voix off : genre, ton
+- Éléments fournis (logo, photos, droits) :
+- Appel à l'action / contact :
+- Pack : STARTER / PRO / PREMIUM
