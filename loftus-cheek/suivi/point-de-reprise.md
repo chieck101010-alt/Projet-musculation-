@@ -1,5 +1,11 @@
 # POINT DE REPRISE — LOFTUS-CHEEK
 
+## 2026-11-19 (5)
+- **Étape atteinte** : projet HyperFrames de la pub créé. Scènes testées (gratuit) : compositions/parfum.html (flacon 3D, verre + liquide + reflet) et compositions/accroche.html (photo → fissures → éclats 3D → version pub).
+- **Aperçus** : renders/apercus/test-parfum-v1.mp4, test-accroche-v1.mp4. L'accroche utilise des images de TEST (assets/test/) à remplacer par la sneaker.
+- **Dépenses** : 0 $.
+- **Prochaine action** : avis client sur les 2 tests ; recharge FLORA → voix, musique, visuels produits ; puis scènes bascule/logo/street/services/final.
+
 ## 2026-11-19 (4)
 - **Étape atteinte** : script voix off validé. Logo officiel reçu et rangé. Animation 3D du logo (final 5 s) rendue : identite/logo/anim/renders/lc-logo-final-5s.mp4.
 - **Dépenses** : 0 $.

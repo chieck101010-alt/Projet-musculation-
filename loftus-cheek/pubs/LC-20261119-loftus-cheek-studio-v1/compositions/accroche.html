@@ -1,0 +1,210 @@
+<!doctype html>
+<!--
+  LOFTUS-CHEEK · PROJET 001 · scène 1 « ACCROCHE » (0–3 s).
+  Photo « vendeur » (avant) → fissures → éclats de verre 3D qui volent vers la caméra → révèle la version pub (après).
+  Les éclats sont des cellules de Voronoï à graine fixe, extrudées, texturées avec la photo (face) et en verre (tranches).
+  Images : variables (avant / après) pour remplacer le test par la vraie sneaker.
+-->
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+      #acc-root { position: absolute; inset: 0; overflow: hidden; background: #000; font-family: "Inter", sans-serif; }
+      #acc-canvas { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; display: block; }
+      #acc-caption { position: absolute; left: 0; right: 0; top: 560px; display: flex; justify-content: center; }
+      #acc-caption span { display: block; background: rgba(0, 0, 0, 0.62); color: #fff; font-weight: 700; font-size: 50px;
+        line-height: 1.25; padding: 14px 34px; text-align: center; letter-spacing: 0.01em; }
+      #acc-flash { position: absolute; inset: 0; background: #fff8ee; opacity: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="acc-root" data-composition-id="accroche" data-start="0" data-duration="3" data-width="1080" data-height="1920">
+      <canvas id="acc-canvas" width="1080" height="1920" data-layout-allow-overflow></canvas>
+      <div id="acc-caption"><span id="acc-caption-text">VOTRE PUB RESSEMBLE À ÇA ?</span></div>
+      <div id="acc-flash"></div>
+    </div>
+
+    <script>
+      (function () {
+        var root = document.getElementById("acc-root");
+        var duration = parseFloat(root.dataset.duration) || 3;
+        var clock = { t: 0 };
+        var host = { clock: clock, duration: duration, render: null };
+        window.__acc = host;
+        window.__hf = window.__hf || {};
+        window.__hf.buildReady = window.__hf.buildReady || {};
+        window.__hf.buildReady["accroche"] = new Promise(function (resolve) { host.ready = resolve; });
+        var tl = gsap.timeline({ paused: true });
+        tl.to(clock, { t: duration, duration: duration, ease: "none",
+          onUpdate: function () { if (host.render) host.render(clock.t); } }, 0);
+        // légende façon Snap : apparaît vite, part avec la casse
+        tl.fromTo("#acc-caption-text", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.18, ease: "power2.out" }, 0.08);
+        tl.to("#acc-caption-text", { opacity: 0, scale: 1.08, duration: 0.12, ease: "power2.in" }, 1.98);
+        // flash blanc sur l'impact
+        tl.fromTo("#acc-flash", { opacity: 0 }, { opacity: 0.75, duration: 0.04, ease: "none" }, 2.0);
+        tl.to("#acc-flash", { opacity: 0, duration: 0.32, ease: "power2.out" }, 2.04);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["accroche"] = tl;
+      })();
+    </script>
+
+    <script type="module">
+      import * as THREE from "./assets/lib/three.module.min.js";
+
+      const host = window.__acc;
+      const W = 1080, H = 1920, DEG = Math.PI / 180;
+      const IMG_AVANT = "assets/test/avant.jpg", IMG_APRES = "assets/test/apres.jpg";
+      const T_CRACK = 1.45, T_BREAK = 2.0;
+      const clamp01 = (x) => (x < 0 ? 0 : x > 1 ? 1 : x);
+      const lerp = (a, b, x) => a + (b - a) * x;
+      const seg = (t, a, b) => clamp01((t - a) / (b - a));
+      const outCubic = (x) => 1 - Math.pow(1 - x, 3);
+      function mulberry32(a) { return function () { a |= 0; a = (a + 0x6d2b79f5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+
+      const canvas = document.getElementById("acc-canvas");
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+      renderer.setPixelRatio(1); renderer.setSize(W, H, false);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.toneMapping = THREE.NoToneMapping;
+
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x000000);
+      const CAM_Z = 10, FOV = 40;
+      const camera = new THREE.PerspectiveCamera(FOV, W / H, 0.05, 100);
+      const PH = 2 * CAM_Z * Math.tan((FOV / 2) * DEG), PW = PH * (W / H);   // plan qui remplit l'écran à z = 0
+
+      // environnement pour les tranches de verre
+      function buildEnv() {
+        const env = new THREE.Scene(); env.background = new THREE.Color(0x020202);
+        const strip = (w, h, x, y, z, c, k) => { const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h),
+          new THREE.MeshBasicMaterial({ color: new THREE.Color(c).multiplyScalar(k), side: THREE.DoubleSide })); m.position.set(x, y, z); m.lookAt(0, 0, 0); env.add(m); };
+        strip(2, 10, -5, 0, 3, 0xffffff, 5); strip(2, 10, 5, 0, 3, 0xfff0dc, 4); strip(10, 2, 0, 5, 2, 0xffffff, 3);
+        const pm = new THREE.PMREMGenerator(renderer); const tex = pm.fromScene(env, 0.02).texture; pm.dispose(); return tex;
+      }
+
+      // ---------- Voronoï : cellules plus petites près du point d'impact ----------
+      const IMPACT = new THREE.Vector2(0.06 * PW, 0.06 * PH);
+      function voronoiCells(n, seed) {
+        const rnd = mulberry32(seed), pts = [];
+        for (let i = 0; i < n; i++) {
+          const r = Math.pow(rnd(), 1.7) * 0.75 * PH, a = rnd() * Math.PI * 2;
+          pts.push(new THREE.Vector2(IMPACT.x + Math.cos(a) * r * 0.62, IMPACT.y + Math.sin(a) * r));
+        }
+        const hw = PW / 2 + 0.05, hh = PH / 2 + 0.05;
+        const cells = [];
+        for (let i = 0; i < n; i++) {
+          let poly = [new THREE.Vector2(-hw, -hh), new THREE.Vector2(hw, -hh), new THREE.Vector2(hw, hh), new THREE.Vector2(-hw, hh)];
+          for (let j = 0; j < n && poly.length; j++) {
+            if (i === j) continue;
+            const p = pts[i], q = pts[j], m = p.clone().add(q).multiplyScalar(0.5), nrm = q.clone().sub(p);
+            const out = [];
+            for (let k = 0; k < poly.length; k++) {
+              const A = poly[k], B = poly[(k + 1) % poly.length];
+              const da = A.clone().sub(m).dot(nrm), db = B.clone().sub(m).dot(nrm);
+              if (da <= 0) out.push(A);
+              if ((da <= 0) !== (db <= 0)) out.push(A.clone().lerp(B, da / (da - db)));
+            }
+            poly = out;
+          }
+          if (poly.length >= 3) cells.push({ site: pts[i], poly });
+        }
+        return cells;
+      }
+
+      let photoTex, shards = [], crackLines, crackCount = 0, afterPlane, afterMat;
+      async function build() {
+        scene.environment = buildEnv();
+        const loader = new THREE.TextureLoader();
+        photoTex = await loader.loadAsync(IMG_AVANT); photoTex.colorSpace = THREE.SRGBColorSpace;
+        const afterTex = await loader.loadAsync(IMG_APRES); afterTex.colorSpace = THREE.SRGBColorSpace;
+
+        // image « après » en fond, légèrement plus grande (elle recule ensuite)
+        afterMat = new THREE.MeshBasicMaterial({ map: afterTex, toneMapped: false });
+        afterPlane = new THREE.Mesh(new THREE.PlaneGeometry(PW, PH), afterMat);
+        afterPlane.position.z = -0.6; afterPlane.scale.setScalar((CAM_Z + 0.6) / CAM_Z); scene.add(afterPlane);
+
+        const faceMat = new THREE.MeshBasicMaterial({ map: photoTex, toneMapped: false });
+        const edgeMat = new THREE.MeshPhysicalMaterial({ color: 0xdfe8ea, metalness: 0, roughness: 0.05, transmission: 0,
+          clearcoat: 1, envMapIntensity: 2.2, transparent: true, opacity: 0.9 });
+        photoTex.repeat.set(1 / PW, 1 / PH); photoTex.offset.set(0.5, 0.5);
+
+        const cells = voronoiCells(46, 33);
+        const rnd = mulberry32(99);
+        const segs = [];
+        for (const c of cells) {
+          const cen = new THREE.Vector2(); c.poly.forEach((p) => cen.add(p)); cen.multiplyScalar(1 / c.poly.length);
+          const shape = new THREE.Shape(c.poly.map((p) => p.clone().sub(cen)));
+          const geo = new THREE.ExtrudeGeometry(shape, { depth: 0.022, bevelEnabled: false });
+          // UV de la face = position dans l'image (décalée du centre de la cellule)
+          const uv = geo.attributes.uv, pos = geo.attributes.position;
+          for (let i = 0; i < uv.count; i++) uv.setXY(i, pos.getX(i) + cen.x, pos.getY(i) + cen.y);
+          geo.translate(0, 0, -0.022);
+          const mesh = new THREE.Mesh(geo, [faceMat, edgeMat]);
+          mesh.position.set(cen.x, cen.y, 0);
+          const d = cen.clone().sub(IMPACT), dist = d.length(); d.normalize();
+          mesh.userData = { cen, dist,
+            v: new THREE.Vector3(d.x * (0.9 + 1.4 * rnd()), d.y * (0.9 + 1.4 * rnd()) + 0.25, 5 + 6 * rnd() - dist * 0.8),
+            axis: new THREE.Vector3(rnd() - 0.5, rnd() - 0.5, rnd() - 0.5).normalize(), spin: (2 + 5 * rnd()) * (rnd() < 0.5 ? -1 : 1),
+            delay: dist * 0.035 };
+          scene.add(mesh); shards.push(mesh);
+          for (let k = 0; k < c.poly.length; k++) {
+            const A = c.poly[k], B = c.poly[(k + 1) % c.poly.length];
+            const mid = A.clone().add(B).multiplyScalar(0.5).sub(IMPACT).length();
+            segs.push({ A, B, mid });
+          }
+        }
+        // fissures : segments triés par distance au point d'impact (révélés du centre vers l'extérieur)
+        segs.sort((a, b) => a.mid - b.mid);
+        const arr = new Float32Array(segs.length * 6);
+        segs.forEach((s, i) => { arr.set([s.A.x, s.A.y, 0.004, s.B.x, s.B.y, 0.004], i * 6); });
+        const lg = new THREE.BufferGeometry(); lg.setAttribute("position", new THREE.BufferAttribute(arr, 3));
+        crackLines = new THREE.LineSegments(lg, new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.85 }));
+        crackCount = segs.length; scene.add(crackLines);
+        crackLines.userData.mids = segs.map((s) => s.mid);
+
+        await renderer.compileAsync(scene, camera);
+      }
+
+      function render(t) {
+        // tremblé de téléphone avant la casse (fonction pure du temps)
+        const shake = t < T_BREAK ? 1 : 0;
+        camera.position.set(0.025 * Math.sin(t * 23) * shake, 0.02 * Math.sin(t * 17 + 1) * shake, CAM_Z);
+        camera.rotation.z = (0.004 * Math.sin(t * 11)) * shake;
+
+        // fissures : progression 1,45 → 2,0 s
+        const kc = seg(t, T_CRACK, T_BREAK);
+        const maxMid = crackLines.userData.mids[crackCount - 1];
+        let n = 0; const lim = Math.pow(kc, 1.6) * maxMid * 0.9;
+        while (n < crackCount && crackLines.userData.mids[n] <= lim) n++;
+        crackLines.geometry.setDrawRange(0, n * 2);
+        crackLines.visible = t < T_BREAK + 0.02 && n > 0;
+
+        // éclats
+        for (const m of shards) {
+          const u = m.userData, tt = Math.max(0, t - T_BREAK - u.delay);
+          const e = tt;
+          m.position.set(u.cen.x + u.v.x * e, u.cen.y + u.v.y * e - 0.6 * e * e, u.v.z * e * (1 + 0.6 * e));
+          m.quaternion.setFromAxisAngle(u.axis, u.spin * e * 0.9);
+          // micro-décalage au moment des fissures (les morceaux « jouent »)
+          if (t < T_BREAK) m.position.z = 0.012 * kc * Math.sin(u.dist * 9);
+          m.visible = m.position.z < CAM_Z - 0.3;
+        }
+
+        // image « après » : recule doucement (sensation de profondeur)
+        const ka = outCubic(seg(t, T_BREAK, 3));
+        afterPlane.scale.setScalar(((CAM_Z + 0.6) / CAM_Z) * lerp(1.08, 1.0, ka));
+        renderer.render(scene, camera);
+      }
+
+      await build();
+      host.render = render;
+      render(host.clock.t);
+      host.ready();
+      window.addEventListener("hf-seek", (e) => render(e.detail.time));
+    </script>
+  </body>
+</html>
