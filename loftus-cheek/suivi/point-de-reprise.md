@@ -1,5 +1,11 @@
 # POINT DE REPRISE — LOFTUS-CHEEK
 
+## 2026-11-19 (4)
+- **Étape atteinte** : script voix off validé. Logo officiel reçu et rangé. Animation 3D du logo (final 5 s) rendue : identite/logo/anim/renders/lc-logo-final-5s.mp4.
+- **Dépenses** : 0 $.
+- **En attente** : avis sur l'animation du logo + accord budget FLORA (≈0,65–0,86 $).
+- **Prochaine action** : version intro 2 s du logo, puis flacon 3D et éclats de verre (gratuit).
+
 ## 2026-11-19 (3)
 - **Étape atteinte** : PROJET 001 — brief, concept, storyboard, voix off, effets, budget rédigés.
 - **Fichiers** : pubs/LC-20261119-loftus-cheek-studio-v1/ (BRIEF, STORYBOARD, SUIVI).
