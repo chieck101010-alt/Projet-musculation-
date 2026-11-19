@@ -8,6 +8,7 @@ import json, os, shutil, subprocess
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 V = os.path.join(ROOT, "v25")
+NAME, TITLE = "muble-pub-25s", "Muble — pub VTC premium (25 s)"
 A = os.path.join(ROOT, "assets")
 TOTAL = 25.0
 
@@ -64,10 +65,13 @@ def main():
         os.makedirs(os.path.join(V, d), exist_ok=True)
     for f in ("hyperframes.json",):
         shutil.copy(os.path.join(ROOT, f), os.path.join(V, f))
-    json.dump({"name": "muble-pub-25s", "private": True, "type": "module"}, open(os.path.join(V, "package.json"), "w"), indent=2)
-    json.dump({"id": "muble-pub-25s", "name": "Muble — pub VTC premium (25 s)", "createdAt": "2026-11-18T20:30:00.000Z"}, open(os.path.join(V, "meta.json"), "w"), indent=2)
+    json.dump({"name": NAME, "private": True, "type": "module"}, open(os.path.join(V, "package.json"), "w"), indent=2)
+    json.dump({"id": NAME, "name": TITLE, "createdAt": "2026-11-18T20:30:00.000Z"}, open(os.path.join(V, "meta.json"), "w"), indent=2)
     shutil.copy(os.path.join(A, "fonts/PlusJakartaSans-Variable-latin.woff2"), os.path.join(V, "assets/fonts/"))
     clean = os.path.join(V, "assets/footage/clean72.mp4")
+    src_clean = os.path.join(ROOT, "v25/assets/footage/clean72.mp4")
+    if not os.path.exists(clean) and os.path.exists(src_clean):
+        os.link(src_clean, clean)
     if not os.path.exists(clean):
         raise SystemExit("manque v25/assets/footage/clean72.mp4 (rendu 72 s sans sous-titres)")
     # voix
@@ -133,7 +137,7 @@ def main():
   </head>
   <body>
     <div id="root" data-composition-id="main" data-start="0" data-duration="{TOTAL}" data-width="1080" data-height="1920">
-      <!-- MUBLE — version courte 25 s : montage d'extraits du film 72 s (rendu sans sous-titres) -->
+      <!-- MUBLE — {TITLE} : montage d'extraits du film 72 s (rendu sans sous-titres) -->
 {vids}
       <div id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="{TOTAL}" data-track-index="1" data-track-kind="captions" data-width="1080" data-height="1920"></div>
       <!-- Voix off : extraits de la voix Gemini « Achird » -->
@@ -149,7 +153,7 @@ def main():
 </html>
 '''
     open(os.path.join(V, "index.html"), "w").write(html)
-    print("v25 prêt :", len(SEG), "plans,", len(VO), "extraits de voix,", len(SFX), "bruitages,", len(short), "mots")
+    print(NAME, "prêt :", len(SEG), "plans,", len(VO), "extraits de voix,", len(SFX), "bruitages,", len(short), "mots")
 
 if __name__ == "__main__":
     main()

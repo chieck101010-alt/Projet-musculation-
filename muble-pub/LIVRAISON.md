@@ -6,6 +6,7 @@
 |---|---|---|---|
 | `renders/muble-pub-72s-9x16.mp4` | 1080×1920, 30 i/s, H.264 + AAC | 72 s | TikTok, Reels, Snapchat (version complète et pédagogique) |
 | `v25/renders/muble-pub-25s-9x16.mp4` | 1080×1920, 30 i/s, H.264 + AAC | 25 s | Snap / TikTok (version courte, plus commerciale) |
+| `v09/renders/muble-pub-09s-9x16.mp4` | 1080×1920, 30 i/s, H.264 + AAC | 9 s | « Démo éclair » : pub non désactivable / Snap Ads, rappel de marque |
 
 ## Ce qui est réel
 
@@ -28,4 +29,5 @@
 
 - Voix / musique / sous-titres : `python3 shared/build_audio.py` puis `python3 shared/build_captions.py assets/audio/vo-words.json 72 compositions/captions.html --skip 0:5 66.3:72`
 - Version courte : `python3 shared/build_v25.py` (après un rendu 72 s sans sous-titres copié dans `v25/assets/footage/clean72.mp4`)
+- Démo éclair 9 s : `python3 shared/build_v09.py` (réutilise le même rendu sans sous-titres)
 - Plans vidéo : `shared/prep_footage.sh <dossier des .mov Adobe Stock> assets/footage`
