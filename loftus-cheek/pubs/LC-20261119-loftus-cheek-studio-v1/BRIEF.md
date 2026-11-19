@@ -1,0 +1,13 @@
+# BRIEF — LC-20261119-loftus-cheek-studio-v1 (PROJET 001)
+- Client / marque : LOFTUS-CHEEK (notre propre studio)
+- Produit : le service — pubs IA, motion design 3D, voix off, vidéos promo
+- Réelle / fictive : réelle (présentation officielle). Les produits montrés sont des visuels génériques sans marque.
+- Cible : vendeurs Snapchat / Instagram (streetwear, sneakers, parfums, accessoires)
+- Plateformes : Instagram Reels, Stories, Snapchat
+- Objectif : donner envie de contacter le studio
+- Durée : 28 s · Format 9:16, 1080×1920, 30 i/s
+- Univers : mélange STREET (énergie, coupes) + LUXE (chrome, lumière, caméra fluide)
+- Voix off : homme FR, jeune adulte, grave, naturelle, élégante, confiante, légère énergie urbaine
+- Signature : AI CREATIVE STUDIO
+- Appel à l'action : « Donnez une nouvelle dimension à votre marque. Contact en DM. »
+- Budget : aucune dépense sans accord. FLORA disponible : 0,13 $
