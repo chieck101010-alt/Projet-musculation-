@@ -1,0 +1,836 @@
+[
+{
+"text": "Un",
+"start": 0.301,
+"end": 0.161,
+"line": "vo01"
+},
+{
+"text": "rendez-vous ?",
+"start": 0.161,
+"end": 1.129,
+"line": "vo01"
+},
+{
+"text": "Un",
+"start": 1.129,
+"end": 1.29,
+"line": "vo01"
+},
+{
+"text": "avion",
+"start": 1.29,
+"end": 1.694,
+"line": "vo01"
+},
+{
+"text": "à",
+"start": 1.694,
+"end": 1.774,
+"line": "vo01"
+},
+{
+"text": "prendre ?",
+"start": 1.774,
+"end": 2.339,
+"line": "vo01"
+},
+{
+"text": "Ou",
+"start": 2.339,
+"end": 2.5,
+"line": "vo01"
+},
+{
+"text": "simplement",
+"start": 2.5,
+"end": 3.306,
+"line": "vo01"
+},
+{
+"text": "besoin",
+"start": 3.306,
+"end": 3.79,
+"line": "vo01"
+},
+{
+"text": "de",
+"start": 3.79,
+"end": 3.952,
+"line": "vo01"
+},
+{
+"text": "vous",
+"start": 3.952,
+"end": 4.274,
+"line": "vo01"
+},
+{
+"text": "déplacer ?",
+"start": 4.274,
+"end": 5.0,
+"line": "vo01"
+},
+{
+"text": "Découvrez",
+"start": 5.376,
+"end": 6.386,
+"line": "vo02"
+},
+{
+"text": "Muble.",
+"start": 6.386,
+"end": 7.1,
+"line": "vo02"
+},
+{
+"text": "Muble,",
+"start": 7.872,
+"end": 8.211,
+"line": "vo03"
+},
+{
+"text": "votre",
+"start": 8.211,
+"end": 8.647,
+"line": "vo03"
+},
+{
+"text": "service",
+"start": 8.647,
+"end": 9.258,
+"line": "vo03"
+},
+{
+"text": "de",
+"start": 9.258,
+"end": 9.433,
+"line": "vo03"
+},
+{
+"text": "VTC",
+"start": 9.433,
+"end": 9.695,
+"line": "vo03"
+},
+{
+"text": "premium",
+"start": 9.695,
+"end": 10.305,
+"line": "vo03"
+},
+{
+"text": "à",
+"start": 10.305,
+"end": 10.393,
+"line": "vo03"
+},
+{
+"text": "Paris",
+"start": 10.393,
+"end": 10.829,
+"line": "vo03"
+},
+{
+"text": "et",
+"start": 10.829,
+"end": 11.004,
+"line": "vo03"
+},
+{
+"text": "en",
+"start": 11.004,
+"end": 11.178,
+"line": "vo03"
+},
+{
+"text": "Île-de-France.",
+"start": 11.178,
+"end": 12.4,
+"line": "vo03"
+},
+{
+"text": "Réservez",
+"start": 13.196,
+"end": 13.507,
+"line": "vo04"
+},
+{
+"text": "votre",
+"start": 13.507,
+"end": 13.887,
+"line": "vo04"
+},
+{
+"text": "chauffeur",
+"start": 13.887,
+"end": 14.57,
+"line": "vo04"
+},
+{
+"text": "simplement,",
+"start": 14.57,
+"end": 15.329,
+"line": "vo04"
+},
+{
+"text": "en",
+"start": 15.329,
+"end": 15.481,
+"line": "vo04"
+},
+{
+"text": "quelques",
+"start": 15.481,
+"end": 16.089,
+"line": "vo04"
+},
+{
+"text": "étapes.",
+"start": 16.089,
+"end": 16.62,
+"line": "vo04"
+},
+{
+"text": "Première",
+"start": 17.594,
+"end": 17.788,
+"line": "vo05"
+},
+{
+"text": "étape :",
+"start": 17.788,
+"end": 18.191,
+"line": "vo05"
+},
+{
+"text": "indiquez",
+"start": 18.191,
+"end": 18.729,
+"line": "vo05"
+},
+{
+"text": "votre",
+"start": 18.729,
+"end": 19.065,
+"line": "vo05"
+},
+{
+"text": "adresse",
+"start": 19.065,
+"end": 19.535,
+"line": "vo05"
+},
+{
+"text": "de",
+"start": 19.535,
+"end": 19.67,
+"line": "vo05"
+},
+{
+"text": "départ",
+"start": 19.67,
+"end": 20.073,
+"line": "vo05"
+},
+{
+"text": "et",
+"start": 20.073,
+"end": 20.207,
+"line": "vo05"
+},
+{
+"text": "votre",
+"start": 20.207,
+"end": 20.543,
+"line": "vo05"
+},
+{
+"text": "destination.",
+"start": 20.543,
+"end": 21.35,
+"line": "vo05"
+},
+{
+"text": "Choisissez",
+"start": 22.544,
+"end": 23.081,
+"line": "vo06"
+},
+{
+"text": "ensuite",
+"start": 23.081,
+"end": 23.628,
+"line": "vo06"
+},
+{
+"text": "la",
+"start": 23.628,
+"end": 23.784,
+"line": "vo06"
+},
+{
+"text": "date,",
+"start": 23.784,
+"end": 24.175,
+"line": "vo06"
+},
+{
+"text": "le",
+"start": 24.175,
+"end": 24.331,
+"line": "vo06"
+},
+{
+"text": "nombre",
+"start": 24.331,
+"end": 24.8,
+"line": "vo06"
+},
+{
+"text": "de",
+"start": 24.8,
+"end": 24.956,
+"line": "vo06"
+},
+{
+"text": "passagers",
+"start": 24.956,
+"end": 25.659,
+"line": "vo06"
+},
+{
+"text": "et",
+"start": 25.659,
+"end": 25.816,
+"line": "vo06"
+},
+{
+"text": "vos",
+"start": 25.816,
+"end": 26.05,
+"line": "vo06"
+},
+{
+"text": "besoins",
+"start": 26.05,
+"end": 26.597,
+"line": "vo06"
+},
+{
+"text": "en",
+"start": 26.597,
+"end": 26.753,
+"line": "vo06"
+},
+{
+"text": "bagages.",
+"start": 26.753,
+"end": 27.3,
+"line": "vo06"
+},
+{
+"text": "Sélectionnez",
+"start": 28.239,
+"end": 28.872,
+"line": "vo07"
+},
+{
+"text": "le",
+"start": 28.872,
+"end": 29.025,
+"line": "vo07"
+},
+{
+"text": "véhicule",
+"start": 29.025,
+"end": 29.64,
+"line": "vo07"
+},
+{
+"text": "adapté",
+"start": 29.64,
+"end": 30.101,
+"line": "vo07"
+},
+{
+"text": "à",
+"start": 30.101,
+"end": 30.178,
+"line": "vo07"
+},
+{
+"text": "votre",
+"start": 30.178,
+"end": 30.562,
+"line": "vo07"
+},
+{
+"text": "trajet,",
+"start": 30.562,
+"end": 31.099,
+"line": "vo07"
+},
+{
+"text": "selon",
+"start": 31.099,
+"end": 31.483,
+"line": "vo07"
+},
+{
+"text": "vos",
+"start": 31.483,
+"end": 31.714,
+"line": "vo07"
+},
+{
+"text": "envies",
+"start": 31.714,
+"end": 32.175,
+"line": "vo07"
+},
+{
+"text": "et",
+"start": 32.175,
+"end": 32.328,
+"line": "vo07"
+},
+{
+"text": "votre",
+"start": 32.328,
+"end": 32.712,
+"line": "vo07"
+},
+{
+"text": "budget.",
+"start": 32.712,
+"end": 33.25,
+"line": "vo07"
+},
+{
+"text": "Renseignez",
+"start": 34.009,
+"end": 34.327,
+"line": "vo08"
+},
+{
+"text": "vos",
+"start": 34.327,
+"end": 34.5,
+"line": "vo08"
+},
+{
+"text": "coordonnées",
+"start": 34.5,
+"end": 35.135,
+"line": "vo08"
+},
+{
+"text": "pour",
+"start": 35.135,
+"end": 35.365,
+"line": "vo08"
+},
+{
+"text": "recevoir",
+"start": 35.365,
+"end": 35.827,
+"line": "vo08"
+},
+{
+"text": "les",
+"start": 35.827,
+"end": 36.0,
+"line": "vo08"
+},
+{
+"text": "informations",
+"start": 36.0,
+"end": 36.692,
+"line": "vo08"
+},
+{
+"text": "concernant",
+"start": 36.692,
+"end": 37.269,
+"line": "vo08"
+},
+{
+"text": "votre",
+"start": 37.269,
+"end": 37.558,
+"line": "vo08"
+},
+{
+"text": "réservation.",
+"start": 37.558,
+"end": 38.25,
+"line": "vo08"
+},
+{
+"text": "Muble",
+"start": 39.489,
+"end": 39.612,
+"line": "vo09"
+},
+{
+"text": "vous",
+"start": 39.612,
+"end": 39.941,
+"line": "vo09"
+},
+{
+"text": "rappelle",
+"start": 39.941,
+"end": 40.6,
+"line": "vo09"
+},
+{
+"text": "avec",
+"start": 40.6,
+"end": 40.929,
+"line": "vo09"
+},
+{
+"text": "le",
+"start": 40.929,
+"end": 41.094,
+"line": "vo09"
+},
+{
+"text": "prix",
+"start": 41.094,
+"end": 41.423,
+"line": "vo09"
+},
+{
+"text": "exact,",
+"start": 41.423,
+"end": 41.917,
+"line": "vo09"
+},
+{
+"text": "figé",
+"start": 41.917,
+"end": 42.247,
+"line": "vo09"
+},
+{
+"text": "avant",
+"start": 42.247,
+"end": 42.658,
+"line": "vo09"
+},
+{
+"text": "votre",
+"start": 42.658,
+"end": 43.07,
+"line": "vo09"
+},
+{
+"text": "validation.",
+"start": 43.07,
+"end": 43.976,
+"line": "vo09"
+},
+{
+"text": "Puis",
+"start": 43.976,
+"end": 44.305,
+"line": "vo09"
+},
+{
+"text": "vous",
+"start": 44.305,
+"end": 44.634,
+"line": "vo09"
+},
+{
+"text": "payez",
+"start": 44.634,
+"end": 45.046,
+"line": "vo09"
+},
+{
+"text": "en",
+"start": 45.046,
+"end": 45.211,
+"line": "vo09"
+},
+{
+"text": "ligne,",
+"start": 45.211,
+"end": 45.623,
+"line": "vo09"
+},
+{
+"text": "en",
+"start": 45.623,
+"end": 45.787,
+"line": "vo09"
+},
+{
+"text": "toute",
+"start": 45.787,
+"end": 46.199,
+"line": "vo09"
+},
+{
+"text": "sécurité.",
+"start": 46.199,
+"end": 46.94,
+"line": "vo09"
+},
+{
+"text": "Avec",
+"start": 48.558,
+"end": 48.572,
+"line": "vo10"
+},
+{
+"text": "Muble,",
+"start": 48.572,
+"end": 48.98,
+"line": "vo10"
+},
+{
+"text": "profitez",
+"start": 48.98,
+"end": 49.523,
+"line": "vo10"
+},
+{
+"text": "d'un",
+"start": 49.523,
+"end": 49.795,
+"line": "vo10"
+},
+{
+"text": "chauffeur",
+"start": 49.795,
+"end": 50.407,
+"line": "vo10"
+},
+{
+"text": "professionnel,",
+"start": 50.407,
+"end": 51.358,
+"line": "vo10"
+},
+{
+"text": "d'un",
+"start": 51.358,
+"end": 51.63,
+"line": "vo10"
+},
+{
+"text": "prix",
+"start": 51.63,
+"end": 51.902,
+"line": "vo10"
+},
+{
+"text": "connu",
+"start": 51.902,
+"end": 52.242,
+"line": "vo10"
+},
+{
+"text": "à",
+"start": 52.242,
+"end": 52.31,
+"line": "vo10"
+},
+{
+"text": "l'avance",
+"start": 52.31,
+"end": 52.853,
+"line": "vo10"
+},
+{
+"text": "et",
+"start": 52.853,
+"end": 52.989,
+"line": "vo10"
+},
+{
+"text": "d'un",
+"start": 52.989,
+"end": 53.261,
+"line": "vo10"
+},
+{
+"text": "trajet",
+"start": 53.261,
+"end": 53.669,
+"line": "vo10"
+},
+{
+"text": "organisé",
+"start": 53.669,
+"end": 54.213,
+"line": "vo10"
+},
+{
+"text": "selon",
+"start": 54.213,
+"end": 54.552,
+"line": "vo10"
+},
+{
+"text": "vos",
+"start": 54.552,
+"end": 54.756,
+"line": "vo10"
+},
+{
+"text": "besoins.",
+"start": 54.756,
+"end": 55.3,
+"line": "vo10"
+},
+{
+"text": "Pour",
+"start": 56.58,
+"end": 56.579,
+"line": "vo11"
+},
+{
+"text": "vos",
+"start": 56.579,
+"end": 56.788,
+"line": "vo11"
+},
+{
+"text": "déplacements",
+"start": 56.788,
+"end": 57.626,
+"line": "vo11"
+},
+{
+"text": "professionnels,",
+"start": 57.626,
+"end": 58.673,
+"line": "vo11"
+},
+{
+"text": "vos",
+"start": 58.673,
+"end": 58.882,
+"line": "vo11"
+},
+{
+"text": "voyages",
+"start": 58.882,
+"end": 59.37,
+"line": "vo11"
+},
+{
+"text": "ou",
+"start": 59.37,
+"end": 59.51,
+"line": "vo11"
+},
+{
+"text": "vos",
+"start": 59.51,
+"end": 59.719,
+"line": "vo11"
+},
+{
+"text": "sorties,",
+"start": 59.719,
+"end": 60.278,
+"line": "vo11"
+},
+{
+"text": "Muble",
+"start": 60.278,
+"end": 60.627,
+"line": "vo11"
+},
+{
+"text": "vous",
+"start": 60.627,
+"end": 60.906,
+"line": "vo11"
+},
+{
+"text": "accompagne",
+"start": 60.906,
+"end": 61.603,
+"line": "vo11"
+},
+{
+"text": "en",
+"start": 61.603,
+"end": 61.743,
+"line": "vo11"
+},
+{
+"text": "Île-de-France.",
+"start": 61.743,
+"end": 62.72,
+"line": "vo11"
+},
+{
+"text": "Muble.",
+"start": 63.575,
+"end": 64.041,
+"line": "vo12"
+},
+{
+"text": "Votre",
+"start": 64.041,
+"end": 64.571,
+"line": "vo12"
+},
+{
+"text": "chauffeur",
+"start": 64.571,
+"end": 65.524,
+"line": "vo12"
+},
+{
+"text": "privé,",
+"start": 65.524,
+"end": 66.054,
+"line": "vo12"
+},
+{
+"text": "en",
+"start": 66.054,
+"end": 66.265,
+"line": "vo12"
+},
+{
+"text": "toute",
+"start": 66.265,
+"end": 66.795,
+"line": "vo12"
+},
+{
+"text": "simplicité.",
+"start": 66.795,
+"end": 67.96,
+"line": "vo12"
+},
+{
+"text": "Réservez",
+"start": 68.687,
+"end": 69.127,
+"line": "vo13"
+},
+{
+"text": "dès",
+"start": 69.127,
+"end": 69.4,
+"line": "vo13"
+},
+{
+"text": "maintenant.",
+"start": 69.4,
+"end": 70.4,
+"line": "vo13"
+}
+]

@@ -7,6 +7,8 @@ description: Méthode complète du studio publicitaire IA — de l'inventaire de
 
 Tu joues le rôle d'une agence publicitaire complète : directeur artistique, réalisateur, marketeur, motion designer, monteur et sound designer. Le but est une pub **réelle, livrée et vendeuse**, pas une idée. Réponds en français, en phrases simples : l'utilisateur n'est pas développeur.
 
+**Méthode validée par l'utilisateur** (projet Muble, VTC) : lis `references/methode-validee.md` au début de chaque projet et reproduis ce déroulé (storyboard validé par questions à cocher, vraies images Adobe Stock, interface reconstruite à l'identique, essais de voix, une prise par phrase calée au mot, mixage et sous-titres par script, version courte tirée de la version longue).
+
 Le déroulé ci-dessous existe parce qu'un projet précédent (REEF 33) a montré les deux pièges habituels : se lancer avec un seul outil sans regarder ce qui est connecté (résultat : voix robotique alors qu'ElevenLabs était disponible via FLORA), et fabriquer à la main des effets qui existaient déjà dans une bibliothèque. Chaque étape protège contre un de ces pièges.
 
 ## Étape 0 — Inventaire des outils ET des skills (avant tout)

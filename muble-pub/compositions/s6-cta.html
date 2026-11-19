@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="fr" data-composition-variables='[{"id":"site_url","type":"string","label":"Adresse du site","default":""}]'>
+<body>
+<template>
+  <link rel="stylesheet" href="assets/muble-ui.css" />
+  <style>
+    @font-face { font-family: "Plus Jakarta Sans"; src: url("assets/fonts/PlusJakartaSans-Variable-latin.woff2") format("woff2"); font-weight: 200 800; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #0b0714; font-family: "Plus Jakarta Sans", sans-serif; color: #fff; }
+    #s6-cam { position: absolute; inset: 0; }
+    #s6-cam video { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+    #s6-rig { position: absolute; inset: 0; perspective: 2600px; }
+    #s6-holder { position: absolute; left: 325px; top: 518px; width: 430px; height: 884px; transform-style: preserve-3d; }
+    #s6-holder .mb-phone { left: 0; top: 0; }
+    .s6-foot { padding: 30px 18px 60px; background: #f3f3f6; }
+    .s6-foot img { height: 40px; }
+    .s6-foot p { margin: 18px 0 0; font-size: 15px; line-height: 1.6; color: #6b6a75; }
+    #s6-zoom { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; background: #ffffff; opacity: 0; }
+    #s6-end { position: absolute; inset: 0; background: linear-gradient(160deg, #6a2bc2 0%, #4c14a6 100%); clip-path: circle(0px at 540px 1000px); }
+    #s6-end::after { content: ""; position: absolute; right: -260px; top: -280px; width: 950px; height: 950px; border-radius: 50%; background: radial-gradient(circle, rgba(196, 166, 255, 0.18), rgba(196, 166, 255, 0) 65%); }
+    #s6-logo { position: absolute; left: 190px; top: 520px; width: 700px; height: 151px; }
+    #s6-sheen { position: absolute; left: 190px; top: 520px; width: 700px; height: 151px; -webkit-mask: url("assets/logo/muble-logo-white.svg") center / 700px 151px no-repeat; mask: url("assets/logo/muble-logo-white.svg") center / 700px 151px no-repeat; overflow: hidden; }
+    #s6-sheen div { position: absolute; top: -40px; left: -300px; width: 200px; height: 240px; background: linear-gradient(100deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 100%); transform: skewX(-18deg); }
+    #s6-sig { position: absolute; left: 0; top: 770px; width: 1040px; text-align: center; font-size: 70px; font-weight: 800; line-height: 1.04; letter-spacing: -0.035em; }
+    #s6-sig .acc { color: #c4a6ff; }
+    #s6-sig .w { display: inline-block; }
+    #s6-sub { position: absolute; left: 0; top: 1000px; width: 1080px; text-align: center; font-size: 42px; font-weight: 600; color: rgba(255, 255, 255, 0.86); }
+    #s6-btn { position: absolute; left: 210px; top: 1090px; width: 660px; height: 120px; border-radius: 999px; background: #ffffff; color: #5a1db4; display: flex; align-items: center; justify-content: center; gap: 18px; font-size: 46px; font-weight: 800; box-shadow: 0 24px 60px rgba(20, 0, 50, 0.4); }
+    #s6-btn svg { width: 48px; height: 48px; }
+    #s6-url { position: absolute; left: 0; top: 1250px; width: 1080px; text-align: center; font-size: 40px; font-weight: 700; letter-spacing: 0.02em; color: rgba(255, 255, 255, 0.9); }
+    #s6-touch2 { position: absolute; left: 0; top: 0; width: 92px; height: 92px; margin: -46px 0 0 -46px; border-radius: 50%; background: rgba(255, 255, 255, 0.62); box-shadow: 0 0 0 4px rgba(106, 43, 194, 0.35), 0 10px 26px rgba(30, 0, 70, 0.35); opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="s6" data-width="1080" data-height="1920" data-layout-allow-overflow>
+    <div id="s6-cam"><video id="s6-v" class="clip" src="assets/footage/paris-nuit-alexandre3.mp4" data-start="0" data-duration="4.0" data-media-start="0" data-track-index="0" muted playsinline></video></div>
+    <div id="s6-rig">
+      <div id="s6-holder">
+        <div class="mb-ui mb-phone" id="s6-phone" data-layout-ignore>
+          <div class="mb-screen">
+            <div class="mb-status"><span>9:41</span><span class="mb-sys"><svg viewBox="0 0 27 13"><rect x=".5" y=".5" width="23" height="12" rx="3.5" fill="none" stroke="#111" opacity=".4"/><rect x="2" y="2" width="20" height="9" rx="2" fill="#111"/></svg></span></div>
+            <div class="mb-header"><img class="mb-logo" src="assets/logo/muble-logo.svg" alt="Muble"><div class="mb-burger"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></div></div>
+            <div class="mb-viewport"><div class="mb-page">
+              <section class="mb-ctasec">
+                <div class="mb-ctacard">
+                  <p>Réservez en 2 minutes, prix figé, chauffeur professionnel. Simple, direct, rassurant.</p>
+                  <div class="mb-btn-white" id="s6-pbtn">Réserver mon trajet<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                  <div class="mb-btn-ghost">Nous contacter</div>
+                </div>
+              </section>
+              <section class="s6-foot"><img src="assets/logo/muble-logo.svg" alt=""><p>VTC premium à Paris et en Île-de-France. Réservation préalable, prix figé, chauffeurs professionnels.</p></section>
+            </div></div>
+          </div>
+          <div class="mb-island"></div>
+          <div class="mb-glare"></div>
+        </div>
+      </div>
+      <div id="s6-touch2"></div>
+    </div>
+    <div id="s6-zoom"></div>
+    <div id="s6-end">
+      <img id="s6-logo" src="assets/logo/muble-logo-white.svg" alt="Muble" />
+      <div id="s6-sheen"><div id="s6-sheen-bar"></div></div>
+      <div id="s6-sig"><span class="w">Votre</span> <span class="w">trajet,</span><br /><span class="w">en</span> <span class="w">toute</span> <span class="w acc">simplicité.</span></div>
+      <div id="s6-sub">Réservez votre chauffeur dès maintenant.</div>
+      <div id="s6-btn">Réserver mon trajet<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      <div id="s6-url" data-var-text="site_url"></div>
+    </div>
+    <div id="s6-driver" class="clip" data-start="0" data-duration="8.8" data-track-index="1" style="position:absolute;width:1px;height:1px;opacity:0"></div>
+  </div>
+  <script>
+    (function () {
+      const T = { phone: 1.4, tap: 2.85, zoom: 3.0, end: 3.35, logo: 3.45, sig: 3.95, sub: 5.45, btn: 5.8, out: 8.8 };
+      const tl = gsap.timeline({ paused: true });
+      tl.to("#s6-driver", { opacity: 0, duration: T.out }, 0);
+      const page = document.querySelector("#s6-phone .mb-page");
+      const btn = document.querySelector("#s6-pbtn");
+      let by = 0, e = btn; while (e && e !== page) { by += e.offsetTop; e = e.offsetParent; }
+      const PY = 140 + by + btn.offsetHeight / 2 - 442; // centre du bouton, relatif au centre du téléphone
+      const S0 = 1.55, Y0 = 80, SY = 960 + Y0 + S0 * PY;
+      tl.fromTo("#s6-cam", { scale: 1.0 }, { scale: 1.1, duration: 4.0, ease: "none", transformOrigin: "50% 45%" }, 0);
+      // le téléphone monte sur Paris la nuit, montre le bouton du site
+      tl.fromTo("#s6-holder", { y: 1500, scale: S0, rotationX: 30, rotationY: 18 }, { y: Y0, rotationX: 6, rotationY: 6, duration: 0.9, ease: "back.out(1.1)" }, T.phone);
+      tl.to("#s6-holder", { rotationY: 0, rotationX: 0, duration: 0.6, ease: "power2.out" }, T.phone + 0.9);
+      // doigt sur « Réserver mon trajet » (bouton du site)
+      tl.set("#s6-touch2", { x: 540, y: SY }, T.tap - 0.25);
+      tl.fromTo("#s6-touch2", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.14 }, T.tap - 0.25);
+      tl.to("#s6-touch2", { scale: 0.78, duration: 0.08, ease: "power4.in" }, T.tap - 0.05);
+      tl.to("#s6-touch2", { opacity: 0, duration: 0.1 }, T.tap + 0.08);
+      tl.to("#s6-pbtn", { scale: 0.95, duration: 0.08, ease: "power4.in" }, T.tap - 0.05);
+      // zoom à travers le bouton
+      tl.to("#s6-holder", { scale: 9, y: SY - 960 - 9 * PY, duration: 0.38, ease: "power3.in" }, T.zoom);
+      tl.to("#s6-zoom", { opacity: 1, duration: 0.18, ease: "power2.in" }, T.zoom + 0.2);
+      tl.to("#s6-end", { clipPath: "circle(1300px at 540px 1000px)", duration: 0.5, ease: "power2.inOut" }, T.end);
+      tl.set("#s6-zoom", { opacity: 0 }, T.end + 0.5);
+      // logo, signature, appel à l'action
+      tl.fromTo("#s6-logo", { opacity: 0, scale: 0.86, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.5, ease: "expo.out" }, T.logo);
+      tl.fromTo("#s6-sheen-bar", { x: 0 }, { x: 1200, duration: 0.8, ease: "power2.inOut" }, T.logo + 0.35);
+      tl.fromTo("#s6-sig .w", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15, ease: "power3.out", stagger: 0.08 }, T.sig);
+      tl.fromTo("#s6-sub", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power2.out" }, T.sub);
+      tl.fromTo("#s6-btn", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, T.btn);
+      tl.fromTo("#s6-url", { opacity: 0 }, { opacity: 1, duration: 0.3 }, T.btn + 0.3);
+      window.__timelines["s6"] = tl;
+    })();
+  </script>
+</template>
+</body>
+</html>

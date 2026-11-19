@@ -1,0 +1,311 @@
+<template>
+  <link rel="stylesheet" href="assets/muble-ui.css" />
+  <style>
+    @font-face { font-family: "Plus Jakarta Sans"; src: url("assets/fonts/PlusJakartaSans-Variable-latin.woff2") format("woff2"); font-weight: 200 800; }
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Plus Jakarta Sans", sans-serif; color: #fff; }
+    #s3-stage { position: absolute; inset: 0; background: linear-gradient(160deg, #6a2bc2 0%, #4c14a6 100%); clip-path: inset(100% 0 0 0); }
+    #s3-stage::after { content: ""; position: absolute; right: -260px; top: -280px; width: 950px; height: 950px; border-radius: 50%; background: radial-gradient(circle, rgba(196, 166, 255, 0.18), rgba(196, 166, 255, 0) 65%); }
+    #s3-rig { position: absolute; inset: 0; perspective: 2600px; }
+    #s3-holder { position: absolute; left: 325px; top: 518px; width: 430px; height: 884px; transform-style: preserve-3d; }
+    #s3-holder .mb-phone { left: 0; top: 0; }
+    #s3-dim { position: absolute; left: 20px; top: 20px; width: 390px; height: 844px; border-radius: 50px; background: #12002e; opacity: 0; z-index: 45; }
+    /* chrono + étiquette d'étape */
+    #s3-hud { position: absolute; left: 0; top: 0; width: 1080px; height: 420px; }
+    #s3-hud-bg { position: absolute; left: 0; top: 0; width: 1080px; height: 640px; background: linear-gradient(180deg, #4a12a0 0%, #4f15a8 82%, rgba(79, 21, 168, 0) 100%); }
+    #s3-chrono { position: absolute; left: 96px; top: 280px; width: 170px; height: 170px; }
+    #s3-chrono svg { position: absolute; inset: 0; width: 170px; height: 170px; transform: rotate(-90deg); }
+    #s3-time { position: absolute; left: 0; top: 0; width: 170px; height: 170px; display: flex; align-items: center; justify-content: center; font-size: 42px; font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+    #s3-tick { position: absolute; left: 118px; top: 118px; width: 56px; height: 56px; border-radius: 50%; background: #2fbf7a; display: grid; place-items: center; opacity: 0; }
+    #s3-tick svg { width: 30px; height: 30px; transform: none; position: static; }
+    .s3-step { position: absolute; left: 296px; top: 300px; width: 690px; opacity: 0; }
+    .s3-step .k { font-size: 30px; font-weight: 800; letter-spacing: 0.14em; color: #c4a6ff; }
+    .s3-step .t { margin-top: 8px; font-size: 48px; font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; }
+    /* cartes véhicules sorties du téléphone */
+    .s3-vc { position: absolute; left: 361px; top: 0; transform-origin: 50% 50%; opacity: 0; }
+    #s3-touch2 { position: absolute; left: 0; top: 0; width: 92px; height: 92px; margin: -46px 0 0 -46px; border-radius: 50%; background: rgba(255, 255, 255, 0.62); box-shadow: 0 0 0 4px rgba(106, 43, 194, 0.35), 0 10px 26px rgba(30, 0, 70, 0.35); opacity: 0; }
+    /* confirmation */
+    #s3-sent { position: absolute; left: 0; width: 1080px; top: 905px; display: flex; justify-content: center; opacity: 0; }
+    #s3-sent div { display: flex; align-items: center; gap: 18px; padding: 26px 44px; border-radius: 999px; background: #fff; color: #4c14a6; font-size: 50px; font-weight: 800; box-shadow: 0 24px 60px rgba(20, 0, 50, 0.45); }
+    #s3-sent svg { width: 52px; height: 52px; }
+    /* frise après l'envoi */
+    #s3-route { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #s3-route-line { position: absolute; left: 0; top: 0; }
+    .s3-stop { position: absolute; left: 128px; width: 900px; display: flex; align-items: flex-start; gap: 34px; opacity: 0; }
+    .s3-stop .dot { flex: 0 0 auto; width: 44px; height: 44px; margin-top: 14px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.16); }
+    .s3-stop .ic { flex: 0 0 auto; width: 64px; height: 64px; margin-top: 4px; color: #c4a6ff; }
+    .s3-stop .tx b { display: block; font-size: 60px; font-weight: 800; line-height: 1.05; letter-spacing: -0.025em; }
+    .s3-stop .tx span { display: block; margin-top: 8px; font-size: 34px; font-weight: 600; color: rgba(255, 255, 255, 0.78); }
+  </style>
+  <div id="root" data-composition-id="s3" data-width="1080" data-height="1920" data-layout-allow-overflow>
+    <div id="s3-stage"></div>
+
+    <div id="s3-rig">
+      <div id="s3-holder">
+        <div class="mb-ui mb-phone" id="s3-phone" data-layout-ignore>
+  <div class="mb-screen">
+    <div class="mb-status"><span>9:41</span><span class="mb-sys">
+      <svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1" fill="#111"/><rect x="5" y="5.5" width="3" height="6.5" rx="1" fill="#111"/><rect x="10" y="3" width="3" height="9" rx="1" fill="#111"/><rect x="15" y="0" width="3" height="12" rx="1" fill="#111"/></svg>
+      <svg viewBox="0 0 16 12"><path d="M8 2.2c2.4 0 4.6.9 6.2 2.5l1.3-1.3A10.6 10.6 0 0 0 8 .4 10.6 10.6 0 0 0 .5 3.4l1.3 1.3A8.8 8.8 0 0 1 8 2.2Zm0 3.6c1.4 0 2.7.5 3.7 1.5l1.3-1.3A7 7 0 0 0 8 4a7 7 0 0 0-5 2l1.3 1.3c1-1 2.3-1.5 3.7-1.5Zm0 3.6c.5 0 1 .2 1.3.5L8 11.2 6.7 9.9c.3-.3.8-.5 1.3-.5Z" fill="#111"/></svg>
+      <svg viewBox="0 0 27 13"><rect x=".5" y=".5" width="23" height="12" rx="3.5" fill="none" stroke="#111" opacity=".4"/><rect x="2" y="2" width="20" height="9" rx="2" fill="#111"/><rect x="24.5" y="4" width="2" height="5" rx="1" fill="#111" opacity=".4"/></svg>
+    </span></div>
+    <div class="mb-header"><img class="mb-logo" src="assets/logo/muble-logo.svg" alt="Muble"><div class="mb-burger"><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></div></div>
+    <div class="mb-viewport"><div class="mb-page" id="s3-page">
+      <section class="mb-hero">
+        <span class="mb-badge"><span class="mb-star">★</span>VTC PREMIUM À PARIS &amp; EN ÎLE-DE-FRANCE</span>
+        <h1 class="mb-h1">Votre chauffeur VTC, réservé en 2&nbsp;minutes.</h1>
+        <p class="mb-lead">Un prix clair figé avant validation, un chauffeur professionnel et une voiture impeccable. Aéroports, gares, rendez-vous, soirées — vous roulez, on s'occupe du reste.</p>
+        <div class="mb-checks">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>Prix figé, zéro surprise</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>Suivi de course en direct</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>Paiement sécurisé Stripe</div>
+        </div>
+      </section>
+      <section class="mb-formsec">
+        <div class="mb-card">
+          <h3>Réservez votre trajet</h3>
+          <p class="mb-sub">Renseignez votre trajet, on vous rappelle avec le prix exact.</p>
+          <div class="mb-field" id="s3-f-dep"><svg class="mb-violet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span class="mb-ph">Adresse de départ</span><span class="mb-val"></span><span class="mb-caret"></span></div>
+          <div class="mb-field" id="s3-f-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span class="mb-ph">Adresse d'arrivée</span><span class="mb-val"></span><span class="mb-caret"></span></div>
+          <div class="mb-row">
+            <div class="mb-field" id="s3-f-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span class="mb-ph"></span><span class="mb-val"></span><span class="mb-caret"></span></div>
+            <div class="mb-field" id="s3-f-time"><span class="mb-ph"></span><span class="mb-val"></span><span class="mb-caret"></span></div>
+          </div>
+          <div class="mb-row">
+            <div class="mb-field" id="s3-f-pax"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="mb-val">1 passager</span></div>
+            <div class="mb-field" id="s3-f-bag"><span class="mb-val">Aucun bagage</span></div>
+          </div>
+          <div class="mb-field" id="s3-f-nom"><span class="mb-ph">Votre nom</span><span class="mb-val"></span><span class="mb-caret"></span></div>
+          <div class="mb-field" id="s3-f-tel"><span class="mb-ph">Téléphone</span><span class="mb-val"></span><span class="mb-caret"></span></div>
+          <div class="mb-field" id="s3-f-mail"><span class="mb-ph">Email</span><span class="mb-val"></span><span class="mb-caret"></span></div>
+          <div class="mb-submit" id="s3-submit">Réserver mon trajet<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </section>
+    </div></div>
+    <div class="mb-touch" id="s3-touch"></div>
+  </div>
+  <div class="mb-island"></div>
+  <div class="mb-glare"></div>
+</div>
+
+        <div id="s3-dim" data-layout-allow-occlusion></div>
+      </div>
+
+      <!-- étape 3 : les catégories réelles du site (Éco, Berline) sortent du téléphone -->
+      <div class="mb-ui mb-vcard s3-vc" id="s3-veco" data-layout-allow-occlusion>
+        <h4>Éco</h4>
+        <div class="mb-pax"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Jusqu'à 3 passagers</div>
+        <p>L'essentiel, au meilleur prix pour vos trajets du quotidien.</p>
+        <div class="mb-vbtn">Réserver<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="mb-ui mb-vcard s3-vc" id="s3-vber" data-layout-allow-occlusion>
+        <h4>Berline</h4>
+        <div class="mb-pax"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Jusqu'à 3 passagers</div>
+        <div class="mb-vbtn" id="s3-vber-btn" style="margin-top:16px">Réserver<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div id="s3-touch2"></div>
+    </div>
+
+    <!-- frise : ce qui se passe après l'envoi (d'après le formulaire et la FAQ du site) -->
+    <div id="s3-route">
+      <svg id="s3-route-line" width="1080" height="1920"><path id="s3-route-path" d="M150 536 L150 1031" stroke="rgba(255,255,255,0.55)" stroke-width="6" stroke-linecap="round" fill="none" stroke-dasharray="495" stroke-dashoffset="495"/></svg>
+      <div class="s3-stop" id="s3-stop1" style="top:500px"><div class="dot"></div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><div class="tx"><b>On vous rappelle</b><span>avec le prix exact</span></div></div>
+      <div class="s3-stop" id="s3-stop2" style="top:665px"><div class="dot"></div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><div class="tx"><b>Prix figé</b><span>avant votre validation</span></div></div>
+      <div class="s3-stop" id="s3-stop3" style="top:830px"><div class="dot"></div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><div class="tx"><b>Paiement sécurisé</b><span>Carte · Apple Pay · Google Pay</span></div></div>
+      <div class="s3-stop" id="s3-stop4" style="top:995px"><div class="dot"></div><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg><div class="tx"><b>Infos chauffeur</b><span>avant la prise en charge</span></div></div>
+    </div>
+
+    <div id="s3-sent" data-layout-allow-occlusion><div><svg viewBox="0 0 24 24" fill="none" stroke="#2fbf7a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Demande envoyée</div></div>
+
+    <div id="s3-hud">
+      <div id="s3-hud-bg" data-layout-allow-occlusion></div>
+      <div id="s3-chrono">
+        <svg viewBox="0 0 170 170">
+          <g id="s3-ring-bg" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="14" stroke-linecap="round"><circle id="s3-segb0" cx="85" cy="85" r="66" stroke-dasharray="66.94 347.75" stroke-dashoffset="-8.00"/><circle id="s3-segb1" cx="85" cy="85" r="66" stroke-dasharray="66.94 347.75" stroke-dashoffset="-90.94"/><circle id="s3-segb2" cx="85" cy="85" r="66" stroke-dasharray="66.94 347.75" stroke-dashoffset="-173.88"/><circle id="s3-segb3" cx="85" cy="85" r="66" stroke-dasharray="66.94 347.75" stroke-dashoffset="-256.81"/><circle id="s3-segb4" cx="85" cy="85" r="66" stroke-dasharray="66.94 347.75" stroke-dashoffset="-339.75"/></g>
+          <g id="s3-ring-fg" fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round"><circle id="s3-segf0" cx="85" cy="85" r="66" stroke-dasharray="0 414.69" stroke-dashoffset="-8.00" opacity="0"/><circle id="s3-segf1" cx="85" cy="85" r="66" stroke-dasharray="0 414.69" stroke-dashoffset="-90.94" opacity="0"/><circle id="s3-segf2" cx="85" cy="85" r="66" stroke-dasharray="0 414.69" stroke-dashoffset="-173.88" opacity="0"/><circle id="s3-segf3" cx="85" cy="85" r="66" stroke-dasharray="0 414.69" stroke-dashoffset="-256.81" opacity="0"/><circle id="s3-segf4" cx="85" cy="85" r="66" stroke-dasharray="0 414.69" stroke-dashoffset="-339.75" opacity="0"/></g>
+        </svg>
+        <div id="s3-time">0:00</div>
+        <div id="s3-tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      </div>
+      <div class="s3-step" id="s3-st0"><div class="k">EN 5 ÉTAPES</div><div class="t">Réservez en 2 minutes</div></div>
+      <div class="s3-step" id="s3-st1"><div class="k">ÉTAPE 1/5</div><div class="t">Votre trajet</div></div>
+      <div class="s3-step" id="s3-st2"><div class="k">ÉTAPE 2/5</div><div class="t" style="font-size:43px">Date, passagers, bagages</div></div>
+      <div class="s3-step" id="s3-st3"><div class="k">ÉTAPE 3/5</div><div class="t">Votre véhicule</div></div>
+      <div class="s3-step" id="s3-st4"><div class="k">ÉTAPE 4/5</div><div class="t">Vos coordonnées</div></div>
+      <div class="s3-step" id="s3-st5"><div class="k">ÉTAPE 5/5</div><div class="t">Prix exact &amp; validation</div></div>
+    </div>
+
+    <div id="s3-driver" class="clip" data-start="0" data-duration="35.75" data-track-index="0" style="position:absolute;width:1px;height:1px;opacity:0"></div>
+  </div>
+  <script>
+    (function () {
+      // ---- Horloge de la scène (secondes locales). À recaler sur la voix off. ----
+      const T = {
+        reveal: 0.0, rise: 0.12, chronoIn: 1.25, dive: 4.6,
+        s1: 5.1, tapDep: 6.9, tapArr: 8.5,
+        s2: 10.05, tapDate: 11.55, tapTime: 12.1, tapPax: 12.75, tapBag: 14.5,
+        s3: 15.75, tapBer: 18.95, back: 20.55,
+        s4: 21.55, tapNom: 22.15, tapTel: 23.3, tapMail: 24.45,
+        s5: 25.9, tapSend: 26.4, recede: 27.35, f1: 27.75, f2: 29.75, f3: 32.45, f4: 33.95,
+        end: 35.75,
+      };
+      const CHRONO_STOP = 108; // 1:48 affiché à l'envoi (promesse du site : « réservé en 2 minutes »)
+      const CHAR = 0.06;
+      const ZOOM = 2.45, HERO = 1.4, FOCUS_Y = 790;
+      const $ = (s) => document.querySelector(s);
+
+      function build() {
+        const tl = gsap.timeline({ paused: true });
+        tl.to("#s3-driver", { opacity: 0, duration: T.end }, 0);
+
+        // ---------- anneau du chrono : 5 segments ----------
+        const C = 2 * Math.PI * 66, SEG = C / 5, GAP = 16;
+        const segFill = (i, t0, dur) => {
+          const c = $("#s3-segf" + i);
+          const o = { v: 0 };
+          tl.set(c, { opacity: 1 }, t0);
+          tl.to(o, { v: 1, duration: dur, ease: "none", onUpdate: () => {
+            const L = Math.max(0.01, (SEG - GAP) * o.v);
+            c.setAttribute("stroke-dasharray", L + " " + (C - L));
+          } }, t0);
+        };
+        const clock = { s: 0 };
+        const fmt = () => { const s = Math.round(clock.s); $("#s3-time").textContent = Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); };
+
+        // ---------- géométrie du téléphone ----------
+        const page = $("#s3-page");
+        const off = (el) => { let x = 0, y = 0, e = el; while (e && e !== page) { x += e.offsetLeft; y += e.offsetTop; e = e.offsetParent; } return { x, y, w: el.offsetWidth, h: el.offsetHeight }; };
+        const SCROLL = off($(".mb-formsec")).y + 4;
+        const center = (el) => { const o = off(el); return { x: 20 + o.x + o.w / 2, y: 140 + o.y - SCROLL + o.h / 2 }; };
+        const camTo = (el, s, at, dur, ease, dy) => {
+          const c = center(el);
+          tl.to("#s3-holder", { scale: s, x: 0, y: (FOCUS_Y + (dy || 0)) - 960 - s * (c.y - 442), rotationX: 0, rotationY: 0, rotationZ: 0, duration: dur, ease: ease || "power2.inOut" }, at);
+        };
+        const touchAt = (el, at) => {
+          const c = center(el);
+          tl.set("#s3-touch", { x: c.x - 20, y: c.y - 20 }, at - 0.18);
+          tl.fromTo("#s3-touch", { opacity: 0, scale: 1.25 }, { opacity: 1, scale: 1, duration: 0.14, ease: "power2.out" }, at - 0.18);
+          tl.to("#s3-touch", { scale: 0.78, duration: 0.08, ease: "power4.in" }, at - 0.04);
+          tl.to("#s3-touch", { scale: 1, duration: 0.12, ease: "power2.out" }, at + 0.06);
+          tl.to("#s3-touch", { opacity: 0, duration: 0.18, ease: "power2.in" }, at + 0.22);
+        };
+        const focus = (el, at) => tl.to(el, { borderColor: "#6a2bc2", backgroundColor: "#ffffff", boxShadow: "0 0 0 4px rgba(106,43,194,0.14)", duration: 0.12 }, at);
+        const blur = (el, at) => tl.to(el, { borderColor: "#e2e1e7", backgroundColor: "#f3f3f5", boxShadow: "0 0 0 0px rgba(106,43,194,0)", duration: 0.12 }, at);
+        const typeIn = (sel, text, at) => {
+          const f = $(sel), ph = f.querySelector(".mb-ph"), val = f.querySelector(".mb-val"), car = f.querySelector(".mb-caret");
+          focus(f, at);
+          tl.set(car, { opacity: 1 }, at);
+          if (ph) tl.set(ph, { display: "none" }, at + 0.08);
+          for (let i = 1; i <= text.length; i++) tl.set(val, { innerText: text.slice(0, i) }, at + 0.08 + i * CHAR);
+          const done = at + 0.08 + text.length * CHAR;
+          tl.set(car, { opacity: 0 }, done + 0.25); tl.set(car, { opacity: 1 }, done + 0.5); tl.set(car, { opacity: 0 }, done + 0.75);
+          return done;
+        };
+        const pick = (sel, text, at) => { const f = $(sel), val = f.querySelector(".mb-val"), ph = f.querySelector(".mb-ph"); focus(f, at); if (ph) tl.set(ph, { display: "none" }, at + 0.1); tl.set(val, { innerText: text }, at + 0.12); tl.fromTo(val, { opacity: 0.2 }, { opacity: 1, duration: 0.15 }, at + 0.12); blur(f, at + 0.5); };
+        const stepIn = (id, at, prev) => {
+          if (prev) tl.to(prev, { opacity: 0, filter: "blur(8px)", duration: 0.16, ease: "power2.in" }, at - 0.16);
+          tl.fromTo(id, { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.22, ease: "power3.out" }, at);
+        };
+
+        // ---------- 0 : le plateau violet monte, le téléphone arrive ----------
+        tl.fromTo("#s3-stage", { clipPath: "inset(100% 0 0 0)" }, { clipPath: "inset(0% 0 0 0)", duration: 0.45, ease: "power2.inOut" }, T.reveal);
+        tl.set("#s3-page", { y: 0 }, 0);
+        tl.fromTo("#s3-holder", { y: 1500, scale: HERO, rotationX: 34, rotationY: -26, rotationZ: 4 }, { y: 190, rotationX: 9, rotationY: -14, rotationZ: 0, duration: 1.05, ease: "back.out(1.15)" }, T.rise);
+        tl.to("#s3-holder", { rotationY: -5, rotationX: 5, y: 175, duration: T.dive - 1.2 - T.rise, ease: "sine.inOut" }, T.rise + 1.05);
+        tl.fromTo("#s3-hud", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, T.chronoIn - 0.1);
+        tl.fromTo("#s3-chrono", { scale: 0.6, rotation: -40 }, { scale: 1, rotation: 0, duration: 0.6, ease: "back.out(1.4)" }, T.chronoIn);
+        stepIn("#s3-st0", T.chronoIn + 0.15);
+        // bandeau du haut : seulement quand le téléphone est zoomé
+        tl.set("#s3-hud-bg", { opacity: 0 }, 0);
+        tl.to("#s3-hud-bg", { opacity: 1, duration: 0.35, ease: "power2.out" }, T.dive + 0.2);
+        tl.to("#s3-hud-bg", { opacity: 0, duration: 0.3, ease: "power2.in" }, T.s3);
+        tl.to("#s3-hud-bg", { opacity: 1, duration: 0.3, ease: "power2.out" }, T.back + 0.25);
+        tl.to("#s3-hud-bg", { opacity: 0, duration: 0.3, ease: "power2.in" }, T.recede);
+
+        // ---------- plongée dans le formulaire ----------
+        tl.to("#s3-page", { y: -SCROLL, duration: 0.9, ease: "power2.inOut" }, T.dive);
+        camTo($("#s3-f-dep"), ZOOM, T.dive, 0.9, "power2.inOut", 0);
+        tl.to(clock, { s: CHRONO_STOP, duration: T.tapSend - T.s1, ease: "none", onUpdate: fmt }, T.s1);
+
+        // ---------- étape 1 : trajet ----------
+        stepIn("#s3-st1", T.s1, "#s3-st0");
+        segFill(0, T.s1, T.s2 - T.s1);
+        touchAt($("#s3-f-dep"), T.tapDep);
+        let d = typeIn("#s3-f-dep", "Gare de Lyon, Paris 12e", T.tapDep);
+        blur($("#s3-f-dep"), T.tapArr - 0.1);
+        touchAt($("#s3-f-arr"), T.tapArr);
+        d = typeIn("#s3-f-arr", "Aéroport Paris-CDG", T.tapArr);
+        blur($("#s3-f-arr"), T.s2 + 0.2);
+
+        // ---------- étape 2 : date, passagers, bagages ----------
+        stepIn("#s3-st2", T.s2, "#s3-st1");
+        segFill(1, T.s2, T.s3 - T.s2);
+        camTo($("#s3-f-date"), ZOOM, T.s2, 0.7, "power2.inOut", 0);
+        touchAt($("#s3-f-date"), T.tapDate); pick("#s3-f-date", "12 déc. 2026", T.tapDate);
+        touchAt($("#s3-f-time"), T.tapTime); pick("#s3-f-time", "06:30", T.tapTime);
+        touchAt($("#s3-f-pax"), T.tapPax); pick("#s3-f-pax", "2 passagers", T.tapPax);
+        touchAt($("#s3-f-bag"), T.tapBag); pick("#s3-f-bag", "2 bagages", T.tapBag);
+
+        // ---------- étape 3 : véhicule (cartes Éco / Berline du site) ----------
+        stepIn("#s3-st3", T.s3, "#s3-st2");
+        segFill(2, T.s3, T.s4 - T.s3);
+        tl.to("#s3-holder", { scale: 1.15, y: 520, rotationX: 22, duration: 0.7, ease: "power3.inOut" }, T.s3);
+        tl.to("#s3-dim", { opacity: 0.55, duration: 0.5 }, T.s3 + 0.1);
+        const card = (id, top, ry, at) => {
+          tl.fromTo(id, { y: 1150, scale: 0.5, rotationX: 55, rotationY: 0, opacity: 0, z: -200 }, { y: top, scale: 1.7, rotationX: 8, rotationY: ry, z: 0, opacity: 1, duration: 0.85, ease: "back.out(1.1)" }, at);
+        };
+        card("#s3-veco", 525, 9, T.s3 + 0.25);
+        card("#s3-vber", 925, -9, T.s3 + 0.42);
+        tl.to("#s3-veco", { rotationY: 4, duration: 1.3, ease: "sine.inOut" }, T.s3 + 1.1);
+        tl.to("#s3-vber", { rotationY: -4, duration: 1.2, ease: "sine.inOut" }, T.s3 + 1.27);
+        // tap sur « Réserver » de la carte Berline
+        tl.set("#s3-touch2", { x: 540, y: 1081 }, T.tapBer - 0.2);
+        tl.fromTo("#s3-touch2", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.14 }, T.tapBer - 0.2);
+        tl.to("#s3-touch2", { scale: 0.78, duration: 0.08, ease: "power4.in" }, T.tapBer - 0.04);
+        tl.to("#s3-touch2", { scale: 1, opacity: 0, duration: 0.25, ease: "power2.out" }, T.tapBer + 0.08);
+        tl.to("#s3-vber", { backgroundColor: "#ffffff", boxShadow: "0 0 0 3px #6a2bc2, 0 24px 50px rgba(40,0,90,0.35)", rotationY: 0, rotationX: 0, duration: 0.25, ease: "power2.out" }, T.tapBer);
+        tl.to("#s3-vber-btn", { backgroundColor: "#6a2bc2", color: "#ffffff", duration: 0.2 }, T.tapBer);
+        tl.to("#s3-veco", { opacity: 0.35, duration: 0.3 }, T.tapBer + 0.05);
+        // retour dans le téléphone
+        tl.to(["#s3-veco", "#s3-vber"], { y: 1150, scale: 0.4, opacity: 0, rotationX: 50, duration: 0.55, ease: "power3.in", stagger: 0.06 }, T.back);
+        tl.to("#s3-dim", { opacity: 0, duration: 0.4 }, T.back + 0.3);
+
+        // ---------- étape 4 : coordonnées ----------
+        stepIn("#s3-st4", T.s4, "#s3-st3");
+        segFill(3, T.s4, T.s5 - T.s4);
+        camTo($("#s3-f-nom"), ZOOM, T.back + 0.25, 0.7, "power3.out", 0);
+        touchAt($("#s3-f-nom"), T.tapNom); typeIn("#s3-f-nom", "Thomas Martin", T.tapNom); blur($("#s3-f-nom"), T.tapTel - 0.1);
+        touchAt($("#s3-f-tel"), T.tapTel); typeIn("#s3-f-tel", "06 12 34 56 78", T.tapTel); blur($("#s3-f-tel"), T.tapMail - 0.1);
+        touchAt($("#s3-f-mail"), T.tapMail);
+        // e-mail : saisie plus rapide
+        const fm = $("#s3-f-mail"); focus(fm, T.tapMail);
+        tl.set(fm.querySelector(".mb-ph"), { display: "none" }, T.tapMail + 0.08);
+        const mail = "thomas.martin@email.fr";
+        for (let i = 1; i <= mail.length; i++) tl.set(fm.querySelector(".mb-val"), { innerText: mail.slice(0, i) }, T.tapMail + 0.08 + i * 0.045);
+        blur(fm, T.s5);
+
+        // ---------- étape 5 : envoi, puis la suite réelle ----------
+        stepIn("#s3-st5", T.s5, "#s3-st4");
+        segFill(4, T.s5, T.tapSend - T.s5);
+        camTo($("#s3-submit"), ZOOM, T.s5, 0.5, "power2.inOut", 0);
+        touchAt($("#s3-submit"), T.tapSend);
+        tl.to("#s3-submit", { scale: 0.95, duration: 0.08, ease: "power4.in" }, T.tapSend - 0.04);
+        tl.to("#s3-submit", { scale: 1, duration: 0.2, ease: "back.out(2)" }, T.tapSend + 0.06);
+        tl.fromTo("#s3-tick", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, T.tapSend + 0.05);
+        tl.fromTo("#s3-sent", { opacity: 0, y: 30, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, T.tapSend + 0.12);
+        // le téléphone s'efface, la frise se trace
+        tl.to("#s3-sent", { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power2.in" }, T.recede);
+        tl.to("#s3-holder", { y: 2300, rotationX: 30, duration: 0.6, ease: "power3.in" }, T.recede);
+        const stops = [T.f1, T.f2, T.f3, T.f4];
+        stops.forEach((t, i) => {
+          tl.fromTo("#s3-stop" + (i + 1), { opacity: 0, x: -24, filter: "blur(8px)" }, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, t);
+          if (i > 0) tl.to("#s3-stop" + i, { opacity: 0.55, duration: 0.3 }, t);
+        });
+        tl.to("#s3-route-path", { strokeDashoffset: 0, duration: T.f4 - T.f1, ease: "none" }, T.f1);
+        tl.to("#s3-stop4", { opacity: 1, duration: 0.01 }, T.f4 + 0.4);
+
+        window.__timelines["s3"] = tl;
+      }
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(build); else build();
+    })();
+  </script>
+</template>

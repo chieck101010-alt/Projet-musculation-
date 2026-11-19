@@ -1,0 +1,427 @@
+/* Interface mobile Muble reconstruite d'après les captures du site (largeur native 390 px).
+   Le téléphone est mis à l'échelle par la scène ; ne pas styler #root ici. */
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("fonts/PlusJakartaSans-Variable-latin.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+}
+
+.mb-ui,
+.mb-ui * {
+  box-sizing: border-box;
+}
+
+/* ---------- Téléphone ---------- */
+.mb-phone {
+  position: absolute;
+  width: 430px;
+  height: 884px;
+  padding: 20px;
+  border-radius: 68px;
+  background: linear-gradient(150deg, #4a4752 0%, #1c1a22 38%, #0d0c11 100%);
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.22),
+    inset 0 0 0 2px rgba(0, 0, 0, 0.8),
+    inset 0 2px 0 rgba(255, 255, 255, 0.35),
+    0 40px 90px rgba(18, 0, 45, 0.55),
+    0 12px 30px rgba(0, 0, 0, 0.35);
+  transform-style: preserve-3d;
+}
+.mb-phone::before {
+  /* boutons latéraux */
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 190px;
+  width: 5px;
+  height: 64px;
+  border-radius: 3px 0 0 3px;
+  background: #2a2830;
+  box-shadow: 0 90px 0 #2a2830;
+}
+.mb-phone::after {
+  content: "";
+  position: absolute;
+  right: -5px;
+  top: 250px;
+  width: 5px;
+  height: 100px;
+  border-radius: 0 3px 3px 0;
+  background: #2a2830;
+}
+.mb-screen {
+  position: relative;
+  width: 390px;
+  height: 844px;
+  overflow: hidden;
+  border-radius: 50px;
+  background: #ffffff;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: #111018;
+  -webkit-font-smoothing: antialiased;
+}
+.mb-island {
+  position: absolute;
+  z-index: 30;
+  top: 11px;
+  left: 50%;
+  width: 122px;
+  height: 35px;
+  margin-left: -61px;
+  border-radius: 20px;
+  background: #050507;
+}
+.mb-glare {
+  position: absolute;
+  z-index: 40;
+  inset: 0;
+  border-radius: 50px;
+  pointer-events: none;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 32%);
+}
+
+/* barre d'état iOS */
+.mb-status {
+  position: absolute;
+  z-index: 25;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 54px;
+  padding: 18px 30px 0 34px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111018;
+  background: #ffffff;
+}
+.mb-status .mb-sys {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.mb-status svg {
+  height: 13px;
+}
+
+/* en-tête du site */
+.mb-header {
+  position: absolute;
+  z-index: 24;
+  top: 54px;
+  left: 0;
+  right: 0;
+  height: 66px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f6f1fb;
+  border-bottom: 1px solid #ebe4f2;
+}
+.mb-header .mb-logo {
+  height: 34px;
+}
+.mb-burger {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #efedf3;
+  display: grid;
+  place-items: center;
+}
+.mb-burger svg {
+  width: 20px;
+}
+
+/* page qui défile */
+.mb-viewport {
+  position: absolute;
+  top: 120px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+.mb-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 390px;
+}
+
+/* ---------- Accueil (hero) ---------- */
+.mb-hero {
+  padding: 22px 16px 34px;
+  background: linear-gradient(170deg, #6c2dc4 0%, #5a1db4 100%);
+  color: #ffffff;
+}
+.mb-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+.mb-badge .mb-star {
+  color: #f7c948;
+  font-size: 13px;
+}
+.mb-h1 {
+  margin: 18px 0 14px;
+  font-size: 39px;
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+.mb-lead {
+  margin: 0 0 20px;
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.78);
+}
+.mb-checks {
+  display: grid;
+  gap: 13px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.mb-checks div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.mb-checks svg {
+  width: 19px;
+  height: 19px;
+  color: #b8e6ff;
+}
+
+/* ---------- Formulaire ---------- */
+.mb-formsec {
+  padding: 18px 16px 30px;
+  background: #5e1db6;
+}
+.mb-card {
+  padding: 22px 18px 20px;
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow: 0 18px 40px rgba(25, 0, 60, 0.25);
+}
+.mb-card h3 {
+  margin: 0 0 6px;
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.mb-card .mb-sub {
+  margin: 0 0 16px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #6b6a75;
+}
+.mb-field {
+  position: relative;
+  height: 50px;
+  margin-bottom: 11px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  border-radius: 17px;
+  background: #f3f3f5;
+  border: 1.5px solid #e2e1e7;
+  font-size: 15.5px;
+  color: #111018;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.mb-field.mb-focus {
+  border-color: #6a2bc2;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(106, 43, 194, 0.14);
+}
+.mb-field svg {
+  flex: 0 0 auto;
+  width: 19px;
+  height: 19px;
+  color: #8d8b96;
+}
+.mb-field svg.mb-violet {
+  color: #6a2bc2;
+}
+.mb-ph {
+  color: #9a99a3;
+}
+.mb-val {
+  color: #111018;
+  font-weight: 500;
+}
+.mb-caret {
+  display: inline-block;
+  width: 2px;
+  height: 20px;
+  margin-left: 1px;
+  background: #6a2bc2;
+  vertical-align: middle;
+  opacity: 0;
+}
+.mb-row {
+  display: flex;
+  gap: 10px;
+}
+.mb-row .mb-field {
+  flex: 1 1 0;
+}
+.mb-submit {
+  height: 54px;
+  margin-top: 6px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #6a2bc2;
+  color: #ffffff;
+  font-size: 16.5px;
+  font-weight: 800;
+  box-shadow: 0 10px 22px rgba(106, 43, 194, 0.35);
+}
+.mb-submit svg {
+  width: 19px;
+}
+
+/* ---------- Véhicules ---------- */
+.mb-vcard {
+  width: 358px;
+  padding: 22px 22px 20px;
+  border-radius: 26px;
+  background: #f3f3f5;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: #111018;
+}
+.mb-vcard h4 {
+  margin: 0 0 8px;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.mb-vcard .mb-pax {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #7a7984;
+}
+.mb-vcard .mb-pax svg {
+  width: 19px;
+  height: 19px;
+}
+.mb-vcard p {
+  margin: 12px 0 16px;
+  font-size: 16.5px;
+  line-height: 1.55;
+  color: #6b6a75;
+}
+.mb-vbtn {
+  height: 50px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #ffffff;
+  font-size: 17px;
+  font-weight: 800;
+  box-shadow: 0 6px 16px rgba(20, 10, 40, 0.1);
+}
+.mb-vbtn svg {
+  width: 18px;
+}
+.mb-vcard.mb-picked {
+  background: #ffffff;
+  box-shadow:
+    0 0 0 3px #6a2bc2,
+    0 24px 50px rgba(40, 0, 90, 0.35);
+}
+.mb-vcard.mb-picked .mb-vbtn {
+  background: #6a2bc2;
+  color: #ffffff;
+}
+
+/* ---------- Appel à l'action (bas de page) ---------- */
+.mb-ctasec {
+  padding: 26px 16px 40px;
+  background: #ffffff;
+}
+.mb-ctacard {
+  padding: 34px 22px 36px;
+  border-radius: 34px;
+  background: linear-gradient(160deg, #7535cf 0%, #5a19b0 100%);
+  color: #ffffff;
+  text-align: center;
+}
+.mb-ctacard h2 {
+  margin: 0 0 14px;
+  font-size: 34px;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.mb-ctacard p {
+  margin: 0 0 26px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
+}
+.mb-btn-white {
+  height: 58px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #ffffff;
+  color: #5a1db4;
+  font-size: 17px;
+  font-weight: 800;
+  box-shadow: 0 14px 28px rgba(20, 0, 50, 0.3);
+}
+.mb-btn-white svg {
+  width: 20px;
+}
+.mb-btn-ghost {
+  height: 58px;
+  margin-top: 14px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  font-size: 17px;
+  font-weight: 800;
+}
+
+/* doigt */
+.mb-touch {
+  position: absolute;
+  z-index: 50;
+  width: 46px;
+  height: 46px;
+  margin: -23px 0 0 -23px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow:
+    0 0 0 2px rgba(106, 43, 194, 0.35),
+    0 6px 16px rgba(30, 0, 70, 0.35);
+  opacity: 0;
+}
