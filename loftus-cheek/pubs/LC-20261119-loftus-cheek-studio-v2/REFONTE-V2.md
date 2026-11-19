@@ -73,3 +73,18 @@ Alternative sans FLORA : vidéos Canva (moteur Seedance, 720p) sur la limite IA 
 1. Les vidéos de référence (en pièces jointes ou dans Google Drive › LOFTUS-CHEEK).
 2. Photo de la sneaker « tendance » souhaitée, du parfum, de l'ensemble (en fichiers).
 3. Accord budget + forfait FLORA payant actif.
+
+## 9. Mise à jour 19/11 soir — Scenario connecté (remplace FLORA)
+Références client reçues (assets/references-client/) : sneakers On Cloudtilt noire + blanche, ensemble On vert (mannequin à remplacer par une autre personne), parfum Nishane Hacivat. ⚠️ Marques réelles (On, Nishane) : même avertissement droits que Nike, choix du client.
+
+Coûts chiffrés par Scenario (dry run, en Creative Units) :
+| Poste | Modèle | CU unitaire | Qté | CU |
+|---|---|---|---|---|
+| Photos studio d'après références | GPT Image 2.5 Sunburst (2K, 9:16) | 13 | 5 (+4 reprises) | ≈ 117 |
+| Clips vidéo 5 s | MiniMax H3 (2K) | 130 | 8 (+2 reprises) | ≈ 1 300 |
+| (option qualité max) | Seedance 2.5 1080p | 570 | — | trop cher pour ce budget |
+| Voix, musique, bruitages | ElevenLabs via Scenario | à chiffrer | — | ≈ 50–150 (estimation) |
+| **Total** | | | | **≈ 1 450–1 600 CU** |
+
+Forfait Scenario actuel : **gratuit = 50 CU/jour** (d'après le centre d'aide Scenario) → suffit pour ~3 photos/jour, PAS pour la vidéo (130 CU minimum par clip).
+Forfaits payants (d'après les sources publiques, à vérifier sur scenario.com/pricing) : ≈ 15 $/mois pour ~1 500 CU (juste), ≈ 45 $/mois pour ~5 000 CU (confortable).
