@@ -1,5 +1,12 @@
 # POINT DE REPRISE — LOFTUS-CHEEK
 
+## 2026-11-19 (9) — FIN DE SESSION
+- **Dernier rendu** : `pubs/LC-20261119-loftus-cheek-studio-v2/renders/apercus/montage-v2-voix-achird.mp4` (28 s, voix off Gemini « Achird » via Scenario + bruitages). Pas encore de musique.
+- **Voix** : 2 prises dans `assets/audio/voix/` (achird, charon). Placement des répliques : `tools/build_vo.py`. Pour Charon : refaire les temps de découpe (silences) puis relancer le script.
+- **Crédits Scenario utilisés aujourd'hui** : 49 CU (3 photos + 2 voix). Gratuit = 50 CU/jour.
+- **Prochaine session** : 1) avis client sur la V2 avec voix ; 2) musique (Scenario, à chiffrer) ; 3) On blanche (13 CU) ; 4) option vidéos IA des produits (formule Scenario payante) ; 5) rendu final.
+- Vidéos Adobe Stock brutes non stockées (trop lourdes) : les plans recadrés sont dans `assets/footage/`, la liste et les ID dans `assets/stock/LICENCES.md`, le recadrage dans `tools/prep_footage.sh`.
+
 ## 2026-11-19 (8)
 - **Montage V2 sans son rendu** : `pubs/LC-20261119-loftus-cheek-studio-v2/renders/apercus/montage-v2-sans-son.mp4` (28 s). Structure inspirée de Muble : vraie vidéo → téléphone (story vendeur avant/après) → « l'objet devient le monde » → logo → street (vidéo + photos Scenario) → bascule dorée → luxe (vidéo + Nishane + chrono) → services sur mécanisme → final CTA.
 - **Outils actifs** : Scenario (connecteur, gratuit 50 CU/jour, 2 jobs en parallèle) ; Adobe Stock (licences gratuites) ; ElevenLabs direct toujours refusé (en-tête).
